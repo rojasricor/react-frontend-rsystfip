@@ -9,7 +9,7 @@ import { API_ROUTE } from "../utils/constants";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
 import { toast } from "react-toastify";
 
-export default function CalendarRSystfipEvents() {
+export default function CalendarRSystfipEvents({ right, initialView }) {
   const { loadEventsRef, setEventId, setDate, setStart, setEnd, setStatus } =
     useContext(PeopleContext);
 
@@ -21,7 +21,7 @@ export default function CalendarRSystfipEvents() {
           headerToolbar={{
             left: "prevYear,prev,next,nextYear today",
             center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+            right,
           }}
           locales={[esLocale, globalLocales]}
           locale="es-us"
@@ -69,6 +69,7 @@ export default function CalendarRSystfipEvents() {
             failure: () =>
               toast.error("No se pudo hacer la carga de los eventos."),
           }}
+          eventOrder="-start"
           eventTimeFormat={{
             hour: "numeric",
             minute: "2-digit",
@@ -77,7 +78,7 @@ export default function CalendarRSystfipEvents() {
             (loadEventsRef.current.style.display = sisas ? "block" : "none")
           }
           plugins={[daygrid]}
-          initialView="dayGridMonth"
+          initialView={initialView}
         />
       </div>
       <p className="text-center mt-2">Agendamiento programado mes a mes.</p>

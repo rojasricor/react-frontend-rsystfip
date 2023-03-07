@@ -8,6 +8,7 @@ import {
 import { TiHome } from "react-icons/ti";
 import { ImUsers, ImUserPlus } from "react-icons/im";
 import { IoCalendarNumber } from "react-icons/io5";
+import { HiCalendarDays as Events } from "react-icons/all";
 import { ProtectedElement } from "./Protected";
 
 export default function NavMenu({ permissions }) {
@@ -34,7 +35,17 @@ export default function NavMenu({ permissions }) {
             className="nav-item nav-link"
             title="Agendar una persona en el calendario"
           >
-            Agendar <IoCalendarNumber className="mb-1" />
+            Programado <IoCalendarNumber className="mb-1" />
+          </NavLink>
+        </ProtectedElement>
+
+        <ProtectedElement isAllowed={permissions.includes("schedule")}>
+          <NavLink
+            to="/people/preview"
+            className="nav-item nav-link"
+            title="Ver agendamientos en el calendario"
+          >
+            Eventos <Events className="mb-1" />
           </NavLink>
         </ProtectedElement>
 
@@ -44,7 +55,7 @@ export default function NavMenu({ permissions }) {
             className="nav-item nav-link"
             title="Agendar una persona inmediatamente"
           >
-            Agendar <ImUserPlus />
+            Día a Día <ImUserPlus />
           </NavLink>
         </ProtectedElement>
 
@@ -53,7 +64,7 @@ export default function NavMenu({ permissions }) {
           className="nav-item nav-link"
           title="Listado de todas las personas agendadas"
         >
-          Personas <ImUsers />
+          Listado <ImUsers />
         </NavLink>
 
         <ProtectedElement isAllowed={permissions.includes("reports")}>

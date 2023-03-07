@@ -20,7 +20,10 @@ export default function PeopleScheduleForm() {
     <PeopleContextProvider>
       <ToastContainer />
       <LoadCalendar />
-      <CalendarRSystfipEvents />
+      <CalendarRSystfipEvents
+        right="timeGridDay,timeGridWeek"
+        initialView="timeGridDay"
+      />
       <Suspense fallback={<LoaderSuspense />}>
         <ModalCancellScheduleConfirmation />
         <ModalSchedulePeopleForm />

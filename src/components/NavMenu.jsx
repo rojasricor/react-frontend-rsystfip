@@ -35,7 +35,7 @@ export default function NavMenu({ permissions }) {
             className="nav-item nav-link"
             title="Agendar una persona en el calendario"
           >
-            Agend. programado <IoCalendarNumber className="mb-1" />
+            Agendamiento programado <IoCalendarNumber className="mb-1" />
           </NavLink>
         </ProtectedElement>
 
@@ -45,7 +45,7 @@ export default function NavMenu({ permissions }) {
             className="nav-item nav-link"
             title="Agendar una persona inmediatamente"
           >
-            Agend. diario <ImUserPlus />
+            Agendamiento diario <ImUserPlus />
           </NavLink>
         </ProtectedElement>
 
@@ -64,7 +64,7 @@ export default function NavMenu({ permissions }) {
           className="nav-item nav-link"
           title="Listado de todas las personas agendadas"
         >
-          Listado <ImUsers />
+          Visualizar listado <ImUsers />
         </NavLink>
 
         <ProtectedElement isAllowed={permissions.includes("reports")}>

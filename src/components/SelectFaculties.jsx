@@ -3,8 +3,13 @@ import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCES_ROUTE } from "../utils/constants";
 
 export default function SelectFaculties() {
-  const { facultie, setFacultie, facultieSelectRef } =
-    useContext(PeopleContext);
+  const {
+    disabledAll,
+    disabledAfterAutocomplete,
+    facultie,
+    setFacultie,
+    facultieSelectRef,
+  } = useContext(PeopleContext);
   const [faculties, setFaculties] = useState([]);
 
   useEffect(() => {
@@ -21,7 +26,7 @@ export default function SelectFaculties() {
           value={facultie}
           className="form-select"
           ref={facultieSelectRef}
-          disabled
+          disabled={disabledAll || disabledAfterAutocomplete}
           required
         >
           <option value={UNSET_STATUS} disabled>

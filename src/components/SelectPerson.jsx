@@ -5,6 +5,7 @@ import { UNSET_STATUS, RESOURCES_ROUTE } from "../utils/constants";
 export default function SelectPerson() {
   const {
     setDisabledAll,
+    setDisabledAfterAutocomplete,
     setPerson,
     person,
     facultieSelectRef,
@@ -21,6 +22,7 @@ export default function SelectPerson() {
   useEffect(() => {
     if (person !== UNSET_STATUS) {
       setDisabledAll(false);
+      setDisabledAfterAutocomplete(false);
       facultieSelectRef.current.disabled = false;
       if (person === "5") {
         facultieSelectRef.current.disabled = true;

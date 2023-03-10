@@ -10,6 +10,8 @@ export function PeopleContextProvider({ children }) {
   const { id } = useParams();
 
   const [disabledAll, setDisabledAll] = useState(true);
+  const [disabledAfterAutocomplete, setDisabledAfterAutocomplete] =
+    useState(false);
   const [loading, setLoading] = useState(false);
 
   // Event id Aux
@@ -177,8 +179,10 @@ export function PeopleContextProvider({ children }) {
     }
     for (const dean of staffDeans) {
       if (dean.cc === doc) {
+        setDoctype(1);
         setName(dean.name);
         setFacultie(dean.facultie);
+        setDisabledAfterAutocomplete(true);
         toast("Datos autocompletados automáticamente", {
           position: "top-left",
           autoClose: 2000,
@@ -198,6 +202,8 @@ export function PeopleContextProvider({ children }) {
       value={{
         disabledAll,
         setDisabledAll,
+        disabledAfterAutocomplete,
+        setDisabledAfterAutocomplete,
         loadEventsRef,
         loading,
         person,

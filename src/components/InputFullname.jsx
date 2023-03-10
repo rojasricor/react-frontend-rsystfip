@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 
 export default function InputFullname() {
-  const { disabledAll, name, setName } = useContext(PeopleContext);
+  const { disabledAll, disabledAfterAutocomplete, name, setName } =
+    useContext(PeopleContext);
 
   return (
     <div className="col-md-6">
@@ -17,7 +18,7 @@ export default function InputFullname() {
           maxLength="35"
           autoComplete="off"
           spellCheck="false"
-          disabled={disabledAll}
+          disabled={disabledAll || disabledAfterAutocomplete}
           required
         />
         <label className="form-label">Nombres y Apellidos:</label>

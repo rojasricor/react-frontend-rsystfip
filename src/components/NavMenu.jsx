@@ -35,17 +35,7 @@ export default function NavMenu({ permissions }) {
             className="nav-item nav-link"
             title="Agendar una persona en el calendario"
           >
-            Programado <IoCalendarNumber className="mb-1" />
-          </NavLink>
-        </ProtectedElement>
-
-        <ProtectedElement isAllowed={permissions.includes("schedule")}>
-          <NavLink
-            to="/people/preview"
-            className="nav-item nav-link"
-            title="Ver agendamientos en el calendario"
-          >
-            Eventos <Events className="mb-1" />
+            Agend. programado <IoCalendarNumber className="mb-1" />
           </NavLink>
         </ProtectedElement>
 
@@ -55,7 +45,17 @@ export default function NavMenu({ permissions }) {
             className="nav-item nav-link"
             title="Agendar una persona inmediatamente"
           >
-            Día a Día <ImUserPlus />
+            Agend. diario <ImUserPlus />
+          </NavLink>
+        </ProtectedElement>
+
+        <ProtectedElement isAllowed={permissions.includes("schedule")}>
+          <NavLink
+            to="/people/preview"
+            className="nav-item nav-link"
+            title="Ver agendamientos en el calendario"
+          >
+            Ver eventos <Events className="mb-1" />
           </NavLink>
         </ProtectedElement>
 

@@ -3,7 +3,8 @@ import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCES_ROUTE } from "../utils/constants";
 
 export default function SelectDocument() {
-  const { setDoctype, doctype, disabledAll } = useContext(PeopleContext);
+  const { setDoctype, doctype, disabledAll, disabledAfterAutocomplete } =
+    useContext(PeopleContext);
   const [documents, setDocuments] = useState([]);
 
   useEffect(() => {
@@ -19,7 +20,7 @@ export default function SelectDocument() {
           onChange={(evt) => setDoctype(evt.target.value)}
           value={doctype}
           className="form-select"
-          disabled={disabledAll}
+          disabled={disabledAll || disabledAfterAutocomplete}
           required
         >
           <option value={UNSET_STATUS} disabled>

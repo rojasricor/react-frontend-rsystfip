@@ -1,7 +1,7 @@
 import NavBrand from "./NavBrand";
 import NavToggler from "./NavToggler";
 import NavMenu from "./NavMenu";
-import NavDropdown from "./NavDropdown";
+import NavDropdown from "./NavLogoutDropdown";
 
 export default function Nav({ avatar, permissions }) {
   return (

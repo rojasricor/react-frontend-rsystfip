@@ -10,6 +10,7 @@ import { ImUsers, ImUserPlus } from "react-icons/im";
 import { IoCalendarNumber } from "react-icons/io5";
 import { HiCalendarDays as Events } from "react-icons/all";
 import { ProtectedElement } from "./Protected";
+import NavDropdown from "./NavDropdown";
 
 export default function NavMenu({ permissions }) {
   return (
@@ -29,25 +30,31 @@ export default function NavMenu({ permissions }) {
           </NavLink>
         </ProtectedElement>
 
-        <ProtectedElement isAllowed={permissions.includes("schedule")}>
-          <NavLink
-            to="/people/schedule"
-            className="nav-item nav-link"
-            title="Agendar una persona en el calendario"
-          >
-            Agendamiento programado <IoCalendarNumber className="mb-1" />
-          </NavLink>
-        </ProtectedElement>
+        <NavDropdown
+          title="Sección de agendamientos"
+          description="Agendamientos"
+          h6="Sección de agendamientos"
+        >
+          <ProtectedElement isAllowed={permissions.includes("add")}>
+            <NavLink
+              to="/people/add"
+              className="nav-item nav-link"
+              title="Agendar una persona inmediatamente"
+            >
+              Diario <ImUserPlus />
+            </NavLink>
+          </ProtectedElement>
 
-        <ProtectedElement isAllowed={permissions.includes("add")}>
-          <NavLink
-            to="/people/add"
-            className="nav-item nav-link"
-            title="Agendar una persona inmediatamente"
-          >
-            Agendamiento diario <ImUserPlus />
-          </NavLink>
-        </ProtectedElement>
+          <ProtectedElement isAllowed={permissions.includes("schedule")}>
+            <NavLink
+              to="/people/schedule"
+              className="nav-item nav-link"
+              title="Agendar una persona en el calendario"
+            >
+              Programado <IoCalendarNumber className="mb-1" />
+            </NavLink>
+          </ProtectedElement>
+        </NavDropdown>
 
         <ProtectedElement isAllowed={permissions.includes("schedule")}>
           <NavLink
@@ -59,23 +66,28 @@ export default function NavMenu({ permissions }) {
           </NavLink>
         </ProtectedElement>
 
-        <NavLink
-          to="/people/view"
-          className="nav-item nav-link"
-          title="Listado de todas las personas agendadas"
+        <NavDropdown
+          title="Sección de reportes"
+          description="Reportes e historial"
+          h6="Sección de reportes"
         >
-          Visualizar listado <ImUsers />
-        </NavLink>
-
-        <ProtectedElement isAllowed={permissions.includes("reports")}>
+          <ProtectedElement isAllowed={permissions.includes("reports")}>
+            <NavLink
+              to="/people/reports"
+              className="nav-item nav-link"
+              title="Generar reportes"
+            >
+              <FaChartArea /> Reportes
+            </NavLink>
+          </ProtectedElement>
           <NavLink
-            to="/people/reports"
+            to="/people/view"
             className="nav-item nav-link"
-            title="Generar reportes"
+            title="Listado de todas las personas agendadas"
           >
-            <FaChartArea /> Reportes
+            Historial <ImUsers />
           </NavLink>
-        </ProtectedElement>
+        </NavDropdown>
 
         <ProtectedElement isAllowed={permissions.includes("statistics")}>
           <NavLink

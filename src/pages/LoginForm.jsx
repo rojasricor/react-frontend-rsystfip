@@ -49,7 +49,7 @@ export default function LoginForm() {
   return (
     <div className="row">
       <div className="col-md-4 mx-auto">
-        <div className="card card-body rounded-4">
+        <div className="card card-body border border rounded-5">
           <form onSubmit={authenticate} className="container">
             <div className="text-center mt-2">
               <img
@@ -74,7 +74,7 @@ export default function LoginForm() {
               <input
                 onChange={(evt) => setUsername(evt.target.value)}
                 value={username}
-                className="form-control"
+                className="form-control border-0 border-bottom rounded-bottom-0"
                 type="text"
                 placeholder="Usuario"
                 autoComplete="off"
@@ -89,7 +89,7 @@ export default function LoginForm() {
                 onChange={(evt) => setPassword(evt.target.value)}
                 value={password}
                 type={passwordVisible ? "text" : "password"}
-                className="form-control"
+                className="form-control border-0 border-bottom rounded-top-0"
                 placeholder="Contraseña"
                 autoComplete="off"
                 required

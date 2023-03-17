@@ -13,8 +13,8 @@
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  border: 2px solid rgba(var(--bs-primary-rgb), 0.1);
-  border-top: 2px solid var(--bs-primary);
+  border: 2px solid rgba(#0d6efd, 0.1);
+  border-top: 2px solid #0d6efd;
   animation: ani 3s alternate infinite;
 }
 
@@ -22,8 +22,8 @@
   width: 130px;
   height: 130px;
   border-radius: 50%;
-  border: 2px solid rgba(var(--bs-warning-rgb), 0.1);
-  border-top: 2px solid var(--bs-warning);
+  border: 2px solid rgba(#ffc107, 0.1);
+  border-top: 2px solid #ffc107;
   animation: ani 2s alternate infinite;
 }
 

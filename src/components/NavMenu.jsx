@@ -32,7 +32,7 @@ export default function NavMenu({ permissions }) {
 
         <NavDropdown
           title="Sección de agendamientos"
-          description="Agendamientos"
+          description="Agendamiento"
           h6="Sección de agendamientos"
         >
           <ProtectedElement isAllowed={permissions.includes("add")}>
@@ -41,7 +41,7 @@ export default function NavMenu({ permissions }) {
               className="nav-item nav-link"
               title="Agendar una persona inmediatamente"
             >
-              Diario <ImUserPlus />
+              <ImUserPlus /> Diario
             </NavLink>
           </ProtectedElement>
 
@@ -51,7 +51,7 @@ export default function NavMenu({ permissions }) {
               className="nav-item nav-link"
               title="Agendar una persona en el calendario"
             >
-              Programado <IoCalendarNumber className="mb-1" />
+              <IoCalendarNumber className="mb-1" /> Programado
             </NavLink>
           </ProtectedElement>
         </NavDropdown>
@@ -62,15 +62,33 @@ export default function NavMenu({ permissions }) {
             className="nav-item nav-link"
             title="Ver agendamientos en el calendario"
           >
-            Ver eventos <Events className="mb-1" />
+            Visualizar Eventos <Events className="mb-1" />
+          </NavLink>
+        </ProtectedElement>
+
+        <ProtectedElement isAllowed={permissions.includes("statistics")}>
+          <NavLink
+            to="/people/statistics"
+            className="nav-item nav-link"
+            title="Generar estadísticas"
+          >
+            Estadísticas <FaChartLine className="mb-1" />
           </NavLink>
         </ProtectedElement>
 
         <NavDropdown
           title="Sección de reportes"
-          description="Reportes e historial"
+          description="Reportes e Historial"
           h6="Sección de reportes"
         >
+          <NavLink
+            to="/people/view"
+            className="nav-item nav-link"
+            title="Listado de todas las personas agendadas"
+          >
+            <ImUsers /> Historial
+          </NavLink>
+          
           <ProtectedElement isAllowed={permissions.includes("reports")}>
             <NavLink
               to="/people/reports"
@@ -80,31 +98,14 @@ export default function NavMenu({ permissions }) {
               <FaChartArea /> Reportes
             </NavLink>
           </ProtectedElement>
-          <NavLink
-            to="/people/view"
-            className="nav-item nav-link"
-            title="Listado de todas las personas agendadas"
-          >
-            Historial <ImUsers />
-          </NavLink>
         </NavDropdown>
-
-        <ProtectedElement isAllowed={permissions.includes("statistics")}>
-          <NavLink
-            to="/people/statistics"
-            className="nav-item nav-link"
-            title="Generar estadísticas"
-          >
-            <FaChartLine /> Estadísticas
-          </NavLink>
-        </ProtectedElement>
 
         <NavLink
           to="/help/asks/frecuently"
           className="nav-item nav-link"
           title="Preguntas y respuestas más frecuentes"
         >
-          FAQs <FaInfoCircle />
+          FAQs <FaInfoCircle className="mb-1" />
         </NavLink>
       </div>
     </nav>

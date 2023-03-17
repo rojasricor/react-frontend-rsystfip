@@ -14,7 +14,7 @@ export function PeopleContextProvider({ children }) {
     useState(false);
   const [loading, setLoading] = useState(false);
 
-  // Event id Aux
+  // Event id aux
   const [eventId, setEventId] = useState("");
 
   // Select components states
@@ -174,7 +174,7 @@ export function PeopleContextProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    if (!staffDeans) {
+    if (!staffDeans || person !== "4") {
       return;
     }
     for (const dean of staffDeans) {
@@ -183,6 +183,7 @@ export function PeopleContextProvider({ children }) {
         setName(dean.name);
         setFacultie(dean.facultie);
         setDisabledAfterAutocomplete(true);
+        facultieSelectRef.current.className = "form-control";
         toast("Datos autocompletados automáticamente", {
           position: "top-left",
           autoClose: 2000,

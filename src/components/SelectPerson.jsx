@@ -23,6 +23,7 @@ export default function SelectPerson() {
     if (person !== UNSET_STATUS) {
       setDisabledAll(false);
       setDisabledAfterAutocomplete(false);
+      facultieSelectRef.current.className = "form-select";
       facultieSelectRef.current.disabled = false;
       if (person === "5") {
         facultieSelectRef.current.disabled = true;

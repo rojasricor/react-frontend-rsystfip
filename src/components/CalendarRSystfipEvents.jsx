@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import FullCalendar from "@fullcalendar/react";
 import daygrid from "@fullcalendar/daygrid";
@@ -13,10 +13,13 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
   const { loadEventsRef, setEventId, setDate, setStart, setEnd, setStatus } =
     useContext(PeopleContext);
 
+  const calendarRef = useRef(null);
+
   return (
     <div className="table-responsive">
       <div className="container-fluid schg-sm lh-1">
         <FullCalendar
+          ref={calendarRef}
           height="auto"
           headerToolbar={{
             left: "prevYear,prev,next,nextYear today",
@@ -31,9 +34,10 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
           weekends
           dayHeaderFormat={{
             weekday: "long",
+            day: "numeric",
           }}
           businessHours={{
-            daysOfWeek: [1, 2, 3, 4, 5],
+            daysOfWeek: [0, 1, 2, 3, 4, 5, 6],
             startTime: "06:00",
             endTime: "22:00",
           }}
@@ -41,26 +45,46 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
           weekNumberCalculation="ISO"
           selectable
           selectMirror
-          select={(selectInfo) => {
-            if ("dayGridMonth" === selectInfo.view.type) {
+          select={(info) => {
+            if ("dayGridMonth" === info.view.type) {
+              return;
+            }
+
+            const now = new Date();
+            if (info.start < now) {
+              calendarRef.current.calendar.unselect();
+              window.alert(
+                "No se puede agendar en una fecha que ya ha pasado."
+              );
+              return;
+            }
+
+            if (
+              info.start.getHours() < 6 ||
+              info.end.getHours() > 21 ||
+              info.end.getHours() === 0
+            ) {
+              // La selección está fuera del rango permitido, cancelar
+              calendarRef.current.calendar.unselect();
+              window.alert("Agendamientos no disponible en ese horario.");
               return;
             }
 
             const modalScheduling = new bootstrap.Modal("#modal-scheduling");
             modalScheduling.show();
 
-            setDate(formatTodaysDate(selectInfo.start));
-            setStart(formatTodaysDateTime(selectInfo.start));
-            setEnd(formatTodaysDateTime(selectInfo.end));
+            setDate(formatTodaysDate(info.start));
+            setStart(formatTodaysDateTime(info.start));
+            setEnd(formatTodaysDateTime(info.end));
             setStatus(1);
           }}
-          eventClick={(selectInfo) => {
+          eventClick={(info) => {
             const modalCancelSheduling = new bootstrap.Modal(
               "#modal-confirm-cancell"
             );
             modalCancelSheduling.show();
-            setEventId(selectInfo.event.id);
-            setDate(formatTodaysDateTime(selectInfo.event.start));
+            setEventId(info.event.id);
+            setDate(formatTodaysDateTime(info.event.start));
           }}
           editable
           dayMaxEvents
@@ -74,8 +98,8 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
             hour: "numeric",
             minute: "2-digit",
           }}
-          loading={(sisas) =>
-            (loadEventsRef.current.style.display = sisas ? "block" : "none")
+          loading={(bool) =>
+            (loadEventsRef.current.style.display = bool ? "block" : "none")
           }
           plugins={[daygrid]}
           initialView={initialView}

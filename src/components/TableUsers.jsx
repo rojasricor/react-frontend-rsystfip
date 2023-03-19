@@ -12,7 +12,7 @@ export default function TableUsers() {
   }, []);
 
   return (
-    <table className="table table-hover table-striped text-center">
+    <table className="table table-hover table-striped table-borderless text-center">
       <caption>Usuarios con acceso.</caption>
       <thead>
         <tr>

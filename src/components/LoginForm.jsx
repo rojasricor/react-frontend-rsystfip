@@ -1,15 +1,52 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
+import { API_ROUTE } from "../utils/constants";
+import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import { IoMdLogIn } from "react-icons/io";
 
-export default function LoginForm({
-  authenticate,
-  setUsername,
-  username,
-  setPassword,
-  password,
-  passwordVisible,
-  loading,
-}) {
+export default function LoginForm() {
+  const {
+    doLogin,
+    setUsername,
+    username,
+    setPassword,
+    password,
+    passwordVisible,
+    setLoading,
+    loading,
+  } = useContext(AppContext);
+
+  const navigate = useNavigate();
+
+  async function authenticate(evt) {
+    evt.preventDefault();
+    setLoading(true);
+    try {
+      const response = await fetch(`${API_ROUTE}/auth`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      });
+      const { auth, user, error } = await response.json();
+
+      if (auth) {
+        doLogin(user);
+        navigate("/home/welcome");
+      } else {
+        toast.error(error);
+      }
+    } catch (err) {
+      toast.error(err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <form onSubmit={authenticate} className="container">
       <div className="form-floating mb-2">

@@ -1,8 +1,13 @@
-export default function LoginHeader({ togglePassword }) {
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+
+export default function LoginHeader() {
+  const { setPasswordVisible, passwordVisible } = useContext(AppContext);
+
   return (
     <div className="text-center mt-2">
       <img
-        onClick={togglePassword}
+        onClick={() => setPasswordVisible(!passwordVisible)}
         src="/rsystfip.svg"
         width="72"
         height="57"

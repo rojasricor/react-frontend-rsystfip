@@ -1,14 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import FilterSelectPerson from "../components/FilterSelectPerson";
+import ActionReports from "../components/ActionReports";
 import TableReports from "../components/TableReports";
-import {
-  API_ROUTE,
-  API_DOMAIN,
-  RESOURCES_ROUTE,
-  UNSET_STATUS,
-} from "../utils/constants";
+import { API_ROUTE, RESOURCES_ROUTE, UNSET_STATUS } from "../utils/constants";
 import { getStartMonthDate, getEndMonthDate } from "../utils/resources";
-import { FaChartArea, FaDownload } from "react-icons/fa";
+import InputDate from "../components/InputDate";
 
 export default function PeopleReports() {
   const [categories, setCategories] = useState([]);
@@ -52,62 +48,29 @@ export default function PeopleReports() {
       <div className="col-12">
         <h1 className="h3">Reportes por mes</h1>
         <div className="row g-3">
-          <div className="col-md-2">
-            <label className="form-label">Desde:</label>
-            <input
-              onChange={(evt) => setStartDate(evt.target.value)}
-              type="date"
-              value={startDate}
-              className="form-control"
-            />
-          </div>
-          <div className="col-md-2">
-            <label className="form-label">Hasta:</label>
-            <input
-              onChange={(evt) => setEndDate(evt.target.value)}
-              type="date"
-              value={endDate}
-              className="form-control"
-            />
-          </div>
-          <div className="col-md-2">
-            <label className="form-label">Persona:</label>
-            <select
-              onChange={(evt) => setCategory(evt.target.value)}
-              className="form-select"
-            >
-              <option value={UNSET_STATUS}>No seleccionado</option>
-              {categories.map((category, index) => (
-                <option key={index} value={category.id}>
-                  {category.person}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="col-12">
-            <div className="btn-group btn-group-sm">
-              <Link
-                to="/people/statistics"
-                className="btn btn-warning text-light"
-                title="Generar estadísticas"
-              >
-                Estadísticas <FaChartArea className="mb-1" />
-              </Link>
-              <button
-                onClick={() => {
-                  window.open(
-                    `${API_DOMAIN.concat(
-                      linkReport
-                    )}?start=${startDate}&end=${endDate}&category=${category}`
-                  );
-                }}
-                className="btn btn-dark"
-                title="Reporte PDF"
-              >
-                Descargar <FaDownload className="mb-1" />
-              </button>
-            </div>
-          </div>
+          <InputDate
+            labelInfo="Desde:"
+            setDate={setStartDate}
+            inputValue={startDate}
+          />
+
+          <InputDate
+            labelInfo="Hasta:"
+            setDate={setEndDate}
+            inputValue={endDate}
+          />
+
+          <FilterSelectPerson
+            categories={categories}
+            setCategory={setCategory}
+          />
+
+          <ActionReports
+            linkReport={linkReport}
+            startDate={startDate}
+            endDate={endDate}
+            category={category}
+          />
         </div>
         <div className="table-responsive mt-5">
           <TableReports reportFiltered={reportFiltered} />

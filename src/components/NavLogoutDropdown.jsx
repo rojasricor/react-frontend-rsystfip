@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { NavLink } from "react-router-dom";
+import { FaInfoCircle } from "react-icons/fa";
+import { BiKey, BiLogOutCircle } from "react-icons/bi";
 
 export default function NavDropdown({ avatar }) {
   const { user, doLogout } = useContext(AppContext);
@@ -25,7 +27,7 @@ export default function NavDropdown({ avatar }) {
       <ul className="dropdown-menu dropdown-menu-lg-end text-small">
         <li>
           <NavLink to="/help/asks/frecuently" className="dropdown-item">
-            Ayuda...
+            Ayuda... <FaInfoCircle className="mb-1" />
           </NavLink>
         </li>
         <li>
@@ -33,7 +35,7 @@ export default function NavDropdown({ avatar }) {
             to={`/users/manage/password/${user.id}/change`}
             className="dropdown-item"
           >
-            Cambiar mi contraseña
+            Cambiar mi contraseña <BiKey className="mb-1" />
           </NavLink>
         </li>
         <li>
@@ -41,7 +43,7 @@ export default function NavDropdown({ avatar }) {
         </li>
         <li>
           <button onClick={logout} className="dropdown-item">
-            Cerrar sesión
+            Cerrar sesión <BiLogOutCircle />
           </button>
         </li>
       </ul>

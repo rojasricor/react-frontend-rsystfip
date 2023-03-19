@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ProtectedElement, ProtectedRoute } from "./components/Protected";
 import LoaderSuspense from "./components/LoaderSuspense";
 import Nav from "./components/Nav";
-import LoginForm from "./pages/LoginForm";
+import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const DashBoardUsers = lazy(() => import("./pages/DashBoardUsers"));
@@ -37,8 +37,8 @@ function App() {
         </ProtectedElement>
         <Suspense fallback={<LoaderSuspense />}>
           <Routes>
-            <Route index element={<LoginForm />} />
-            <Route path="/auth/login" element={<LoginForm />} />
+            <Route index element={<LoginPage />} />
+            <Route path="/auth/login" element={<LoginPage />} />
 
             <Route element={<ProtectedRoute isAllowed={!!user} />}>
               <Route path="/home/welcome" element={<HomePage />} />

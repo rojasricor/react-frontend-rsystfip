@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { ToastContainer, toast } from "react-toastify";
 import { API_ROUTE } from "../utils/constants";
-import { FaSignInAlt } from "react-icons/fa";
+import { IoMdLogIn } from "react-icons/io";
 import Spinner from "../components/Spinner";
 
-export default function LoginForm() {
+export default function LoginPage() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -61,11 +61,11 @@ export default function LoginForm() {
               />
               <h1 className="h6 mt-3">RSYSTFIP</h1>
               <span>
-                Software para agendamiento de visitas Rectoría -{" "}
+                Sóftware para agendamiento de visitas Rectoría -{" "}
                 <strong>ITFIP</strong>
               </span>
               <p className="text-muted">
-                Instituto Tolimense de Formación Técnica Profesional ; NIT:
+                Instituto Tolimense De Formación Técnica Profesional ; NIT:
                 800.173.719.0. Calle 18 Carrera 1ª Barrio/Arkabal Espinal,
                 Tolima - Colombia
               </p>
@@ -103,7 +103,7 @@ export default function LoginForm() {
             >
               {!loading ? (
                 <>
-                  Entrar <FaSignInAlt className="mb-1" />
+                  Entrar <IoMdLogIn className="mb-1" />
                 </>
               ) : (
                 <Spinner tam="lg" />

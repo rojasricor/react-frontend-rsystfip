@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { API_ROUTE, RESOURCES_ROUTE, UNSET_STATUS } from "../utils/constants";
-import Spinner from "../components/Spinner";
-import SelectBasic from "../components/SelectBasic";
-import InputText from "../components/InputText";
-import InputEmail from "../components/InputEmail";
-import InputNumber from "../components/InputNumber";
-import InputPassword from "../components/InputPassword";
+import Spinner from "./Spinner";
+import SelectBasic from "./SelectBasic";
+import InputText from "./InputText";
+import InputEmail from "./InputEmail";
+import InputNumber from "./InputNumber";
+import InputPassword from "./InputPassword";
 import { FaCheckDouble } from "react-icons/fa";
 
 export default function FormUserAdd() {

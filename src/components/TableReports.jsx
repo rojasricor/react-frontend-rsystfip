@@ -1,4 +1,4 @@
-import ReportRow from "../components/ReportRow";
+import ReportRow from "./ReportRow";
 
 export default function TableReports({ reportFiltered }) {
   return (

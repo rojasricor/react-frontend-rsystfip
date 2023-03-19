@@ -1,4 +1,4 @@
-import PersonRow from "../components/PersonRow";
+import PersonRow from "./PersonRow";
 
 export default function TablePeople({ peopleFiltered }) {
   return (

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import TableReports from "../components/TableReports";
+import TableReports from "./TableReports";
 import { API_ROUTE, UNSET_STATUS } from "../utils/constants";
 import { getStartMonthDate, getEndMonthDate } from "../utils/resources";
 import DaterReports from "./DaterReports";

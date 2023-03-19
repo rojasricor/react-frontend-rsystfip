@@ -1,6 +1,6 @@
-import InputDate from "../components/InputDate";
-import FilterSelectPerson from "../components/FilterSelectPerson";
-import GetterReports from "../components/GetterReports";
+import InputDate from "./InputDate";
+import FilterSelectPerson from "./FilterSelectPerson";
+import GetterReports from "./GetterReports";
 
 export default function DaterReports({
   setStartDate,

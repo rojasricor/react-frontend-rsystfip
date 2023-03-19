@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { API_ROUTE } from "../utils/constants";
-import Spinner from "../components/Spinner";
-import TablePeople from "../components/TablePeople";
+import Spinner from "./Spinner";
+import TablePeople from "./TablePeople";
 import { FaSyncAlt, FaTimes } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
 import { ImUserPlus } from "react-icons/im";

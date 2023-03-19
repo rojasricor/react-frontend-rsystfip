@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { API_ROUTE } from "../utils/constants";
-import FormPasswordChanger from "../components/FormPasswordChanger";
+import FormPasswordChanger from "./FormPasswordChanger";
 
 export default function GetterPasswordChanger() {
   const { role } = useParams();

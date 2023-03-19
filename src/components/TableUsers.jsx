@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { API_ROUTE } from "../utils/constants";
-import DashboardRow from "../components/DashboardRow";
+import DashboardRow from "./DashboardRow";
 
 export default function TableUsers() {
   const [usersDashboard, setUsersDashboard] = useState([]);

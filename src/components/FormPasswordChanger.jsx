@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../utils/constants";
-import InputPassword from "../components/InputPassword";
-import Spinner from "../components/Spinner";
+import InputPassword from "./InputPassword";
+import Spinner from "./Spinner";
 import { BiKey } from "react-icons/bi";
 
 export default function FormPasswordChanger({ userId }) {

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { API_ROUTE } from "../utils/constants";
 import { toast } from "react-toastify";
-import Spinner from "../components/Spinner";
+import Spinner from "./Spinner";
 import { IoMdLogIn } from "react-icons/io";
 
 export default function LoginForm() {

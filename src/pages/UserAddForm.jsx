@@ -221,7 +221,6 @@ export default function UserAddForm() {
               </div>
             </div>
             <div className="col-12">
-              <ToastContainer />
               <button
                 className="w-100 btn btn-primary btn-lg mb-3"
                 disabled={loading}
@@ -238,6 +237,7 @@ export default function UserAddForm() {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

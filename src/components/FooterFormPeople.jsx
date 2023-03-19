@@ -13,7 +13,6 @@ export default function FooterFormPeople({ actionRequireIt }) {
   const navigate = useNavigate();
   return (
     <>
-      <ToastContainer />
       <ProtectedElement isAllowed={actionRequireIt}>
         <div className="col-md-6">
           <button
@@ -42,6 +41,7 @@ export default function FooterFormPeople({ actionRequireIt }) {
         </button>
       </div>
       <SmallCaption />
+      <ToastContainer />
     </>
   );
 }

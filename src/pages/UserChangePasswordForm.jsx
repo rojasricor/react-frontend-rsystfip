@@ -94,7 +94,6 @@ export default function UserChangePasswordForm() {
             labelInfo="Confirmar contraseña nueva:"
           />
 
-          <ToastContainer />
           <button
             className="w-100 btn btn-primary btn-lg mb-3"
             disabled={loading}
@@ -109,6 +108,7 @@ export default function UserChangePasswordForm() {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }

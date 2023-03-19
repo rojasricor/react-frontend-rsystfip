@@ -15,9 +15,9 @@ export default function DashBoardUsers() {
             </Link>
           </div>
           <TableUsers />
-          <ToastContainer />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

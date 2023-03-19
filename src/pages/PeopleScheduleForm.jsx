@@ -18,7 +18,6 @@ export default function PeopleScheduleForm() {
 
   return (
     <PeopleContextProvider>
-      <ToastContainer />
       <LoadCalendar />
       <CalendarRSystfipEvents
         right="timeGridDay,timeGridWeek"
@@ -28,6 +27,7 @@ export default function PeopleScheduleForm() {
         <ModalCancellScheduleConfirmation />
         <ModalSchedulePeopleForm />
       </Suspense>
+      <ToastContainer />
     </PeopleContextProvider>
   );
 }

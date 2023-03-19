@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ReportRow from "../components/ReportRow";
+import TableReports from "../components/TableReports";
 import {
   API_ROUTE,
   API_DOMAIN,
@@ -91,7 +91,7 @@ export default function PeopleReports() {
                 className="btn btn-warning text-light"
                 title="Generar estadísticas"
               >
-                Estadísticas <FaChartArea />
+                Estadísticas <FaChartArea className="mb-1" />
               </Link>
               <button
                 onClick={() => {
@@ -104,30 +104,13 @@ export default function PeopleReports() {
                 className="btn btn-dark"
                 title="Reporte PDF"
               >
-                Descargar <FaDownload />
+                Descargar <FaDownload className="mb-1" />
               </button>
             </div>
           </div>
         </div>
         <div className="table-responsive mt-5">
-          <table className="table table-hover table-borderless table-sm text-center">
-            <caption>Datos sobre las personas agendadas este mes.</caption>
-            <thead>
-              <tr>
-                <th>Nombres</th>
-                <th>Fecha</th>
-                <th>Últ. Modificación</th>
-                <th>Agendamiento programado</th>
-                <th>Agendamiento de una sóla vez</th>
-                <th>Tipo Persona</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reportFiltered.map((person, index) => (
-                <ReportRow key={index} report={person} />
-              ))}
-            </tbody>
-          </table>
+          <TableReports reportFiltered={reportFiltered} />
         </div>
       </div>
     </div>

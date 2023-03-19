@@ -47,7 +47,7 @@ export default function DashboardRow({ user }) {
           className="btn btn-light border m-1"
           title={`Change password for user ${user.email}`}
         >
-          <BiKey className="mb-1" />
+          <BiKey />
         </Link>
         <button
           onClick={() => hdClkDelete(user)}
@@ -58,7 +58,7 @@ export default function DashboardRow({ user }) {
           }
           title={`Delete user ${user.email} (Requires confirmation)`}
         >
-          <BiTrash className="mb-1" />
+          <BiTrash />
         </button>
       </td>
     </tr>

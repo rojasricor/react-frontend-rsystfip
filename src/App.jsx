@@ -31,10 +31,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ProtectedElement isAllowed={!!user}>
-        <Nav avatar={avatar} permissions={permissions} />
-      </ProtectedElement>
       <main className="container-fluid">
+        <ProtectedElement isAllowed={!!user}>
+          <Nav avatar={avatar} permissions={permissions} />
+        </ProtectedElement>
         <Suspense fallback={<LoaderSuspense />}>
           <Routes>
             <Route index element={<LoginForm />} />

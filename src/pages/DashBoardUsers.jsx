@@ -1,20 +1,9 @@
-import { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
 import { ImUserPlus } from "react-icons/im";
-import { API_ROUTE } from "../utils/constants";
-import DashboardRow from "../components/DashboardRow";
+import TableUsers from "../components/TableUsers";
 
 export default function DashBoardUsers() {
-  const [usersDashboard, setUsersDashboard] = useState([]);
-
-  useEffect(() => {
-    document.title = "RSystfip | Administrate users";
-    fetch(`${API_ROUTE}/get/users/manage`)
-      .then((request) => request.json())
-      .then((data) => setUsersDashboard(data));
-  }, []);
-
   return (
     <div className="row">
       <div className="col-md-6 mx-auto">
@@ -25,20 +14,7 @@ export default function DashBoardUsers() {
               <ImUserPlus />
             </Link>
           </div>
-          <table className="table table-hover table-striped text-center">
-            <caption>Usuarios con acceso.</caption>
-            <thead>
-              <tr>
-                <th>Correo institucional</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {usersDashboard.map((user, index) => (
-                <DashboardRow key={index} user={user} />
-              ))}
-            </tbody>
-          </table>
+          <TableUsers />
           <ToastContainer />
         </div>
       </div>

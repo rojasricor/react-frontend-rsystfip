@@ -36,23 +36,27 @@ export default function NavMenu({ permissions }) {
           h6="Sección de agendamientos"
         >
           <ProtectedElement isAllowed={permissions.includes("add")}>
-            <NavLink
-              to="/people/add"
-              className="nav-item nav-link"
-              title="Agendar una persona inmediatamente"
-            >
-              <ImUserPlus /> Diario
-            </NavLink>
+            <li>
+              <NavLink
+                to="/people/add"
+                className="nav-item nav-link"
+                title="Agendar una persona inmediatamente"
+              >
+                <ImUserPlus /> Diario
+              </NavLink>
+            </li>
           </ProtectedElement>
 
           <ProtectedElement isAllowed={permissions.includes("schedule")}>
-            <NavLink
-              to="/people/schedule"
-              className="nav-item nav-link"
-              title="Agendar una persona en el calendario"
-            >
-              <IoCalendarNumber className="mb-1" /> Programado
-            </NavLink>
+            <li>
+              <NavLink
+                to="/people/schedule"
+                className="nav-item nav-link"
+                title="Agendar una persona en el calendario"
+              >
+                <IoCalendarNumber className="mb-1" /> Programado
+              </NavLink>
+            </li>
           </ProtectedElement>
         </NavDropdown>
 
@@ -81,22 +85,26 @@ export default function NavMenu({ permissions }) {
           description="Reportes e Historial"
           h6="Sección de reportes"
         >
-          <NavLink
-            to="/people/view"
-            className="nav-item nav-link"
-            title="Listado de todas las personas agendadas"
-          >
-            <ImUsers /> Historial
-          </NavLink>
-          
-          <ProtectedElement isAllowed={permissions.includes("reports")}>
+          <li>
             <NavLink
-              to="/people/reports"
+              to="/people/view"
               className="nav-item nav-link"
-              title="Generar reportes"
+              title="Listado de todas las personas agendadas"
             >
-              <FaChartArea /> Reportes
+              <ImUsers /> Historial
             </NavLink>
+          </li>
+
+          <ProtectedElement isAllowed={permissions.includes("reports")}>
+            <li>
+              <NavLink
+                to="/people/reports"
+                className="nav-item nav-link"
+                title="Generar reportes"
+              >
+                <FaChartArea /> Reportes
+              </NavLink>
+            </li>
           </ProtectedElement>
         </NavDropdown>
 

@@ -68,45 +68,48 @@ export default function UserChangePasswordForm() {
   return (
     <div className="row">
       <div className="col-md-4 mx-auto">
-        <form onSubmit={changePassword} className="card card-body">
+        <div className="card card-body">
           <h1 className="h3 text-center">
             Cambiar contraseña para {user.email}
           </h1>
+          <form onSubmit={changePassword} className="row g-3 mt-2">
+            <InputPassword
+              setPassword={setCurrent_password}
+              inputValue={current_password}
+              placeholder="Current password"
+              labelInfo="Contraseña anterior:"
+            />
 
-          <InputPassword
-            setPassword={setCurrent_password}
-            inputValue={current_password}
-            placeholder="Current password"
-            labelInfo="Contraseña anterior:"
-          />
+            <InputPassword
+              setPassword={setNew_password}
+              inputValue={new_password}
+              placeholder="New password"
+              labelInfo="Contraseña nueva:"
+            />
 
-          <InputPassword
-            setPassword={setNew_password}
-            inputValue={new_password}
-            placeholder="New password"
-            labelInfo="Contraseña nueva:"
-          />
+            <InputPassword
+              setPassword={setNew_password_confirm}
+              inputValue={new_password_confirm}
+              placeholder="Confirm new password"
+              labelInfo="Confirmar contraseña nueva:"
+            />
 
-          <InputPassword
-            setPassword={setNew_password_confirm}
-            inputValue={new_password_confirm}
-            placeholder="Confirm new password"
-            labelInfo="Confirmar contraseña nueva:"
-          />
-
-          <button
-            className="w-100 btn btn-primary btn-lg mb-3"
-            disabled={loading}
-          >
-            {!loading ? (
-              <>
-                Cambiar contraseña <BiKey className="mb-1" />
-              </>
-            ) : (
-              <Spinner tam="lg" />
-            )}
-          </button>
-        </form>
+            <div className="col-12">
+              <button
+                className="w-100 btn btn-primary btn-lg mb-3"
+                disabled={loading}
+              >
+                {!loading ? (
+                  <>
+                    Cambiar contraseña <BiKey className="mb-1" />
+                  </>
+                ) : (
+                  <Spinner tam="lg" />
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
       <ToastContainer />
     </div>

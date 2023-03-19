@@ -8,7 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const DashBoardUsers = lazy(() => import("./pages/DashBoardUsers"));
-const UserAddForm = lazy(() => import("./pages/UserAddForm"));
+const UserAddPage = lazy(() => import("./pages/UserAddPage"));
 const UserChangePasswordForm = lazy(() =>
   import("./pages/UserChangePasswordForm")
 );
@@ -22,7 +22,7 @@ const PeopleViews = lazy(() => import("./pages/PeopleViews"));
 const PeopleReports = lazy(() => import("./pages/PeopleReports"));
 const PeopleStatistics = lazy(() => import("./pages/PeopleStatistics"));
 const FaqsPage = lazy(() => import("./pages/FaqsPage"));
-const Error404 = lazy(() => import("./pages/Error404"));
+const Error404Page = lazy(() => import("./pages/Error404Page"));
 
 function App() {
   const { user } = useContext(AppContext);
@@ -62,7 +62,7 @@ function App() {
               }
             >
               <Route path="/users/manage" element={<DashBoardUsers />} />
-              <Route path="/users/manage/add" element={<UserAddForm />} />
+              <Route path="/users/manage/add" element={<UserAddPage />} />
               <Route
                 path="/users/manage/:role/delete"
                 element={<DashBoardUsers />}
@@ -126,7 +126,7 @@ function App() {
               }
             />
 
-            <Route path="*" element={<Error404 />} />
+            <Route path="*" element={<Error404Page />} />
           </Routes>
         </Suspense>
       </main>

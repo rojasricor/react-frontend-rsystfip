@@ -1,17 +1,13 @@
-export default function InputPassword({
-  setPassword,
-  inputValue,
-  placeholder,
-  labelInfo,
-}) {
+export default function InputEmail({ setEmail, inputValue, labelInfo }) {
   return (
     <div className="form-floating">
       <input
-        onChange={(evt) => setPassword(evt.target.value)}
+        onChange={(evt) => setEmail(evt.target.value)}
         value={inputValue}
         className="form-control"
-        type="password"
-        placeholder={placeholder}
+        type="email"
+        placeholder="Email"
+        spellCheck="false"
         autoComplete="off"
         required
       />

@@ -1,5 +1,5 @@
-export default function InputPassword({
-  setPassword,
+export default function InputNumber({
+  setNumber,
   inputValue,
   placeholder,
   labelInfo,
@@ -7,12 +7,11 @@ export default function InputPassword({
   return (
     <div className="form-floating">
       <input
-        onChange={(evt) => setPassword(evt.target.value)}
+        onChange={(evt) => setNumber(evt.target.value)}
         value={inputValue}
         className="form-control"
-        type="password"
+        type="number"
         placeholder={placeholder}
-        autoComplete="off"
         required
       />
       <label className="form-label">{labelInfo}</label>

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { PeopleContextProvider } from "../context/PeopleContext";
 import FormPeople from "../components/FormPeople";
 
-export default function PeopleAddForm() {
+export default function AddPeoplePage() {
   useEffect(() => {
     document.title = "RSystfip | Fast scheduling";
   }, []);

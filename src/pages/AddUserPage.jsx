@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import FormUserAdd from "../components/FormUserAdd";
 
-export default function UserAddPage() {
+export default function AddUserPage() {
   useEffect(() => {
     document.title = "RSystfip | Register new user";
   }, []);

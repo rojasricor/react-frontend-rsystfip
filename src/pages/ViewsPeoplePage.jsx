@@ -3,7 +3,7 @@ import Searcher from "../components/Searcher";
 import TablePeople from "../components/TablePeople";
 import { API_ROUTE } from "../utils/constants";
 
-export default function PeopleViews() {
+export default function ViewsPeoplePage() {
   const iptFilterRef = useRef(null);
 
   const [loading, setLoading] = useState(0);

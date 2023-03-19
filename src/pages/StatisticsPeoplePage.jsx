@@ -3,7 +3,7 @@ import { API_ROUTE } from "../utils/constants";
 import { getStartMonthDate, getEndMonthDate } from "../utils/resources";
 import "chart.js/dist/Chart.bundle";
 
-export default function PeopleStatistics() {
+export default function StatisticsPeoplePage() {
   useEffect(() => {
     document.title = "RSystfip | Statistics agendated people";
   }, []);

@@ -6,7 +6,7 @@ import { API_ROUTE, RESOURCES_ROUTE, UNSET_STATUS } from "../utils/constants";
 import { getStartMonthDate, getEndMonthDate } from "../utils/resources";
 import InputDate from "../components/InputDate";
 
-export default function PeopleReports() {
+export default function ReportsPeoplePage() {
   const [categories, setCategories] = useState([]);
   const [report, setReport] = useState([]);
   const [reportFiltered, setReportFiltered] = useState([]);

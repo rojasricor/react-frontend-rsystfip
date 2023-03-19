@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { PeopleContextProvider } from "../context/PeopleContext";
 import FormPeople from "../components/FormPeople";
 
-export default function PeopleEditForm() {
+export default function EditPeoplePage() {
   useEffect(() => {
     document.title = "RSystfip | Data Person";
   }, []);

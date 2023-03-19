@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ImUserPlus } from "react-icons/im";
 import TableUsers from "../components/TableUsers";
 
-export default function DashBoardUsers() {
+export default function DashboardPage() {
   useEffect(() => {
     document.title = "RSystfip | Administrate users";
   }, []);

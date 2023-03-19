@@ -7,18 +7,16 @@ import Nav from "./components/Nav";
 import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
 const HomePage = lazy(() => import("./pages/HomePage"));
-const DashBoardUsers = lazy(() => import("./pages/DashBoardUsers"));
-const UserAddPage = lazy(() => import("./pages/UserAddPage"));
-const UserChangePasswordForm = lazy(() =>
-  import("./pages/UserChangePasswordForm")
-);
+const DashboardPage = lazy(() => import("./pages/DashboardPage"));
+const AddUserPage = lazy(() => import("./pages/AddUserPage"));
+const PasswordChangerPage = lazy(() => import("./pages/PasswordChangerPage"));
 const SchedulePage = lazy(() => import("./pages/SchedulePage"));
 const ScheduleViewPage = lazy(() => import("./pages/ScheduleViewPage"));
-const PeopleAddForm = lazy(() => import("./pages/PeopleAddForm"));
-const PeopleEditForm = lazy(() => import("./pages/PeopleEditForm"));
-const PeopleViews = lazy(() => import("./pages/PeopleViews"));
-const PeopleReports = lazy(() => import("./pages/PeopleReports"));
-const PeopleStatistics = lazy(() => import("./pages/PeopleStatistics"));
+const AddPeoplePage = lazy(() => import("./pages/AddPeoplePage"));
+const EditPeoplePage = lazy(() => import("./pages/EditPeoplePage"));
+const ViewsPeoplePage = lazy(() => import("./pages/ViewsPeoplePage"));
+const ReportsPeoplePage = lazy(() => import("./pages/ReportsPeoplePage"));
+const StatisticsPeoplePage = lazy(() => import("./pages/StatisticsPeoplePage"));
 const FaqsPage = lazy(() => import("./pages/FaqsPage"));
 const Error404Page = lazy(() => import("./pages/Error404Page"));
 
@@ -42,13 +40,13 @@ function App() {
               <Route path="/home/welcome" element={<HomePage />} />
               <Route
                 path="/users/manage/password/:role/change"
-                element={<UserChangePasswordForm />}
+                element={<PasswordChangerPage />}
               />
               <Route
                 path="/people/view/:id/edit"
-                element={<PeopleEditForm />}
+                element={<EditPeoplePage />}
               />
-              <Route path="/people/view" element={<PeopleViews />} />
+              <Route path="/people/view" element={<ViewsPeoplePage />} />
               <Route path="/help/asks/frecuently" element={<FaqsPage />} />
             </Route>
 
@@ -59,11 +57,11 @@ function App() {
                 />
               }
             >
-              <Route path="/users/manage" element={<DashBoardUsers />} />
-              <Route path="/users/manage/add" element={<UserAddPage />} />
+              <Route path="/users/manage" element={<DashboardPage />} />
+              <Route path="/users/manage/add" element={<AddUserPage />} />
               <Route
                 path="/users/manage/:role/delete"
-                element={<DashBoardUsers />}
+                element={<DashboardPage />}
               />
             </Route>
 
@@ -74,7 +72,7 @@ function App() {
                   isAllowed={!!user && user.permissions.includes("add")}
                   navigateTo="/home/welcome"
                 >
-                  <PeopleAddForm />
+                  <AddPeoplePage />
                 </ProtectedRoute>
               }
             />
@@ -107,7 +105,7 @@ function App() {
                   isAllowed={!!user && user.permissions.includes("reports")}
                   navigateTo="/home/welcome"
                 >
-                  <PeopleReports />
+                  <ReportsPeoplePage />
                 </ProtectedRoute>
               }
             />
@@ -119,7 +117,7 @@ function App() {
                   isAllowed={!!user && user.permissions.includes("statistics")}
                   navigateTo="/home/welcome"
                 >
-                  <PeopleStatistics />
+                  <StatisticsPeoplePage />
                 </ProtectedRoute>
               }
             />

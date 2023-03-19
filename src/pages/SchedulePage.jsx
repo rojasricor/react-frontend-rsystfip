@@ -1,15 +1,10 @@
-import { useEffect, lazy, Suspense } from "react";
-import { PeopleContextProvider } from "../context/PeopleContext";
-import LoaderSuspense from "../components/LoaderSuspense";
-const LoadCalendar = lazy(() => import("../components/LoadCalendar"));
-import CalendarRSystfipEvents from "../components/CalendarRSystfipEvents";
-const ModalCancellScheduleConfirmation = lazy(() =>
-  import("../components/ModalCancellScheduleConfirmation")
-);
-const ModalSchedulePeopleForm = lazy(() =>
-  import("../components/ModalSchedulePeopleForm")
-);
+import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import { PeopleContextProvider } from "../context/PeopleContext";
+import LoadCalendar from "../components/LoadCalendar";
+import CalendarRSystfipEvents from "../components/CalendarRSystfipEvents";
+import ModalCancellScheduleConfirmation from "../components/ModalCancellScheduleConfirmation";
+import ModalSchedulePeopleForm from "../components/ModalSchedulePeopleForm";
 
 export default function SchedulePage() {
   useEffect(() => {
@@ -23,10 +18,8 @@ export default function SchedulePage() {
         right="timeGridDay,timeGridWeek"
         initialView="timeGridDay"
       />
-      <Suspense fallback={<LoaderSuspense />}>
-        <ModalCancellScheduleConfirmation />
-        <ModalSchedulePeopleForm />
-      </Suspense>
+      <ModalCancellScheduleConfirmation />
+      <ModalSchedulePeopleForm />
       <ToastContainer />
     </PeopleContextProvider>
   );

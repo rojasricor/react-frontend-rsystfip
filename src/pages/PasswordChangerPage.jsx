@@ -6,7 +6,7 @@ import Spinner from "../components/Spinner";
 import { BiKey } from "react-icons/bi";
 import { API_ROUTE } from "../utils/constants";
 
-export default function UserChangePasswordForm() {
+export default function PasswordChangerPage() {
   const { role } = useParams();
   const [user, setUser] = useState([]);
   const [current_password, setCurrent_password] = useState("");

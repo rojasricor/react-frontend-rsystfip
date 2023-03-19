@@ -1,12 +1,10 @@
-import { useContext, useEffect } from "react";
-import { AppContext } from "../context/AppContext";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import UserLoggedInfo from "../components/UserLoggedInfo";
 import { IoCalendarNumber } from "react-icons/io5";
 import { ImUserPlus } from "react-icons/im";
 
 export default function Home() {
-  const { user } = useContext(AppContext);
-
   useEffect(() => {
     document.title = "RSystfip | Home welcome";
   }, []);
@@ -14,11 +12,7 @@ export default function Home() {
   return (
     <div className="row">
       <div className="col-12">
-        <h1 className="h3">
-          {(user.role === "secretaria" ? "Bienvenida" : "Bienvenido").concat(
-            ` ${user.role}: ${user.name}`
-          )}
-        </h1>
+        <UserLoggedInfo />
         <div className="form-inline">
           <div className="btn-group btn-group-sm">
             <Link

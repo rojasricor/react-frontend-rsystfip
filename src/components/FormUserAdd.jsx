@@ -73,7 +73,6 @@ export default function FormUserAdd() {
   }
 
   useEffect(() => {
-    document.title = "RSystfip | Register new user";
     fetch(`${RESOURCES_ROUTE}?resource=documents`)
       .then((request) => request.json())
       .then((data) => setDocuments(data));

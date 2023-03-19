@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { PeopleContextProvider } from "../context/PeopleContext";
 import FormPeople from "../components/FormPeople";
 
 export default function PeopleEditForm() {
+  useEffect(() => {
+    document.title = "RSystfip | Data Person";
+  }, []);
+
   return (
     <div className="row">
       <div className="col-md-6 mx-auto">

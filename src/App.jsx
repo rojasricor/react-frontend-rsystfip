@@ -12,10 +12,8 @@ const UserAddPage = lazy(() => import("./pages/UserAddPage"));
 const UserChangePasswordForm = lazy(() =>
   import("./pages/UserChangePasswordForm")
 );
-const PeopleScheduleForm = lazy(() => import("./pages/PeopleScheduleForm"));
-const PeoplePreviewSchedule = lazy(() =>
-  import("./pages/PeoplePreviewSchedule")
-);
+const SchedulePage = lazy(() => import("./pages/SchedulePage"));
+const ScheduleViewPage = lazy(() => import("./pages/ScheduleViewPage"));
 const PeopleAddForm = lazy(() => import("./pages/PeopleAddForm"));
 const PeopleEditForm = lazy(() => import("./pages/PeopleEditForm"));
 const PeopleViews = lazy(() => import("./pages/PeopleViews"));
@@ -88,7 +86,7 @@ function App() {
                   isAllowed={!!user && user.permissions.includes("schedule")}
                   navigateTo="/home/welcome"
                 >
-                  <PeopleScheduleForm />
+                  <SchedulePage />
                 </ProtectedRoute>
               }
             />
@@ -97,7 +95,7 @@ function App() {
               path="/people/preview"
               element={
                 <ProtectedRoute isAllowed={!!user} navigateTo="/home/welcome">
-                  <PeoplePreviewSchedule />
+                  <ScheduleViewPage />
                 </ProtectedRoute>
               }
             />

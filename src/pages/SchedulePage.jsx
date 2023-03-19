@@ -11,7 +11,7 @@ const ModalSchedulePeopleForm = lazy(() =>
 );
 import { ToastContainer } from "react-toastify";
 
-export default function PeopleScheduleForm() {
+export default function SchedulePage() {
   useEffect(() => {
     document.title = "RSystfip | Programming scheduling";
   }, []);

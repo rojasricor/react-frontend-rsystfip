@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import FormUserAdd from "../components/FormUserAdd";
 
 export default function UserAddPage() {
+  useEffect(() => {
+    document.title = "RSystfip | Register new user";
+  }, []);
+
   return (
     <div className="row">
       <div className="col-md-6 mx-auto">

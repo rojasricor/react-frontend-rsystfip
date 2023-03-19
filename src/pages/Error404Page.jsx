@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import Error404Actioner from "../components/Error404Actioner";
 
 export default function Error404Page() {
+  useEffect(() => {
+    document.title = "RSystfip | 404 Not Found";
+  }, []);
+
   return (
     <div className="px-4 py-5 my-5 text-center">
       <img

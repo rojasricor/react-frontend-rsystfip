@@ -6,7 +6,6 @@ export default function TableUsers() {
   const [usersDashboard, setUsersDashboard] = useState([]);
 
   useEffect(() => {
-    document.title = "RSystfip | Administrate users";
     fetch(`${API_ROUTE}/get/users/manage`)
       .then((request) => request.json())
       .then((data) => setUsersDashboard(data));

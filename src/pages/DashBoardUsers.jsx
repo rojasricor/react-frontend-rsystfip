@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
 import { ImUserPlus } from "react-icons/im";
 import TableUsers from "../components/TableUsers";
 
 export default function DashBoardUsers() {
+  useEffect(() => {
+    document.title = "RSystfip | Administrate users";
+  }, []);
+
   return (
     <div className="row">
       <div className="col-md-6 mx-auto">

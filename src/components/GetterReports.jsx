@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { API_DOMAIN } from "../utils/constants";
 import { FaChartArea, FaDownload } from "react-icons/fa";
 
-export default function ActionReports({
+export default function GetterReports({
   linkReport,
   startDate,
   endDate,

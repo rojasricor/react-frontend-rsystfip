@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useParams } from "react-router-dom";
+import InputPassword from "../components/InputPassword";
 import Spinner from "../components/Spinner";
 import { BiKey } from "react-icons/bi";
 import { API_ROUTE } from "../utils/constants";
@@ -71,42 +72,28 @@ export default function UserChangePasswordForm() {
           <h1 className="h3 text-center">
             Cambiar contraseña para {user.email}
           </h1>
-          <div className="form-floating mb-3 mt-3">
-            <input
-              onChange={(evt) => setCurrent_password(evt.target.value)}
-              value={current_password}
-              className="form-control"
-              type="password"
-              placeholder="Current password"
-              autoComplete="off"
-              required
-            />
-            <label className="form-label">Contraseña anterior:</label>
-          </div>
-          <div className="form-floating mb-3">
-            <input
-              onChange={(evt) => setNew_password(evt.target.value)}
-              value={new_password}
-              className="form-control"
-              type="password"
-              placeholder="New password"
-              autoComplete="off"
-              required
-            />
-            <label className="form-label">Contraseña nueva:</label>
-          </div>
-          <div className="form-floating mb-3">
-            <input
-              onChange={(evt) => setNew_password_confirm(evt.target.value)}
-              value={new_password_confirm}
-              className="form-control"
-              type="password"
-              placeholder="Confirm new password"
-              autoComplete="off"
-              required
-            />
-            <label className="form-label">Confirmar contraseña nueva:</label>
-          </div>
+
+          <InputPassword
+            setPassword={setCurrent_password}
+            inputValue={current_password}
+            placeholder="Current password"
+            labelInfo="Contraseña anterior:"
+          />
+
+          <InputPassword
+            setPassword={setNew_password}
+            inputValue={new_password}
+            placeholder="New password"
+            labelInfo="Contraseña nueva:"
+          />
+
+          <InputPassword
+            setPassword={setNew_password_confirm}
+            inputValue={new_password_confirm}
+            placeholder="Confirm new password"
+            labelInfo="Confirmar contraseña nueva:"
+          />
+
           <ToastContainer />
           <button
             className="w-100 btn btn-primary btn-lg mb-3"

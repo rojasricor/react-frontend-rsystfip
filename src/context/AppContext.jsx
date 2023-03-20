@@ -10,7 +10,11 @@ export function AppContextProvider({ children }) {
   const [loading, setLoading] = useState(false);
 
   const doLogin = (userAuthenticated) => setUser(userAuthenticated);
-  const doLogout = () => setUser(null);
+  const doLogout = () => {
+    setUser(null);
+    setUsername("");
+    setPassword("");
+  };
 
   return (
     <AppContext.Provider

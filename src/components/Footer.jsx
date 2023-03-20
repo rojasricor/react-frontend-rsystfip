@@ -1,4 +1,4 @@
-import { BiCodeAlt } from "react-icons/bi";
+import { SiInformatica } from "react-icons/si";
 
 export default function Footer() {
   return (
@@ -8,7 +8,7 @@ export default function Footer() {
         <span className="text-white">&nbsp;RSystfip</span>
         &nbsp;|&nbsp;
         <span className="text-white">
-          Técnica Profesional en Programación Web <BiCodeAlt />
+          Tecnología en Gestión Informatica <SiInformatica className="mb-1" />
         </span>
       </span>
     </footer>

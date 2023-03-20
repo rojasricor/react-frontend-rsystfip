@@ -24,7 +24,7 @@ export default function NavDropdown({ avatar }) {
       >
         <img src={avatar} className="rounded-circle" width="40" alt="Account" />
       </a>
-      <ul className="dropdown-menu dropdown-menu-lg-end text-small">
+      <ul className="dropdown-menu dropdown-menu-lg-end text-small rounded-3 border shadow">
         <li>
           <NavLink to="/help/asks/frecuently" className="dropdown-item">
             Ayuda... <FaInfoCircle className="mb-1" />

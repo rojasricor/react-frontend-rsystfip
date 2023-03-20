@@ -2,7 +2,7 @@ import PersonRow from "./PersonRow";
 
 export default function TablePeople({ peopleFiltered }) {
   return (
-    <table className="table table-hover table-sm text-center">
+    <table className="table table-hover table-striped table-sm text-center">
       <caption>Lista de personas agendadas</caption>
       <thead>
         <tr>

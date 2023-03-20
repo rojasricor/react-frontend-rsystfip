@@ -1,4 +1,4 @@
-import DropItem from "./DropItem";
+import Dropdown from "./Dropdown";
 
 export default function NavDropdown({ children, title, description, h6 }) {
   return (
@@ -10,7 +10,7 @@ export default function NavDropdown({ children, title, description, h6 }) {
       >
         {description}
       </a>
-      <DropItem h6={h6}>{children}</DropItem>
+      <Dropdown h6={h6}>{children}</Dropdown>
     </div>
   );
 }

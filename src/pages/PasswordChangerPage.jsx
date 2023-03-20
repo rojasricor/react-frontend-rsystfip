@@ -10,7 +10,7 @@ export default function PasswordChangerPage() {
   return (
     <div className="row">
       <div className="col-md-4 mx-auto">
-        <div className="card card-body">
+        <div className="card card-body border-0 rounded-4 shadow">
           <GetterPasswordChanger />
         </div>
       </div>

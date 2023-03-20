@@ -11,7 +11,7 @@ export default function LoginPage() {
   return (
     <div className="row">
       <div className="col-md-4 mx-auto">
-        <div className="card card-body border border rounded-5">
+        <div className="card card-body border-0 rounded-4 shadow">
           <LoginHeader />
           <LoginForm />
         </div>

@@ -10,7 +10,7 @@ export default function AddPeoplePage() {
   return (
     <div className="row">
       <div className="col-md-6 mx-auto">
-        <div className="card card-body">
+        <div className="card card-body border-0 rounded-4 shadow">
           <h1 className="h3 text-center">Agendamiento rápido</h1>
           <PeopleContextProvider>
             <FormPeople action="add" />

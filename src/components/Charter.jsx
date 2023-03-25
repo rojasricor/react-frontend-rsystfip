@@ -6,7 +6,7 @@ import Xit from "./Xit";
 import ListerStatistics from "./ListerStatistics";
 import "chart.js/dist/Chart.bundle.min";
 
-export default function Charter() {
+export default function Charter({ scheduling_type }) {
   const [chart, setChart] = useState(null);
   const [init, setInit] = useState("");
   const [start, setStart] = useState(getStartMonthDate());
@@ -28,7 +28,9 @@ export default function Charter() {
           labels: labels,
           datasets: [
             {
-              label: "Agendamiento programado - Cantidad persona(s)",
+              label: "Agendamiento "
+                .concat(scheduling_type === "daily" ? "diario" : "programado")
+                .concat(" - Cantidad persona(s)"),
               data,
               backgroundColor: [
                 "rgba(255, 165, 0, 0.8)",
@@ -72,7 +74,7 @@ export default function Charter() {
 
   async function getStatisticsByStartAndEndDate() {
     const request = await fetch(
-      `${API_ROUTE}/get/statistics?start=${start}&end=${end}`
+      `${API_ROUTE}/get/statistics/${scheduling_type}?start=${start}&end=${end}`
     );
     const statisticsData = await request.json();
     const labels = statisticsData.map(({ person }) => person);
@@ -82,14 +84,16 @@ export default function Charter() {
 
   async function getMostAgendatedInRange() {
     const request = await fetch(
-      `${API_ROUTE}/get/statistics/inrange?start=${start}&end=${end}`
+      `${API_ROUTE}/get/statistics/${scheduling_type}/inrange?start=${start}&end=${end}`
     );
     const data = await request.json();
     setMostAgendatedByDate(data);
   }
 
   async function getMostAgendatedOfAllTime() {
-    const request = await fetch(`${API_ROUTE}/get/statistics/alltime`);
+    const request = await fetch(
+      `${API_ROUTE}/get/statistics/${scheduling_type}/alltime`
+    );
     const data = await request.json();
     const init = data[0].init;
     setMostAgendatedOfAllTime(data);
@@ -123,6 +127,7 @@ export default function Charter() {
         init={init}
         start={start}
         end={end}
+        scheduling_type={scheduling_type === "daily" ? "diario" : "programado"}
       />
     </>
   );

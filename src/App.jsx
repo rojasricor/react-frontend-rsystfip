@@ -16,7 +16,10 @@ const AddPeoplePage = lazy(() => import("./pages/AddPeoplePage"));
 const EditPeoplePage = lazy(() => import("./pages/EditPeoplePage"));
 const ViewsPeoplePage = lazy(() => import("./pages/ViewsPeoplePage"));
 const ReportsPeoplePage = lazy(() => import("./pages/ReportsPeoplePage"));
-const StatisticsPeoplePage = lazy(() => import("./pages/StatisticsPeoplePage"));
+const StatisticsDailyPage = lazy(() => import("./pages/StatisticsDailyPage"));
+const StatisticsScheduledPage = lazy(() =>
+  import("./pages/StatisticsScheduledPage")
+);
 const FaqsPage = lazy(() => import("./pages/FaqsPage"));
 const Error404Page = lazy(() => import("./pages/Error404Page"));
 
@@ -111,13 +114,25 @@ function App() {
             />
 
             <Route
-              path="/people/statistics"
+              path="/people/statistics/daily"
               element={
                 <ProtectedRoute
                   isAllowed={!!user && user.permissions.includes("statistics")}
                   navigateTo="/home/welcome"
                 >
-                  <StatisticsPeoplePage />
+                  <StatisticsDailyPage />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/people/statistics/scheduled"
+              element={
+                <ProtectedRoute
+                  isAllowed={!!user && user.permissions.includes("statistics")}
+                  navigateTo="/home/welcome"
+                >
+                  <StatisticsScheduledPage />
                 </ProtectedRoute>
               }
             />

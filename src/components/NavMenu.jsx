@@ -5,6 +5,7 @@ import {
   FaChartLine,
   FaInfoCircle,
 } from "react-icons/fa";
+import { BsCalendarDay } from "react-icons/bs";
 import { TiHome } from "react-icons/ti";
 import { ImUsers, ImUserPlus } from "react-icons/im";
 import { IoCalendarNumber } from "react-icons/io5";
@@ -70,15 +71,35 @@ export default function NavMenu({ permissions }) {
           </NavLink>
         </ProtectedElement>
 
-        <ProtectedElement isAllowed={permissions.includes("statistics")}>
-          <NavLink
-            to="/people/statistics"
-            className="nav-item nav-link"
-            title="Generar estadísticas"
-          >
-            Estadísticas <FaChartLine className="mb-1" />
-          </NavLink>
-        </ProtectedElement>
+        <NavDropdown
+          title="Sección de estadísticas"
+          description="Estadísticas"
+          h6="Sección de estadísticas"
+        >
+          <ProtectedElement isAllowed={permissions.includes("statistics")}>
+            <li>
+              <NavLink
+                to="/people/statistics/daily"
+                className="nav-item nav-link"
+                title="Generar estadísticas de agendamiento diario"
+              >
+                Agendamiento diario <BsCalendarDay className="mb-1" />
+              </NavLink>
+            </li>
+          </ProtectedElement>
+
+          <ProtectedElement isAllowed={permissions.includes("statistics")}>
+            <li>
+              <NavLink
+                to="/people/statistics/scheduled"
+                className="nav-item nav-link"
+                title="Generar estadísticas de agendamiento diario"
+              >
+                Agendamiento programado <FaChartLine className="mb-1" />
+              </NavLink>
+            </li>
+          </ProtectedElement>
+        </NavDropdown>
 
         <NavDropdown
           title="Sección de reportes"

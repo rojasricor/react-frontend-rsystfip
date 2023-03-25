@@ -6,18 +6,19 @@ export default function ListerStatistics({
   init,
   start,
   end,
+  scheduling_type,
 }) {
   return (
     <div className="col-12 mb-5 mt-5">
       <ListGroup
-        title="Personas agendadas en el rango de fecha"
+        title={`Agendamiento ${scheduling_type} en el rango de fecha`}
         data={mostAgendatedByDate}
         start={start}
         end={end}
       />
 
       <ListGroup
-        title="Personas agendadas en todas las fechas"
+        title={`Agendamiento ${scheduling_type} en todas las fechas`}
         data={mostAgendatedOfAllTime}
         start={init}
         end={end}

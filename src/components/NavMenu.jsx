@@ -8,7 +8,7 @@ import {
 import { TiHome } from "react-icons/ti";
 import { ImUsers, ImUserPlus } from "react-icons/im";
 import { IoCalendarNumber } from "react-icons/io5";
-import { HiCalendarDays as Events } from "react-icons/all";
+import { HiListBullet } from "react-icons/all";
 import { ProtectedElement } from "./Protected";
 import NavDropdown from "./NavDropdown";
 
@@ -66,7 +66,7 @@ export default function NavMenu({ permissions }) {
             className="nav-item nav-link"
             title="Ver agendamientos en el calendario"
           >
-            Visualizar Eventos <Events className="mb-1" />
+            Visualizar Eventos <HiListBullet className="mb-1" />
           </NavLink>
         </ProtectedElement>
 

@@ -109,7 +109,10 @@ export default function Charter({ scheduling_type }) {
   return (
     <>
       <div className="col-12">
-        <h1 className="h3">Estadísticas</h1>
+        <h1 className="h3">
+          Estadísticas de Agendamiento{" "}
+          {scheduling_type === "daily" ? "Diario" : "Programado"}
+        </h1>
         <DaterStatistics
           setStart={setStart}
           start={start}

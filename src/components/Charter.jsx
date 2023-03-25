@@ -4,7 +4,7 @@ import { getStartMonthDate, getEndMonthDate } from "../utils/resources";
 import DaterStatistics from "./DaterStatistics";
 import Xit from "./Xit";
 import ListerStatistics from "./ListerStatistics";
-import "chart.js/dist/Chart.bundle";
+import "chart.js/dist/Chart.bundle.min";
 
 export default function Charter() {
   const [chart, setChart] = useState(null);

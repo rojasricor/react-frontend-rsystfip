@@ -6,7 +6,7 @@ import esLocale from "@fullcalendar/core/locales/es";
 import { formatTodaysDate, formatTodaysDateTime } from "../utils/resources";
 import { globalLocales } from "fullcalendar";
 import { API_ROUTE } from "../utils/constants";
-import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
+import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min";
 import { toast } from "react-toastify";
 
 export default function CalendarRSystfipEvents({ right, initialView }) {

@@ -66,7 +66,7 @@ export default function NavMenu({ permissions }) {
             className="nav-item nav-link"
             title="Ver agendamientos en el calendario"
           >
-            Visualizar Eventos <HiListBullet className="mb-1" />
+            Visualizar Eventos <HiListBullet />
           </NavLink>
         </ProtectedElement>
 

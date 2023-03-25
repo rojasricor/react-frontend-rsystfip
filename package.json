@@ -2,7 +2,7 @@
   "name": "nodejs-rsystfip",
   "private": true,
   "homepage": "https://rojasricor.github.io/nodejs-rsystfip",
-  "version": "0.0.0",
+  "version": "3.4.7",
   "type": "module",
   "scripts": {
     "dev": "vite",

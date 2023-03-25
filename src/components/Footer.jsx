@@ -1,4 +1,4 @@
-import { SiInformatica } from "react-icons/si";
+import { HiCodeBracketSquare } from "react-icons/all";
 
 export default function Footer() {
   return (
@@ -8,7 +8,8 @@ export default function Footer() {
         <span className="text-white">&nbsp;RSystfip</span>
         &nbsp;|&nbsp;
         <span className="text-white">
-          Tecnología en Gestión Informatica <SiInformatica className="mb-1" />
+          Tecnología en Gestión Informatica{" "}
+          <HiCodeBracketSquare className="mb-1" />
         </span>
       </span>
     </footer>

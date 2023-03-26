@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { API_ROUTE } from "../utils/constants";
 import Spinner from "./Spinner";
@@ -8,8 +8,6 @@ import { IoCalendarNumber } from "react-icons/io5";
 import { ImUserPlus } from "react-icons/im";
 
 export default function Searcher() {
-  const iptFilterRef = useRef(null);
-
   const [loading, setLoading] = useState(0);
   const [peopleFiltered, setPeopleFiltered] = useState([]);
   const [people, setPeople] = useState([]);
@@ -20,7 +18,6 @@ export default function Searcher() {
       const data = await request.json();
       setPeople(data);
       setPeopleFiltered(data);
-      iptFilterRef.current.focus();
     } catch (err) {
       setLoading(2);
     } finally {
@@ -54,8 +51,8 @@ export default function Searcher() {
             onChange={handleFilterChange}
             type="search"
             placeholder="Buscar una persona..."
-            className="form-control form-control-sm"
-            ref={iptFilterRef}
+            className="form-control form-control-sm border"
+            autoFocus
           />
           <button
             onClick={() => {

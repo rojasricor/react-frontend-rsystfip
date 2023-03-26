@@ -15,7 +15,6 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
   const { setEventId, setDate, setStart, setEnd, setStatus } =
     useContext(PeopleContext);
 
-  const calendarRef = useRef(null);
   const loadEventsRef = useRef(null);
 
   return (
@@ -24,7 +23,6 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
       <div className="table-responsive">
         <BlockContainer clAdds=" schg-sm lh-1">
           <FullCalendar
-            ref={calendarRef}
             height="auto"
             headerToolbar={{
               left: "prevYear,prev,next,nextYear today",
@@ -57,7 +55,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
 
               const now = new Date();
               if (info.start < now) {
-                calendarRef.current.calendar.unselect();
+                info.view.calendar.unselect();
                 window.alert(
                   "No se puede agendar en una fecha que ya ha pasado."
                 );
@@ -70,7 +68,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
                 info.end.getHours() === 0
               ) {
                 // The selection is out of allow range, cancel
-                calendarRef.current.calendar.unselect();
+                info.view.calendar.unselect();
                 window.alert("Agendamientos no disponible en ese horario.");
                 return;
               }
@@ -103,8 +101,8 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
               hour: "numeric",
               minute: "2-digit",
             }}
-            loading={(bool) => {
-              loadEventsRef.current.style.display = bool ? "block" : "none";
+            loading={(state) => {
+              loadEventsRef.current.style.display = state ? "block" : "none";
             }}
             plugins={[daygrid]}
             initialView={initialView}

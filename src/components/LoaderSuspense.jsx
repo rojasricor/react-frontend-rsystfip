@@ -1,4 +1,4 @@
-import "../styles/loader.css";
+import "../assets/styles/loader.css";
 
 export default function App() {
   return (

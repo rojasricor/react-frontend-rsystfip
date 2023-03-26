@@ -49,7 +49,7 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={authenticate} className="container">
-      <div className="form-floating mb-2">
+      <div className="form-floating mb-3">
         <input
           onChange={(evt) => setUsername(evt.target.value)}
           value={username}
@@ -75,15 +75,20 @@ export default function LoginForm() {
         />
         <label className="form-label fw-bold">Contraseña</label>
       </div>
-      <button className="w-100 btn btn-primary btn-lg mb-3" disabled={loading}>
-        {!loading ? (
-          <>
-            Entrar <IoMdLogIn className="mb-1" />
-          </>
-        ) : (
-          <Spinner tam="lg" />
-        )}
-      </button>
+      <div className="col-12">
+        <button
+          className="w-100 btn btn-primary btn-lg mb-3"
+          disabled={loading}
+        >
+          {!loading ? (
+            <>
+              Entrar <IoMdLogIn className="mb-1" />
+            </>
+          ) : (
+            <Spinner tam="lg" />
+          )}
+        </button>
+      </div>
     </form>
   );
 }

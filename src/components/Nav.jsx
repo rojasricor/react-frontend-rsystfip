@@ -1,3 +1,4 @@
+import BlockContainer from "./BlockContainer";
 import NavBrand from "./NavBrand";
 import NavToggler from "./NavToggler";
 import NavMenu from "./NavMenu";
@@ -6,7 +7,7 @@ import NavDropdown from "./NavLogoutDropdown";
 export default function Nav({ avatar, permissions }) {
   return (
     <nav className="navbar navbar-expand-xl bg-light fixed-top">
-      <div className="container-fluid">
+      <BlockContainer>
         <NavBrand />
         <NavToggler />
         <div className="collapse navbar-collapse" id="rs-nav">
@@ -18,7 +19,7 @@ export default function Nav({ avatar, permissions }) {
         >
           <NavDropdown avatar={avatar} />
         </div>
-      </div>
+      </BlockContainer>
     </nav>
   );
 }

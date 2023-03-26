@@ -1,5 +1,6 @@
 import { useContext, useRef } from "react";
 import { PeopleContext } from "../context/PeopleContext";
+import BlockContainer from "./BlockContainer";
 import FullCalendar from "@fullcalendar/react";
 import daygrid from "@fullcalendar/daygrid";
 import esLocale from "@fullcalendar/core/locales/es";
@@ -17,7 +18,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
 
   return (
     <div className="table-responsive">
-      <div className="container-fluid schg-sm lh-1">
+      <BlockContainer clAdds=" schg-sm lh-1">
         <FullCalendar
           ref={calendarRef}
           height="auto"
@@ -104,7 +105,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
           plugins={[daygrid]}
           initialView={initialView}
         />
-      </div>
+      </BlockContainer>
       <p className="text-center mt-2">Agendamiento programado mes a mes.</p>
     </div>
   );

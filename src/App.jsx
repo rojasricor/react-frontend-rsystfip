@@ -3,6 +3,7 @@ import { AppContext } from "./context/AppContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ProtectedElement, ProtectedRoute } from "./components/Protected";
 import LoaderSuspense from "./components/LoaderSuspense";
+import BlockContainer from "./components/BlockContainer";
 import Nav from "./components/Nav";
 import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
@@ -25,12 +26,12 @@ const Error404Page = lazy(() => import("./pages/Error404Page"));
 
 function App() {
   const { user } = useContext(AppContext);
-  const avatar = user ? `/src/assets/${user.role}_avatar.png` : "";
+  const avatar = user ? `/src/assets/img/${user.role}/avatar.png` : "";
   const permissions = user ? user.permissions : [];
 
   return (
     <BrowserRouter>
-      <main className="container-fluid">
+      <BlockContainer>
         <ProtectedElement isAllowed={!!user}>
           <Nav avatar={avatar} permissions={permissions} />
         </ProtectedElement>
@@ -140,7 +141,7 @@ function App() {
             <Route path="*" element={<Error404Page />} />
           </Routes>
         </Suspense>
-      </main>
+      </BlockContainer>
 
       <Footer />
     </BrowserRouter>

@@ -101,7 +101,7 @@ export default function NavMenu({ permissions }) {
 
         <NavDropdown
           title="Sección de reportes"
-          description="Reportes e Historial"
+          description="Reportes & Historial"
           h6="Sección de reportes"
         >
           <li>

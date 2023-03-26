@@ -26,7 +26,7 @@ const Error404Page = lazy(() => import("./pages/Error404Page"));
 
 function App() {
   const { user } = useContext(AppContext);
-  const avatar = user ? `/src/assets/img/${user.role}/avatar.png` : "";
+  const avatar = user ? `/img/${user.role}/avatar.png` : "";
   const permissions = user ? user.permissions : [];
 
   return (

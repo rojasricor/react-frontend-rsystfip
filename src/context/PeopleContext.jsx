@@ -7,6 +7,7 @@ import { formatTodaysDate, formatTodaysDateTime } from "../utils/resources";
 export const PeopleContext = createContext();
 
 export function PeopleContextProvider({ children }) {
+  // Id person param url GET
   const { id } = useParams();
 
   const [disabledAll, setDisabledAll] = useState(true);
@@ -32,9 +33,8 @@ export function PeopleContextProvider({ children }) {
   const [status, setStatus] = useState(2);
   const [staffDeans, setStaffDeans] = useState(null);
 
-  // Refs to components
+  // Ref to component select of facultie
   const facultieSelectRef = useRef(null);
-  const loadEventsRef = useRef(null);
 
   async function cancellSchedule() {
     setLoading(true);
@@ -205,7 +205,6 @@ export function PeopleContextProvider({ children }) {
         setDisabledAll,
         disabledAfterAutocomplete,
         setDisabledAfterAutocomplete,
-        loadEventsRef,
         loading,
         person,
         setPerson,

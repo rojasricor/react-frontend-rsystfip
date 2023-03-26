@@ -4,7 +4,7 @@ import FormUserAdd from "../components/FormUserAdd";
 
 export default function AddUserPage() {
   useEffect(() => {
-    document.title = "RSystfip | Register new user";
+    document.title = "RSystfip | Register New User";
   }, []);
 
   return (

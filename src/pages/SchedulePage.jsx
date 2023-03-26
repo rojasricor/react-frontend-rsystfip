@@ -7,7 +7,7 @@ import ModalSchedulePeopleForm from "../components/ModalSchedulePeopleForm";
 
 export default function SchedulePage() {
   useEffect(() => {
-    document.title = "RSystfip | Programming scheduling";
+    document.title = "RSystfip | Programming Scheduling";
   }, []);
 
   return (

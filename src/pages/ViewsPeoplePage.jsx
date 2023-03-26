@@ -3,7 +3,7 @@ import Searcher from "../components/Searcher";
 
 export default function ViewsPeoplePage() {
   useEffect(() => {
-    document.title = "RSystfip | Agendated people";
+    document.title = "RSystfip | Agendated People";
   }, []);
 
   return (

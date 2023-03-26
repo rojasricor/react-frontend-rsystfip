@@ -3,7 +3,7 @@ import Charter from "../components/Charter";
 
 export default function StatisticsPeoplePage() {
   useEffect(() => {
-    document.title = "RSystfip | Statistics scheduled people";
+    document.title = "RSystfip | Statistics Scheduled People";
   }, []);
 
   return (

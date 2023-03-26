@@ -7,7 +7,7 @@ import ModalCancellScheduleConfirmation from "../components/ModalCancellSchedule
 
 export default function ScheduleViewPage() {
   useEffect(() => {
-    document.title = "RSystfip | View Programming scheduling";
+    document.title = "RSystfip | View Programming Scheduling";
   }, []);
 
   return (

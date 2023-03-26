@@ -6,7 +6,7 @@ import TableUsers from "../components/TableUsers";
 
 export default function DashboardPage() {
   useEffect(() => {
-    document.title = "RSystfip | Administrate users";
+    document.title = "RSystfip | Administrate Users";
   }, []);
 
   return (

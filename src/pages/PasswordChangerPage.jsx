@@ -4,7 +4,7 @@ import GetterPasswordChanger from "../components/GetterPasswordChanger";
 
 export default function PasswordChangerPage() {
   useEffect(() => {
-    document.title = "RSystfip | Change password users";
+    document.title = "RSystfip | Change Password Users";
   }, []);
 
   return (

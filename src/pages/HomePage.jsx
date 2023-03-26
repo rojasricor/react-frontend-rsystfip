@@ -6,7 +6,7 @@ import { ImUserPlus } from "react-icons/im";
 
 export default function Home() {
   useEffect(() => {
-    document.title = "RSystfip | Home welcome";
+    document.title = "RSystfip | Home Welcome";
   }, []);
 
   return (

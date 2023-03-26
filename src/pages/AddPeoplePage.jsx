@@ -4,7 +4,7 @@ import FormPeople from "../components/FormPeople";
 
 export default function AddPeoplePage() {
   useEffect(() => {
-    document.title = "RSystfip | Fast scheduling";
+    document.title = "RSystfip | Fast Scheduling";
   }, []);
 
   return (

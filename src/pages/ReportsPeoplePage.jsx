@@ -3,7 +3,7 @@ import ActionerReports from "../components/ActionerReports";
 
 export default function ReportsPeoplePage() {
   useEffect(() => {
-    document.title = "RSystfip | Generate reports";
+    document.title = "RSystfip | Generate Reports";
   }, []);
 
   return (

@@ -6,9 +6,9 @@ export default function UserLoggedInfo() {
 
   return (
     <h1 className="h3">
-      {(user.role === "secretaria" ? "Bienvenida" : "Bienvenido").concat(
-        ` ${user.role}: ${user.name}`
-      )}
+      {`${user.role === "secretaria" ? "Bienvenida" : "Bienvenido"} ${
+        user.role
+      }: ${user.name}`}
     </h1>
   );
 }

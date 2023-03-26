@@ -71,12 +71,12 @@ export default function NavMenu({ permissions }) {
           </NavLink>
         </ProtectedElement>
 
-        <NavDropdown
-          title="Sección de estadísticas"
-          description="Estadísticas"
-          h6="Sección de estadísticas"
-        >
-          <ProtectedElement isAllowed={permissions.includes("statistics")}>
+        <ProtectedElement isAllowed={permissions.includes("statistics")}>
+          <NavDropdown
+            title="Sección de estadísticas"
+            description="Estadísticas"
+            h6="Sección de estadísticas"
+          >
             <li>
               <NavLink
                 to="/people/statistics/daily"
@@ -86,9 +86,7 @@ export default function NavMenu({ permissions }) {
                 Agendamiento diario <BsCalendarDay className="mb-1" />
               </NavLink>
             </li>
-          </ProtectedElement>
 
-          <ProtectedElement isAllowed={permissions.includes("statistics")}>
             <li>
               <NavLink
                 to="/people/statistics/scheduled"
@@ -98,8 +96,8 @@ export default function NavMenu({ permissions }) {
                 Agendamiento programado <FaChartLine className="mb-1" />
               </NavLink>
             </li>
-          </ProtectedElement>
-        </NavDropdown>
+          </NavDropdown>
+        </ProtectedElement>
 
         <NavDropdown
           title="Sección de reportes"

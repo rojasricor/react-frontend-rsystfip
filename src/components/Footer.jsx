@@ -8,7 +8,7 @@ export default function Footer() {
         <span className="text-white">&nbsp;RSystfip</span>
         &nbsp;|&nbsp;
         <span className="text-white">
-          Tecnología en Gestión Informatica{" "}
+          Tecnología en Gestión Informatica&nbsp;
           <HiCodeBracketSquare className="mb-1" />
         </span>
       </span>

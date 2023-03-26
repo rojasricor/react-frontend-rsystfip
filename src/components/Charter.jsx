@@ -28,9 +28,9 @@ export default function Charter({ scheduling_type }) {
           labels: labels,
           datasets: [
             {
-              label: "Agendamiento "
-                .concat(scheduling_type === "daily" ? "diario" : "programado")
-                .concat(" - Cantidad persona(s)"),
+              label: `Agendamiento ${
+                scheduling_type === "daily" ? "diario" : "programado"
+              } - Cantidad persona(s)`,
               data,
               backgroundColor: [
                 "rgba(255, 165, 0, 0.8)",
@@ -110,8 +110,9 @@ export default function Charter({ scheduling_type }) {
     <>
       <div className="col-12">
         <h1 className="h3">
-          Estadísticas de Agendamiento{" "}
-          {scheduling_type === "daily" ? "Diario" : "Programado"}
+          {`Estadísticas de Agendamiento ${
+            scheduling_type === "daily" ? "Diario" : "Programado"
+          }`}
         </h1>
         <DaterStatistics
           setStart={setStart}

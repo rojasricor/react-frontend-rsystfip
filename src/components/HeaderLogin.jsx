@@ -2,12 +2,12 @@ import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
 export default function LoginHeader() {
-  const { setPasswordVisible, passwordVisible } = useContext(AppContext);
+  const { showPassword } = useContext(AppContext);
 
   return (
     <div className="text-center mt-2">
       <img
-        onClick={() => setPasswordVisible(!passwordVisible)}
+        onClick={showPassword}
         src="/rsystfip.svg"
         width="72"
         height="57"

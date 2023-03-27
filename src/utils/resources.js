@@ -9,8 +9,8 @@ export function getEndMonthDate() {
 }
 
 export function formatTodaysDate(d = new Date()) {
-  const month = d.getMonth() + 1,
-    day = d.getDate();
+  const month = d.getMonth() + 1;
+  const day = d.getDate();
   return `${d.getFullYear()}-${(month < 10 ? "0" : "").concat(month)}-${(day <
   10
     ? "0"
@@ -19,9 +19,9 @@ export function formatTodaysDate(d = new Date()) {
 }
 
 export function getTime(d = new Date()) {
-  const h = d.getHours() < 10 ? `0${d.getHours()}` : d.getHours(),
-    m = d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes(),
-    s = d.getSeconds() < 10 ? `0${d.getSeconds()}` : d.getSeconds();
+  const h = d.getHours() < 10 ? `0${d.getHours()}` : d.getHours();
+  const m = d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes();
+  const s = d.getSeconds() < 10 ? `0${d.getSeconds()}` : d.getSeconds();
   return `${h}:${m}:${s}`;
 }
 

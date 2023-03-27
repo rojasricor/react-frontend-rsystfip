@@ -177,6 +177,7 @@ export function PeopleContextProvider({ children }) {
     if (!staffDeans || person !== "4") {
       return;
     }
+
     for (const dean of staffDeans) {
       if (dean.cc === doc) {
         setDoctype(1);

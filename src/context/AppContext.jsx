@@ -9,15 +9,19 @@ export function AppContextProvider({ children }) {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const doLogin = (userAuthenticated) => setUser(userAuthenticated);
+  function doLogin(userAuthenticated) {
+    setUser(userAuthenticated);
+  }
 
-  const doLogout = () => {
+  function doLogout() {
     setUser(null);
     setUsername("");
     setPassword("");
-  };
+  }
 
-  const showPassword = () => setPasswordVisible(!passwordVisible);
+  function showPassword() {
+    setPasswordVisible(!passwordVisible);
+  }
 
   return (
     <AppContext.Provider

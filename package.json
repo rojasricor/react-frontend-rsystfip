@@ -1,14 +1,12 @@
 {
   "name": "nodejs-rsystfip",
   "private": true,
-  "homepage": "https://rojasricor.github.io/nodejs-rsystfip",
   "version": "3.4.7",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.4",
@@ -18,7 +16,6 @@
     "bootswatch": "^5.2.3",
     "chart.js": "2.9.4",
     "fullcalendar": "^6.1.4",
-    "github-pages": "^3.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",

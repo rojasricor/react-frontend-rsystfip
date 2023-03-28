@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { API_ROUTE } from "../utils/constants";
 import { toast } from "react-toastify";
-import DivCol12 from "./DivCol12";
+import Submitter from "./Submitter";
 import Spinner from "./Spinner";
 import { IoMdLogIn } from "react-icons/io";
 
@@ -76,20 +76,15 @@ export default function LoginForm() {
         />
         <label className="form-label fw-bold">Contraseña</label>
       </div>
-      <DivCol12>
-        <button
-          className="w-100 btn btn-primary btn-lg mb-3"
-          disabled={loading}
-        >
-          {!loading ? (
-            <>
-              Entrar <IoMdLogIn className="mb-1" />
-            </>
-          ) : (
-            <Spinner tam="lg" />
-          )}
-        </button>
-      </DivCol12>
+      <Submitter loading={loading}>
+        {!loading ? (
+          <>
+            Entrar <IoMdLogIn className="mb-1" />
+          </>
+        ) : (
+          <Spinner tam="lg" />
+        )}
+      </Submitter>
     </form>
   );
 }

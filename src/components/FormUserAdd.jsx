@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { API_ROUTE, RESOURCES_ROUTE, UNSET_STATUS } from "../utils/constants";
-import DivCol12 from "./DivCol12";
-import Spinner from "./Spinner";
 import SelectBasic from "./SelectBasic";
 import InputText from "./InputText";
 import InputEmail from "./InputEmail";
 import InputNumber from "./InputNumber";
 import InputPassword from "./InputPassword";
+import Submitter from "./Submitter";
+import Spinner from "./Spinner";
 import { FaCheckDouble } from "react-icons/fa";
 
 export default function FormUserAdd() {
@@ -168,20 +168,15 @@ export default function FormUserAdd() {
         />
       </div>
 
-      <DivCol12>
-        <button
-          className="w-100 btn btn-primary btn-lg mb-3"
-          disabled={loading}
-        >
-          {!loading ? (
-            <>
-              Guardar <FaCheckDouble className="mb-1" />
-            </>
-          ) : (
-            <Spinner tam="lg" />
-          )}
-        </button>
-      </DivCol12>
+      <Submitter loading={loading}>
+        {!loading ? (
+          <>
+            Guardar <FaCheckDouble className="mb-1" />
+          </>
+        ) : (
+          <Spinner tam="lg" />
+        )}
+      </Submitter>
     </form>
   );
 }

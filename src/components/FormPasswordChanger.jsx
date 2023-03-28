@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../utils/constants";
-import DivCol12 from "./DivCol12";
 import InputPassword from "./InputPassword";
+import Submitter from "./Submitter";
 import Spinner from "./Spinner";
 import { BiKey } from "react-icons/bi";
 
@@ -72,20 +72,15 @@ export default function FormPasswordChanger({ userId }) {
         labelInfo="Confirmar contraseña nueva:"
       />
 
-      <DivCol12>
-        <button
-          className="w-100 btn btn-primary btn-lg mb-3"
-          disabled={loading}
-        >
-          {!loading ? (
-            <>
-              Cambiar contraseña <BiKey className="mb-1" />
-            </>
-          ) : (
-            <Spinner tam="lg" />
-          )}
-        </button>
-      </DivCol12>
+      <Submitter loading={loading}>
+        {!loading ? (
+          <>
+            Cambiar contraseña <BiKey className="mb-1" />
+          </>
+        ) : (
+          <Spinner tam="lg" />
+        )}
+      </Submitter>
     </form>
   );
 }

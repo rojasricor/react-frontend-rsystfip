@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
 import { ImUserPlus } from "react-icons/im";
 import DivRow from "../components/DivRow";
 import TableUsers from "../components/TableUsers";
+import { ToastContainer } from "react-toastify";
 
 export default function DashboardPage() {
   useEffect(() => {

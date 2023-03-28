@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-export function ProtectedRoute({
+export default function ProtectedRoute({
   children,
   isAllowed,
   navigateTo = "/auth/login",

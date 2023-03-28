@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { ToastContainer } from "react-toastify";
 import { PeopleContextProvider } from "../context/PeopleContext";
 import CalendarRSystfipEvents from "../components/CalendarRSystfipEvents";
 import ModalSchedulePeopleForm from "../components/ModalSchedulePeopleForm";
+import { ToastContainer } from "react-toastify";
 
-export default function SchedulePage() {
+export default function ProgrammingPage() {
   useEffect(() => {
     document.title = "RSystfip | Programming Scheduling";
   }, []);

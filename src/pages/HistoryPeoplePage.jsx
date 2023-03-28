@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Rower from "../components/Rower";
 import Searcher from "../components/Searcher";
 
-export default function ViewsPeoplePage() {
+export default function HistoryPeoplePage() {
   useEffect(() => {
     document.title = "RSystfip | Agendated People";
   }, []);

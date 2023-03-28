@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { ToastContainer } from "react-toastify";
 import DivRow from "../components/DivRow";
 import FormUserAdd from "../components/FormUserAdd";
+import { ToastContainer } from "react-toastify";
 
 export default function AddUserPage() {
   useEffect(() => {

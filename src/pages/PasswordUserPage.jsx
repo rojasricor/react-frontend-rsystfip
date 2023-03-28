@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { ToastContainer } from "react-toastify";
 import DivRow from "../components/DivRow";
 import GetterPasswordChanger from "../components/GetterPasswordChanger";
+import { ToastContainer } from "react-toastify";
 
-export default function PasswordChangerPage() {
+export default function PasswordUserPage() {
   useEffect(() => {
     document.title = "RSystfip | Change Password Users";
   }, []);

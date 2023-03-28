@@ -5,7 +5,7 @@ import UserLoggedInfo from "../components/UserLoggedInfo";
 import { IoCalendarNumber } from "react-icons/io5";
 import { ImUserPlus } from "react-icons/im";
 
-export default function Home() {
+export default function HomePage() {
   useEffect(() => {
     document.title = "RSystfip | Home Welcome";
   }, []);

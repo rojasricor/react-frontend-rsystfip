@@ -1,7 +1,8 @@
 import { useContext, lazy, Suspense } from "react";
 import { AppContext } from "./context/AppContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ProtectedElement, ProtectedRoute } from "./components/Protected";
+import ProtectedElement from "./components/ProtectedElement";
+import ProtectedRoute from "./components/ProtectedRoute";
 import LoaderSuspense from "./components/LoaderSuspense";
 import BlockContainer from "./components/BlockContainer";
 import Nav from "./components/Nav";
@@ -10,17 +11,15 @@ import Footer from "./components/Footer";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage"));
 const AddUserPage = lazy(() => import("./pages/AddUserPage"));
-const PasswordChangerPage = lazy(() => import("./pages/PasswordChangerPage"));
-const SchedulePage = lazy(() => import("./pages/SchedulePage"));
-const ScheduleViewPage = lazy(() => import("./pages/ScheduleViewPage"));
+const PasswordUserPage = lazy(() => import("./pages/PasswordUserPage"));
+const ProgrammingPage = lazy(() => import("./pages/ProgrammingPage"));
+const ProgrammingViewPage = lazy(() => import("./pages/ProgrammingViewPage"));
 const AddPeoplePage = lazy(() => import("./pages/AddPeoplePage"));
 const EditPeoplePage = lazy(() => import("./pages/EditPeoplePage"));
-const ViewsPeoplePage = lazy(() => import("./pages/ViewsPeoplePage"));
+const HistoryPeoplePage = lazy(() => import("./pages/HistoryPeoplePage"));
 const ReportsPeoplePage = lazy(() => import("./pages/ReportsPeoplePage"));
-const StatisticsDailyPage = lazy(() => import("./pages/StatisticsDailyPage"));
-const StatisticsScheduledPage = lazy(() =>
-  import("./pages/StatisticsScheduledPage")
-);
+const StcsDailyPage = lazy(() => import("./pages/StcsDailyPage"));
+const StcsScheduledPage = lazy(() => import("./pages/StcsScheduledPage"));
 const FaqsPage = lazy(() => import("./pages/FaqsPage"));
 const Error404Page = lazy(() => import("./pages/Error404Page"));
 import "bootswatch/dist/zephyr/bootstrap.min.css";
@@ -48,13 +47,13 @@ function App() {
               <Route path="/home/welcome" element={<HomePage />} />
               <Route
                 path="/users/manage/password/:role/change"
-                element={<PasswordChangerPage />}
+                element={<PasswordUserPage />}
               />
               <Route
                 path="/people/view/:id/edit"
                 element={<EditPeoplePage />}
               />
-              <Route path="/people/view" element={<ViewsPeoplePage />} />
+              <Route path="/people/view" element={<HistoryPeoplePage />} />
               <Route path="/help/asks/frecuently" element={<FaqsPage />} />
             </Route>
 
@@ -92,7 +91,7 @@ function App() {
                   isAllowed={!!user && user.permissions.includes("schedule")}
                   navigateTo="/home/welcome"
                 >
-                  <SchedulePage />
+                  <ProgrammingPage />
                 </ProtectedRoute>
               }
             />
@@ -101,7 +100,7 @@ function App() {
               path="/people/preview"
               element={
                 <ProtectedRoute isAllowed={!!user} navigateTo="/home/welcome">
-                  <ScheduleViewPage />
+                  <ProgrammingViewPage />
                 </ProtectedRoute>
               }
             />
@@ -125,7 +124,7 @@ function App() {
                   isAllowed={!!user && user.permissions.includes("statistics")}
                   navigateTo="/home/welcome"
                 >
-                  <StatisticsDailyPage />
+                  <StcsDailyPage />
                 </ProtectedRoute>
               }
             />
@@ -137,7 +136,7 @@ function App() {
                   isAllowed={!!user && user.permissions.includes("statistics")}
                   navigateTo="/home/welcome"
                 >
-                  <StatisticsScheduledPage />
+                  <StcsScheduledPage />
                 </ProtectedRoute>
               }
             />

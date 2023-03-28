@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import DivCol12 from "../components/DivCol12";
 import ActionerReports from "../components/ActionerReports";
 
 export default function ReportsPeoplePage() {
@@ -8,10 +9,10 @@ export default function ReportsPeoplePage() {
 
   return (
     <div className="row">
-      <div className="col-12">
+      <DivCol12>
         <h1 className="h3">Reportes por mes</h1>
         <ActionerReports />
-      </div>
+      </DivCol12>
     </div>
   );
 }

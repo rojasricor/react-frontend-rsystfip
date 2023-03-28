@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
+import DivCol12 from "./DivCol12";
 
 export default function TextareaAsunt() {
   const { disabledAll, asunt, setAsunt } = useContext(PeopleContext);
 
   return (
-    <div className="col-12">
+    <DivCol12>
       <div className="form-floating mb-2">
         <textarea
           onChange={(evt) => setAsunt(evt.target.value)}
@@ -21,6 +22,6 @@ export default function TextareaAsunt() {
         />
         <label className="form-label">Asunto:</label>
       </div>
-    </div>
+    </DivCol12>
   );
 }

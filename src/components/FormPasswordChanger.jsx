@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../utils/constants";
+import DivCol12 from "./DivCol12";
 import InputPassword from "./InputPassword";
 import Spinner from "./Spinner";
 import { BiKey } from "react-icons/bi";
@@ -71,7 +72,7 @@ export default function FormPasswordChanger({ userId }) {
         labelInfo="Confirmar contraseña nueva:"
       />
 
-      <div className="col-12">
+      <DivCol12>
         <button
           className="w-100 btn btn-primary btn-lg mb-3"
           disabled={loading}
@@ -84,7 +85,7 @@ export default function FormPasswordChanger({ userId }) {
             <Spinner tam="lg" />
           )}
         </button>
-      </div>
+      </DivCol12>
     </form>
   );
 }

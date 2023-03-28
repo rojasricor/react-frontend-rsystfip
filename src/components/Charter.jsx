@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { API_ROUTE } from "../utils/constants";
 import { getStartMonthDate, getEndMonthDate } from "../utils/resources";
+import DivCol12 from "./DivCol12";
 import DaterStatistics from "./DaterStatistics";
 import Xit from "./Xit";
 import ListerStatistics from "./ListerStatistics";
@@ -108,7 +109,7 @@ export default function Charter({ scheduling_type }) {
 
   return (
     <>
-      <div className="col-12">
+      <DivCol12>
         <h1 className="h3">
           {`Estadísticas de Agendamiento ${
             scheduling_type === "daily" ? "Diario" : "Programado"
@@ -121,7 +122,7 @@ export default function Charter({ scheduling_type }) {
           end={end}
           setTyChart={setTyChart}
         />
-      </div>
+      </DivCol12>
 
       <Xit xitRef={xitRef} />
 

@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCES_ROUTE } from "../utils/constants";
+import DivCol12 from "./DivCol12";
 
 export default function SelectFaculties() {
   const {
@@ -19,7 +20,7 @@ export default function SelectFaculties() {
   }, []);
 
   return (
-    <div className="col-12">
+    <DivCol12>
       <div className="form-floating">
         <select
           onChange={(evt) => setFacultie(evt.target.value)}
@@ -42,6 +43,6 @@ export default function SelectFaculties() {
         </select>
         <label className="form-label">Facultad:</label>
       </div>
-    </div>
+    </DivCol12>
   );
 }

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { API_DOMAIN } from "../utils/constants";
+import DivCol12 from "./DivCol12";
 import { FaChartArea, FaDownload } from "react-icons/fa";
 
 export default function GetterReports({
@@ -9,7 +10,7 @@ export default function GetterReports({
   category,
 }) {
   return (
-    <div className="col-12">
+    <DivCol12>
       <div className="btn-group btn-group-sm">
         <Link
           to="/people/statistics"
@@ -32,6 +33,6 @@ export default function GetterReports({
           Descargar <FaDownload className="mb-1" />
         </button>
       </div>
-    </div>
+    </DivCol12>
   );
 }

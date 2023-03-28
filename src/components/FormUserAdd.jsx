@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { API_ROUTE, RESOURCES_ROUTE, UNSET_STATUS } from "../utils/constants";
+import DivCol12 from "./DivCol12";
 import Spinner from "./Spinner";
 import SelectBasic from "./SelectBasic";
 import InputText from "./InputText";
@@ -167,7 +168,7 @@ export default function FormUserAdd() {
         />
       </div>
 
-      <div className="col-12">
+      <DivCol12>
         <button
           className="w-100 btn btn-primary btn-lg mb-3"
           disabled={loading}
@@ -180,7 +181,7 @@ export default function FormUserAdd() {
             <Spinner tam="lg" />
           )}
         </button>
-      </div>
+      </DivCol12>
     </form>
   );
 }

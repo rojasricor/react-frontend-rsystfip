@@ -9,8 +9,8 @@ export default function TableReports({ reportFiltered }) {
           <th>Nombres</th>
           <th>Fecha</th>
           <th>Últ. Modificación</th>
-          <th>Agendamiento programado</th>
-          <th>Agendamiento de una sóla vez</th>
+          <th>Agendamiento Programado</th>
+          <th>Agendamiento Diario</th>
           <th>Tipo Persona</th>
         </tr>
       </thead>

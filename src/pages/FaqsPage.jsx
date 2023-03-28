@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import DivRow from "../components/DivRow";
+import DivCol12 from "../components/DivCol12";
 
 export default function FaqsPage() {
   useEffect(() => {
@@ -6,11 +8,11 @@ export default function FaqsPage() {
   }, []);
 
   return (
-    <div className="row">
-      <div className="col-12 mb-2">
+    <DivRow>
+      <DivCol12>
         <h1 className="h3">Preguntas más frecuentes</h1>
-      </div>
-      <div className="col-6">
+      </DivCol12>
+      <div className="col-6 mt-2">
         <div className="accordion accordion-flush" id="col-1">
           <div className="accordion-item">
             <h2 className="accordion-header">
@@ -220,6 +222,6 @@ export default function FaqsPage() {
           </div>
         </div>
       </div>
-    </div>
+    </DivRow>
   );
 }

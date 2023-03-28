@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
 import { ImUserPlus } from "react-icons/im";
+import DivRow from "../components/DivRow";
 import TableUsers from "../components/TableUsers";
 
 export default function DashboardPage() {
@@ -10,7 +11,7 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div className="row">
+    <DivRow>
       <div className="col-md-6 mx-auto">
         <div className="card card-body border-0 rounded-4 shadow">
           <h1 className="h3 text-center">Administrar usuarios</h1>
@@ -23,6 +24,6 @@ export default function DashboardPage() {
         </div>
       </div>
       <ToastContainer />
-    </div>
+    </DivRow>
   );
 }

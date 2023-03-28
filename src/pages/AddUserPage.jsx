@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import DivRow from "../components/DivRow";
 import FormUserAdd from "../components/FormUserAdd";
 
 export default function AddUserPage() {
@@ -8,7 +9,7 @@ export default function AddUserPage() {
   }, []);
 
   return (
-    <div className="row">
+    <DivRow>
       <div className="col-md-6 mx-auto">
         <div className="card card-body border-0 rounded-4 shadow">
           <h1 className="h3 text-center">Registrar usuario nuevo</h1>
@@ -16,6 +17,6 @@ export default function AddUserPage() {
         </div>
       </div>
       <ToastContainer />
-    </div>
+    </DivRow>
   );
 }

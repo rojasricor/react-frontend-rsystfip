@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import DivRow from "../components/DivRow";
 import GetterPasswordChanger from "../components/GetterPasswordChanger";
 
 export default function PasswordChangerPage() {
@@ -8,13 +9,13 @@ export default function PasswordChangerPage() {
   }, []);
 
   return (
-    <div className="row">
+    <DivRow>
       <div className="col-md-4 mx-auto">
         <div className="card card-body border-0 rounded-4 shadow">
           <GetterPasswordChanger />
         </div>
       </div>
       <ToastContainer />
-    </div>
+    </DivRow>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import DivRow from "../components/DivRow";
 import Charter from "../components/Charter";
 
 export default function StatisticsPeoplePage() {
@@ -7,8 +8,8 @@ export default function StatisticsPeoplePage() {
   }, []);
 
   return (
-    <div className="row">
+    <DivRow>
       <Charter scheduling_type="daily" />
-    </div>
+    </DivRow>
   );
 }

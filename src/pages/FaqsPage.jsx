@@ -117,7 +117,7 @@ export default function FaqsPage() {
           </div>
         </div>
       </div>
-      <div className="col-6">
+      <div className="col-6 mt-2">
         <div className="accordion accordion-flush" id="col-2">
           <div className="accordion-item">
             <h2 className="accordion-header">

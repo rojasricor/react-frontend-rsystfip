@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { FaInfoCircle } from "react-icons/fa";
 import { BiKey, BiLogOutCircle } from "react-icons/bi";
 
-export default function NavDropdown({ avatar }) {
+export default function NavLogoutDropdown({ avatar }) {
   const { user, doLogout } = useContext(AppContext);
 
   function logout() {

@@ -10,7 +10,7 @@ import { TiHome } from "react-icons/ti";
 import { ImUsers, ImUserPlus } from "react-icons/im";
 import { IoCalendarNumber } from "react-icons/io5";
 import { HiListBullet } from "react-icons/all";
-import { ProtectedElement } from "./Protected";
+import ProtectedElement from "./ProtectedElement";
 import NavDropdown from "./NavDropdown";
 
 export default function NavMenu({ permissions }) {

@@ -1,6 +1,6 @@
 import "../assets/styles/loader.css";
 
-export default function App() {
+export default function LoaderSuspense() {
   return (
     <div className="loader-container">
       <div className="circle1">

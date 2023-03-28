@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { PeopleContext } from "../context/PeopleContext";
-import { ProtectedElement } from "./Protected";
-import { ToastContainer } from "react-toastify";
+import ProtectedElement from "./ProtectedElement";
 import Spinner from "./Spinner";
 import SmallCaption from "./SmallCaption";
 import { FaCheckDouble } from "react-icons/fa";
 import { GiReturnArrow } from "react-icons/gi";
+import { ToastContainer } from "react-toastify";
 
 export default function FooterFormPeople({ actionRequireIt }) {
   const { loading } = useContext(PeopleContext);

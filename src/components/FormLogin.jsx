@@ -7,7 +7,7 @@ import Submitter from "./Submitter";
 import Spinner from "./Spinner";
 import { IoMdLogIn } from "react-icons/io";
 
-export default function LoginForm() {
+export default function FormLogin() {
   const {
     doLogin,
     setUsername,

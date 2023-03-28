@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
-export default function LoginHeader() {
+export default function HeaderLogin() {
   const { showPassword } = useContext(AppContext);
 
   return (

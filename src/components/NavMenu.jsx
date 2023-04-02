@@ -2,11 +2,12 @@ import { NavLink } from "react-router-dom";
 import ProtectedElement from "./ProtectedElement";
 import NavDropdown from "./NavDropdown";
 import { FaUsersCog, FaInfoCircle } from "react-icons/fa";
-import { BsFilePdf } from "react-icons/bs";
+import { MdEventNote } from "react-icons/md";
+import { BsBarChartLineFill, BsFilePdf, BsFolderPlus } from "react-icons/bs";
+import { FiDownloadCloud } from "react-icons/fi";
 import { TiHome } from "react-icons/ti";
 import { ImUsers, ImUserPlus } from "react-icons/im";
 import { IoCalendarNumber } from "react-icons/io5";
-import { HiListBullet } from "react-icons/hi2";
 
 export default function NavMenu({ permissions }) {
   return (
@@ -28,7 +29,11 @@ export default function NavMenu({ permissions }) {
 
         <NavDropdown
           title="Sección de agendamientos"
-          description="Agendamiento"
+          description={
+            <>
+              Agendamiento <BsFolderPlus />
+            </>
+          }
           h6="Sección de agendamientos"
         >
           <ProtectedElement isAllowed={permissions.includes("add")}>
@@ -62,14 +67,18 @@ export default function NavMenu({ permissions }) {
             className="nav-item nav-link"
             title="Ver agendamientos en el calendario"
           >
-            Visualizar Eventos <HiListBullet />
+            Visualizar Eventos <MdEventNote />
           </NavLink>
         </ProtectedElement>
 
         <ProtectedElement isAllowed={permissions.includes("statistics")}>
           <NavDropdown
             title="Sección de estadísticas"
-            description="Estadísticas"
+            description={
+              <>
+                Estadísticas <BsBarChartLineFill />
+              </>
+            }
             h6="Sección de estadísticas"
           >
             <li>
@@ -96,7 +105,11 @@ export default function NavMenu({ permissions }) {
 
         <NavDropdown
           title="Sección de reportes & historial"
-          description="Reportes & Historial"
+          description={
+            <>
+              Reportes & Historial <FiDownloadCloud />
+            </>
+          }
           h6="Sección de reportes & historial"
         >
           <li>

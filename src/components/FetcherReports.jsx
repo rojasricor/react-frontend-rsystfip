@@ -4,7 +4,7 @@ import DivCol12 from "./DivCol12";
 import pdfMake from "pdfmake/build/pdfmake.min";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { formatTodaysDateTime } from "../utils/resources";
-import { FaDownload } from "react-icons/fa";
+import { BsDownload } from "react-icons/bs";
 
 export default function FetcherReports({
   startDate,
@@ -245,7 +245,7 @@ export default function FetcherReports({
         className="btn btn-light btn-sm"
         title="Reporte PDF"
       >
-        Descargar PDF <FaDownload className="mb-1" />
+        Descargar PDF <BsDownload className="mb-1" />
       </button>
     </DivCol12>
   );

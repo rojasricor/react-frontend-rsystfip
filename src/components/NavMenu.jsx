@@ -1,13 +1,8 @@
 import { NavLink } from "react-router-dom";
 import ProtectedElement from "./ProtectedElement";
 import NavDropdown from "./NavDropdown";
-import {
-  FaUsersCog,
-  FaChartArea,
-  FaChartLine,
-  FaInfoCircle,
-} from "react-icons/fa";
-import { BsCalendarDay } from "react-icons/bs";
+import { FaUsersCog, FaChartLine, FaInfoCircle } from "react-icons/fa";
+import { BsCalendarDay, BsFilePdf } from "react-icons/bs";
 import { TiHome } from "react-icons/ti";
 import { ImUsers, ImUserPlus } from "react-icons/im";
 import { IoCalendarNumber } from "react-icons/io5";
@@ -43,7 +38,7 @@ export default function NavMenu({ permissions }) {
                 className="nav-item nav-link"
                 title="Agendar una persona inmediatamente"
               >
-                <ImUserPlus /> Diario
+                Agend. diario <ImUserPlus />
               </NavLink>
             </li>
           </ProtectedElement>
@@ -55,7 +50,7 @@ export default function NavMenu({ permissions }) {
                 className="nav-item nav-link"
                 title="Agendar una persona en el calendario"
               >
-                <IoCalendarNumber className="mb-1" /> Programado
+                Agend. programado <IoCalendarNumber className="mb-1" />
               </NavLink>
             </li>
           </ProtectedElement>
@@ -83,7 +78,7 @@ export default function NavMenu({ permissions }) {
                 className="nav-item nav-link"
                 title="Generar estadísticas de agendamiento diario"
               >
-                Agendamiento diario <BsCalendarDay className="mb-1" />
+                Agend. diario <BsCalendarDay className="mb-1" />
               </NavLink>
             </li>
 
@@ -93,16 +88,16 @@ export default function NavMenu({ permissions }) {
                 className="nav-item nav-link"
                 title="Generar estadísticas de agendamiento diario"
               >
-                Agendamiento programado <FaChartLine className="mb-1" />
+                Agend. programado <FaChartLine className="mb-1" />
               </NavLink>
             </li>
           </NavDropdown>
         </ProtectedElement>
 
         <NavDropdown
-          title="Sección de reportes"
+          title="Sección de reportes & historial"
           description="Reportes & Historial"
-          h6="Sección de reportes"
+          h6="Sección de reportes & historial"
         >
           <li>
             <NavLink
@@ -110,7 +105,7 @@ export default function NavMenu({ permissions }) {
               className="nav-item nav-link"
               title="Listado de todas las personas agendadas"
             >
-              <ImUsers /> Historial
+              Historial personas <ImUsers />
             </NavLink>
           </li>
 
@@ -121,7 +116,7 @@ export default function NavMenu({ permissions }) {
                 className="nav-item nav-link"
                 title="Generar reportes"
               >
-                <FaChartArea /> Reportes
+                Generar reportes <BsFilePdf />
               </NavLink>
             </li>
           </ProtectedElement>

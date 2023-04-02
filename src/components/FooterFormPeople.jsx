@@ -20,7 +20,7 @@ export default function FooterFormPeople({ actionRequireIt }) {
               evt.preventDefault();
               navigate(-1);
             }}
-            className="w-100 btn btn-light btn-lg border mb-2"
+            className="w-100 btn btn-light btn-lg border my-2"
           >
             Volver <GiReturnArrow />
           </button>
@@ -28,7 +28,7 @@ export default function FooterFormPeople({ actionRequireIt }) {
       </ProtectedElement>
       <div className={actionRequireIt ? "col-md-6" : "col-md-12"}>
         <button
-          className="w-100 btn btn-primary btn-lg border mb-2"
+          className="w-100 btn btn-primary btn-lg border my-2"
           disabled={loading}
         >
           {!loading ? (

@@ -7,7 +7,7 @@ export default function TextareaAsunt() {
 
   return (
     <DivCol12>
-      <div className="form-floating mb-2">
+      <div className="form-floating">
         <textarea
           onChange={(evt) => setAsunt(evt.target.value)}
           value={asunt}

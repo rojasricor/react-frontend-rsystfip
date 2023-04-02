@@ -49,8 +49,8 @@ export default function FormLogin() {
   }
 
   return (
-    <form onSubmit={authenticate} className="container">
-      <div className="form-floating mb-3">
+    <form onSubmit={authenticate} className="row g-3">
+      <div className="form-floating">
         <input
           onChange={(evt) => setUsername(evt.target.value)}
           value={username}
@@ -64,7 +64,7 @@ export default function FormLogin() {
         />
         <label className="form-label fw-bold">Nombre de usuario</label>
       </div>
-      <div className="form-floating mb-3">
+      <div className="form-floating">
         <input
           onChange={(evt) => setPassword(evt.target.value)}
           value={password}

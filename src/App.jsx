@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedElement from "./components/ProtectedElement";
 import ProtectedRoute from "./components/ProtectedRoute";
 import LoaderSuspense from "./components/LoaderSuspense";
-import BlockContainer from "./components/BlockContainer";
+import ContainerFluid from "./components/ContainerFluid";
 import Nav from "./components/Nav";
 import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <BlockContainer>
+      <ContainerFluid>
         <ProtectedElement isAllowed={!!user}>
           <Nav avatar={avatar} permissions={permissions} />
         </ProtectedElement>
@@ -144,7 +144,7 @@ function App() {
             <Route path="*" element={<Error404Page />} />
           </Routes>
         </Suspense>
-      </BlockContainer>
+      </ContainerFluid>
 
       <Footer />
     </BrowserRouter>

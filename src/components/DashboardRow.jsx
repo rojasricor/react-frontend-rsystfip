@@ -19,6 +19,7 @@ export default function DashboardRow({ user }) {
       if (!response) {
         return toast.error("Error al eliminar");
       }
+
       toast("Usuario eliminado exitosamente", {
         position: "top-left",
         autoClose: 2000,

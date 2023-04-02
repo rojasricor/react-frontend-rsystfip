@@ -83,124 +83,145 @@ export default function GetterReports({ startDate, endDate, reportsFiltered }) {
         }),
         content: [
           {
-            text: "Total personas agendadas:",
+            text: `Total personas agendadas: (${allPeople.length})`,
             style: "header",
             alignment: "center",
             marginBottom: 30,
           },
+          allPeople.length !== 0
+            ? {
+                layout: "lightHorizontalLines",
+                alignment: "center",
+                table: {
+                  dontBreakRows: true,
+                  headerRows: 1,
+                  body: [
+                    [
+                      { text: "No.", style: "tableHeader" },
+                      { text: "Nombre completo", style: "tableHeader" },
+                      { text: "Categoría", style: "tableHeader" },
+                      { text: "Facultad", style: "tableHeader" },
+                      {
+                        text: "Asunto visita rectoría",
+                        style: "tableHeader",
+                      },
+                    ],
+                    ...allPeople.map(
+                      ({ id, name, person, fac, text_asunt }) => [
+                        id,
+                        name,
+                        person,
+                        fac,
+                        text_asunt,
+                      ]
+                    ),
+                  ],
+                },
+              }
+            : {},
           {
-            layout: "lightHorizontalLines",
-            alignment: "center",
-            table: {
-              dontBreakRows: true,
-              headerRows: 1,
-              body: [
-                [
-                  { text: "No.", style: "tableHeader" },
-                  { text: "Nombres", style: "tableHeader" },
-                  { text: "Categoría", style: "tableHeader" },
-                  { text: "Facultad", style: "tableHeader" },
-                  { text: "Asunto", style: "tableHeader" },
-                ],
-                ...allPeople.map(({ id, name, person, fac, text_asunt }) => [
-                  id,
-                  name,
-                  person,
-                  fac,
-                  text_asunt,
-                ]),
-              ],
-            },
-          },
-          {
-            text: "Reportes entre el rango de fecha:",
-            style: "header",
-            alignment: "center",
-            marginBottom: 30,
-            pageBreak: "before",
-          },
-          {
-            layout: "lightHorizontalLines",
-            alignment: "center",
-            table: {
-              dontBreakRows: true,
-              headerRows: 1,
-              body: [
-                [
-                  { text: "Nombres", style: "tableHeader" },
-                  { text: "Fecha", style: "tableHeader" },
-                  { text: "Diario", style: "tableHeader" },
-                  { text: "Programado", style: "tableHeader" },
-                  { text: "Tipo de persona", style: "tableHeader" },
-                ],
-                ...reportsFiltered.map(
-                  ({ name, date, presence_count, absence_count, person }) => [
-                    name,
-                    date,
-                    presence_count,
-                    absence_count,
-                    person,
-                  ]
-                ),
-              ],
-            },
-          },
-          {
-            text: "Cantidad agendado(a)s entre el rango de fecha:",
+            text: `Reportes entre el rango de fecha: (${reportsFiltered.length})`,
             style: "header",
             alignment: "center",
             marginBottom: 30,
             pageBreak: "before",
           },
+          reportsFiltered.length !== 0
+            ? {
+                layout: "lightHorizontalLines",
+                alignment: "center",
+                table: {
+                  dontBreakRows: true,
+                  headerRows: 1,
+                  body: [
+                    [
+                      { text: "Nombre completo", style: "tableHeader" },
+                      {
+                        text: "Fecha y hora agendamiento",
+                        style: "tableHeader",
+                      },
+                      { text: "Agendamiento diario", style: "tableHeader" },
+                      { text: "Agendamiento programado", style: "tableHeader" },
+                      { text: "Cetegoría persona", style: "tableHeader" },
+                    ],
+                    ...reportsFiltered.map(
+                      ({
+                        name,
+                        date,
+                        presence_count,
+                        absence_count,
+                        person,
+                      }) => [name, date, presence_count, absence_count, person]
+                    ),
+                  ],
+                },
+              }
+            : {},
           {
-            layout: "lightHorizontalLines",
-            alignment: "center",
-            table: {
-              dontBreakRows: true,
-              headerRows: 1,
-              body: [
-                [
-                  { text: "Tipo de persona", style: "tableHeader" },
-                  { text: "Cantidad", style: "tableHeader" },
-                ],
-                ...reportsCountOnRange.map(({ person, counts }) => [
-                  person,
-                  counts,
-                ]),
-              ],
-            },
-          },
-          {
-            text: "Cantidad total agendado(a)s:",
+            text: `Cantidad agendado(a)s entre el rango de fecha:${
+              reportsCountOnRange.length !== 0 ? "" : " (0)"
+            }`,
             style: "header",
             alignment: "center",
             marginBottom: 30,
-            pageBreak: "before",
+            pageBreak: reportsCountOnRange.length !== 0 ? "before" : false,
           },
+          reportsCountOnRange.length !== 0
+            ? {
+                layout: "lightHorizontalLines",
+                alignment: "center",
+                marginBottom: 30,
+                table: {
+                  dontBreakRows: true,
+                  headerRows: 1,
+                  body: [
+                    [
+                      { text: "Tipo de persona", style: "tableHeader" },
+                      { text: "Cantidad personas", style: "tableHeader" },
+                    ],
+                    ...reportsCountOnRange.map(({ person, counts }) => [
+                      person,
+                      counts,
+                    ]),
+                  ],
+                },
+              }
+            : {},
           {
-            layout: "lightHorizontalLines",
+            text: `Cantidad total agendado(a)s:${
+              reportsCountOffAllTime.length !== 0 ? "" : " (0)"
+            }`,
+            style: "header",
             alignment: "center",
-            table: {
-              dontBreakRows: true,
-              headerRows: 1,
-              body: [
-                [
-                  { text: "Tipo de persona", style: "tableHeader" },
-                  { text: "Cantidad", style: "tableHeader" },
-                ],
-                ...reportsCountOffAllTime.map(({ person, counts }) => [
-                  person,
-                  counts,
-                ]),
-              ],
-            },
+            marginBottom: 30,
           },
+          reportsCountOffAllTime.length !== 0
+            ? {
+                layout: "lightHorizontalLines",
+                alignment: "center",
+                marginBottom: 30,
+                table: {
+                  dontBreakRows: true,
+                  headerRows: 1,
+                  body: [
+                    [
+                      { text: "Tipo de persona", style: "tableHeader" },
+                      { text: "Cantidad personas", style: "tableHeader" },
+                    ],
+                    ...reportsCountOffAllTime.map(({ person, counts }) => [
+                      person,
+                      counts,
+                    ]),
+                  ],
+                },
+              }
+            : {},
         ],
         styles: {
           header: {
             fontSize: 18,
             bold: true,
-            margin: [0, 0, 0, 10],
+            margin: 0,
           },
           tableHeader: {
             bold: true,
@@ -209,7 +230,8 @@ export default function GetterReports({ startDate, endDate, reportsFiltered }) {
           },
         },
       })
-      .download(`RSystfip-Report-${formatTodaysDateTime()}.pdf`);
+      .open();
+    // .download(`RSystfip-Report-${formatTodaysDateTime()}.pdf`);
   }
 
   return (

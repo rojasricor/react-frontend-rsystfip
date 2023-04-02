@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import ProtectedElement from "./ProtectedElement";
 import NavDropdown from "./NavDropdown";
-import { FaUsersCog, FaChartLine, FaInfoCircle } from "react-icons/fa";
-import { BsCalendarDay, BsFilePdf } from "react-icons/bs";
+import { FaUsersCog, FaInfoCircle } from "react-icons/fa";
+import { BsFilePdf } from "react-icons/bs";
 import { TiHome } from "react-icons/ti";
 import { ImUsers, ImUserPlus } from "react-icons/im";
 import { IoCalendarNumber } from "react-icons/io5";
@@ -78,7 +78,7 @@ export default function NavMenu({ permissions }) {
                 className="nav-item nav-link"
                 title="Generar estadísticas de agendamiento diario"
               >
-                Agend. diario <BsCalendarDay className="mb-1" />
+                Agend. diario <ImUserPlus />
               </NavLink>
             </li>
 
@@ -88,7 +88,7 @@ export default function NavMenu({ permissions }) {
                 className="nav-item nav-link"
                 title="Generar estadísticas de agendamiento diario"
               >
-                Agend. programado <FaChartLine className="mb-1" />
+                Agend. programado <IoCalendarNumber className="mb-1" />
               </NavLink>
             </li>
           </NavDropdown>

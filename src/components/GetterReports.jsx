@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { API_ROUTE } from "../utils/constants";
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
 import DivCol12 from "./DivCol12";
-import { FaChartArea, FaDownload } from "react-icons/fa";
+import { FaDownload } from "react-icons/fa";
 import { formatTodaysDateTime } from "../utils/resources";
+import pdfMake from "pdfmake/build/pdfmake.min";
+import "pdfmake/build/vfs_fonts";
 
 export default function GetterReports({ startDate, endDate, reportsFiltered }) {
   const [allPeople, setAllPeople] = useState([]);
@@ -51,8 +50,6 @@ export default function GetterReports({ startDate, endDate, reportsFiltered }) {
   }, [startDate, endDate]);
 
   function makePdf() {
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
     pdfMake
       .createPdf({
         pageMargins: [28, 90],

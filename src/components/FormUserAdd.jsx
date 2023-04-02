@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { API_ROUTE, RESOURCES_ROUTE, UNSET_STATUS } from "../utils/constants";
+import FloatingFormCol12x from "./FloatingFormCol12x";
 import SelectBasic from "./SelectBasic";
 import InputText from "./InputText";
 import InputEmail from "./InputEmail";
@@ -81,7 +82,7 @@ export default function FormUserAdd() {
 
   return (
     <form onSubmit={addUser} className="row g-3 mt-2">
-      <div className="col-md-4">
+      <FloatingFormCol12x x="4">
         <SelectBasic
           setData={setRole}
           inputValue={role}
@@ -90,27 +91,27 @@ export default function FormUserAdd() {
           <option value="2">Rector</option>
           <option value="3">Secretaria</option>
         </SelectBasic>
-      </div>
+      </FloatingFormCol12x>
 
-      <div className="col-md-4">
+      <FloatingFormCol12x x="4">
         <InputText
           setText={setName}
           inputValue={name}
           placeholder="Name"
           labelInfo="Nombres:"
         />
-      </div>
+      </FloatingFormCol12x>
 
-      <div className="col-md-4">
+      <FloatingFormCol12x x="4">
         <InputText
           setText={setLastname}
           inputValue={lastname}
           placeholder="Lastname"
           labelInfo="Apellidos:"
         />
-      </div>
+      </FloatingFormCol12x>
 
-      <div className="col-md-8">
+      <FloatingFormCol12x x="8">
         <SelectBasic
           setData={setDocType}
           inputValue={docType}
@@ -122,51 +123,51 @@ export default function FormUserAdd() {
             </option>
           ))}
         </SelectBasic>
-      </div>
+      </FloatingFormCol12x>
 
-      <div className="col-md-4">
+      <FloatingFormCol12x x="4">
         <InputNumber
           setNumber={setDoc}
           inputValue={doc}
           placeholder="Document"
           labelInfo="Documento:"
         />
-      </div>
+      </FloatingFormCol12x>
 
-      <div className="col-md-8">
+      <FloatingFormCol12x x="8">
         <InputEmail
           setEmail={setEmail}
           inputValue={email}
           labelInfo="Correo institucional:"
         />
-      </div>
+      </FloatingFormCol12x>
 
-      <div className="col-md-4">
+      <FloatingFormCol12x x="4">
         <InputNumber
           setNumber={setTel}
           inputValue={tel}
           placeholder="Phone"
           labelInfo="Número de celular:"
         />
-      </div>
+      </FloatingFormCol12x>
 
-      <div className="col-md-6">
+      <FloatingFormCol12x x="6">
         <InputPassword
           setPassword={setPassword}
           inputValue={password}
           placeholder="Password"
           labelInfo="Contraseña:"
         />
-      </div>
+      </FloatingFormCol12x>
 
-      <div className="col-md-6">
+      <FloatingFormCol12x x="6">
         <InputPassword
           setPassword={setPasswordConfirmation}
           inputValue={passwordConfirmation}
           placeholder="Confirm password"
           labelInfo="Confirmar contraseña:"
         />
-      </div>
+      </FloatingFormCol12x>
 
       <Submitter loading={loading}>
         {!loading ? (

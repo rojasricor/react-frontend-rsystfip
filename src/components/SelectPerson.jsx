@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCES_ROUTE } from "../utils/constants";
+import FloatingFormCol12x from "./FloatingFormCol12x";
 
 export default function SelectPerson() {
   const {
@@ -33,27 +34,25 @@ export default function SelectPerson() {
   }, [person]);
 
   return (
-    <div className="col-md-6">
-      <div className="form-floating">
-        <select
-          onChange={(evt) => setPerson(evt.target.value)}
-          value={person}
-          className="form-select"
-          required
-        >
-          <option value={UNSET_STATUS} disabled>
-            No seleccionado
-          </option>
-          {categories.map((categorie, index) => {
-            return (
-              <option key={index} value={categorie.id}>
-                {categorie.person}
-              </option>
-            );
-          })}
-        </select>
-        <label className="form-label">Persona a registrar:</label>
-      </div>
-    </div>
+    <FloatingFormCol12x x="6">
+      <select
+        onChange={(evt) => setPerson(evt.target.value)}
+        value={person}
+        className="form-select"
+        required
+      >
+        <option value={UNSET_STATUS} disabled>
+          No seleccionado
+        </option>
+        {categories.map((categorie, index) => {
+          return (
+            <option key={index} value={categorie.id}>
+              {categorie.person}
+            </option>
+          );
+        })}
+      </select>
+      <label className="form-label">Persona a registrar:</label>
+    </FloatingFormCol12x>
   );
 }

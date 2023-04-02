@@ -5,7 +5,7 @@ export default function InputNumber({
   labelInfo,
 }) {
   return (
-    <div className="form-floating">
+    <>
       <input
         onChange={(evt) => setNumber(evt.target.value)}
         value={inputValue}
@@ -15,6 +15,6 @@ export default function InputNumber({
         required
       />
       <label className="form-label">{labelInfo}</label>
-    </div>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCES_ROUTE } from "../utils/constants";
+import FloatingFormCol12x from "./FloatingFormCol12x";
 
 export default function SelectDocument() {
   const { setDoctype, doctype, disabledAll, disabledAfterAutocomplete } =
@@ -14,28 +15,26 @@ export default function SelectDocument() {
   }, []);
 
   return (
-    <div className="col-md-6">
-      <div className="form-floating">
-        <select
-          onChange={(evt) => setDoctype(evt.target.value)}
-          value={doctype}
-          className="form-select"
-          disabled={disabledAll || disabledAfterAutocomplete}
-          required
-        >
-          <option value={UNSET_STATUS} disabled>
-            No seleccionado
-          </option>
-          {documents.map((document, index) => {
-            return (
-              <option key={index} value={document.id}>
-                {document.description}
-              </option>
-            );
-          })}
-        </select>
-        <label className="form-label">Tipo de Documento:</label>
-      </div>
-    </div>
+    <FloatingFormCol12x x="6">
+      <select
+        onChange={(evt) => setDoctype(evt.target.value)}
+        value={doctype}
+        className="form-select"
+        disabled={disabledAll || disabledAfterAutocomplete}
+        required
+      >
+        <option value={UNSET_STATUS} disabled>
+          No seleccionado
+        </option>
+        {documents.map((document, index) => {
+          return (
+            <option key={index} value={document.id}>
+              {document.description}
+            </option>
+          );
+        })}
+      </select>
+      <label className="form-label">Tipo de Documento:</label>
+    </FloatingFormCol12x>
   );
 }

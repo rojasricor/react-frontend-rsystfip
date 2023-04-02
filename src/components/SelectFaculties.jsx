@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCES_ROUTE } from "../utils/constants";
-import DivCol12 from "./DivCol12";
+import FloatingFormCol12x from "./FloatingFormCol12x";
 
 export default function SelectFaculties() {
   const {
@@ -20,29 +20,27 @@ export default function SelectFaculties() {
   }, []);
 
   return (
-    <DivCol12>
-      <div className="form-floating">
-        <select
-          onChange={(evt) => setFacultie(evt.target.value)}
-          value={facultie}
-          className="form-select"
-          ref={facultieSelectRef}
-          disabled={disabledAll || disabledAfterAutocomplete}
-          required
-        >
-          <option value={UNSET_STATUS} disabled>
-            No seleccionado
-          </option>
-          {faculties.map((facultie, index) => {
-            return (
-              <option key={index} value={facultie.id}>
-                {facultie.name}
-              </option>
-            );
-          })}
-        </select>
-        <label className="form-label">Facultad:</label>
-      </div>
-    </DivCol12>
+    <FloatingFormCol12x>
+      <select
+        onChange={(evt) => setFacultie(evt.target.value)}
+        value={facultie}
+        className="form-select"
+        ref={facultieSelectRef}
+        disabled={disabledAll || disabledAfterAutocomplete}
+        required
+      >
+        <option value={UNSET_STATUS} disabled>
+          No seleccionado
+        </option>
+        {faculties.map((facultie, index) => {
+          return (
+            <option key={index} value={facultie.id}>
+              {facultie.name}
+            </option>
+          );
+        })}
+      </select>
+      <label className="form-label">Facultad:</label>
+    </FloatingFormCol12x>
   );
 }

@@ -5,7 +5,7 @@ export default function InputPassword({
   labelInfo,
 }) {
   return (
-    <div className="form-floating">
+    <>
       <input
         onChange={(evt) => setPassword(evt.target.value)}
         value={inputValue}
@@ -16,6 +16,6 @@ export default function InputPassword({
         required
       />
       <label className="form-label">{labelInfo}</label>
-    </div>
+    </>
   );
 }

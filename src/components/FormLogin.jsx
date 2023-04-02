@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { API_ROUTE } from "../utils/constants";
-import { toast } from "react-toastify";
+import FloatingForm from "./FloatingForm";
 import Submitter from "./Submitter";
 import Spinner from "./Spinner";
+import { toast } from "react-toastify";
 import { IoMdLogIn } from "react-icons/io";
 
 export default function FormLogin() {
@@ -50,7 +51,7 @@ export default function FormLogin() {
 
   return (
     <form onSubmit={authenticate} className="row g-3">
-      <div className="form-floating">
+      <FloatingForm>
         <input
           onChange={(evt) => setUsername(evt.target.value)}
           value={username}
@@ -63,8 +64,8 @@ export default function FormLogin() {
           required
         />
         <label className="form-label fw-bold">Nombre de usuario</label>
-      </div>
-      <div className="form-floating">
+      </FloatingForm>
+      <FloatingForm>
         <input
           onChange={(evt) => setPassword(evt.target.value)}
           value={password}
@@ -75,7 +76,7 @@ export default function FormLogin() {
           required
         />
         <label className="form-label fw-bold">Contraseña</label>
-      </div>
+      </FloatingForm>
       <Submitter loading={loading}>
         {!loading ? (
           <>

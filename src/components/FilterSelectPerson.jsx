@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { UNSET_STATUS, RESOURCES_ROUTE } from "../utils/constants";
+import FloatingFormCol12x from "./FloatingFormCol12x";
 
 export default function FilterSelectPerson({ setCategory }) {
   const [categories, setCategories] = useState([]);
@@ -11,21 +12,19 @@ export default function FilterSelectPerson({ setCategory }) {
   }, []);
 
   return (
-    <div className="col-md-2">
-      <div className="form-floating">
-        <select
-          onChange={(evt) => setCategory(evt.target.value)}
-          className="form-select"
-        >
-          <option value={UNSET_STATUS}>No seleccionado</option>
-          {categories.map((category, index) => (
-            <option key={index} value={category.id}>
-              {category.person}
-            </option>
-          ))}
-        </select>
-        <label className="form-label">Persona:</label>
-      </div>
-    </div>
+    <FloatingFormCol12x x="2">
+      <select
+        onChange={(evt) => setCategory(evt.target.value)}
+        className="form-select"
+      >
+        <option value={UNSET_STATUS}>No seleccionado</option>
+        {categories.map((category, index) => (
+          <option key={index} value={category.id}>
+            {category.person}
+          </option>
+        ))}
+      </select>
+      <label className="form-label">Persona:</label>
+    </FloatingFormCol12x>
   );
 }

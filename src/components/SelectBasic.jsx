@@ -7,7 +7,7 @@ export default function SelectBasic({
   labelInfo,
 }) {
   return (
-    <div className="form-floating">
+    <>
       <select
         onChange={(evt) => setData(evt.target.value)}
         value={inputValue}
@@ -20,6 +20,6 @@ export default function SelectBasic({
         {children}
       </select>
       <label className="form-label">{labelInfo}</label>
-    </div>
+    </>
   );
 }

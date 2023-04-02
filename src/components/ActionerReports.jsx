@@ -10,16 +10,14 @@ export default function ActionerReports() {
   const [startDate, setStartDate] = useState(getStartMonthDate());
   const [endDate, setEndDate] = useState(getEndMonthDate());
   const [category, setCategory] = useState(UNSET_STATUS);
-  const [linkReport, setLinkReport] = useState("");
 
   async function getReports() {
     const request = await fetch(
-      `${API_ROUTE}/get/reports?start=${startDate}&end=${endDate}&category=${category}`
+      `${API_ROUTE}/get/reports/date?start=${startDate}&end=${endDate}&category=${category}`
     );
-    const { reports, linkReport } = await request.json();
+    const reports = await request.json();
     setReport(reports);
     setReportFiltered(reports);
-    setLinkReport(linkReport);
   }
 
   useEffect(() => {
@@ -46,8 +44,7 @@ export default function ActionerReports() {
         setEndDate={setEndDate}
         endDate={endDate}
         setCategory={setCategory}
-        category={category}
-        linkReport={linkReport}
+        reportsFiltered={reportFiltered}
       />
       <div className="table-responsive mt-5">
         <TableReports reportFiltered={reportFiltered} />

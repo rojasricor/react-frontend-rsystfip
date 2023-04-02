@@ -8,8 +8,7 @@ export default function DaterReports({
   setEndDate,
   endDate,
   setCategory,
-  category,
-  linkReport,
+  reportsFiltered,
 }) {
   return (
     <div className="row g-3">
@@ -24,10 +23,9 @@ export default function DaterReports({
       <FilterSelectPerson setCategory={setCategory} />
 
       <GetterReports
-        linkReport={linkReport}
         startDate={startDate}
         endDate={endDate}
-        category={category}
+        reportsFiltered={reportsFiltered}
       />
     </div>
   );

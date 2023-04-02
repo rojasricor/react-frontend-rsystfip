@@ -1,15 +1,15 @@
-import { HiCodeBracketSquare } from "react-icons/all";
+import { FaCode } from "react-icons/fa";
 
 export default function Footer() {
   return (
     <footer className="px-3 py-2 fixed-bottom bg-dark">
-      <span className="text-secondary">
+      <span className="text-muted">
         Sistema de Agendamiento
         <span className="text-white">&nbsp;RSystfip</span>
         &nbsp;|&nbsp;
         <span className="text-white">
           Tecnología en Gestión Informatica&nbsp;
-          <HiCodeBracketSquare className="mb-1" />
+          <FaCode />
         </span>
       </span>
     </footer>

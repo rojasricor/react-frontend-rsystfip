@@ -9,7 +9,7 @@ import { BsCalendarDay } from "react-icons/bs";
 import { TiHome } from "react-icons/ti";
 import { ImUsers, ImUserPlus } from "react-icons/im";
 import { IoCalendarNumber } from "react-icons/io5";
-import { HiListBullet } from "react-icons/all";
+import { HiListBullet } from "react-icons/hi2";
 import ProtectedElement from "./ProtectedElement";
 import NavDropdown from "./NavDropdown";
 

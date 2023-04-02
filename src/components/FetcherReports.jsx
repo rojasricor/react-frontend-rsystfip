@@ -245,7 +245,7 @@ export default function FetcherReports({
         className="btn btn-light btn-sm"
         title="Reporte PDF"
       >
-        Descargar PDF <BsDownload className="mb-1" />
+        Descargar <BsDownload className="mb-1" />
       </button>
     </DivCol12>
   );

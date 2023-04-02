@@ -12,7 +12,7 @@ export default function Charter({ scheduling_type }) {
   const [init, setInit] = useState("");
   const [start, setStart] = useState(getStartMonthDate());
   const [end, setEnd] = useState(getEndMonthDate());
-  const [tyChart, setTyChart] = useState("line");
+  const [tyChart, setTyChart] = useState("polarArea");
   const [mostAgendatedByDate, setMostAgendatedByDate] = useState([]);
   const [mostAgendatedOfAllTime, setMostAgendatedOfAllTime] = useState([]);
 

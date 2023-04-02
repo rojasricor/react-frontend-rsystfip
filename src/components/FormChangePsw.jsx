@@ -6,7 +6,7 @@ import Submitter from "./Submitter";
 import Spinner from "./Spinner";
 import { BiKey } from "react-icons/bi";
 
-export default function FormPasswordChanger({ userId }) {
+export default function FormChangePsw({ userId }) {
   const [current_password, setCurrent_password] = useState("");
   const [new_password, setNew_password] = useState("");
   const [new_password_confirm, setNew_password_confirm] = useState("");

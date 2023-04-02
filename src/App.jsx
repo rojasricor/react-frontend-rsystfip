@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage"));
 const AddUserPage = lazy(() => import("./pages/AddUserPage"));
-const PasswordUserPage = lazy(() => import("./pages/PasswordUserPage"));
+const PswChangeUserPage = lazy(() => import("./pages/PswChangeUserPage"));
 const ProgrammingPage = lazy(() => import("./pages/ProgrammingPage"));
 const ProgrammingViewPage = lazy(() => import("./pages/ProgrammingViewPage"));
 const AddPeoplePage = lazy(() => import("./pages/AddPeoplePage"));
@@ -47,7 +47,7 @@ function App() {
               <Route path="/home/welcome" element={<HomePage />} />
               <Route
                 path="/users/manage/password/:role/change"
-                element={<PasswordUserPage />}
+                element={<PswChangeUserPage />}
               />
               <Route
                 path="/people/view/:id/edit"

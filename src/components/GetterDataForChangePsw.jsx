@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { API_ROUTE } from "../utils/constants";
-import FormPasswordChanger from "./FormPasswordChanger";
+import FormChangePsw from "./FormChangePsw";
 
-export default function GetterPasswordChanger() {
+export default function GetterDataForChangePsw() {
   const { role } = useParams();
   const [user, setUser] = useState([]);
 
@@ -16,7 +16,7 @@ export default function GetterPasswordChanger() {
   return (
     <>
       <h1 className="h3 text-center">Cambiar contraseña para {user.email}</h1>
-      <FormPasswordChanger userId={user.id} />
+      <FormChangePsw userId={user.id} />
     </>
   );
 }

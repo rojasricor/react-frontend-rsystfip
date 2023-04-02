@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import DivRow from "../components/DivRow";
-import GetterPasswordChanger from "../components/GetterPasswordChanger";
+import GetterDataForChangePsw from "../components/GetterDataForChangePsw";
 import { ToastContainer } from "react-toastify";
 
-export default function PasswordUserPage() {
+export default function PswChangeUserPage() {
   useEffect(() => {
     document.title = "RSystfip | Change Password Users";
   }, []);
@@ -12,7 +12,7 @@ export default function PasswordUserPage() {
     <DivRow>
       <div className="col-md-4 mx-auto">
         <div className="card card-body border-0 rounded-4 shadow">
-          <GetterPasswordChanger />
+          <GetterDataForChangePsw />
         </div>
       </div>
       <ToastContainer />

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { Navigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { FaInfoCircle } from "react-icons/fa";
+import { BsQuestionCircle } from "react-icons/bs";
 import { BiKey, BiLogOutCircle } from "react-icons/bi";
 
 export default function NavLogoutDropdown({ avatar }) {
@@ -27,7 +27,7 @@ export default function NavLogoutDropdown({ avatar }) {
       <ul className="dropdown-menu dropdown-menu-lg-end text-small rounded-3 border shadow">
         <li>
           <NavLink to="/help/asks/frecuently" className="dropdown-item">
-            Ayuda... <FaInfoCircle className="mb-1" />
+            Ayuda... <BsQuestionCircle className="mb-1" />
           </NavLink>
         </li>
         <li>

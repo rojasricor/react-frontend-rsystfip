@@ -1,9 +1,14 @@
 import { NavLink } from "react-router-dom";
 import ProtectedElement from "./ProtectedElement";
 import NavDropdown from "./NavDropdown";
-import { FaUsersCog, FaInfoCircle } from "react-icons/fa";
+import { FaUsersCog } from "react-icons/fa";
 import { MdEventNote } from "react-icons/md";
-import { BsBarChartLineFill, BsFilePdf, BsFolderPlus } from "react-icons/bs";
+import {
+  BsBarChartLineFill,
+  BsFilePdf,
+  BsFolderPlus,
+  BsQuestionCircle,
+} from "react-icons/bs";
 import { FiDownloadCloud } from "react-icons/fi";
 import { TiHome } from "react-icons/ti";
 import { ImUsers, ImUserPlus } from "react-icons/im";
@@ -140,7 +145,7 @@ export default function NavMenu({ permissions }) {
           className="nav-item nav-link"
           title="Preguntas y respuestas más frecuentes"
         >
-          FAQs <FaInfoCircle className="mb-1" />
+          FAQs <BsQuestionCircle className="mb-1" />
         </NavLink>
       </div>
     </nav>

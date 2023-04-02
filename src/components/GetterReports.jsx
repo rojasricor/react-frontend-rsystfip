@@ -11,13 +11,15 @@ export default function GetterReports({ startDate, endDate, reportsFiltered }) {
   const [reportsCountOnRange, setReportsCountOnRange] = useState([]);
   const [reportsCountOffAllTime, setReportsCountOffAllTime] = useState([]);
 
-  let base64Img = "";
+  let institutional_logotype_base_64 = "";
   fetch("/img/admin/avatar.png")
     .then((request) => request.blob())
     .then((response) => {
       const reader = new FileReader();
       reader.readAsDataURL(response);
-      reader.addEventListener("load", () => (base64Img = reader.result));
+      reader.addEventListener("load", () => {
+        institutional_logotype_base_64 = reader.result;
+      });
     });
 
   function getAllPeople() {
@@ -56,7 +58,7 @@ export default function GetterReports({ startDate, endDate, reportsFiltered }) {
         header: {
           columns: [
             {
-              image: base64Img,
+              image: institutional_logotype_base_64,
               width: 70,
               height: 70,
               margin: [23, 14],

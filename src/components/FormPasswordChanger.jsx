@@ -75,7 +75,7 @@ export default function FormPasswordChanger({ userId }) {
       <Submitter loading={loading}>
         {!loading ? (
           <>
-            Cambiar contraseña <BiKey className="mb-1" />
+            Continuar <BiKey className="mb-1" />
           </>
         ) : (
           <Spinner tam="lg" />

@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { PeopleContext } from "../context/PeopleContext";
+import { useNavigate } from "react-router-dom";
 import ProtectedElement from "./ProtectedElement";
 import Spinner from "./Spinner";
 import SmallCaption from "./SmallCaption";
-import { FaCheckDouble } from "react-icons/fa";
+import { FaUserPlus } from "react-icons/fa";
 import { GiReturnArrow } from "react-icons/gi";
 import { ToastContainer } from "react-toastify";
 
@@ -33,7 +33,7 @@ export default function FooterFormPeople({ actionRequireIt }) {
         >
           {!loading ? (
             <>
-              Guardar <FaCheckDouble className="mb-1" />
+              Registrar <FaUserPlus className="mb-1" />
             </>
           ) : (
             <Spinner tam="lg" />

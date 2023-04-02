@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import ProtectedElement from "./ProtectedElement";
+import NavDropdown from "./NavDropdown";
 import {
   FaUsersCog,
   FaChartArea,
@@ -10,8 +12,6 @@ import { TiHome } from "react-icons/ti";
 import { ImUsers, ImUserPlus } from "react-icons/im";
 import { IoCalendarNumber } from "react-icons/io5";
 import { HiListBullet } from "react-icons/hi2";
-import ProtectedElement from "./ProtectedElement";
-import NavDropdown from "./NavDropdown";
 
 export default function NavMenu({ permissions }) {
   return (

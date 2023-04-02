@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ImUserPlus } from "react-icons/im";
 import DivRow from "../components/DivRow";
 import TableUsers from "../components/TableUsers";
+import { FaUserPlus } from "react-icons/fa";
 import { ToastContainer } from "react-toastify";
 
 export default function DashboardPage() {
@@ -17,7 +17,7 @@ export default function DashboardPage() {
           <h1 className="h3 text-center">Administrar usuarios</h1>
           <div className="col-md-12">
             <Link to="add" className="btn btn-dark btn-sm text-light mb-2 mt-2">
-              <ImUserPlus />
+              <FaUserPlus />
             </Link>
           </div>
           <TableUsers />

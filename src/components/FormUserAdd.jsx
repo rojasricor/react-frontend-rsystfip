@@ -8,7 +8,7 @@ import InputNumber from "./InputNumber";
 import InputPassword from "./InputPassword";
 import Submitter from "./Submitter";
 import Spinner from "./Spinner";
-import { FaCheckDouble } from "react-icons/fa";
+import { FaUserPlus } from "react-icons/fa";
 
 export default function FormUserAdd() {
   const [documents, setDocuments] = useState([]);
@@ -171,7 +171,7 @@ export default function FormUserAdd() {
       <Submitter loading={loading}>
         {!loading ? (
           <>
-            Guardar <FaCheckDouble className="mb-1" />
+            Registrar <FaUserPlus />
           </>
         ) : (
           <Spinner tam="lg" />

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { API_ROUTE } from "../utils/constants";
 import DivCol12 from "./DivCol12";
-import { FaDownload } from "react-icons/fa";
-import { formatTodaysDateTime } from "../utils/resources";
 import pdfMake from "pdfmake/build/pdfmake.min";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import { formatTodaysDateTime } from "../utils/resources";
+import { FaDownload } from "react-icons/fa";
 
 export default function GetterReports({ startDate, endDate, reportsFiltered }) {
   const [allPeople, setAllPeople] = useState([]);

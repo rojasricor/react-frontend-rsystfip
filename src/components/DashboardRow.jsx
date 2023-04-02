@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import { BiTrash, BiKey } from "react-icons/bi";
 import { API_ROUTE } from "../utils/constants";
+import { BiTrash, BiKey } from "react-icons/bi";
 
 export default function DashboardRow({ user }) {
   const [deleted, setDeleted] = useState(false);

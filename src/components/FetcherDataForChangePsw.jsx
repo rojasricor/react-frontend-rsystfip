@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { API_ROUTE } from "../utils/constants";
 import FormChangePsw from "./FormChangePsw";
 
-export default function GetterDataForChangePsw() {
+export default function FetcherDataForChangePsw() {
   const { role } = useParams();
   const [user, setUser] = useState([]);
 

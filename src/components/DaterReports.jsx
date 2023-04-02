@@ -1,6 +1,6 @@
 import InputDate from "./InputDate";
 import FilterSelectPerson from "./FilterSelectPerson";
-import GetterReports from "./GetterReports";
+import FetcherReports from "./FetcherReports";
 
 export default function DaterReports({
   setStartDate,
@@ -22,7 +22,7 @@ export default function DaterReports({
 
       <FilterSelectPerson setCategory={setCategory} />
 
-      <GetterReports
+      <FetcherReports
         startDate={startDate}
         endDate={endDate}
         reportsFiltered={reportsFiltered}

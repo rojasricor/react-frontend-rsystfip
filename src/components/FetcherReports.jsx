@@ -6,7 +6,11 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 import { formatTodaysDateTime } from "../utils/resources";
 import { FaDownload } from "react-icons/fa";
 
-export default function GetterReports({ startDate, endDate, reportsFiltered }) {
+export default function FetcherReports({
+  startDate,
+  endDate,
+  reportsFiltered,
+}) {
   const [allPeople, setAllPeople] = useState([]);
   const [reportsCountOnRange, setReportsCountOnRange] = useState([]);
   const [reportsCountOffAllTime, setReportsCountOffAllTime] = useState([]);

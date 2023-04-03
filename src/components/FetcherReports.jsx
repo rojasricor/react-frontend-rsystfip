@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { API_ROUTE } from "../utils/constants";
-import DivCol12 from "./DivCol12";
+import FloatingFormCol12x from "./FloatingFormCol12x";
 import pdfMake from "pdfmake/build/pdfmake.min";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { formatTodaysDateTime } from "../utils/resources";
@@ -237,14 +237,15 @@ export default function FetcherReports({
   }
 
   return (
-    <DivCol12>
+    <FloatingFormCol12x x="2">
       <button
         onClick={makePdf}
-        className="btn btn-light btn-sm"
+        className="form-control btn btn-light"
         title="Reporte PDF"
       >
-        Descargar <BsDownload className="mb-1" />
+        PDF <BsDownload className="mb-1" />
       </button>
-    </DivCol12>
+      <label className="form-label">Descargar:</label>
+    </FloatingFormCol12x>
   );
 }

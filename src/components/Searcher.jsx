@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { API_ROUTE } from "../utils/api";
+import { API_ROUTE } from "../constants/api";
 import BtnGroup from "./BtnGroup";
 import Spinner from "./Spinner";
 import Responsive from "./Responsive";

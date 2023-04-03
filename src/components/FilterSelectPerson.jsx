@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { UNSET_STATUS, RESOURCE_ROUTE } from "../utils/api";
+import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants/api";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 

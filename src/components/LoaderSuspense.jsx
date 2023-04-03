@@ -1,4 +1,4 @@
-import "../assets/styles/loader.css";
+import "styles/loader.css";
 
 export default function LoaderSuspense() {
   return (

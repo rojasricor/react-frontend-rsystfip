@@ -1,4 +1,4 @@
-import { UNSET_STATUS } from "../utils/api";
+import { UNSET_STATUS } from "../constants/api";
 import Label from "./Label";
 
 export default function SelectBasic({

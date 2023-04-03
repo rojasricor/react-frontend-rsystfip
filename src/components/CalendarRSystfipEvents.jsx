@@ -8,7 +8,7 @@ import daygrid from "@fullcalendar/daygrid";
 import esLocale from "@fullcalendar/core/locales/es";
 import { formatTodaysDate, formatTodaysDateTime } from "../utils/todaylib";
 import { globalLocales } from "fullcalendar";
-import { API_ROUTE } from "../utils/api";
+import { API_ROUTE } from "../constants/api";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min";
 import { toast } from "react-toastify";
 

@@ -33,13 +33,11 @@ export default function SelectFaculties() {
         <option value={UNSET_STATUS} disabled>
           No seleccionado
         </option>
-        {faculties.map((facultie, index) => {
-          return (
-            <option key={index} value={facultie.id}>
-              {facultie.name}
-            </option>
-          );
-        })}
+        {faculties.map((facultie, index) => (
+          <option key={index} value={facultie.id}>
+            {facultie.name}
+          </option>
+        ))}
       </select>
       <Label labelInfo="Facultad:" />
     </FloatingFormCol12x>

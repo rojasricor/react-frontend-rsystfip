@@ -65,7 +65,6 @@ export default function FormChangePsw({ userId }) {
         </FloatingFormCol12x>
 
         <FloatingFormCol12x>
-          {" "}
           <InputPassword
             setPassword={setNew_password}
             inputValue={new_password}

@@ -12,9 +12,9 @@ export default function Charter({ scheduling_type }) {
   const [init, setInit] = useState("");
   const [start, setStart] = useState(getStartMonthDate());
   const [end, setEnd] = useState(getEndMonthDate());
-  const [tyChart, setTyChart] = useState("polarArea");
-  const [mostAgendatedByDate, setMostAgendatedByDate] = useState([]);
-  const [mostAgendatedOfAllTime, setMostAgendatedOfAllTime] = useState([]);
+  const [chartType, setChartType] = useState("polarArea");
+  const [mostAgendatedOnRange, setMostAgendatedOnRange] = useState([]);
+  const [mostAgendatedAlltime, setMostAgendatedAlltime] = useState([]);
 
   const xitRef = useRef(null);
 
@@ -24,7 +24,7 @@ export default function Charter({ scheduling_type }) {
     }
     setChart(
       new Chart(xitRef.current, {
-        type: tyChart,
+        type: chartType,
         data: {
           labels: labels,
           datasets: [
@@ -73,7 +73,7 @@ export default function Charter({ scheduling_type }) {
     );
   }
 
-  async function getStatisticsByStartAndEndDate() {
+  async function getStatistics() {
     const request = await fetch(
       `${API_ROUTE}/statistics/${scheduling_type}?start=${start}&end=${end}`
     );
@@ -88,24 +88,24 @@ export default function Charter({ scheduling_type }) {
       `${API_ROUTE}/statistics/${scheduling_type}/onrange?start=${start}&end=${end}`
     );
     const data = await request.json();
-    setMostAgendatedByDate(data);
+    setMostAgendatedOnRange(data);
   }
 
-  async function getMostAgendatedOfAllTime() {
+  async function getMostAgendatedAlltime() {
     const request = await fetch(
       `${API_ROUTE}/statistics/${scheduling_type}/alltime`
     );
     const data = await request.json();
     const init = data[0].init;
-    setMostAgendatedOfAllTime(data);
+    setMostAgendatedAlltime(data);
     setInit(init);
   }
 
   useEffect(() => {
-    getStatisticsByStartAndEndDate();
+    getStatistics();
     getMostAgendatedOnRange();
-    getMostAgendatedOfAllTime();
-  }, [start, end, tyChart]);
+    getMostAgendatedAlltime();
+  }, [start, end, chartType]);
 
   return (
     <>
@@ -120,15 +120,15 @@ export default function Charter({ scheduling_type }) {
           start={start}
           setEnd={setEnd}
           end={end}
-          setTyChart={setTyChart}
+          setChartType={setChartType}
         />
       </DivCol12>
 
       <Xit xitRef={xitRef} />
 
       <ListerStatistics
-        mostAgendatedByDate={mostAgendatedByDate}
-        mostAgendatedOfAllTime={mostAgendatedOfAllTime}
+        mostAgendatedOnRange={mostAgendatedOnRange}
+        mostAgendatedAlltime={mostAgendatedAlltime}
         init={init}
         start={start}
         end={end}

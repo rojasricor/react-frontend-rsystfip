@@ -12,15 +12,18 @@ import { ToastContainer } from "react-toastify";
 export default function FooterFormPeople({ actionRequireIt }) {
   const { loading } = useContext(PeopleContext);
   const navigate = useNavigate();
+
+  function returnToBack(evt) {
+    evt.preventDefault();
+    navigate(-1);
+  }
+
   return (
     <>
       <ProtectedElement isAllowed={actionRequireIt}>
         <DivCol12 x="6">
           <button
-            onClick={(evt) => {
-              evt.preventDefault();
-              navigate(-1);
-            }}
+            onClick={returnToBack}
             className="w-100 btn btn-light btn-lg border my-2"
           >
             Volver <GiReturnArrow />

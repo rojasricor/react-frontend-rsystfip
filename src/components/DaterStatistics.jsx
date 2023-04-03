@@ -7,7 +7,7 @@ export default function DaterStatistics({
   start,
   setEnd,
   end,
-  setTyChart,
+  setChartType,
 }) {
   return (
     <DivRow>
@@ -15,7 +15,7 @@ export default function DaterStatistics({
 
       <InputDate labelInfo="Hasta:" setDate={setEnd} inputValue={end} />
 
-      <FilterChart setTyChart={setTyChart} />
+      <FilterChart setChartType={setChartType} />
     </DivRow>
   );
 }

@@ -7,7 +7,7 @@ import { BiTrash, BiKey } from "react-icons/bi";
 export default function DashboardRow({ user }) {
   const [deleted, setDeleted] = useState(false);
 
-  async function hdClkDelete({ id }) {
+  async function deleteUser({ id }) {
     if (!confirm("Seguro(a) de eliminar ese usuario?")) {
       return;
     }
@@ -57,7 +57,7 @@ export default function DashboardRow({ user }) {
           <BiKey />
         </Link>
         <button
-          onClick={() => hdClkDelete(user)}
+          onClick={() => deleteUser(user)}
           className={
             user.id !== 3
               ? "btn btn-danger border m-1"

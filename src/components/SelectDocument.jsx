@@ -27,13 +27,11 @@ export default function SelectDocument() {
         <option value={UNSET_STATUS} disabled>
           No seleccionado
         </option>
-        {documents.map((document, index) => {
-          return (
-            <option key={index} value={document.id}>
-              {document.description}
-            </option>
-          );
-        })}
+        {documents.map((document, index) => (
+          <option key={index} value={document.id}>
+            {document.description}
+          </option>
+        ))}
       </select>
       <Label labelInfo="Tipo de Documento:" />
     </FloatingFormCol12x>

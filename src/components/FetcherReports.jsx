@@ -12,9 +12,9 @@ export default function FetcherReports({
   endDate,
   reportsFiltered,
 }) {
-  const [allPeople, setAllPeople] = useState([]);
+  const [people, setPeople] = useState([]);
   const [reportsCountOnRange, setReportsCountOnRange] = useState([]);
-  const [reportsCountOffAllTime, setReportsCountOffAllTime] = useState([]);
+  const [reportsCountAlltime, setReportsCountAlltime] = useState([]);
 
   let institutional_logotype_base_64 = "";
   fetch("/img/admin/avatar.png")
@@ -22,15 +22,16 @@ export default function FetcherReports({
     .then((response) => {
       const reader = new FileReader();
       reader.readAsDataURL(response);
-      reader.addEventListener("load", () => {
-        institutional_logotype_base_64 = reader.result;
-      });
+      reader.addEventListener(
+        "load",
+        () => (institutional_logotype_base_64 = reader.result)
+      );
     });
 
-  function getAllPeople() {
+  function getPeople() {
     fetch(`${API_ROUTE}/people`)
       .then((request) => request.json())
-      .then((data) => setAllPeople(data));
+      .then((data) => setPeople(data));
   }
 
   function getReportsCountOnRange() {
@@ -39,22 +40,22 @@ export default function FetcherReports({
       .then((data) => setReportsCountOnRange(data));
   }
 
-  function getReportsCountOfAllTime() {
+  function getReportsCountAlltime() {
     fetch(`${API_ROUTE}/reports/counts`)
       .then((request) => request.json())
-      .then((data) => setReportsCountOffAllTime(data));
+      .then((data) => setReportsCountAlltime(data));
   }
 
   useEffect(() => {
-    getAllPeople();
-    getReportsCountOfAllTime();
+    getPeople();
+    getReportsCountAlltime();
   }, []);
 
   useEffect(() => {
     getReportsCountOnRange();
   }, [startDate, endDate]);
 
-  function makePdf() {
+  function createPdf() {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
     pdfMake
       .createPdf({
@@ -86,12 +87,12 @@ export default function FetcherReports({
         }),
         content: [
           {
-            text: `Total personas agendadas: (${allPeople.length})`,
+            text: `Total personas agendadas: (${people.length})`,
             style: "header",
             alignment: "center",
             marginBottom: 30,
           },
-          allPeople.length !== 0
+          people.length !== 0
             ? {
                 layout: "lightHorizontalLines",
                 alignment: "center",
@@ -109,15 +110,13 @@ export default function FetcherReports({
                         style: "tableHeader",
                       },
                     ],
-                    ...allPeople.map(
-                      ({ id, name, person, fac, text_asunt }) => [
-                        id,
-                        name,
-                        person,
-                        fac,
-                        text_asunt,
-                      ]
-                    ),
+                    ...people.map(({ id, name, person, fac, text_asunt }) => [
+                      id,
+                      name,
+                      person,
+                      fac,
+                      text_asunt,
+                    ]),
                   ],
                 },
               }
@@ -192,13 +191,13 @@ export default function FetcherReports({
             : {},
           {
             text: `Cantidad total agendado(a)s:${
-              reportsCountOffAllTime.length !== 0 ? "" : " (0)"
+              reportsCountAlltime.length !== 0 ? "" : " (0)"
             }`,
             style: "header",
             alignment: "center",
             marginBottom: 30,
           },
-          reportsCountOffAllTime.length !== 0
+          reportsCountAlltime.length !== 0
             ? {
                 layout: "lightHorizontalLines",
                 alignment: "center",
@@ -211,7 +210,7 @@ export default function FetcherReports({
                       { text: "Tipo de persona", style: "tableHeader" },
                       { text: "Cantidad personas", style: "tableHeader" },
                     ],
-                    ...reportsCountOffAllTime.map(({ person, counts }) => [
+                    ...reportsCountAlltime.map(({ person, counts }) => [
                       person,
                       counts,
                     ]),
@@ -240,7 +239,7 @@ export default function FetcherReports({
   return (
     <FloatingFormCol12x x="2">
       <button
-        onClick={makePdf}
+        onClick={createPdf}
         className="form-control btn btn-light"
         title="Reporte PDF"
       >

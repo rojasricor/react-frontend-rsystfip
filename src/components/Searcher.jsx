@@ -26,33 +26,33 @@ export default function Searcher() {
   }, []);
 
   let timerId = null;
-  function handleFilterChange(evt) {
+  function filterPeople(evt) {
     clearTimeout(timerId);
-    timerId = setTimeout(() => {
-      const query = evt.target.value.toLowerCase();
-      setPeopleFiltered(
-        people.filter(
-          ({ name, num_doc }) =>
-            name.toLowerCase().startsWith(query) || num_doc.startsWith(query)
-        )
-      );
-    }, 500);
+    const query = evt.target.value.toLowerCase();
+    timerId = setTimeout(
+      () =>
+        setPeopleFiltered(
+          people.filter(
+            ({ name, num_doc }) =>
+              name.toLowerCase().startsWith(query) || num_doc.startsWith(query)
+          )
+        ),
+      500
+    );
   }
 
   return (
     <>
       <BtnGroup clAdds=" position-fixed bottom-px my-2">
         <input
-          onChange={handleFilterChange}
+          onChange={filterPeople}
           type="search"
           placeholder="Buscar una persona..."
           className="form-control form-control-sm border"
           autoFocus
         />
         <button
-          onClick={() => {
-            setPeopleFiltered(people);
-          }}
+          onClick={() => setPeopleFiltered(people)}
           className="btn btn-fc-primary"
           title="Refrescar datos"
         >

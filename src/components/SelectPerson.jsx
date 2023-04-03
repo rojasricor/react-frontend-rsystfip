@@ -45,13 +45,11 @@ export default function SelectPerson() {
         <option value={UNSET_STATUS} disabled>
           No seleccionado
         </option>
-        {categories.map((categorie, index) => {
-          return (
-            <option key={index} value={categorie.id}>
-              {categorie.person}
-            </option>
-          );
-        })}
+        {categories.map((categorie, index) => (
+          <option key={index} value={categorie.id}>
+            {categorie.person}
+          </option>
+        ))}
       </select>
       <Label labelInfo="Persona a registrar:" />
     </FloatingFormCol12x>

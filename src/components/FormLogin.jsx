@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { API_ROUTE } from "../utils/constants";
 import DivRow from "./DivRow";
 import FloatingFormCol12x from "./FloatingFormCol12x";
+import Label from "./Label";
 import Submitter from "./Submitter";
 import Spinner from "./Spinner";
 import { toast } from "react-toastify";
@@ -66,7 +67,7 @@ export default function FormLogin() {
             autoFocus
             required
           />
-          <label className="form-label fw-bold">Nombre de usuario
+          <Label labelInfo="Nombre de usuario" clAdds=" fw-bold" />
         </FloatingFormCol12x>
         <FloatingFormCol12x>
           <input
@@ -78,7 +79,7 @@ export default function FormLogin() {
             autoComplete="off"
             required
           />
-          <label className="form-label fw-bold">Contraseña
+          <Label labelInfo="Contraseña" clAdds=" fw-bold" />
         </FloatingFormCol12x>
         <Submitter loading={loading}>
           {!loading ? (

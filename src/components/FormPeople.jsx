@@ -12,21 +12,20 @@ import FooterFormPeople from "./FooterFormPeople";
 export default function FormPeople({ action }) {
   const { setStatus, schedulePerson, editPerson } = useContext(PeopleContext);
 
-  const actionRequireEditFunction = action === "edit";
+  const isEdit = action === "edit";
 
-  function doAddPerson(evt) {
+  function doForPerson(evt) {
     evt.preventDefault();
+    if (isEdit) {
+      return editPerson();
+    }
+
     setStatus(2);
     schedulePerson();
   }
 
-  function doEditPerson(evt) {
-    evt.preventDefault();
-    editPerson();
-  }
-
   return (
-    <form onSubmit={actionRequireEditFunction ? doEditPerson : doAddPerson}>
+    <form onSubmit={doForPerson}>
       <DivRow clAdds=" mt-2">
         <SelectPerson />
         <InputDocumentNumber />
@@ -34,7 +33,7 @@ export default function FormPeople({ action }) {
         <InputFullname />
         <SelectFaculties />
         <TextareaAsunt />
-        <FooterFormPeople actionRequireIt={actionRequireEditFunction} />
+        <FooterFormPeople isAllowed={isEdit} />
       </DivRow>
     </form>
   );

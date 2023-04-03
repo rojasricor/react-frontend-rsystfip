@@ -9,7 +9,7 @@ import { FaUserPlus } from "react-icons/fa";
 import { GiReturnArrow } from "react-icons/gi";
 import { ToastContainer } from "react-toastify";
 
-export default function FooterFormPeople({ actionRequireIt }) {
+export default function FooterFormPeople({ isAllowed }) {
   const { loading } = useContext(PeopleContext);
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ export default function FooterFormPeople({ actionRequireIt }) {
 
   return (
     <>
-      <ProtectedElement isAllowed={actionRequireIt}>
+      <ProtectedElement isAllowed={isAllowed}>
         <DivCol12 x="6">
           <button
             onClick={returnToBack}
@@ -30,7 +30,7 @@ export default function FooterFormPeople({ actionRequireIt }) {
           </button>
         </DivCol12>
       </ProtectedElement>
-      <DivCol12 x={actionRequireIt ? "6" : "12"}>
+      <DivCol12 x={isAllowed ? "6" : "12"}>
         <button
           className="w-100 btn btn-primary btn-lg border my-2"
           disabled={loading}

@@ -109,7 +109,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
             initialView={initialView}
           />
         </ContainerFluid>
-        <p className="text-center mt-2">Agendamiento programado mes a mes.</p>
+        <p className="text-center mt-2">Scheduled scheduling month to month.</p>
       </Responsive>
     </>
   );

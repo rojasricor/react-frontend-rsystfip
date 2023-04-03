@@ -1,7 +1,7 @@
 export default function SmallCaption() {
   return (
     <small className="text-muted">
-      Por favor verifique que los datos estén correctos
+      Please verify that data to send are correct.
     </small>
   );
 }

@@ -1,9 +1,11 @@
 import ReportRow from "./ReportRow";
 
-export default function TableReports({ reportFiltered }) {
+export default function TableReports({ start, end, reportFiltered }) {
   return (
     <table className="table table-hover table-borderless table-sm text-center">
-      <caption>Datos sobre las personas agendadas este mes.</caption>
+      <caption>
+        Data about people schedule between {start} and {end}.
+      </caption>
       <thead>
         <tr>
           <th>Nombres</th>

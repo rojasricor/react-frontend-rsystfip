@@ -27,7 +27,7 @@ export default function NavLogoutDropdown({ avatar }) {
       <ul className="dropdown-menu dropdown-menu-lg-end text-small rounded-3 border shadow">
         <li>
           <NavLink to="/help/asks/frecuently" className="dropdown-item">
-            Ayuda... <BsQuestionCircle className="mb-1" />
+            FAQS <BsQuestionCircle className="mb-1" />
           </NavLink>
         </li>
         <li>
@@ -35,7 +35,7 @@ export default function NavLogoutDropdown({ avatar }) {
             to={`/users/manage/password/${user.id}/change`}
             className="dropdown-item"
           >
-            Cambiar mi contraseña <BiKey className="mb-1" />
+            Change password <BiKey className="mb-1" />
           </NavLink>
         </li>
         <li>
@@ -43,7 +43,7 @@ export default function NavLogoutDropdown({ avatar }) {
         </li>
         <li>
           <button onClick={logout} className="dropdown-item">
-            Cerrar sesión <BiLogOutCircle />
+            Logout <BiLogOutCircle />
           </button>
         </li>
       </ul>

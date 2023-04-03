@@ -48,7 +48,11 @@ export default function ActionerReports() {
         reportsFiltered={reportFiltered}
       />
       <Responsive>
-        <TableReports reportFiltered={reportFiltered} />
+        <TableReports
+          start={startDate}
+          end={endDate}
+          reportFiltered={reportFiltered}
+        />
       </Responsive>
     </>
   );

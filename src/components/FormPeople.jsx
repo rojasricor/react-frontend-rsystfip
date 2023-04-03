@@ -14,21 +14,19 @@ export default function FormPeople({ action }) {
 
   const actionRequireEditFunction = action === "edit";
 
-  function HandleSubmitAdd(evt) {
+  function doAddPerson(evt) {
     evt.preventDefault();
     setStatus(2);
     schedulePerson();
   }
 
-  function HandleSubmitEdit(evt) {
+  function doEditPerson(evt) {
     evt.preventDefault();
     editPerson();
   }
 
   return (
-    <form
-      onSubmit={actionRequireEditFunction ? HandleSubmitEdit : HandleSubmitAdd}
-    >
+    <form onSubmit={actionRequireEditFunction ? doEditPerson : doAddPerson}>
       <DivRow clAdds=" mt-2">
         <SelectPerson />
         <InputDocumentNumber />

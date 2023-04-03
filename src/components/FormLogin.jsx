@@ -12,19 +12,19 @@ import { IoMdLogIn } from "react-icons/io";
 
 export default function FormLogin() {
   const {
-    doLogin,
-    passwordVisible,
+    setUser,
     username,
     setUsername,
     password,
     setPassword,
+    passwordVisible,
   } = useContext(AppContext);
 
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  async function authenticate(evt) {
+  async function doLogin(evt) {
     evt.preventDefault();
     setLoading(true);
 
@@ -40,7 +40,7 @@ export default function FormLogin() {
       const { auth, user, error } = await response.json();
 
       if (auth) {
-        doLogin(user);
+        setUser(user);
         navigate("/home/welcome");
       } else {
         toast.error(error);
@@ -53,7 +53,7 @@ export default function FormLogin() {
   }
 
   return (
-    <form onSubmit={authenticate}>
+    <form onSubmit={doLogin}>
       <DivRow>
         <FloatingFormCol12x>
           <input

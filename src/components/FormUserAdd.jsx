@@ -25,7 +25,7 @@ export default function FormUserAdd() {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function addUser(evt) {
+  async function doCreateUser(evt) {
     evt.preventDefault();
     setLoading(true);
 
@@ -83,7 +83,7 @@ export default function FormUserAdd() {
   }, []);
 
   return (
-    <form onSubmit={addUser}>
+    <form onSubmit={doCreateUser}>
       <DivRow clAdds=" mt-2">
         <FloatingFormCol12x x="4">
           <SelectBasic

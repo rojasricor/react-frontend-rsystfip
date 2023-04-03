@@ -15,13 +15,13 @@ import { GiReturnArrow } from "react-icons/gi";
 export default function FormSchedulePeople() {
   const { schedulePerson, loading } = useContext(PeopleContext);
 
-  function HandleSubmitSchedule(evt) {
+  function doSchedulePerson(evt) {
     evt.preventDefault();
     schedulePerson();
   }
 
   return (
-    <form onSubmit={HandleSubmitSchedule} className="row g-2 mt-2 p-2">
+    <form onSubmit={doSchedulePerson} className="row g-2 mt-2 p-2">
       <SelectPerson />
       <InputDocumentNumber />
       <SelectDocument />

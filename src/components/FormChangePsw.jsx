@@ -14,7 +14,7 @@ export default function FormChangePsw({ userId }) {
   const [new_password_confirm, setNew_password_confirm] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function changePassword(evt) {
+  async function doChangePassword(evt) {
     evt.preventDefault();
     setLoading(true);
 
@@ -53,7 +53,7 @@ export default function FormChangePsw({ userId }) {
   }
 
   return (
-    <form onSubmit={changePassword}>
+    <form onSubmit={doChangePassword}>
       <DivRow clAdds=" mt-2">
         <FloatingFormCol12x>
           <InputPassword

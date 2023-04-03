@@ -6,14 +6,17 @@ import { BsQuestionCircle } from "react-icons/bs";
 import { BiKey, BiLogOutCircle } from "react-icons/bi";
 
 export default function NavLogoutDropdown({ avatar }) {
-  const { user, doLogout } = useContext(AppContext);
+  const { user, setUser, setUsername, setPassword } = useContext(AppContext);
 
   function logout() {
     if (!confirm(`${user.name} estás seguro(a)que deseas cerrar sesión?`)) {
       return;
     }
-    doLogout();
-    return <Navigate to="/auth/login" replace />;
+
+    setUser(null);
+    setUsername("");
+    setPassword("");
+    <Navigate to="/auth/login" replace />;
   }
 
   return (

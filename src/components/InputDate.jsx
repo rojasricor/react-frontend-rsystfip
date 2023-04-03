@@ -1,4 +1,5 @@
 import FloatingFormCol12x from "./FloatingFormCol12x";
+import Label from "./Label";
 
 export default function InputDate({ labelInfo, setDate, inputValue }) {
   return (
@@ -9,7 +10,7 @@ export default function InputDate({ labelInfo, setDate, inputValue }) {
         value={inputValue}
         className="form-control"
       />
-      <label className="form-label">{labelInfo}</label>
+      <Label labelInfo={labelInfo} />
     </FloatingFormCol12x>
   );
 }

@@ -1,3 +1,5 @@
+import Label from "./Label";
+
 export default function InputText({
   setText,
   inputValue,
@@ -17,7 +19,7 @@ export default function InputText({
         autoComplete="off"
         required
       />
-      <label className="form-label">{labelInfo}</label>
+      <Label labelInfo={labelInfo} />
     </>
   );
 }

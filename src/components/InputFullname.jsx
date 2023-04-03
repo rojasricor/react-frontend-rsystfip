@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import FloatingFormCol12x from "./FloatingFormCol12x";
+import Label from "./Label";
 
 export default function InputFullname() {
   const { disabledAll, disabledAfterAutocomplete, name, setName } =
@@ -21,7 +22,7 @@ export default function InputFullname() {
         disabled={disabledAll || disabledAfterAutocomplete}
         required
       />
-      <label className="form-label">Nombres y Apellidos:</label>
+      <Label labelInfo="Nombres y Apellidos:" />
     </FloatingFormCol12x>
   );
 }

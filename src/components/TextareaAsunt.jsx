@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import FloatingFormCol12x from "./FloatingFormCol12x";
+import Label from "./Label";
 
 export default function TextareaAsunt() {
   const { disabledAll, asunt, setAsunt } = useContext(PeopleContext);
@@ -19,7 +20,7 @@ export default function TextareaAsunt() {
         disabled={disabledAll}
         required
       />
-      <label className="form-label">Asunto:</label>
+      <Label labelInfo="Asunto:" />
     </FloatingFormCol12x>
   );
 }

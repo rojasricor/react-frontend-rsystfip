@@ -1,4 +1,5 @@
 import { UNSET_STATUS } from "../utils/constants";
+import Label from "./Label";
 
 export default function SelectBasic({
   children,
@@ -19,7 +20,7 @@ export default function SelectBasic({
         </option>
         {children}
       </select>
-      <label className="form-label">{labelInfo}</label>
+      <Label labelInfo={labelInfo} />
     </>
   );
 }

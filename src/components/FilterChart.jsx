@@ -1,4 +1,5 @@
 import FloatingFormCol12x from "./FloatingFormCol12x";
+import Label from "./Label";
 
 export default function FilterChart({ setTyChart }) {
   return (
@@ -15,7 +16,7 @@ export default function FilterChart({ setTyChart }) {
         <option value="pie">Pie</option>
         <option value="doughnut">Doughnut</option>
       </select>
-      <label className="form-label">Gráfica:</label>
+      <Label labelInfo="Gráfica:" />
     </FloatingFormCol12x>
   );
 }

@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../utils/constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
+import Label from "./Label";
 
 export default function SelectFaculties() {
   const {
@@ -40,7 +41,7 @@ export default function SelectFaculties() {
           );
         })}
       </select>
-      <label className="form-label">Facultad:</label>
+      <Label labelInfo="Facultad:" />
     </FloatingFormCol12x>
   );
 }

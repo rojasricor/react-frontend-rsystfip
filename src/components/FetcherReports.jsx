@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { API_ROUTE } from "../utils/constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
+import Label from "./Label";
 import pdfMake from "pdfmake/build/pdfmake.min";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { formatTodaysDateTime } from "../utils/resources";
@@ -245,7 +246,7 @@ export default function FetcherReports({
       >
         PDF <BsDownload className="mb-1" />
       </button>
-      <label className="form-label">Descargar:</label>
+      <Label labelInfo="Descargar:" />
     </FloatingFormCol12x>
   );
 }

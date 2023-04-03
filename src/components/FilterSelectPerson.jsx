@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../utils/constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
+import Label from "./Label";
 
 export default function FilterSelectPerson({ setCategory }) {
   const [categories, setCategories] = useState([]);
@@ -24,7 +25,7 @@ export default function FilterSelectPerson({ setCategory }) {
           </option>
         ))}
       </select>
-      <label className="form-label">Persona:</label>
+      <Label labelInfo="Persona:" />
     </FloatingFormCol12x>
   );
 }

@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../utils/constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
+import Label from "./Label";
 
 export default function SelectDocument() {
   const { setDoctype, doctype, disabledAll, disabledAfterAutocomplete } =
@@ -34,7 +35,7 @@ export default function SelectDocument() {
           );
         })}
       </select>
-      <label className="form-label">Tipo de Documento:</label>
+      <Label labelInfo="Tipo de Documento:" />
     </FloatingFormCol12x>
   );
 }

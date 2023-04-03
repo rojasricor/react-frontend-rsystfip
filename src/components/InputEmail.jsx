@@ -1,3 +1,5 @@
+import Label from "./Label";
+
 export default function InputEmail({ setEmail, inputValue, labelInfo }) {
   return (
     <>
@@ -11,7 +13,7 @@ export default function InputEmail({ setEmail, inputValue, labelInfo }) {
         autoComplete="off"
         required
       />
-      <label className="form-label">{labelInfo}</label>
+      <Label labelInfo={labelInfo} />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import FloatingFormCol12x from "./FloatingFormCol12x";
+import Label from "./Label";
 
 export default function InputDocumentNumber() {
   const { disabledAll, disabledAfterAutocomplete, doc, setDoc } =
@@ -18,7 +19,7 @@ export default function InputDocumentNumber() {
         disabled={disabledAll || disabledAfterAutocomplete}
         required
       />
-      <label className="form-label">Cédula:</label>
+      <Label labelInfo="Cédula:" />
     </FloatingFormCol12x>
   );
 }

@@ -1,3 +1,5 @@
+import Label from "./Label";
+
 export default function InputNumber({
   setNumber,
   inputValue,
@@ -14,7 +16,7 @@ export default function InputNumber({
         placeholder={placeholder}
         required
       />
-      <label className="form-label">{labelInfo}</label>
+      <Label labelInfo={labelInfo} />
     </>
   );
 }

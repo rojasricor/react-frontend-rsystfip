@@ -1,3 +1,5 @@
+import Label from "./Label";
+
 export default function InputPassword({
   setPassword,
   inputValue,
@@ -15,7 +17,7 @@ export default function InputPassword({
         autoComplete="off"
         required
       />
-      <label className="form-label">{labelInfo}</label>
+      <Label labelInfo={labelInfo} />
     </>
   );
 }

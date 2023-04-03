@@ -10,7 +10,7 @@ export default function SelectPerson() {
     setPerson,
     person,
     facultieSelectRef,
-    getStaffDeans,
+    getDeans,
   } = useContext(PeopleContext);
   const [categories, setCategories] = useState([]);
 
@@ -29,7 +29,7 @@ export default function SelectPerson() {
       if (person === "5") {
         facultieSelectRef.current.disabled = true;
       }
-      person === "4" && getStaffDeans();
+      person === "4" && getDeans();
     }
   }, [person]);
 

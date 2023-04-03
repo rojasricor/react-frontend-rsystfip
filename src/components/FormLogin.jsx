@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { API_ROUTE } from "../utils/constants";
@@ -12,20 +12,21 @@ import { IoMdLogIn } from "react-icons/io";
 export default function FormLogin() {
   const {
     doLogin,
-    setUsername,
-    username,
-    setPassword,
-    password,
     passwordVisible,
-    setLoading,
-    loading,
+    username,
+    setUsername,
+    password,
+    setPassword,
   } = useContext(AppContext);
+
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   async function authenticate(evt) {
     evt.preventDefault();
     setLoading(true);
+
     try {
       const response = await fetch(`${API_ROUTE}/auth`, {
         method: "POST",

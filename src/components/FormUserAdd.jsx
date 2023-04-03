@@ -28,6 +28,7 @@ export default function FormUserAdd() {
   async function addUser(evt) {
     evt.preventDefault();
     setLoading(true);
+
     try {
       const request = await fetch(`${API_ROUTE}/user`, {
         method: "POST",

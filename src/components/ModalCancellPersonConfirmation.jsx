@@ -3,8 +3,8 @@ import { PeopleContext } from "../context/PeopleContext";
 import Spinner from "./Spinner";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
-export default function ModalCancellScheduleConfirmation() {
-  const { cancellSchedule, loading } = useContext(PeopleContext);
+export default function ModalCancellPersonConfirmation() {
+  const { cancellPerson, loading } = useContext(PeopleContext);
 
   return (
     <div
@@ -28,7 +28,7 @@ export default function ModalCancellScheduleConfirmation() {
               No <FaTimes className="mb-1" />
             </button>
             <button
-              onClick={cancellSchedule}
+              onClick={cancellPerson}
               className="btn btn-danger border"
               data-bs-dismiss="modal"
               disabled={loading}

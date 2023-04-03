@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import LoadCalendar from "../components/LoadCalendar";
 import { PeopleContextProvider } from "../context/PeopleContext";
 import CalendarRSystfipEvents from "../components/CalendarRSystfipEvents";
-import ModalCancellScheduleConfirmation from "../components/ModalCancellScheduleConfirmation";
+import ModalCancellPersonConfirmation from "../components/ModalCancellPersonConfirmation";
 import { ToastContainer } from "react-toastify";
 
 export default function ProgrammingViewPage() {
@@ -17,7 +17,7 @@ export default function ProgrammingViewPage() {
         right="listMonth,dayGridMonth"
         initialView="listMonth"
       />
-      <ModalCancellScheduleConfirmation />
+      <ModalCancellPersonConfirmation />
       <ToastContainer />
     </PeopleContextProvider>
   );

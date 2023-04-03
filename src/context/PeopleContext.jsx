@@ -31,13 +31,14 @@ export function PeopleContextProvider({ children }) {
   const [start, setStart] = useState(formatTodaysDateTime());
   const [end, setEnd] = useState(formatTodaysDateTime());
   const [status, setStatus] = useState(2);
-  const [staffDeans, setStaffDeans] = useState(null);
+  const [deans, setDeans] = useState(null);
 
   // Ref to component select of facultie
   const facultieSelectRef = useRef(null);
 
-  async function cancellSchedule() {
+  async function cancellPerson() {
     setLoading(true);
+
     try {
       const request = await fetch(`${API_ROUTE}/person`, {
         method: "PATCH",
@@ -69,6 +70,7 @@ export function PeopleContextProvider({ children }) {
 
   async function schedulePerson() {
     setLoading(true);
+
     try {
       const request = await fetch(`${API_ROUTE}/person`, {
         method: "POST",
@@ -116,6 +118,7 @@ export function PeopleContextProvider({ children }) {
 
   async function editPerson() {
     setLoading(true);
+
     try {
       const request = await fetch(`${API_ROUTE}/person`, {
         method: "PUT",
@@ -156,10 +159,10 @@ export function PeopleContextProvider({ children }) {
     }
   }
 
-  async function getStaffDeans() {
+  async function getDeans() {
     const request = await fetch(`${API_ROUTE}/deans`);
     const data = await request.json();
-    setStaffDeans(data);
+    setDeans(data);
   }
 
   async function getUserData() {
@@ -179,11 +182,11 @@ export function PeopleContextProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    if (!staffDeans || person !== "4") {
+    if (!deans || person !== "4") {
       return;
     }
 
-    for (const dean of staffDeans) {
+    for (const dean of deans) {
       if (dean.cc === doc) {
         setDoctype(1);
         setName(dean.name);
@@ -233,9 +236,8 @@ export function PeopleContextProvider({ children }) {
         facultieSelectRef,
         schedulePerson,
         editPerson,
-        cancellSchedule,
-        staffDeans,
-        getStaffDeans,
+        cancellPerson,
+        getDeans,
         setEventId,
       }}
     >

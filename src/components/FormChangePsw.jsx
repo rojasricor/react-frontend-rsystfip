@@ -17,6 +17,7 @@ export default function FormChangePsw({ userId }) {
   async function changePassword(evt) {
     evt.preventDefault();
     setLoading(true);
+
     try {
       const request = await fetch(`${API_ROUTE}/password`, {
         method: "PUT",

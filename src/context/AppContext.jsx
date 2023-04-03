@@ -7,7 +7,6 @@ export function AppContextProvider({ children }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
 
   function doLogin(userAuthenticated) {
     setUser(userAuthenticated);
@@ -35,8 +34,6 @@ export function AppContextProvider({ children }) {
         setUsername,
         password,
         setPassword,
-        loading,
-        setLoading,
       }}
     >
       {children}

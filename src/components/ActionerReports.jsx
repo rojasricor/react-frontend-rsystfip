@@ -3,7 +3,7 @@ import DaterReports from "./DaterReports";
 import Responsive from "./Responsive";
 import TableReports from "./TableReports";
 import { API_ROUTE, UNSET_STATUS } from "../utils/constants";
-import { getStartMonthDate, getEndMonthDate } from "../utils/resources";
+import { getStartMonthDate, getEndMonthDate } from "../utils/todaylib";
 
 export default function ActionerReports() {
   const [report, setReport] = useState([]);

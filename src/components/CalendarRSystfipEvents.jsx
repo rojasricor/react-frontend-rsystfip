@@ -6,7 +6,7 @@ import LoadCalendar from "../components/LoadCalendar";
 import FullCalendar from "@fullcalendar/react";
 import daygrid from "@fullcalendar/daygrid";
 import esLocale from "@fullcalendar/core/locales/es";
-import { formatTodaysDate, formatTodaysDateTime } from "../utils/resources";
+import { formatTodaysDate, formatTodaysDateTime } from "../utils/todaylib";
 import { globalLocales } from "fullcalendar";
 import { API_ROUTE } from "../utils/constants";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min";

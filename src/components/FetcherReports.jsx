@@ -4,7 +4,7 @@ import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 import pdfMake from "pdfmake/build/pdfmake.min";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { formatTodaysDateTime } from "../utils/resources";
+import { formatTodaysDateTime } from "../utils/todaylib";
 import { BsDownload } from "react-icons/bs";
 
 export default function FetcherReports({

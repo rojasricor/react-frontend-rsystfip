@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { API_ROUTE } from "../utils/constants";
-import { getStartMonthDate, getEndMonthDate } from "../utils/resources";
+import { getStartMonthDate, getEndMonthDate } from "../utils/todaylib";
 import DivCol12 from "./DivCol12";
 import DaterStatistics from "./DaterStatistics";
 import Xit from "./Xit";

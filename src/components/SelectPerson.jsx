@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
-import { UNSET_STATUS, RESOURCE_ROUTE } from "../utils/constants";
+import { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } from "../utils/constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
@@ -11,15 +11,15 @@ export default function SelectPerson() {
     setPerson,
     person,
     facultieSelectRef,
-    getDeans,
+    setDeans,
   } = useContext(PeopleContext);
   const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    fetch(`${RESOURCE_ROUTE}?resource=categories`)
-      .then((request) => request.json())
-      .then((data) => setCategories(data));
-  }, []);
+  async function getDeans() {
+    const request = await fetch(`${API_ROUTE}/deans`);
+    const data = await request.json();
+    setDeans(data);
+  }
 
   useEffect(() => {
     if (person !== UNSET_STATUS) {
@@ -33,6 +33,12 @@ export default function SelectPerson() {
       person === "4" && getDeans();
     }
   }, [person]);
+
+  useEffect(() => {
+    fetch(`${RESOURCE_ROUTE}?resource=categories`)
+      .then((request) => request.json())
+      .then((data) => setCategories(data));
+  }, []);
 
   return (
     <FloatingFormCol12x x="6">

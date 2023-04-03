@@ -36,38 +36,6 @@ export function PeopleContextProvider({ children }) {
   // Ref to component select of facultie
   const facultieSelectRef = useRef(null);
 
-  async function cancellPerson() {
-    setLoading(true);
-
-    try {
-      const request = await fetch(`${API_ROUTE}/person`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: eventId,
-          date,
-        }),
-      });
-      const { ok, error } = await request.json();
-      if (ok) {
-        return toast(ok, {
-          position: "top-left",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-      toast.error(error);
-    } catch (err) {
-      toast.error(err);
-    } finally {
-      setLoading(false);
-    }
-  }
-
   async function schedulePerson() {
     setLoading(true);
 
@@ -159,12 +127,6 @@ export function PeopleContextProvider({ children }) {
     }
   }
 
-  async function getDeans() {
-    const request = await fetch(`${API_ROUTE}/deans`);
-    const data = await request.json();
-    setDeans(data);
-  }
-
   async function getUserData() {
     const request = await fetch(`${API_ROUTE}/person?id=${id}`);
     const { person_type, id_doc, facultad, name, num_doc, text_asunt } =
@@ -215,6 +177,7 @@ export function PeopleContextProvider({ children }) {
         disabledAfterAutocomplete,
         setDisabledAfterAutocomplete,
         loading,
+        setLoading,
         person,
         setPerson,
         doctype,
@@ -229,6 +192,7 @@ export function PeopleContextProvider({ children }) {
         setAsunt,
         color,
         setColor,
+        date,
         setDate,
         setStart,
         setEnd,
@@ -236,8 +200,8 @@ export function PeopleContextProvider({ children }) {
         facultieSelectRef,
         schedulePerson,
         editPerson,
-        cancellPerson,
-        getDeans,
+        setDeans,
+        eventId,
         setEventId,
       }}
     >

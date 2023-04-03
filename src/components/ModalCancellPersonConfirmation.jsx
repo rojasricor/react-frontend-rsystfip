@@ -1,10 +1,45 @@
 import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import Spinner from "./Spinner";
+import { API_ROUTE } from "../utils/constants";
+import { toast } from "react-toastify";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
 export default function ModalCancellPersonConfirmation() {
-  const { cancellPerson, loading } = useContext(PeopleContext);
+  const { eventId, date, loading, setLoading } = useContext(PeopleContext);
+
+  async function cancellPerson() {
+    setLoading(true);
+
+    try {
+      const request = await fetch(`${API_ROUTE}/person`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: eventId,
+          date,
+        }),
+      });
+      const { ok, error } = await request.json();
+      if (ok) {
+        return toast(ok, {
+          position: "top-left",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+      toast.error(error);
+    } catch (err) {
+      toast.error(err);
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div

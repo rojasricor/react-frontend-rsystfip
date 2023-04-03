@@ -7,7 +7,7 @@ import LoaderSuspense from "./components/LoaderSuspense";
 import ContainerFluid from "./components/ContainerFluid";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-const LoginPage = lazy(() => import("./pages/LoginPage"));
+import LoginPage from "./pages/LoginPage";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage"));
 const AddUserPage = lazy(() => import("./pages/AddUserPage"));

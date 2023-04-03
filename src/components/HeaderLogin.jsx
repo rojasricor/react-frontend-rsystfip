@@ -14,13 +14,8 @@ export default function HeaderLogin() {
         alt="rsystfip"
       />
       <h1 className="h6 mt-3">RSYSTFIP</h1>
-      <span>
+      <p className="m-5">
         Sóftware para agendamiento de visitas Rectoría - <strong>ITFIP</strong>
-      </span>
-      <p className="text-muted">
-        Instituto Tolimense De Formación Técnica Profesional ; NIT:
-        800.173.719.0. Calle 18 Carrera 1ª Barrio/Arkabal Espinal, Tolima -
-        Colombia
       </p>
     </div>
   );

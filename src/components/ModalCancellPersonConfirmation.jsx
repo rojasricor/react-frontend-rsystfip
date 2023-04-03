@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import Spinner from "./Spinner";
-import { API_ROUTE } from "../utils/constants";
+import { API_ROUTE } from "../utils/api";
 import { toast } from "react-toastify";
 import { FaTimes, FaCheck } from "react-icons/fa";
 

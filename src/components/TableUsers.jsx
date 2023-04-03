@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { API_ROUTE } from "../utils/constants";
+import { API_ROUTE } from "../utils/api";
 import DashboardRow from "./DashboardRow";
 
 export default function TableUsers() {

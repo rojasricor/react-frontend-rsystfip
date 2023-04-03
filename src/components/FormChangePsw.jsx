@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { API_ROUTE } from "../utils/constants";
+import { API_ROUTE } from "../utils/api";
 import DivRow from "./DivRow";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import InputPassword from "./InputPassword";

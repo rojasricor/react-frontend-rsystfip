@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } from "../utils/constants";
+import { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } from "../utils/api";
 import DivRow from "./DivRow";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import SelectBasic from "./SelectBasic";

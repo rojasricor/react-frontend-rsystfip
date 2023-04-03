@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
-import { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } from "../utils/constants";
+import { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } from "../utils/api";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 

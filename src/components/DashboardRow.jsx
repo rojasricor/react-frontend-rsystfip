@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import { API_ROUTE } from "../utils/constants";
+import { API_ROUTE } from "../utils/api";
 import { BiTrash, BiKey } from "react-icons/bi";
 
 export default function DashboardRow({ user }) {

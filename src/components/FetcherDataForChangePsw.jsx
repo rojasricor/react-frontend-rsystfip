@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Cardx from "../components/Cardx";
 import FormChangePsw from "./FormChangePsw";
-import { API_ROUTE } from "../utils/constants";
+import { API_ROUTE } from "../utils/api";
 
 export default function FetcherDataForChangePsw() {
   const { role } = useParams();

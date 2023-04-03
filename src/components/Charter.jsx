@@ -27,6 +27,7 @@ export default function Charter({ scheduling_type }) {
     const label = `Agendamiento ${
       scheduling_type === "daily" ? "diario" : "programado"
     } - Cantidad persona(s)`;
+
     setChart(
       new Chart(xitRef.current, createChart(chartType, label, labels, data))
     );

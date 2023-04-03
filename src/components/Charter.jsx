@@ -83,9 +83,9 @@ export default function Charter({ scheduling_type }) {
     refreshChart(labels, data);
   }
 
-  async function getMostAgendatedInRange() {
+  async function getMostAgendatedOnRange() {
     const request = await fetch(
-      `${API_ROUTE}/statistics/${scheduling_type}/inrange?start=${start}&end=${end}`
+      `${API_ROUTE}/statistics/${scheduling_type}/onrange?start=${start}&end=${end}`
     );
     const data = await request.json();
     setMostAgendatedByDate(data);
@@ -103,7 +103,7 @@ export default function Charter({ scheduling_type }) {
 
   useEffect(() => {
     getStatisticsByStartAndEndDate();
-    getMostAgendatedInRange();
+    getMostAgendatedOnRange();
     getMostAgendatedOfAllTime();
   }, [start, end, tyChart]);
 

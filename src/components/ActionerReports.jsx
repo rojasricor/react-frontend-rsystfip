@@ -14,7 +14,7 @@ export default function ActionerReports() {
 
   async function getReports() {
     const request = await fetch(
-      `${API_ROUTE}/get/reports/date?start=${startDate}&end=${endDate}&category=${category}`
+      `${API_ROUTE}/reports?start=${startDate}&end=${endDate}&category=${category}`
     );
     const reports = await request.json();
     setReport(reports);

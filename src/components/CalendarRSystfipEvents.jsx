@@ -93,7 +93,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
             editable
             dayMaxEvents
             events={{
-              url: `${API_ROUTE}/get/events/scheduling`,
+              url: `${API_ROUTE}/scheduling`,
               failure: () =>
                 toast.error("No se pudo hacer la carga de los eventos."),
             }}

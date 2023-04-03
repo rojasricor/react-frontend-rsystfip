@@ -16,7 +16,7 @@ export default function Searcher() {
 
   async function getPeople() {
     try {
-      const request = await fetch(`${API_ROUTE}/get/people`);
+      const request = await fetch(`${API_ROUTE}/people`);
       const data = await request.json();
       setPeople(data);
       setPeopleFiltered(data);

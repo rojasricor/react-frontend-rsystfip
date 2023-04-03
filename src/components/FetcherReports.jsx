@@ -27,21 +27,19 @@ export default function FetcherReports({
     });
 
   function getAllPeople() {
-    fetch(`${API_ROUTE}/get/people`)
+    fetch(`${API_ROUTE}/people`)
       .then((request) => request.json())
       .then((data) => setAllPeople(data));
   }
 
   function getReportsCountOnRange() {
-    fetch(
-      `${API_ROUTE}/get/reports/count/date?start=${startDate}&end=${endDate}`
-    )
+    fetch(`${API_ROUTE}/reports/count?start=${startDate}&end=${endDate}`)
       .then((request) => request.json())
       .then((data) => setReportsCountOnRange(data));
   }
 
   function getReportsCountOfAllTime() {
-    fetch(`${API_ROUTE}/get/reports/count/all`)
+    fetch(`${API_ROUTE}/reports/counts`)
       .then((request) => request.json())
       .then((data) => setReportsCountOffAllTime(data));
   }

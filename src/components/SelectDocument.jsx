@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
-import { UNSET_STATUS, RESOURCES_ROUTE } from "../utils/constants";
+import { UNSET_STATUS, RESOURCE_ROUTE } from "../utils/constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 
 export default function SelectDocument() {
@@ -9,7 +9,7 @@ export default function SelectDocument() {
   const [documents, setDocuments] = useState([]);
 
   useEffect(() => {
-    fetch(`${RESOURCES_ROUTE}?resource=documents`)
+    fetch(`${RESOURCE_ROUTE}?resource=documents`)
       .then((request) => request.json())
       .then((data) => setDocuments(data));
   }, []);

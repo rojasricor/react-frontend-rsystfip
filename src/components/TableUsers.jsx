@@ -6,7 +6,7 @@ export default function TableUsers() {
   const [usersDashboard, setUsersDashboard] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_ROUTE}/get/users/manage`)
+    fetch(`${API_ROUTE}/users`)
       .then((request) => request.json())
       .then((data) => setUsersDashboard(data));
   }, []);

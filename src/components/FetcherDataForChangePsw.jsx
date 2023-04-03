@@ -9,7 +9,7 @@ export default function FetcherDataForChangePsw() {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_ROUTE}/get/users/one?role=${role}`)
+    fetch(`${API_ROUTE}/user?role=${role}`)
       .then((request) => request.json())
       .then((data) => setUser(data));
   }, [role]);

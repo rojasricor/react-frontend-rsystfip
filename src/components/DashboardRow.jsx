@@ -13,7 +13,13 @@ export default function DashboardRow({ user }) {
     }
 
     try {
-      const request = await fetch(`${API_ROUTE}/delete/user?role=${id}`);
+      const request = await fetch(`${API_ROUTE}/user`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          role: id,
+        }),
+      });
       const response = request.json();
 
       if (!response) {

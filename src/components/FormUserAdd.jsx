@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { API_ROUTE, RESOURCES_ROUTE, UNSET_STATUS } from "../utils/constants";
+import { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } from "../utils/constants";
 import DivRow from "./DivRow";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import SelectBasic from "./SelectBasic";
@@ -29,7 +29,7 @@ export default function FormUserAdd() {
     evt.preventDefault();
     setLoading(true);
     try {
-      const request = await fetch(`${API_ROUTE}/save/user`, {
+      const request = await fetch(`${API_ROUTE}/user`, {
         method: "POST",
         headers: { "Content-Type": "application/javascript" },
         body: JSON.stringify({
@@ -76,7 +76,7 @@ export default function FormUserAdd() {
   }
 
   useEffect(() => {
-    fetch(`${RESOURCES_ROUTE}?resource=documents`)
+    fetch(`${RESOURCE_ROUTE}?resource=documents`)
       .then((request) => request.json())
       .then((data) => setDocuments(data));
   }, []);

@@ -75,7 +75,7 @@ export default function Charter({ scheduling_type }) {
 
   async function getStatisticsByStartAndEndDate() {
     const request = await fetch(
-      `${API_ROUTE}/get/statistics/${scheduling_type}?start=${start}&end=${end}`
+      `${API_ROUTE}/statistics/${scheduling_type}?start=${start}&end=${end}`
     );
     const statisticsData = await request.json();
     const labels = statisticsData.map(({ person }) => person);
@@ -85,7 +85,7 @@ export default function Charter({ scheduling_type }) {
 
   async function getMostAgendatedInRange() {
     const request = await fetch(
-      `${API_ROUTE}/get/statistics/${scheduling_type}/inrange?start=${start}&end=${end}`
+      `${API_ROUTE}/statistics/${scheduling_type}/inrange?start=${start}&end=${end}`
     );
     const data = await request.json();
     setMostAgendatedByDate(data);
@@ -93,7 +93,7 @@ export default function Charter({ scheduling_type }) {
 
   async function getMostAgendatedOfAllTime() {
     const request = await fetch(
-      `${API_ROUTE}/get/statistics/${scheduling_type}/alltime`
+      `${API_ROUTE}/statistics/${scheduling_type}/alltime`
     );
     const data = await request.json();
     const init = data[0].init;

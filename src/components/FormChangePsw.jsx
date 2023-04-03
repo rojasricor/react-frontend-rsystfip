@@ -18,8 +18,8 @@ export default function FormChangePsw({ userId }) {
     evt.preventDefault();
     setLoading(true);
     try {
-      const request = await fetch(`${API_ROUTE}/update/password`, {
-        method: "POST",
+      const request = await fetch(`${API_ROUTE}/password`, {
+        method: "PUT",
         headers: { "Content-Type": "application/javascript" },
         body: JSON.stringify({
           id: userId,

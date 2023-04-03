@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
-import { UNSET_STATUS, RESOURCES_ROUTE } from "../utils/constants";
+import { UNSET_STATUS, RESOURCE_ROUTE } from "../utils/constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 
 export default function SelectFaculties() {
@@ -14,7 +14,7 @@ export default function SelectFaculties() {
   const [faculties, setFaculties] = useState([]);
 
   useEffect(() => {
-    fetch(`${RESOURCES_ROUTE}?resource=faculties`)
+    fetch(`${RESOURCE_ROUTE}?resource=faculties`)
       .then((request) => request.json())
       .then((data) => setFaculties(data));
   }, []);

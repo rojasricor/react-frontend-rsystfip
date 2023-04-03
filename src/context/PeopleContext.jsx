@@ -39,9 +39,14 @@ export function PeopleContextProvider({ children }) {
   async function cancellSchedule() {
     setLoading(true);
     try {
-      const request = await fetch(
-        `${API_ROUTE}/cancell/scheduling?id=${eventId}&date=${date}`
-      );
+      const request = await fetch(`${API_ROUTE}/person`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: eventId,
+          date,
+        }),
+      });
       const { ok, error } = await request.json();
       if (ok) {
         return toast(ok, {
@@ -65,7 +70,7 @@ export function PeopleContextProvider({ children }) {
   async function schedulePerson() {
     setLoading(true);
     try {
-      const request = await fetch(`${API_ROUTE}/save/reg`, {
+      const request = await fetch(`${API_ROUTE}/person`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -112,8 +117,8 @@ export function PeopleContextProvider({ children }) {
   async function editPerson() {
     setLoading(true);
     try {
-      const request = await fetch(`${API_ROUTE}/update/reg`, {
-        method: "POST",
+      const request = await fetch(`${API_ROUTE}/person`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           id,
@@ -152,13 +157,13 @@ export function PeopleContextProvider({ children }) {
   }
 
   async function getStaffDeans() {
-    const request = await fetch(`${API_ROUTE}/get/staffdeans/itfip`);
+    const request = await fetch(`${API_ROUTE}/deans`);
     const data = await request.json();
     setStaffDeans(data);
   }
 
   async function getUserData() {
-    const request = await fetch(`${API_ROUTE}/get/person/one?id=${id}`);
+    const request = await fetch(`${API_ROUTE}/person?id=${id}`);
     const { person_type, id_doc, facultad, name, num_doc, text_asunt } =
       await request.json();
     setPerson(person_type);

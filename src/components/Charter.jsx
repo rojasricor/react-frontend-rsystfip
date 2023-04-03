@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { API_ROUTE } from "../utils/api";
 import { getStartMonthDate, getEndMonthDate } from "../utils/todaylib";
+import { createChart } from "../utils/chart.config";
 import DivCol12 from "./DivCol12";
 import DaterStatistics from "./DaterStatistics";
 import Xit from "./Xit";
@@ -22,54 +23,12 @@ export default function Charter({ scheduling_type }) {
     if (chart) {
       chart.destroy();
     }
+
+    const label = `Agendamiento ${
+      scheduling_type === "daily" ? "diario" : "programado"
+    } - Cantidad persona(s)`;
     setChart(
-      new Chart(xitRef.current, {
-        type: chartType,
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: `Agendamiento ${
-                scheduling_type === "daily" ? "diario" : "programado"
-              } - Cantidad persona(s)`,
-              data,
-              backgroundColor: [
-                "rgba(255, 165, 0, 0.8)",
-                "rgba(121, 85, 72, 0.8)",
-                "rgba(33, 33, 33, 0.8)",
-                "rgba(0, 0, 0, 0.8)",
-                "rgba(50, 50, 50, 0.8)",
-              ],
-              borderColor: [
-                "rgba(255, 165, 0, 1)",
-                "rgba(121, 85, 72, 1)",
-                "rgba(33, 33, 33, 1)",
-                "rgba(0, 0, 0, 1)",
-                "rgba(50, 50, 50, 1)",
-              ],
-              borderWidth: 2,
-            },
-          ],
-        },
-        options: {
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                },
-              },
-            ],
-            xAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                },
-              },
-            ],
-          },
-        },
-      })
+      new Chart(xitRef.current, createChart(chartType, label, labels, data))
     );
   }
 

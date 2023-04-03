@@ -1,3 +1,4 @@
+import DivRow from "./DivRow";
 import InputDate from "./InputDate";
 import FilterSelectPerson from "./FilterSelectPerson";
 import FetcherReports from "./FetcherReports";
@@ -11,7 +12,7 @@ export default function DaterReports({
   reportsFiltered,
 }) {
   return (
-    <div className="row g-3 mb-5">
+    <DivRow clAdds=" mb-5">
       <InputDate
         labelInfo="Desde:"
         setDate={setStartDate}
@@ -27,6 +28,6 @@ export default function DaterReports({
         endDate={endDate}
         reportsFiltered={reportsFiltered}
       />
-    </div>
+    </DivRow>
   );
 }

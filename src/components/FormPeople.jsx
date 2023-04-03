@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
+import DivRow from "./DivRow";
 import SelectPerson from "./SelectPerson";
 import SelectDocument from "./SelectDocument";
 import SelectFaculties from "./SelectFaculties";
@@ -27,15 +28,16 @@ export default function FormPeople({ action }) {
   return (
     <form
       onSubmit={actionRequireEditFunction ? HandleSubmitEdit : HandleSubmitAdd}
-      className="row g-2 mt-2"
     >
-      <SelectPerson />
-      <InputDocumentNumber />
-      <SelectDocument />
-      <InputFullname />
-      <SelectFaculties />
-      <TextareaAsunt />
-      <FooterFormPeople actionRequireIt={actionRequireEditFunction} />
+      <DivRow clAdds=" mt-2">
+        <SelectPerson />
+        <InputDocumentNumber />
+        <SelectDocument />
+        <InputFullname />
+        <SelectFaculties />
+        <TextareaAsunt />
+        <FooterFormPeople actionRequireIt={actionRequireEditFunction} />
+      </DivRow>
     </form>
   );
 }

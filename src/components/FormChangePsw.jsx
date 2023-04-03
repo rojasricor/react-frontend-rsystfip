@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../utils/constants";
+import DivRow from "./DivRow";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import InputPassword from "./InputPassword";
 import Submitter from "./Submitter";
@@ -51,44 +52,46 @@ export default function FormChangePsw({ userId }) {
   }
 
   return (
-    <form onSubmit={changePassword} className="row g-3 mt-2">
-      <FloatingFormCol12x>
-        <InputPassword
-          setPassword={setCurrent_password}
-          inputValue={current_password}
-          placeholder="Current password"
-          labelInfo="Contraseña anterior:"
-        />
-      </FloatingFormCol12x>
+    <form onSubmit={changePassword}>
+      <DivRow clAdds=" mt-2">
+        <FloatingFormCol12x>
+          <InputPassword
+            setPassword={setCurrent_password}
+            inputValue={current_password}
+            placeholder="Current password"
+            labelInfo="Contraseña anterior:"
+          />
+        </FloatingFormCol12x>
 
-      <FloatingFormCol12x>
-        {" "}
-        <InputPassword
-          setPassword={setNew_password}
-          inputValue={new_password}
-          placeholder="New password"
-          labelInfo="Contraseña nueva:"
-        />
-      </FloatingFormCol12x>
+        <FloatingFormCol12x>
+          {" "}
+          <InputPassword
+            setPassword={setNew_password}
+            inputValue={new_password}
+            placeholder="New password"
+            labelInfo="Contraseña nueva:"
+          />
+        </FloatingFormCol12x>
 
-      <FloatingFormCol12x>
-        <InputPassword
-          setPassword={setNew_password_confirm}
-          inputValue={new_password_confirm}
-          placeholder="Confirm new password"
-          labelInfo="Confirmar contraseña nueva:"
-        />
-      </FloatingFormCol12x>
+        <FloatingFormCol12x>
+          <InputPassword
+            setPassword={setNew_password_confirm}
+            inputValue={new_password_confirm}
+            placeholder="Confirm new password"
+            labelInfo="Confirmar contraseña nueva:"
+          />
+        </FloatingFormCol12x>
 
-      <Submitter loading={loading}>
-        {!loading ? (
-          <>
-            Continuar <BiKey className="mb-1" />
-          </>
-        ) : (
-          <Spinner tam="lg" />
-        )}
-      </Submitter>
+        <Submitter loading={loading}>
+          {!loading ? (
+            <>
+              Continuar <BiKey className="mb-1" />
+            </>
+          ) : (
+            <Spinner tam="lg" />
+          )}
+        </Submitter>
+      </DivRow>
     </form>
   );
 }

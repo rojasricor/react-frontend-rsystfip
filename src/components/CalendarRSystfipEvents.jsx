@@ -1,5 +1,6 @@
 import { useContext, useRef } from "react";
 import { PeopleContext } from "../context/PeopleContext";
+import Responsive from "./Responsive";
 import ContainerFluid from "./ContainerFluid";
 import LoadCalendar from "../components/LoadCalendar";
 import FullCalendar from "@fullcalendar/react";
@@ -20,7 +21,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
   return (
     <>
       <LoadCalendar loadEventsRef={loadEventsRef} />
-      <div className="table-responsive">
+      <Responsive>
         <ContainerFluid clAdds=" schg-sm lh-1">
           <FullCalendar
             height="auto"
@@ -109,7 +110,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
           />
         </ContainerFluid>
         <p className="text-center mt-2">Agendamiento programado mes a mes.</p>
-      </div>
+      </Responsive>
     </>
   );
 }

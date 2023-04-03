@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { API_ROUTE } from "../utils/constants";
-import FloatingForm from "./FloatingForm";
+import FloatingFormCol12x from "./FloatingFormCol12x";
 import Submitter from "./Submitter";
 import Spinner from "./Spinner";
 import { toast } from "react-toastify";
@@ -51,7 +51,7 @@ export default function FormLogin() {
 
   return (
     <form onSubmit={authenticate} className="row g-3">
-      <FloatingForm>
+      <FloatingFormCol12x>
         <input
           onChange={(evt) => setUsername(evt.target.value)}
           value={username}
@@ -64,8 +64,8 @@ export default function FormLogin() {
           required
         />
         <label className="form-label fw-bold">Nombre de usuario</label>
-      </FloatingForm>
-      <FloatingForm>
+      </FloatingFormCol12x>
+      <FloatingFormCol12x>
         <input
           onChange={(evt) => setPassword(evt.target.value)}
           value={password}
@@ -76,7 +76,7 @@ export default function FormLogin() {
           required
         />
         <label className="form-label fw-bold">Contraseña</label>
-      </FloatingForm>
+      </FloatingFormCol12x>
       <Submitter loading={loading}>
         {!loading ? (
           <>

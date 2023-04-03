@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { API_ROUTE } from "../utils/constants";
+import Cardx from "../components/Cardx";
 import FormChangePsw from "./FormChangePsw";
+import { API_ROUTE } from "../utils/constants";
 
 export default function FetcherDataForChangePsw() {
   const { role } = useParams();
@@ -14,9 +15,8 @@ export default function FetcherDataForChangePsw() {
   }, [role]);
 
   return (
-    <>
-      <h1 className="h3 text-center">Cambiar contraseña para {user.email}</h1>
+    <Cardx x="4" title={`Cambiar contraseña para ${user.email}`}>
       <FormChangePsw userId={user.id} />
-    </>
+    </Cardx>
   );
 }

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { useNavigate } from "react-router-dom";
 import ProtectedElement from "./ProtectedElement";
+import DivCol12 from "./DivCol12";
 import Spinner from "./Spinner";
 import SmallCaption from "./SmallCaption";
 import { FaUserPlus } from "react-icons/fa";
@@ -14,7 +15,7 @@ export default function FooterFormPeople({ actionRequireIt }) {
   return (
     <>
       <ProtectedElement isAllowed={actionRequireIt}>
-        <div className="col-md-6">
+        <DivCol12 x="6">
           <button
             onClick={(evt) => {
               evt.preventDefault();
@@ -24,9 +25,9 @@ export default function FooterFormPeople({ actionRequireIt }) {
           >
             Volver <GiReturnArrow />
           </button>
-        </div>
+        </DivCol12>
       </ProtectedElement>
-      <div className={actionRequireIt ? "col-md-6" : "col-md-12"}>
+      <DivCol12 x={actionRequireIt ? "6" : "12"}>
         <button
           className="w-100 btn btn-primary btn-lg border my-2"
           disabled={loading}
@@ -39,7 +40,7 @@ export default function FooterFormPeople({ actionRequireIt }) {
             <Spinner tam="lg" />
           )}
         </button>
-      </div>
+      </DivCol12>
       <SmallCaption />
       <ToastContainer />
     </>

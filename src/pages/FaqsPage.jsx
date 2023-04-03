@@ -12,7 +12,7 @@ export default function FaqsPage() {
       <DivCol12>
         <h1 className="h3">Preguntas más frecuentes</h1>
       </DivCol12>
-      <div className="col-6 mt-2">
+      <DivCol12 x="6 mt-2">
         <div className="accordion accordion-flush" id="col-1">
           <div className="accordion-item">
             <h2 className="accordion-header">
@@ -116,8 +116,8 @@ export default function FaqsPage() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="col-6 mt-2">
+      </DivCol12>
+      <DivCol12 x="6 mt-2">
         <div className="accordion accordion-flush" id="col-2">
           <div className="accordion-item">
             <h2 className="accordion-header">
@@ -221,7 +221,7 @@ export default function FaqsPage() {
             </div>
           </div>
         </div>
-      </div>
+      </DivCol12>
     </DivRow>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import DivCol12 from "../components/DivCol12";
 import Error404Actioner from "../components/Error404Actioner";
 
 export default function Error404Page() {
@@ -16,10 +17,10 @@ export default function Error404Page() {
         height="57"
       />
       <h1 className="display-5 fw-bold">Error 404</h1>
-      <div className="col-lg-6 mx-auto">
+      <DivCol12 x="6 mx-auto">
         <p className="lead mb-4">Not Found.</p>
         <Error404Actioner />
-      </div>
+      </DivCol12>
     </div>
   );
 }

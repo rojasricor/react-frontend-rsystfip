@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import DivRow from "../components/DivRow";
+import Cardx from "../components/Cardx";
 import HeaderLogin from "../components/HeaderLogin";
 import Container from "../components/Container";
 import FormLogin from "../components/FormLogin";
@@ -12,14 +13,12 @@ export default function LoginPage() {
 
   return (
     <DivRow>
-      <div className="col-md-4 mx-auto">
-        <div className="card card-body border-0 rounded-4 shadow">
-          <HeaderLogin />
-          <Container>
-            <FormLogin />
-          </Container>
-        </div>
-      </div>
+      <Cardx x="4">
+        <HeaderLogin />
+        <Container>
+          <FormLogin />
+        </Container>
+      </Cardx>
       <ToastContainer />
     </DivRow>
   );

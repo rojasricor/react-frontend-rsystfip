@@ -1,3 +1,4 @@
+import DivCol12 from "./DivCol12";
 import ListGroup from "./ListGroup";
 
 export default function ListerStatistics({
@@ -9,7 +10,7 @@ export default function ListerStatistics({
   scheduling_type,
 }) {
   return (
-    <div className="col-12 mb-5 mt-5">
+    <DivCol12 x="12 my-5">
       <ListGroup
         title={`Agendamiento ${scheduling_type} en el rango de fecha`}
         data={mostAgendatedByDate}
@@ -23,6 +24,6 @@ export default function ListerStatistics({
         start={init}
         end={end}
       />
-    </div>
+    </DivCol12>
   );
 }

@@ -10,11 +10,7 @@ export default function PswChangeUserPage() {
 
   return (
     <DivRow>
-      <div className="col-md-4 mx-auto">
-        <div className="card card-body border-0 rounded-4 shadow">
-          <FetcherDataForChangePsw />
-        </div>
-      </div>
+      <FetcherDataForChangePsw />
       <ToastContainer />
     </DivRow>
   );

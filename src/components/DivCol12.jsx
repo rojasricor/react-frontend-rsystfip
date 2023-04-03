@@ -1,3 +1,3 @@
-export default function DivCol12({ children }) {
-  return <div className="col-12">{children}</div>;
+export default function DivCol12({ children, x = 12 }) {
+  return <div className={`col-md-${x}`}>{children}</div>;
 }

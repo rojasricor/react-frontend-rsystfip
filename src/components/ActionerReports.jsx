@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import DaterReports from "./DaterReports";
+import Responsive from "./Responsive";
 import TableReports from "./TableReports";
 import { API_ROUTE, UNSET_STATUS } from "../utils/constants";
 import { getStartMonthDate, getEndMonthDate } from "../utils/resources";
-import DaterReports from "./DaterReports";
 
 export default function ActionerReports() {
   const [report, setReport] = useState([]);
@@ -46,9 +47,9 @@ export default function ActionerReports() {
         setCategory={setCategory}
         reportsFiltered={reportFiltered}
       />
-      <div className="table-responsive mt-5">
+      <Responsive>
         <TableReports reportFiltered={reportFiltered} />
-      </div>
+      </Responsive>
     </>
   );
 }

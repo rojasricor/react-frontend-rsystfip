@@ -6,7 +6,7 @@ import { BsDownload } from "react-icons/bs";
 
 export default function Downloader({ pdf }) {
   function downloadPdf() {
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    pdf.vfs = pdfFonts.pdfMake.vfs;
     pdf.open();
     // .download(`RSystfip-Report-${formatTodaysDateTime()}.pdf`);
   }

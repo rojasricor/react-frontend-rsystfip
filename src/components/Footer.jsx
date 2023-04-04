@@ -1,4 +1,4 @@
-import { FaCode } from "react-icons/fa";
+import { FaReact } from "react-icons/fa";
 
 export default () => (
   <footer className="px-3 py-2 fixed-bottom bg-dark">
@@ -8,7 +8,7 @@ export default () => (
       &nbsp;|&nbsp;
       <span className="text-white">
         Tecnología en Gestión Informatica&nbsp;
-        <FaCode />
+        <FaReact></FaReact>
       </span>
     </span>
   </footer>

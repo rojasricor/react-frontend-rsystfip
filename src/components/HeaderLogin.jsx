@@ -14,9 +14,12 @@ export default function HeaderLogin() {
         alt="rsystfip"
       />
       <h1 className="h6 mt-3">RSYSTFIP</h1>
-      <p className="m-5">
+      <div className="m-5">
         Sóftware para agendamiento de visitas Rectoría - <strong>ITFIP</strong>
-      </p>
+        <p>
+          <img src="/img/admin/avatar.png" width="55" alt="itfip" />
+        </p>
+      </div>
     </div>
   );
 }

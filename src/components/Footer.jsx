@@ -7,8 +7,7 @@ export default () => (
       <span className="text-white">&nbsp;RSystfip</span>
       &nbsp;|&nbsp;
       <span className="text-white">
-        Tecnología en Gestión Informatica&nbsp;
-        <FaReact></FaReact>
+        Tecnología en Gestión Informatica <FaReact />
       </span>
     </span>
   </footer>

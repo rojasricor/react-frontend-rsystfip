@@ -1,3 +1,3 @@
-export default function ContainerFluid({ children, clAdds = "" }) {
-  return <div className={`container-fluid${clAdds}`}>{children}</div>;
-}
+export default ({ children, clAdds = "" }) => (
+  <div className={`container-fluid${clAdds}`}>{children}</div>
+);

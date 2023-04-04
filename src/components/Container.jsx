@@ -1,3 +1,3 @@
-export default function Container({ children, clAdds = "" }) {
-  return <div className={`container${clAdds}`}>{children}</div>;
-}
+export default ({ children, clAdds = "" }) => (
+  <div className={`container${clAdds}`}>{children}</div>
+);

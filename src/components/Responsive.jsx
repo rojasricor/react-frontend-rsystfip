@@ -1,3 +1,3 @@
-export default function Responsive({ children }) {
-  return <div className="table-responsive">{children}</div>;
-}
+export default ({ children }) => (
+  <div className="table-responsive">{children}</div>
+);

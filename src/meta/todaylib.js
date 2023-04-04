@@ -25,6 +25,5 @@ export function getTime(d = new Date()) {
   return `${h}:${m}:${s}`;
 }
 
-export function formatTodaysDateTime(date) {
-  return formatTodaysDate(date) + " " + getTime(date);
-}
+export const formatTodaysDateTime = (date) =>
+  formatTodaysDate(date) + " " + getTime(date);

@@ -1,3 +1,4 @@
+import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
 export default function InputText({
@@ -7,7 +8,7 @@ export default function InputText({
   labelInfo,
 }) {
   return (
-    <>
+    <FloatingFormCol12x x="4">
       <input
         onChange={(evt) => setText(evt.target.value)}
         value={inputValue}
@@ -20,6 +21,6 @@ export default function InputText({
         required
       />
       <Label labelInfo={labelInfo} />
-    </>
+    </FloatingFormCol12x>
   );
 }

@@ -1,8 +1,9 @@
+import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
 export default function InputEmail({ setEmail, inputValue, labelInfo }) {
   return (
-    <>
+    <FloatingFormCol12x x="8">
       <input
         onChange={(evt) => setEmail(evt.target.value)}
         value={inputValue}
@@ -14,6 +15,6 @@ export default function InputEmail({ setEmail, inputValue, labelInfo }) {
         required
       />
       <Label labelInfo={labelInfo} />
-    </>
+    </FloatingFormCol12x>
   );
 }

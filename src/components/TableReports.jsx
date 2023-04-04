@@ -1,8 +1,9 @@
+import Table from "./Table";
 import ReportRow from "./ReportRow";
 
 export default function TableReports({ start, end, reportFiltered }) {
   return (
-    <table className="table table-hover table-borderless table-sm text-center">
+    <Table clAdds=" table-borderless">
       <caption>
         Data about people schedule between {start} and {end}.
       </caption>
@@ -21,6 +22,6 @@ export default function TableReports({ start, end, reportFiltered }) {
           <ReportRow key={index} report={person} />
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 }

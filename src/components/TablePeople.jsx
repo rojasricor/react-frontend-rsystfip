@@ -1,8 +1,9 @@
+import Table from "./Table";
 import PersonRow from "./PersonRow";
 
 export default function TablePeople({ peopleFiltered }) {
   return (
-    <table className="table table-hover table-sm text-center">
+    <Table>
       <caption>Scheduled people history.</caption>
       <thead>
         <tr>
@@ -20,6 +21,6 @@ export default function TablePeople({ peopleFiltered }) {
           <PersonRow key={index} person={person} />
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 }

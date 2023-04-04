@@ -1,4 +1,5 @@
 import { UNSET_STATUS } from "../constants/api";
+import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
 export default function SelectBasic({
@@ -6,9 +7,10 @@ export default function SelectBasic({
   setData,
   inputValue,
   labelInfo,
+  x,
 }) {
   return (
-    <>
+    <FloatingFormCol12x x={x}>
       <select
         onChange={(evt) => setData(evt.target.value)}
         value={inputValue}
@@ -21,6 +23,6 @@ export default function SelectBasic({
         {children}
       </select>
       <Label labelInfo={labelInfo} />
-    </>
+    </FloatingFormCol12x>
   );
 }

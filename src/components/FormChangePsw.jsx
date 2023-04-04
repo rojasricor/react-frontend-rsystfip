@@ -2,7 +2,6 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../constants/api";
 import DivRow from "./DivRow";
-import FloatingFormCol12x from "./FloatingFormCol12x";
 import InputPassword from "./InputPassword";
 import Submitter from "./Submitter";
 import Spinner from "./Spinner";
@@ -55,32 +54,26 @@ export default function FormChangePsw({ userId }) {
   return (
     <form onSubmit={doChangePassword}>
       <DivRow clAdds=" mt-2">
-        <FloatingFormCol12x>
-          <InputPassword
-            setPassword={setCurrent_password}
-            inputValue={current_password}
-            placeholder="Current password"
-            labelInfo="Contraseña anterior:"
-          />
-        </FloatingFormCol12x>
+        <InputPassword
+          setPassword={setCurrent_password}
+          inputValue={current_password}
+          placeholder="Current password"
+          labelInfo="Contraseña anterior:"
+        />
 
-        <FloatingFormCol12x>
-          <InputPassword
-            setPassword={setNew_password}
-            inputValue={new_password}
-            placeholder="New password"
-            labelInfo="Contraseña nueva:"
-          />
-        </FloatingFormCol12x>
+        <InputPassword
+          setPassword={setNew_password}
+          inputValue={new_password}
+          placeholder="New password"
+          labelInfo="Contraseña nueva:"
+        />
 
-        <FloatingFormCol12x>
-          <InputPassword
-            setPassword={setNew_password_confirm}
-            inputValue={new_password_confirm}
-            placeholder="Confirm new password"
-            labelInfo="Confirmar contraseña nueva:"
-          />
-        </FloatingFormCol12x>
+        <InputPassword
+          setPassword={setNew_password_confirm}
+          inputValue={new_password_confirm}
+          placeholder="Confirm new password"
+          labelInfo="Confirmar contraseña nueva:"
+        />
 
         <Submitter loading={loading}>
           {!loading ? (

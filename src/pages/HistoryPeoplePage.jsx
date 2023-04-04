@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Rower from "../components/Rower";
 import Searcher from "../components/Searcher";
 
 export default function HistoryPeoplePage() {
@@ -7,10 +6,5 @@ export default function HistoryPeoplePage() {
     document.title = "RSystfip | Agendated People";
   }, []);
 
-  return (
-    <Rower>
-      <h1 className="h3">Personas Agendadas</h1>
-      <Searcher />
-    </Rower>
-  );
+  return <Searcher />;
 }

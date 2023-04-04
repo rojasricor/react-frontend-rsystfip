@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { API_ROUTE } from "../constants/api";
+import Table from "./Table";
 import DashboardRow from "./DashboardRow";
 
 export default function TableUsers() {
@@ -12,7 +13,7 @@ export default function TableUsers() {
   }, []);
 
   return (
-    <table className="table table-hover table-sm text-center">
+    <Table>
       <caption>Access users.</caption>
       <thead>
         <tr>
@@ -25,6 +26,6 @@ export default function TableUsers() {
           <DashboardRow key={index} user={user} />
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 }

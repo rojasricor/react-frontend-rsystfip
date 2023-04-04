@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { API_ROUTE } from "../constants/api";
+import Rower from "./Rower";
 import BtnGroup from "./BtnGroup";
 import Spinner from "./Spinner";
-import Responsive from "./Responsive";
 import TablePeople from "./TablePeople";
 import { FaSyncAlt, FaTimes } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
@@ -42,7 +42,8 @@ export default function Searcher() {
   }
 
   return (
-    <>
+    <Rower>
+      <h1 className="h3">Personas Agendadas</h1>
       <BtnGroup clAdds=" position-fixed bottom-px my-2">
         <input
           onChange={filterPeople}
@@ -79,9 +80,7 @@ export default function Searcher() {
           <IoCalendarNumber className="mt-1" />
         </Link>
       </BtnGroup>
-      <Responsive>
-        <TablePeople peopleFiltered={peopleFiltered} />
-      </Responsive>
-    </>
+      <TablePeople peopleFiltered={peopleFiltered} />
+    </Rower>
   );
 }

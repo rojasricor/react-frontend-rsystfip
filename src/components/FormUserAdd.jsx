@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } from "../constants/api";
 import DivRow from "./DivRow";
-import FloatingFormCol12x from "./FloatingFormCol12x";
 import SelectBasic from "./SelectBasic";
 import InputText from "./InputText";
 import InputEmail from "./InputEmail";
@@ -85,92 +84,78 @@ export default function FormUserAdd() {
   return (
     <form onSubmit={doCreateUser}>
       <DivRow clAdds=" mt-2">
-        <FloatingFormCol12x x="4">
-          <SelectBasic
-            setData={setRole}
-            inputValue={role}
-            labelInfo="Rol usuario:"
-          >
-            <option value="2">Rector</option>
-            <option value="3">Secretaria</option>
-          </SelectBasic>
-        </FloatingFormCol12x>
+        <SelectBasic
+          setData={setRole}
+          inputValue={role}
+          labelInfo="Rol usuario:"
+          x="4"
+        >
+          <option value="2">Rector</option>
+          <option value="3">Secretaria</option>
+        </SelectBasic>
 
-        <FloatingFormCol12x x="4">
-          <InputText
-            setText={setName}
-            inputValue={name}
-            placeholder="Name"
-            labelInfo="Nombres:"
-          />
-        </FloatingFormCol12x>
+        <InputText
+          setText={setName}
+          inputValue={name}
+          placeholder="Name"
+          labelInfo="Nombres:"
+        />
 
-        <FloatingFormCol12x x="4">
-          <InputText
-            setText={setLastname}
-            inputValue={lastname}
-            placeholder="Lastname"
-            labelInfo="Apellidos:"
-          />
-        </FloatingFormCol12x>
+        <InputText
+          setText={setLastname}
+          inputValue={lastname}
+          placeholder="Lastname"
+          labelInfo="Apellidos:"
+        />
 
-        <FloatingFormCol12x x="8">
-          <SelectBasic
-            setData={setDocType}
-            inputValue={docType}
-            labelInfo="Tipo de Documento:"
-          >
-            {documents.map((document, index) => (
-              <option key={index} value={document.id}>
-                {document.description}
-              </option>
-            ))}
-          </SelectBasic>
-        </FloatingFormCol12x>
+        <SelectBasic
+          setData={setDocType}
+          inputValue={docType}
+          labelInfo="Tipo de Documento:"
+          x="8"
+        >
+          {documents.map((document, index) => (
+            <option key={index} value={document.id}>
+              {document.description}
+            </option>
+          ))}
+        </SelectBasic>
 
-        <FloatingFormCol12x x="4">
-          <InputNumber
-            setNumber={setDoc}
-            inputValue={doc}
-            placeholder="Document"
-            labelInfo="Documento:"
-          />
-        </FloatingFormCol12x>
+        <InputNumber
+          setNumber={setDoc}
+          inputValue={doc}
+          placeholder="Document"
+          labelInfo="Documento:"
+        />
 
-        <FloatingFormCol12x x="8">
-          <InputEmail
-            setEmail={setEmail}
-            inputValue={email}
-            labelInfo="Correo institucional:"
-          />
-        </FloatingFormCol12x>
+        <InputEmail
+          setEmail={setEmail}
+          inputValue={email}
+          labelInfo="Correo institucional:"
+        />
 
-        <FloatingFormCol12x x="4">
-          <InputNumber
-            setNumber={setTel}
-            inputValue={tel}
-            placeholder="Phone"
-            labelInfo="Número de celular:"
-          />
-        </FloatingFormCol12x>
+        <InputNumber
+          setNumber={setTel}
+          inputValue={tel}
+          placeholder="Phone"
+          labelInfo="Número de celular:"
+        />
 
-        <FloatingFormCol12x x="6">
-          <InputPassword
-            setPassword={setPassword}
-            inputValue={password}
-            placeholder="Password"
-            labelInfo="Contraseña:"
-          />
-        </FloatingFormCol12x>
+        <InputPassword
+          setPassword={setPassword}
+          inputValue={password}
+          placeholder="Password"
+          labelInfo="Contraseña:"
+          x="6"
+        />
 
-        <FloatingFormCol12x x="6">
-          <InputPassword
-            setPassword={setPasswordConfirmation}
-            inputValue={passwordConfirmation}
-            placeholder="Confirm password"
-            labelInfo="Confirmar contraseña:"
-          />
-        </FloatingFormCol12x>
+        <InputPassword
+          setPassword={setPasswordConfirmation}
+          inputValue={passwordConfirmation}
+          placeholder="Confirm password"
+          labelInfo="Confirmar contraseña:"
+          x="6"
+        />
 
         <Submitter loading={loading}>
           {!loading ? (

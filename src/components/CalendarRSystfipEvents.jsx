@@ -48,46 +48,44 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
           weekNumberCalculation="ISO"
           selectable
           selectMirror
-          select={(info) => {
-            if ("dayGridMonth" === info.view.type) {
+          select={({ view, start, end }) => {
+            if ("dayGridMonth" === view.type) {
               return;
             }
 
             const now = new Date();
-            if (info.start < now) {
-              info.view.calendar.unselect();
-              window.alert(
+            if (start < now) {
+              view.calendar.unselect();
+              return alert(
                 "No se puede agendar en una fecha que ya ha pasado."
               );
-              return;
             }
 
             if (
-              info.start.getHours() < 6 ||
-              info.end.getHours() > 21 ||
-              info.end.getHours() === 0
+              start.getHours() < 6 ||
+              end.getHours() > 21 ||
+              end.getHours() === 0
             ) {
               // The selection is out of allow range, cancel
-              info.view.calendar.unselect();
-              window.alert("Agendamientos no disponible en ese horario.");
-              return;
+              view.calendar.unselect();
+              return alert("Agendamientos no disponible en ese horario.");
             }
 
             const modalScheduling = new bootstrap.Modal("#modal-scheduling");
             modalScheduling.show();
 
-            setDate(formatTodaysDate(info.start));
-            setStart(formatTodaysDateTime(info.start));
-            setEnd(formatTodaysDateTime(info.end));
+            setDate(formatTodaysDate(start));
+            setStart(formatTodaysDateTime(start));
+            setEnd(formatTodaysDateTime(end));
             setStatus(1);
           }}
-          eventClick={(info) => {
+          eventClick={({ event }) => {
             const modalCancelSheduling = new bootstrap.Modal(
               "#modal-confirm-cancell"
             );
             modalCancelSheduling.show();
-            setEventId(info.event.id);
-            setDate(formatTodaysDateTime(info.event.start));
+            setEventId(event.id);
+            setDate(formatTodaysDateTime(event.start));
           }}
           editable
           dayMaxEvents
@@ -101,9 +99,9 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
             hour: "numeric",
             minute: "2-digit",
           }}
-          loading={(state) => {
-            loadEventsRef.current.style.display = state ? "block" : "none";
-          }}
+          loading={(state) =>
+            (loadEventsRef.current.style.display = state ? "block" : "none")
+          }
           plugins={[daygrid]}
           initialView={initialView}
         />

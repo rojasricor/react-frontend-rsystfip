@@ -4,7 +4,7 @@ import NavDropdown from "./NavDropdown";
 import { FaUsersCog } from "react-icons/fa";
 import { MdEventNote } from "react-icons/md";
 import {
-  BsBarChartLineFill,
+  BsBarChartLine,
   BsFilePdf,
   BsFolderPlus,
   BsQuestionCircle,
@@ -80,7 +80,7 @@ export default ({ permissions }) => (
           title="Sección de estadísticas"
           description={
             <>
-              Estadísticas <BsBarChartLineFill />
+              Estadísticas <BsBarChartLine />
             </>
           }
           h6="Sección de estadísticas"

@@ -26,8 +26,10 @@ export const footer = (currentPage, pageCount) => ({
 });
 
 export const styles = {
-  header: { fontSize: 18, bold: true, margin: 0 },
+  header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] },
+  subheader: { fontSize: 16, bold: true, margin: [0, 10, 0, 5] },
   tableHeader: { bold: true, fontSize: 13, color: "black" },
+  grayColor: { fillColor: "#f9f9f9" },
 };
 
 export const myFonts = {

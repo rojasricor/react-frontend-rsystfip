@@ -90,64 +90,80 @@ export default function PdfCreator({
           }
         : {},
       {
-        text: `Cantidad agendado(a)s entre el rango de fecha:${
-          reportsCountOnRange.length !== 0 ? "" : " (0)"
-        }`,
+        text: "Cantidad agendado(a)s:",
         style: "header",
         alignment: "center",
         marginBottom: 30,
-        pageBreak: reportsCountOnRange.length !== 0 ? "before" : false,
+        pageBreak: reportsFiltered.length !== 0 ? "before" : false,
       },
-      reportsCountOnRange.length !== 0
-        ? {
-            layout: "lightHorizontalLines",
-            alignment: "center",
-            marginBottom: 30,
-            table: {
-              dontBreakRows: true,
-              headerRows: 1,
-              body: [
-                [
-                  { text: "Tipo de persona", style: "tableHeader" },
-                  { text: "Cantidad personas", style: "tableHeader" },
-                ],
-                ...reportsCountOnRange.map(({ person, counts }) => [
-                  person,
-                  counts,
-                ]),
-              ],
-            },
-          }
-        : {},
       {
-        text: `Cantidad total agendado(a)s:${
-          reportsCountAlltime.length !== 0 ? "" : " (0)"
-        }`,
-        style: "header",
-        alignment: "center",
-        marginBottom: 30,
-      },
-      reportsCountAlltime.length !== 0
-        ? {
-            layout: "lightHorizontalLines",
+        columns: [
+          {
+            text: `Rango de fecha${
+              reportsCountOnRange.length !== 0 ? "" : " (0)"
+            }`,
+            style: "subheader",
             alignment: "center",
-            marginBottom: 30,
-            table: {
-              dontBreakRows: true,
-              headerRows: 1,
-              body: [
-                [
-                  { text: "Tipo de persona", style: "tableHeader" },
-                  { text: "Cantidad personas", style: "tableHeader" },
-                ],
-                ...reportsCountAlltime.map(({ person, counts }) => [
-                  person,
-                  counts,
-                ]),
-              ],
-            },
-          }
-        : {},
+            marginBottom: 10,
+          },
+          {
+            text: `Cantidad total${
+              reportsCountAlltime.length !== 0 ? "" : " (0)"
+            }`,
+            style: "subheader",
+            alignment: "center",
+            marginBottom: 10,
+          },
+        ],
+      },
+      {
+        columns: [
+          reportsCountOnRange.length !== 0
+            ? {
+                layout: "headerLineOnly",
+                alignment: "center",
+                marginBottom: 30,
+                style: "grayColor",
+                table: {
+                  dontBreakRows: true,
+                  headerRows: 1,
+                  body: [
+                    [
+                      { text: "Categoría de persona", style: "tableHeader" },
+                      { text: "Cantidad personas", style: "tableHeader" },
+                    ],
+                    ...reportsCountOnRange.map(({ person, counts }) => [
+                      person,
+                      counts,
+                    ]),
+                  ],
+                },
+              }
+            : {},
+          reportsCountAlltime.length !== 0
+            ? {
+                layout: "headerLineOnly",
+                alignment: "center",
+                marginBottom: 30,
+                style: "grayColor",
+                table: {
+                  dontBreakRows: true,
+                  headerRows: 1,
+                  body: [
+                    [
+                      { text: "Categoría de persona", style: "tableHeader" },
+                      { text: "Cantidad personas", style: "tableHeader" },
+                    ],
+                    ...reportsCountAlltime.map(({ person, counts }) => [
+                      person,
+                      counts,
+                    ]),
+                  ],
+                },
+              }
+            : {},
+        ],
+      },
     ],
     styles,
   });

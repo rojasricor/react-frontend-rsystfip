@@ -35,7 +35,6 @@ export default function ModalCancellPersonConfirmation() {
       toast.error(error);
     } catch (err) {
       toast.error(err);
-      console.error(err);
     } finally {
       setLoading(false);
     }

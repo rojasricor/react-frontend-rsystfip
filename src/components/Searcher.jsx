@@ -14,15 +14,21 @@ export default function Searcher() {
   const [peopleFiltered, setPeopleFiltered] = useState([]);
   const [people, setPeople] = useState([]);
 
+  async function getPeople() {
+    try {
+      const request = await fetch(`${API_ROUTE}/people`);
+      const data = await request.json();
+      setPeople(data);
+      setPeopleFiltered(data);
+    } catch {
+      setLoading(2);
+    } finally {
+      setLoading(1);
+    }
+  }
+
   useEffect(() => {
-    fetch(`${API_ROUTE}/people`)
-      .then((request) => request.json())
-      .then((data) => {
-        setPeople(data);
-        setPeopleFiltered(data);
-      })
-      .catch(() => setLoading(2))
-      .finally(() => setLoading(1));
+    getPeople();
   }, []);
 
   let timerId = null;

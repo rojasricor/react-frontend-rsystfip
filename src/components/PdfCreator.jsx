@@ -1,6 +1,6 @@
 import Downloader from "./Downloader";
 import pdfMake from "pdfmake/build/pdfmake.min";
-import { createHeader, footer, styles } from "../conf/pdfmake.conf";
+import { createHeader, footer, styles, myFonts } from "../conf/pdfmake.conf";
 
 export default function PdfCreator({
   image,
@@ -151,6 +151,8 @@ export default function PdfCreator({
     ],
     styles,
   });
+
+  pdf.fonts = myFonts;
 
   return <Downloader pdf={pdf} />;
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, startTransition } from "react";
 import { Link } from "react-router-dom";
 import { API_ROUTE } from "../constants/api";
 import Rower from "./Rower";
@@ -18,8 +18,10 @@ export default function Searcher() {
     try {
       const request = await fetch(`${API_ROUTE}/people`);
       const data = await request.json();
-      setPeople(data);
-      setPeopleFiltered(data);
+      startTransition(() => {
+        setPeople(data);
+        setPeopleFiltered(data);
+      });
     } catch {
       setLoading(2);
     } finally {
@@ -31,19 +33,15 @@ export default function Searcher() {
     getPeople();
   }, []);
 
-  let timerId = null;
   function filterPeople(evt) {
-    clearTimeout(timerId);
     const query = evt.target.value.toLowerCase();
-    timerId = setTimeout(
-      () =>
-        setPeopleFiltered(
-          people.filter(
-            ({ name, num_doc }) =>
-              name.toLowerCase().startsWith(query) || num_doc.startsWith(query)
-          )
-        ),
-      500
+    startTransition(() =>
+      setPeopleFiltered(
+        people.filter(
+          ({ name, num_doc }) =>
+            name.toLowerCase().startsWith(query) || num_doc.startsWith(query)
+        )
+      )
     );
   }
 

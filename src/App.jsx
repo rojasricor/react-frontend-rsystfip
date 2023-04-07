@@ -22,10 +22,10 @@ const StcsDailyPage = lazy(() => import("./pages/StcsDailyPage"));
 const StcsScheduledPage = lazy(() => import("./pages/StcsScheduledPage"));
 const FaqsPage = lazy(() => import("./pages/FaqsPage"));
 const Error404Page = lazy(() => import("./pages/Error404Page"));
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootswatch/dist/zephyr/bootstrap.min.css";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 
 function App() {
   const { user } = useContext(AppContext);

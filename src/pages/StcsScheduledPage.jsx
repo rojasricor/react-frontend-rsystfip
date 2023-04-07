@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import DivRow from "../components/DivRow";
-import Charter from "../components/Charter";
+import Statistics from "../components/Statistics";
 
 export default function StcsScheduledPage() {
   useEffect(() => {
@@ -9,7 +9,7 @@ export default function StcsScheduledPage() {
 
   return (
     <DivRow>
-      <Charter scheduling_type="scheduled" />
+      <Statistics scheduling_type="scheduled" />
     </DivRow>
   );
 }

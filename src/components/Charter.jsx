@@ -4,7 +4,7 @@ import { getStartMonthDate, getEndMonthDate } from "../meta/todaylib";
 import { createChart } from "../conf/chart.conf";
 import DivCol12 from "./DivCol12";
 import DaterStatistics from "./DaterStatistics";
-import Xit from "./Xit";
+import Ctx from "./Ctx";
 import ListerStatistics from "./ListerStatistics";
 import "chart.js/dist/Chart.bundle.min";
 
@@ -17,7 +17,7 @@ export default function Charter({ scheduling_type }) {
   const [mostAgendatedOnRange, setMostAgendatedOnRange] = useState([]);
   const [mostAgendatedAlltime, setMostAgendatedAlltime] = useState([]);
 
-  const xitRef = useRef(null);
+  const ctxRef = useRef(null);
 
   function refreshChart(labels, data) {
     if (chart) {
@@ -29,7 +29,7 @@ export default function Charter({ scheduling_type }) {
     } - Cantidad persona(s)`;
 
     setChart(
-      new Chart(xitRef.current, createChart(chartType, label, labels, data))
+      new Chart(ctxRef.current, createChart(chartType, label, labels, data))
     );
   }
 
@@ -84,7 +84,7 @@ export default function Charter({ scheduling_type }) {
         />
       </DivCol12>
 
-      <Xit xitRef={xitRef} />
+      <Ctx ctxRef={ctxRef} />
 
       <ListerStatistics
         mostAgendatedOnRange={mostAgendatedOnRange}

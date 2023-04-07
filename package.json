@@ -1,7 +1,7 @@
 {
   "name": "nodejs-rsystfip",
   "private": true,
-  "version": "3.4.7",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",

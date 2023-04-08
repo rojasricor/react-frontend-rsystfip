@@ -67,7 +67,7 @@ export default function FormLogin() {
             autoFocus
             required
           />
-          <Label labelInfo="Nombre de usuario" clAdds=" fw-bold" />
+          <Label labelInfo="Nombre de usuario" />
         </FloatingFormCol12x>
         <FloatingFormCol12x>
           <input
@@ -79,7 +79,7 @@ export default function FormLogin() {
             autoComplete="off"
             required
           />
-          <Label labelInfo="Contraseña" clAdds=" fw-bold" />
+          <Label labelInfo="Contraseña" />
         </FloatingFormCol12x>
         <Submitter loading={loading}>
           {!loading ? (

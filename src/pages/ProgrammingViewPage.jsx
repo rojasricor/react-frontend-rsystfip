@@ -3,7 +3,7 @@ import LoadCalendar from "../components/LoadCalendar";
 import { PeopleContextProvider } from "../context/PeopleContext";
 import CalendarRSystfipEvents from "../components/CalendarRSystfipEvents";
 import ModalCancellPersonConfirmation from "../components/ModalCancellPersonConfirmation";
-import ToastBase from "../components/ToastBase";
+import Notify from "../components/Notify";
 
 export default function ProgrammingViewPage() {
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function ProgrammingViewPage() {
         initialView="listMonth"
       />
       <ModalCancellPersonConfirmation />
-      <ToastBase />
+      <Notify />
     </PeopleContextProvider>
   );
 }

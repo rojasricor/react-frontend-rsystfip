@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import DivRow from "../components/DivRow";
 import Cardx from "../components/Cardx";
 import FormUserAdd from "../components/FormUserAdd";
-import ToastBase from "../components/ToastBase";
+import Notify from "../components/Notify";
 
 export default function AddUserPage() {
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function AddUserPage() {
       <Cardx title="Registrar usuario nuevo">
         <FormUserAdd />
       </Cardx>
-      <ToastBase />
+      <Notify />
     </DivRow>
   );
 }

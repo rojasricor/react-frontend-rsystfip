@@ -1,4 +1,4 @@
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, Flip } from "react-toastify";
 
 export default () => (
   <ToastContainer
@@ -6,6 +6,7 @@ export default () => (
     autoClose={2000}
     hideProgressBar={false}
     newestOnTop={false}
+    transition={Flip}
     closeOnClick
     rtl={false}
     pauseOnFocusLoss

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import DivRow from "../components/DivRow";
 import FetcherDataForChangePsw from "../components/FetcherDataForChangePsw";
-import ToastBase from "../components/ToastBase";
+import Notify from "../components/Notify";
 
 export default function PswChangeUserPage() {
   useEffect(() => {
@@ -11,7 +11,7 @@ export default function PswChangeUserPage() {
   return (
     <DivRow>
       <FetcherDataForChangePsw />
-      <ToastBase />
+      <Notify />
     </DivRow>
   );
 }

@@ -5,7 +5,7 @@ import Cardx from "../components/Cardx";
 import DivCol12 from "../components/DivCol12";
 import TableUsers from "../components/TableUsers";
 import { FaUserPlus } from "react-icons/fa";
-import ToastBase from "../components/ToastBase";
+import Notify from "../components/Notify";
 
 export default function DashboardPage() {
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function DashboardPage() {
         </DivCol12>
         <TableUsers />
       </Cardx>
-      <ToastBase />
+      <Notify />
     </DivRow>
   );
 }

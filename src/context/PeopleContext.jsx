@@ -60,7 +60,7 @@ export function PeopleContextProvider({ children }) {
       const { ok, error } = await request.json();
 
       if (error) {
-        return toast.warn(error);
+        return toast.warn(`${error} 🤯`);
       }
 
       setPerson("unset");
@@ -69,7 +69,7 @@ export function PeopleContextProvider({ children }) {
       setName("");
       setFacultie("unset");
       setAsunt("");
-      toast.success(ok, { position: "top-left" });
+      toast.success(`${ok} 👌`, { position: "top-left" });
     } catch (err) {
       toast.error(err);
     } finally {
@@ -97,7 +97,7 @@ export function PeopleContextProvider({ children }) {
       const { ok, error } = await request.json();
 
       if (error) {
-        return toast.warn(error);
+        return toast.warn(`${error} 🤯`);
       }
 
       setPerson("unset");
@@ -106,7 +106,7 @@ export function PeopleContextProvider({ children }) {
       setName("");
       setFacultie("unset");
       setAsunt("");
-      toast.success(ok, { position: "top-left" });
+      toast.success(`${ok} 👌`, { position: "top-left" });
     } catch (err) {
       toast.error(err);
     } finally {

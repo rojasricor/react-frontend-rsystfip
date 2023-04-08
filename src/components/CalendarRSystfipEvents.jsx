@@ -92,7 +92,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
           events={{
             url: `${API_ROUTE}/scheduling`,
             failure: () =>
-              toast.error("No se pudo hacer la carga de los eventos."),
+              toast.error("No se pudo hacer la carga de los eventos 🤯"),
           }}
           eventOrder="-start"
           eventTimeFormat={{

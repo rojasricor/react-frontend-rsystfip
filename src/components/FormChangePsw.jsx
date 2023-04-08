@@ -31,13 +31,13 @@ export default function FormChangePsw({ userId }) {
       const { error, ok } = await request.json();
 
       if (error) {
-        return toast.warn(error);
+        return toast.warn(`${error} 🤯`);
       }
 
       setCurrent_password("");
       setNew_password("");
       setNew_password_confirm("");
-      toast.success(ok, { position: "top-left" });
+      toast.success(`${ok} 👌`, { position: "top-left" });
     } catch (err) {
       toast.error(err);
     } finally {

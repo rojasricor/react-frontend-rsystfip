@@ -58,25 +58,18 @@ export function PeopleContextProvider({ children }) {
         }),
       });
       const { ok, error } = await request.json();
-      if (ok) {
-        setPerson("unset");
-        setDoc("");
-        setDoctype("unset");
-        setName("");
-        setFacultie("unset");
-        setAsunt("");
-        toast(ok, {
-          position: "top-left",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        return true;
+
+      if (error) {
+        return toast.warn(error);
       }
-      toast.error(error);
+
+      setPerson("unset");
+      setDoc("");
+      setDoctype("unset");
+      setName("");
+      setFacultie("unset");
+      setAsunt("");
+      toast.success(ok, { position: "top-left" });
     } catch (err) {
       toast.error(err);
     } finally {
@@ -102,24 +95,18 @@ export function PeopleContextProvider({ children }) {
         }),
       });
       const { ok, error } = await request.json();
-      if (ok) {
-        setPerson("unset");
-        setDoc("");
-        setDoctype("unset");
-        setName("");
-        setFacultie("unset");
-        setAsunt("");
-        return toast(ok, {
-          position: "top-left",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+
+      if (error) {
+        return toast.warn(error);
       }
-      toast.error(error);
+
+      setPerson("unset");
+      setDoc("");
+      setDoctype("unset");
+      setName("");
+      setFacultie("unset");
+      setAsunt("");
+      toast.success(ok, { position: "top-left" });
     } catch (err) {
       toast.error(err);
     } finally {
@@ -155,15 +142,7 @@ export function PeopleContextProvider({ children }) {
         setFacultie(dean.facultie);
         setDisabledAfterAutocomplete(true);
         facultieSelectRef.current.className = "form-control";
-        toast("Datos autocompletados automáticamente", {
-          position: "top-left",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        toast.info("Se han completado los datos", { position: "top-left" });
         break;
       }
     }

@@ -29,21 +29,15 @@ export default function FormChangePsw({ userId }) {
         }),
       });
       const { error, ok } = await request.json();
+
       if (error) {
-        return toast.error(error);
+        return toast.warn(error);
       }
+
       setCurrent_password("");
       setNew_password("");
       setNew_password_confirm("");
-      return toast(ok, {
-        position: "top-left",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.success(ok, { position: "top-left" });
     } catch (err) {
       toast.error(err);
     } finally {

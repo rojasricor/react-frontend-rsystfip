@@ -46,28 +46,20 @@ export default function FormUserAdd() {
       });
       const { error, ok } = await request.json();
 
-      if (ok) {
-        setRole(UNSET_STATUS);
-        setName("");
-        setLastname("");
-        setDocType(UNSET_STATUS);
-        setDoc("");
-        setEmail("");
-        setTel("");
-        setPassword("");
-        setPasswordConfirmation("");
-
-        return toast(ok, {
-          position: "top-left",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+      if (error) {
+        return toast.warn(error);
       }
-      return toast.error(error);
+
+      setRole(UNSET_STATUS);
+      setName("");
+      setLastname("");
+      setDocType(UNSET_STATUS);
+      setDoc("");
+      setEmail("");
+      setTel("");
+      setPassword("");
+      setPasswordConfirmation("");
+      toast.success(ok, { position: "top-left" });
     } catch (err) {
       toast.error(err);
     } finally {

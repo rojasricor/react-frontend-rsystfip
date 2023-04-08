@@ -26,16 +26,8 @@ export default function DashboardRow({ user }) {
         return toast.error("Error al eliminar");
       }
 
-      toast("Usuario eliminado exitosamente", {
-        position: "top-left",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
       setDeleted(true);
+      toast.success("Usuario eliminado exitosamente", { position: "top-left" });
     } catch (err) {
       toast.error(err);
     }

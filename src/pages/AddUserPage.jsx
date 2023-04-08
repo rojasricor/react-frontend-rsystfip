@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import DivRow from "../components/DivRow";
 import Cardx from "../components/Cardx";
 import FormUserAdd from "../components/FormUserAdd";
-import { ToastContainer } from "react-toastify";
+import ToastBase from "../components/ToastBase";
 
 export default function AddUserPage() {
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function AddUserPage() {
       <Cardx title="Registrar usuario nuevo">
         <FormUserAdd />
       </Cardx>
-      <ToastContainer />
+      <ToastBase />
     </DivRow>
   );
 }

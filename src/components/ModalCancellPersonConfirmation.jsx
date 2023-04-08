@@ -21,18 +21,12 @@ export default function ModalCancellPersonConfirmation() {
         }),
       });
       const { ok, error } = await request.json();
-      if (ok) {
-        return toast(ok, {
-          position: "top-left",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+
+      if (error) {
+        return toast.warn(error);
       }
-      toast.error(error);
+
+      toast.success(ok, { position: "top-left" });
     } catch (err) {
       toast.error(err);
     } finally {

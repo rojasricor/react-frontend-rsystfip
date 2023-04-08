@@ -39,12 +39,12 @@ export default function FormLogin() {
       });
       const { auth, user, error } = await response.json();
 
-      if (auth) {
-        setUser(user);
-        navigate("/home/welcome");
-      } else {
-        toast.error(error);
+      if (error || !auth) {
+        return toast.warn(error);
       }
+
+      setUser(user);
+      navigate("/home/welcome");
     } catch (err) {
       toast.error(err);
     } finally {

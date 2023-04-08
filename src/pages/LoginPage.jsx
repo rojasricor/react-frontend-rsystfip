@@ -4,7 +4,7 @@ import Cardx from "../components/Cardx";
 import HeaderLogin from "../components/HeaderLogin";
 import Container from "../components/Container";
 import FormLogin from "../components/FormLogin";
-import { ToastContainer } from "react-toastify";
+import ToastBase from "../components/ToastBase";
 
 export default function LoginPage() {
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function LoginPage() {
           <FormLogin />
         </Container>
       </Cardx>
-      <ToastContainer />
+      <ToastBase />
     </DivRow>
   );
 }

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { PeopleContextProvider } from "../context/PeopleContext";
 import CalendarRSystfipEvents from "../components/CalendarRSystfipEvents";
 import ModalSchedulePeopleForm from "../components/ModalSchedulePeopleForm";
-import { ToastContainer } from "react-toastify";
+import ToastBase from "../components/ToastBase";
 
 export default function ProgrammingPage() {
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function ProgrammingPage() {
         initialView="timeGridDay"
       />
       <ModalSchedulePeopleForm />
-      <ToastContainer />
+      <ToastBase />
     </PeopleContextProvider>
   );
 }

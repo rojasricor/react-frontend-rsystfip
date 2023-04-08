@@ -7,7 +7,7 @@ import Spinner from "./Spinner";
 import SmallCaption from "./SmallCaption";
 import { FaUserPlus } from "react-icons/fa";
 import { GiReturnArrow } from "react-icons/gi";
-import { ToastContainer } from "react-toastify";
+import ToastBase from "./ToastBase";
 
 export default function FooterFormPeople({ isAllowed }) {
   const { loading } = useContext(PeopleContext);
@@ -45,7 +45,7 @@ export default function FooterFormPeople({ isAllowed }) {
         </button>
       </DivCol12>
       <SmallCaption />
-      <ToastContainer />
+      <ToastBase />
     </>
   );
 }

@@ -5,7 +5,7 @@ import { API_ROUTE } from "../constants/api";
 import { toast } from "react-toastify";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
-export default function ModalCancellPersonConfirmation() {
+export default function ModalCancellPersonConfirmation({ modalRef }) {
   const { eventId, date, loading, setLoading } = useContext(PeopleContext);
 
   async function cancellPerson() {
@@ -40,7 +40,7 @@ export default function ModalCancellPersonConfirmation() {
       data-bs-backdrop="static"
       data-bs-keyboard="false"
       tabIndex="-1"
-      id="modal-confirm-cancell"
+      ref={modalRef}
     >
       <div className="modal-dialog">
         <div className="modal-content">

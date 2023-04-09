@@ -59,7 +59,7 @@ export default function FormLogin() {
           <input
             onChange={(evt) => setUsername(evt.target.value)}
             value={username}
-            className="form-control border-0 border-bottom rounded-bottom-0"
+            className="form-control"
             type="text"
             placeholder="Usuario"
             autoComplete="off"
@@ -74,7 +74,7 @@ export default function FormLogin() {
             onChange={(evt) => setPassword(evt.target.value)}
             value={password}
             type={passwordVisible ? "text" : "password"}
-            className="form-control border-0 border-bottom rounded-top-0"
+            className="form-control"
             placeholder="Contraseña"
             autoComplete="off"
             required

@@ -7,7 +7,7 @@ import {
   BsBarChartLineFill,
   BsFilePdf,
   BsFolderPlus,
-  BsQuestionCircle,
+  BsInfoCircle,
 } from "react-icons/bs";
 import { FiDownloadCloud } from "react-icons/fi";
 import { TiHome } from "react-icons/ti";
@@ -144,7 +144,7 @@ export default ({ permissions }) => (
         className="nav-item nav-link"
         title="Preguntas y respuestas más frecuentes"
       >
-        FAQs <BsQuestionCircle className="mb-1" />
+        FAQs <BsInfoCircle className="mb-1" />
       </NavLink>
     </div>
   </nav>

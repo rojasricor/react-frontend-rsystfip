@@ -1,15 +1,18 @@
 import { useContext, useRef } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import Responsive from "./Responsive";
-import Container from "./Container";
 import LoadCalendar from "../components/LoadCalendar";
+import ModalSchedulePeopleForm from "./ModalSchedulePeopleForm";
+import ModalCancellPersonConfirmation from "./ModalCancellPersonConfirmation";
+import Notify from "./Notify";
+import Container from "./Container";
 import FullCalendar from "@fullcalendar/react";
 import daygrid from "@fullcalendar/daygrid";
 import esLocale from "@fullcalendar/core/locales/es";
 import { formatTodaysDate, formatTodaysDateTime } from "../meta/todaylib";
 import { globalLocales } from "fullcalendar";
 import { API_ROUTE } from "../constants/api";
-import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min";
+import Modal from "bootstrap/js/dist/modal";
 import { toast } from "react-toastify";
 
 export default function CalendarRSystfipEvents({ right, initialView }) {
@@ -17,10 +20,14 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
     useContext(PeopleContext);
 
   const loadEventsRef = useRef(null);
+  const modalScheduling = useRef(null);
+  const modalCancelSheduling = useRef(null);
 
   return (
     <Responsive>
       <LoadCalendar loadEventsRef={loadEventsRef} />
+      <ModalSchedulePeopleForm modalRef={modalScheduling} />
+      <ModalCancellPersonConfirmation modalRef={modalCancelSheduling} />
       <Container clAdds=" schg-sm lh-1">
         <FullCalendar
           height="auto"
@@ -71,8 +78,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
               return alert("Agendamientos no disponible en ese horario.");
             }
 
-            const modalScheduling = new bootstrap.Modal("#modal-scheduling");
-            modalScheduling.show();
+            new Modal(modalScheduling.current).show();
 
             setDate(formatTodaysDate(start));
             setStart(formatTodaysDateTime(start));
@@ -80,10 +86,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
             setStatus(1);
           }}
           eventClick={({ event }) => {
-            const modalCancelSheduling = new bootstrap.Modal(
-              "#modal-confirm-cancell"
-            );
-            modalCancelSheduling.show();
+            new Modal(modalCancelSheduling.current).show();
             setEventId(event.id);
             setDate(formatTodaysDateTime(event.start));
           }}
@@ -107,6 +110,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
         />
       </Container>
       <p className="text-center mt-2">Scheduled scheduling month to month.</p>
+      <Notify />
     </Responsive>
   );
 }

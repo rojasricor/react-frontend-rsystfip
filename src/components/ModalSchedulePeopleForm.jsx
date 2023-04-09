@@ -1,12 +1,12 @@
 import FormSchedulePeople from "./FormSchedulePeople";
 
-export default () => (
+export default ({ modalRef }) => (
   <div
     className="modal fade"
     data-bs-backdrop="static"
     data-bs-keyboard="false"
     tabIndex="-1"
-    id="modal-scheduling"
+    ref={modalRef}
   >
     <div className="modal-dialog">
       <div className="modal-content">

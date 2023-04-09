@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { PeopleContextProvider } from "../context/PeopleContext";
-import CalendarRSystfipEvents from "../components/CalendarRSystfipEvents";
+import FullCalendarScheduling from "../components/FullCalendarScheduling";
 
 export default function ProgrammingPage() {
   useEffect(() => {
@@ -9,7 +9,7 @@ export default function ProgrammingPage() {
 
   return (
     <PeopleContextProvider>
-      <CalendarRSystfipEvents
+      <FullCalendarScheduling
         right="timeGridDay,timeGridWeek"
         initialView="timeGridDay"
       />

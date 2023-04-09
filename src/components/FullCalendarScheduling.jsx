@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import Responsive from "./Responsive";
-import LoadCalendar from "../components/LoadCalendar";
+import LoadCalendar from "./LoadCalendar";
 import ModalSchedulePeopleForm from "./ModalSchedulePeopleForm";
 import ModalCancellPersonConfirmation from "./ModalCancellPersonConfirmation";
 import Notify from "./Notify";
@@ -15,7 +15,7 @@ import { API_ROUTE } from "../constants/api";
 import Modal from "bootstrap/js/dist/modal";
 import { toast } from "react-toastify";
 
-export default function CalendarRSystfipEvents({ right, initialView }) {
+export default function FullCalendarScheduling({ right, initialView }) {
   const { setEventId, setDate, setStart, setEnd, setStatus } =
     useContext(PeopleContext);
 

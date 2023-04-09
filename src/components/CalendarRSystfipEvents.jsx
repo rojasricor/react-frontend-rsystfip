@@ -1,4 +1,4 @@
-import { useContext, useRef, useMemo } from "react";
+import { useContext, useRef } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import Responsive from "./Responsive";
 import LoadCalendar from "../components/LoadCalendar";
@@ -22,14 +22,6 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
   const loadEventsRef = useRef(null);
   const modalScheduling = useRef(null);
   const modalCancelSheduling = useRef(null);
-
-  const eventSource = () => ({
-    url: `${API_ROUTE}/scheduling`,
-    failure: () => toast.error("Error al obtener los agendamientos"),
-  });
-
-  const loadAction = (state) =>
-    (loadEventsRef.current.style.display = state ? "block" : "none");
 
   return (
     <Responsive>
@@ -100,13 +92,18 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
           }}
           editable
           dayMaxEvents
-          events={eventSource}
+          events={{
+            url: `${API_ROUTE}/scheduling`,
+            failure: () => toast.error("Error al obtener los agendamientos"),
+          }}
           eventOrder="-start"
           eventTimeFormat={{
             hour: "numeric",
             minute: "2-digit",
           }}
-          loading={loadAction}
+          loading={(state) =>
+            (loadEventsRef.current.style.display = state ? "block" : "none")
+          }
           plugins={[daygrid]}
           initialView={initialView}
         />

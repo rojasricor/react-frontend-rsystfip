@@ -102,14 +102,7 @@ export default function Statistics({ scheduling_type }) {
             loop: true,
           },
         },
-        scales: {
-          x: {
-            beginAtZero: true,
-          },
-          y: {
-            beginAtZero: true,
-          },
-        },
+        scales: { x: { beginAtZero: true }, y: { beginAtZero: true } },
         plugins: {
           datalabels: {
             formatter: (value, { dataset }) => {
@@ -119,14 +112,8 @@ export default function Statistics({ scheduling_type }) {
               );
               return (isNaN(percent) ? 0 : percent) + "%";
             },
-            labels: {
-              title: {
-                font: {
-                  weight: "bold",
-                },
-              },
-            },
-            align: "right",
+            labels: { title: { font: { size: 20 } } },
+            align: "end",
           },
         },
       },

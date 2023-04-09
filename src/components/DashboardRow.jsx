@@ -23,11 +23,11 @@ export default function DashboardRow({ user }) {
       const response = request.json();
 
       if (!response) {
-        return toast.error("Error al eliminar 🤯");
+        return toast.error("Error al eliminar");
       }
 
       setDeleted(true);
-      toast.success("Usuario eliminado exitosamente 👌", {
+      toast.success("Usuario eliminado exitosamente", {
         position: "top-left",
       });
     } catch (err) {

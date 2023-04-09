@@ -47,7 +47,7 @@ export default function FormUserAdd() {
       const { error, ok } = await request.json();
 
       if (error) {
-        return toast.warn(`${error} 🤯`);
+        return toast.warn(error);
       }
 
       setRole(UNSET_STATUS);
@@ -59,7 +59,7 @@ export default function FormUserAdd() {
       setTel("");
       setPassword("");
       setPasswordConfirmation("");
-      toast.success(`${ok} 👌`, { position: "top-left" });
+      toast.success(ok, { position: "top-left" });
     } catch (err) {
       toast.error(err);
     } finally {

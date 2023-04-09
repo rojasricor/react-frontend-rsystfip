@@ -94,8 +94,7 @@ export default function CalendarRSystfipEvents({ right, initialView }) {
           dayMaxEvents
           events={{
             url: `${API_ROUTE}/scheduling`,
-            failure: () =>
-              toast.error("No se pudo hacer la carga de los eventos 🤯"),
+            failure: () => toast.error("Error al obtener los agendamientos"),
           }}
           eventOrder="-start"
           eventTimeFormat={{

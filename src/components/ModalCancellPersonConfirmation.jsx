@@ -23,10 +23,10 @@ export default function ModalCancellPersonConfirmation({ modalRef }) {
       const { ok, error } = await request.json();
 
       if (error) {
-        return toast.warn(`${error} 🤯`);
+        return toast.warn(error);
       }
 
-      toast.success(`${ok} 👌`, { position: "top-left" });
+      toast.success(ok, { position: "top-left" });
     } catch (err) {
       toast.error(err);
     } finally {

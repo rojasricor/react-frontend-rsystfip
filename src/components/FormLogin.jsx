@@ -40,7 +40,7 @@ export default function FormLogin() {
       const { auth, user, error } = await response.json();
 
       if (error || !auth) {
-        return toast.warn(`${error} 🤯`);
+        return toast.warn(error);
       }
 
       setUser(user);

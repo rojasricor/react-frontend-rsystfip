@@ -1,32 +1,29 @@
-import { useContext, lazy, Suspense } from "react";
+import { useContext } from "react";
 import { AppContext } from "./context/AppContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedElement from "./components/ProtectedElement";
 import ProtectedRoute from "./components/ProtectedRoute";
-import LoaderSuspense from "./components/LoaderSuspense";
 import ContainerFluid from "./components/ContainerFluid";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
-const HomePage = lazy(() => import("./pages/HomePage"));
-const DashboardPage = lazy(() => import("./pages/DashboardPage"));
-const AddUserPage = lazy(() => import("./pages/AddUserPage"));
-const PswChangeUserPage = lazy(() => import("./pages/PswChangeUserPage"));
-const ProgrammingPage = lazy(() => import("./pages/ProgrammingPage"));
-const ProgrammingViewPage = lazy(() => import("./pages/ProgrammingViewPage"));
-const AddPeoplePage = lazy(() => import("./pages/AddPeoplePage"));
-const EditPeoplePage = lazy(() => import("./pages/EditPeoplePage"));
-const HistoryPeoplePage = lazy(() => import("./pages/HistoryPeoplePage"));
-const ReportsPeoplePage = lazy(() => import("./pages/ReportsPeoplePage"));
-const StcsDailyPage = lazy(() => import("./pages/StcsDailyPage"));
-const StcsScheduledPage = lazy(() => import("./pages/StcsScheduledPage"));
-const FaqsPage = lazy(() => import("./pages/FaqsPage"));
-const Error404Page = lazy(() => import("./pages/Error404Page"));
-import "bootswatch/dist/zephyr/bootstrap.min.css";
-import "./index.css";
-import "react-toastify/dist/ReactToastify.min.css";
+import HomePage from "./pages/HomePage";
+import DashboardPage from "./pages/DashboardPage";
+import AddUserPage from "./pages/AddUserPage";
+import PswChangeUserPage from "./pages/PswChangeUserPage";
+import ProgrammingPage from "./pages/ProgrammingPage";
+import ProgrammingViewPage from "./pages/ProgrammingViewPage";
+import AddPeoplePage from "./pages/AddPeoplePage";
+import EditPeoplePage from "./pages/EditPeoplePage";
+import HistoryPeoplePage from "./pages/HistoryPeoplePage";
+import ReportsPeoplePage from "./pages/ReportsPeoplePage";
+import StcsDailyPage from "./pages/StcsDailyPage";
+import StcsScheduledPage from "./pages/StcsScheduledPage";
+import FaqsPage from "./pages/FaqsPage";
+import Error404Page from "./pages/Error404Page";
+import "./index.scss";
 
-function App() {
+export default function App() {
   const { user } = useContext(AppContext);
   const avatar = user ? `/img/${user.role}/avatar.png` : "";
   const permissions = user ? user.permissions : [];
@@ -37,117 +34,110 @@ function App() {
         <ProtectedElement isAllowed={!!user}>
           <Nav avatar={avatar} permissions={permissions} />
         </ProtectedElement>
-        <Suspense fallback={<LoaderSuspense />}>
-          <Routes>
-            <Route index element={<LoginPage />} />
-            <Route path="/auth/login" element={<LoginPage />} />
+        <Routes>
+          <Route index element={<LoginPage />} />
+          <Route path="/auth/login" element={<LoginPage />} />
 
-            <Route element={<ProtectedRoute isAllowed={!!user} />}>
-              <Route path="/home/welcome" element={<HomePage />} />
-              <Route
-                path="/users/manage/password/:role/change"
-                element={<PswChangeUserPage />}
+          <Route element={<ProtectedRoute isAllowed={!!user} />}>
+            <Route path="/home/welcome" element={<HomePage />} />
+            <Route
+              path="/users/manage/password/:role/change"
+              element={<PswChangeUserPage />}
+            />
+            <Route path="/people/view/:id/edit" element={<EditPeoplePage />} />
+            <Route path="/people/view" element={<HistoryPeoplePage />} />
+            <Route path="/help/asks/frecuently" element={<FaqsPage />} />
+          </Route>
+
+          <Route
+            element={
+              <ProtectedRoute
+                isAllowed={!!user && user.permissions.includes("admin")}
               />
-              <Route
-                path="/people/view/:id/edit"
-                element={<EditPeoplePage />}
-              />
-              <Route path="/people/view" element={<HistoryPeoplePage />} />
-              <Route path="/help/asks/frecuently" element={<FaqsPage />} />
-            </Route>
-
+            }
+          >
+            <Route path="/users/manage" element={<DashboardPage />} />
+            <Route path="/users/manage/add" element={<AddUserPage />} />
             <Route
-              element={
-                <ProtectedRoute
-                  isAllowed={!!user && user.permissions.includes("admin")}
-                />
-              }
-            >
-              <Route path="/users/manage" element={<DashboardPage />} />
-              <Route path="/users/manage/add" element={<AddUserPage />} />
-              <Route
-                path="/users/manage/:role/delete"
-                element={<DashboardPage />}
-              />
-            </Route>
-
-            <Route
-              path="/people/add"
-              element={
-                <ProtectedRoute
-                  isAllowed={!!user && user.permissions.includes("add")}
-                  navigateTo="/home/welcome"
-                >
-                  <AddPeoplePage />
-                </ProtectedRoute>
-              }
+              path="/users/manage/:role/delete"
+              element={<DashboardPage />}
             />
+          </Route>
 
-            <Route
-              path="/people/schedule"
-              element={
-                <ProtectedRoute
-                  isAllowed={!!user && user.permissions.includes("schedule")}
-                  navigateTo="/home/welcome"
-                >
-                  <ProgrammingPage />
-                </ProtectedRoute>
-              }
-            />
+          <Route
+            path="/people/add"
+            element={
+              <ProtectedRoute
+                isAllowed={!!user && user.permissions.includes("add")}
+                navigateTo="/home/welcome"
+              >
+                <AddPeoplePage />
+              </ProtectedRoute>
+            }
+          />
 
-            <Route
-              path="/people/preview"
-              element={
-                <ProtectedRoute isAllowed={!!user} navigateTo="/home/welcome">
-                  <ProgrammingViewPage />
-                </ProtectedRoute>
-              }
-            />
+          <Route
+            path="/people/schedule"
+            element={
+              <ProtectedRoute
+                isAllowed={!!user && user.permissions.includes("schedule")}
+                navigateTo="/home/welcome"
+              >
+                <ProgrammingPage />
+              </ProtectedRoute>
+            }
+          />
 
-            <Route
-              path="/people/reports"
-              element={
-                <ProtectedRoute
-                  isAllowed={!!user && user.permissions.includes("reports")}
-                  navigateTo="/home/welcome"
-                >
-                  <ReportsPeoplePage />
-                </ProtectedRoute>
-              }
-            />
+          <Route
+            path="/people/preview"
+            element={
+              <ProtectedRoute isAllowed={!!user} navigateTo="/home/welcome">
+                <ProgrammingViewPage />
+              </ProtectedRoute>
+            }
+          />
 
-            <Route
-              path="/people/statistics/daily"
-              element={
-                <ProtectedRoute
-                  isAllowed={!!user && user.permissions.includes("statistics")}
-                  navigateTo="/home/welcome"
-                >
-                  <StcsDailyPage />
-                </ProtectedRoute>
-              }
-            />
+          <Route
+            path="/people/reports"
+            element={
+              <ProtectedRoute
+                isAllowed={!!user && user.permissions.includes("reports")}
+                navigateTo="/home/welcome"
+              >
+                <ReportsPeoplePage />
+              </ProtectedRoute>
+            }
+          />
 
-            <Route
-              path="/people/statistics/scheduled"
-              element={
-                <ProtectedRoute
-                  isAllowed={!!user && user.permissions.includes("statistics")}
-                  navigateTo="/home/welcome"
-                >
-                  <StcsScheduledPage />
-                </ProtectedRoute>
-              }
-            />
+          <Route
+            path="/people/statistics/daily"
+            element={
+              <ProtectedRoute
+                isAllowed={!!user && user.permissions.includes("statistics")}
+                navigateTo="/home/welcome"
+              >
+                <StcsDailyPage />
+              </ProtectedRoute>
+            }
+          />
 
-            <Route path="*" element={<Error404Page />} />
-          </Routes>
-        </Suspense>
+          <Route
+            path="/people/statistics/scheduled"
+            element={
+              <ProtectedRoute
+                isAllowed={!!user && user.permissions.includes("statistics")}
+                navigateTo="/home/welcome"
+              >
+                <StcsScheduledPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="*" element={<Error404Page />} />
+        </Routes>
       </ContainerFluid>
 
       <Footer />
     </BrowserRouter>
   );
 }
-
-export default App;

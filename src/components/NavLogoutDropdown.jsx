@@ -38,7 +38,7 @@ export default function NavLogoutDropdown({ avatar }) {
       <ul className="dropdown-menu dropdown-menu-lg-end text-small rounded-3 border shadow">
         <li>
           <NavLink to="/help/asks/frecuently" className="dropdown-item">
-            FAQs... <BsInfoCircle className="mb-1" />
+            FAQs <BsInfoCircle className="mb-1" />
           </NavLink>
         </li>
         <li>

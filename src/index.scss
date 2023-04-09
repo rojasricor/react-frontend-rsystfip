@@ -1,3 +1,12 @@
+@import "bootswatch/dist/zephyr/bootstrap.min.css";
+@import "react-toastify/scss/variables";
+@import "react-toastify/scss/toastContainer";
+@import "react-toastify/scss/toast";
+@import "react-toastify/scss/theme";
+@import "react-toastify/scss/closeButton";
+@import "react-toastify/scss/progressBar";
+@import "react-toastify/scss/animations/flip";
+
 body {
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
   font-size: 14px;

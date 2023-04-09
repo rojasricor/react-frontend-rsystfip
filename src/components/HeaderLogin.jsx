@@ -17,7 +17,7 @@ export default function HeaderLogin() {
       <div className="m-5">
         Sóftware para agendamiento de visitas Rectoría - <strong>ITFIP</strong>
         <p>
-          <img src="/img/admin/avatar.png" width="55" alt="itfip" />
+          <img src="/img/admin/avatar.png" height="55" width="55" alt="itfip" />
         </p>
       </div>
     </div>

@@ -53,9 +53,7 @@ export default function DashboardRow({ user }) {
         <button
           onClick={() => deleteUser(user)}
           className={
-            user.id !== 3
-              ? "btn btn-danger border m-1"
-              : "btn btn-danger border disabled m-1"
+            user.id !== 3 ? "btn btn-danger m-1" : "btn btn-danger m-1 disabled"
           }
           title={`Delete user ${user.email} (Requires confirmation)`}
         >

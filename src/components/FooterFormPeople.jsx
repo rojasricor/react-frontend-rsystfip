@@ -24,17 +24,14 @@ export default function FooterFormPeople({ isAllowed }) {
         <DivCol12 x="6">
           <button
             onClick={returnToBack}
-            className="w-100 btn btn-light btn-lg border my-2"
+            className="w-100 btn btn-light border my-2"
           >
             Volver <GiReturnArrow />
           </button>
         </DivCol12>
       </ProtectedElement>
       <DivCol12 x={isAllowed ? "6" : "12"}>
-        <button
-          className="w-100 btn btn-primary btn-lg border my-2"
-          disabled={loading}
-        >
+        <button className="w-100 btn btn-primary my-2" disabled={loading}>
           {!loading ? (
             <>
               Registrar <FaUserPlus className="mb-1" />

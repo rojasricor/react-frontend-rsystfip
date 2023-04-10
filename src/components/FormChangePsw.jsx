@@ -72,7 +72,7 @@ export default function FormChangePsw({ userId }) {
         <Submitter loading={loading}>
           {!loading ? (
             <>
-              Continuar <BiKey className="mb-1" />
+              Cambiar <BiKey className="mb-1" />
             </>
           ) : (
             <Spinner tam="lg" />

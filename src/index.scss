@@ -1,4 +1,4 @@
-@import "bootswatch/dist/zephyr/bootstrap.min.css";
+@import "bootswatch/dist/lux/bootstrap.min.css";
 @import "react-toastify/scss/variables";
 @import "react-toastify/scss/toastContainer";
 @import "react-toastify/scss/toast";
@@ -8,76 +8,11 @@
 @import "react-toastify/scss/animations/flip";
 
 body {
-  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-  font-size: 14px;
-  padding: 110px 10px;
-  background: #f4f5ff;
-}
-
-img {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
+  padding: 140px 10px 0 10px;
 }
 
 img:hover {
   opacity: 0.7;
-}
-
-nav a,
-footer a {
-  text-decoration: none;
-}
-
-nav {
-  font-size: 15px;
-}
-
-img,
-thead,
-select,
-input,
-nav,
-footer {
-  user-select: none;
-}
-
-.textarea-unresizable {
-  min-height: 100px;
-  resize: none;
-}
-
-.btn-txt {
-  border-color: var(--bs-gray-300);
-  background: var(--bs-gray-100);
-}
-
-.link-fc {
-  color: #2c3e50;
-}
-
-.link-fc:hover,
-.link-fc:focus {
-  color: #1e2b37 !important;
-}
-
-.btn-fc-primary {
-  color: #fff !important;
-  background: #2c3e50 !important;
-  border-color: #2c3e50 !important;
-}
-
-.btn-fc-primary:hover,
-.btn-fc-primary:focus {
-  background: #1e2b37 !important;
-}
-
-.btn-fc-primary:focus {
-  box-shadow: 0 0 0 0.2rem rgb(76 91 106 / 50%);
-}
-
-.text-small {
-  font-size: 85%;
 }
 
 .load-events {
@@ -88,8 +23,8 @@ footer {
 }
 
 .spinner-border-lg {
-  --bs-spinner-width: 1.5rem;
-  --bs-spinner-height: 1.5rem;
+  --bs-spinner-width: 1.1rem;
+  --bs-spinner-height: 1.1rem;
   --bs-spinner-border-width: 0.14em;
 }
 

@@ -1,14 +1,38 @@
-import { FaReact } from "react-icons/fa";
+import ContainerFluid from "./ContainerFluid";
+import { FaCodeBranch } from "react-icons/fa";
 
 export default () => (
-  <footer className="px-3 py-2 fixed-bottom bg-dark">
-    <span className="text-secondary">
-      Sistema de Agendamiento
-      <span className="text-white">&nbsp;RSystfip</span>
-      &nbsp;|&nbsp;
-      <span className="text-white">
-        Tecnología en Gestión Informatica <FaReact />
-      </span>
-    </span>
-  </footer>
+  <ContainerFluid>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <p class="col-md-4 mb-0 text-body-secondary">
+        © 2023 Tecnologia en gestion informatica{" "}
+        <FaCodeBranch className="mb-1" />
+      </p>
+
+      <a
+        href="#"
+        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+      >
+        <img src="/rsystfip.svg" alt="RSystfip" width="40" height="32" />
+      </a>
+
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">
+            Inicio
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">
+            FAQs
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">
+            About
+          </a>
+        </li>
+      </ul>
+    </footer>
+  </ContainerFluid>
 );

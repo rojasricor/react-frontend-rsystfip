@@ -38,7 +38,7 @@ export default function FormSchedulePeople() {
         >
           Cerrar <GiReturnArrow className="mb-1" />
         </button>
-        <button className="btn btn-primary border">
+        <button className="btn btn-primary">
           {!loading ? (
             <>
               Agendar <IoCalendarNumber className="mb-1" />

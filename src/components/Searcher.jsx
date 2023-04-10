@@ -48,7 +48,7 @@ export default function Searcher() {
   return (
     <Rower>
       <h1 className="h3">Personas Agendadas</h1>
-      <BtnGroup clAdds=" position-fixed bottom-px my-2">
+      <BtnGroup clAdds=" position-fixed bottom-px">
         <input
           onChange={filterPeople}
           type="search"
@@ -58,7 +58,7 @@ export default function Searcher() {
         />
         <button
           onClick={() => setPeopleFiltered(people)}
-          className="btn btn-fc-primary"
+          className="btn btn-primary"
           title="Refrescar datos"
         >
           {loading === 0 ? (
@@ -71,14 +71,14 @@ export default function Searcher() {
         </button>
         <Link
           to="/people/add"
-          className="btn btn-fc-primary"
+          className="btn btn-primary"
           title="Agendamiento por día"
         >
           <ImUserPlus className="mt-1" />
         </Link>
         <Link
           to="/people/schedule"
-          className="btn btn-fc-primary"
+          className="btn btn-primary"
           title="Agendamiento programado"
         >
           <IoCalendarNumber className="mt-1" />

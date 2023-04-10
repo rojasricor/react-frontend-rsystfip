@@ -9,7 +9,7 @@ export default ({ pdf }) => (
       onClick={() =>
         pdf.download(`RSystfip-Report-${formatTodaysDateTime()}.pdf`)
       }
-      className="form-control btn btn-light"
+      className="form-control btn btn-light border"
       title="Reporte PDF"
     >
       PDF <BsDownload className="mb-1" />

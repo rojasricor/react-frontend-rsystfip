@@ -15,7 +15,7 @@ export default function FetcherDataForChangePsw() {
   }, [role]);
 
   return (
-    <Cardx x="4" title={`Cambiar contraseña para ${user.email}`}>
+    <Cardx x="4" title={user.email}>
       <FormChangePsw userId={user.id} />
     </Cardx>
   );

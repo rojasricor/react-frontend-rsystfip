@@ -4,7 +4,6 @@ import DivRow from "../components/DivRow";
 import Cardx from "../components/Cardx";
 import DivCol12 from "../components/DivCol12";
 import TableUsers from "../components/TableUsers";
-import { FaUserPlus } from "react-icons/fa";
 import Notify from "../components/Notify";
 
 export default function DashboardPage() {
@@ -16,8 +15,8 @@ export default function DashboardPage() {
     <DivRow>
       <Cardx title="Administrar usuarios">
         <DivCol12>
-          <Link to="add" className="btn btn-dark btn-sm text-light mb-2 mt-2">
-            <FaUserPlus />
+          <Link to="add" className="btn btn-primary btn-sm my-2">
+            Agregar
           </Link>
         </DivCol12>
         <TableUsers />

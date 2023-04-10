@@ -57,7 +57,7 @@ export default function ModalCancellPersonConfirmation({ modalRef }) {
             </button>
             <button
               onClick={cancellPerson}
-              className="btn btn-danger border"
+              className="btn btn-danger"
               data-bs-dismiss="modal"
               disabled={loading}
             >

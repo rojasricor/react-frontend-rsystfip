@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Rower from "../components/Rower";
 import UserLoggedInfo from "../components/UserLoggedInfo";
+import ProtectedElement from "../components/ProtectedElement";
 import { FaUserPlus } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
 

@@ -74,14 +74,14 @@ export default function Searcher() {
           className="btn btn-primary"
           title="Agendamiento por día"
         >
-          <ImUserPlus className="mt-1" />
+          <ImUserPlus />
         </Link>
         <Link
           to="/people/schedule"
           className="btn btn-primary"
           title="Agendamiento programado"
         >
-          <IoCalendarNumber className="mt-1" />
+          <IoCalendarNumber />
         </Link>
       </BtnGroup>
       <TablePeople peopleFiltered={peopleFiltered} />

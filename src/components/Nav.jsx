@@ -6,7 +6,7 @@ import NavDropdown from "./NavLogoutDropdown";
 import "bootstrap/js/dist/collapse";
 
 export default ({ avatar, permissions }) => (
-  <nav className="navbar navbar-expand-xl bg-light fixed-top">
+  <nav className="navbar navbar-expand-xxl navbar-light bg-light fixed-top">
     <ContainerFluid>
       <NavBrand />
       <NavToggler />

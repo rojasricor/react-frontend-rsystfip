@@ -15,8 +15,8 @@ export default function DashboardPage() {
     <DivRow>
       <Cardx title="Administrar usuarios">
         <DivCol12>
-          <Link to="add" className="btn btn-primary btn-sm my-2">
-            Agregar
+          <Link to="add" className="btn btn-primary my-4">
+            Registrar
           </Link>
         </DivCol12>
         <TableUsers />

@@ -63,7 +63,7 @@ export default function FullCalendarScheduling({ right, initialView }) {
             const now = new Date();
             if (start < now) {
               view.calendar.unselect();
-              return alert(
+              return toast.warn(
                 "No se puede agendar en una fecha que ya ha pasado."
               );
             }
@@ -75,7 +75,7 @@ export default function FullCalendarScheduling({ right, initialView }) {
             ) {
               // The selection is out of allow range, cancel
               view.calendar.unselect();
-              return alert("Agendamientos no disponible en ese horario.");
+              return toast.warn("Agendamientos no disponible en ese horario.");
             }
 
             new Modal(modalScheduling.current).show();

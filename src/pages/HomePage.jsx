@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Rower from "../components/Rower";
 import UserLoggedInfo from "../components/UserLoggedInfo";
 import { ImUserPlus } from "react-icons/im";
-import { IoCalendarNumber } from "react-icons/io";
+import { IoCalendarNumber } from "react-icons/io5";
 
 export default function HomePage() {
   useEffect(() => {

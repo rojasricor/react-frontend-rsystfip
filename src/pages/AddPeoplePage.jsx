@@ -11,7 +11,7 @@ export default function AddPeoplePage() {
 
   return (
     <DivRow>
-      <Cardx title="Agendamiento rápido">
+      <Cardx title="Agendamiento diario">
         <PeopleContextProvider>
           <FormPeople action="add" />
         </PeopleContextProvider>

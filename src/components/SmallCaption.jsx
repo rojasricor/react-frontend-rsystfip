@@ -1,5 +1,5 @@
 export default () => (
-  <small className="text-muted fst-italic">
-    Please verify that data to send are correct.
-  </small>
+  <figcaption className="blockquote-footer">
+    <cite>Please verify that data to send are correct.</cite>
+  </figcaption>
 );

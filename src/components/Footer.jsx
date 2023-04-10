@@ -6,7 +6,7 @@ export default () => (
   <ContainerFluid>
     <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <p className="col-md-4 mb-0 text-body-secondary">
-        © 2023 Tecnología en Gestión Informatica
+        © 2023 Tecnología en gestión informatica
         <FaCodeBranch className="mb-1" />
       </p>
 

@@ -152,7 +152,7 @@ export default function FormUserAdd() {
         <Submitter loading={loading}>
           {!loading ? (
             <>
-              Registrar <FaUserPlus />
+              Registrar <FaUserPlus className="mb-1" />
             </>
           ) : (
             <Spinner tam="lg" />

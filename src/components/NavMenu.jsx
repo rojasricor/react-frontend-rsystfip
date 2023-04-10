@@ -1,151 +1,111 @@
 import { NavLink } from "react-router-dom";
 import ProtectedElement from "./ProtectedElement";
 import NavDropdown from "./NavDropdown";
-import { FaUsersCog } from "react-icons/fa";
-import { MdEventNote } from "react-icons/md";
-import {
-  BsBarChartLineFill,
-  BsFilePdf,
-  BsFolderPlus,
-  BsInfoCircle,
-} from "react-icons/bs";
-import { FiDownloadCloud } from "react-icons/fi";
-import { TiHome } from "react-icons/ti";
-import { ImUsers, ImUserPlus } from "react-icons/im";
-import { IoCalendarNumber } from "react-icons/io5";
+import NavLogoutDropdown from "./NavLogoutDropdown";
 
-export default ({ permissions }) => (
-  <nav className="pt-4 pt-lg-0">
-    <div className="nav nav-fill nav-pills flex-column flex-sm-row ml-2">
-      <NavLink to="/home/welcome" className="nav-item nav-link">
-        Inicio <TiHome className="mb-1" />
-      </NavLink>
-
-      <ProtectedElement isAllowed={permissions.includes("admin")}>
-        <NavLink
-          to="/users/manage"
-          className="nav-item nav-link"
-          title="Pánel de administración de usuarios"
-        >
-          Usuarios <FaUsersCog />
+export default ({ permissions, avatar }) => (
+  <div className="collapse navbar-collapse" id="rs-nav">
+    <ul className="navbar-nav me-auto">
+      <li className="nav-item">
+        <NavLink to="/home/welcome" className="nav-link">
+          Inicio
         </NavLink>
+      </li>
+      <ProtectedElement isAllowed={permissions.includes("admin")}>
+        <li className="nav-item">
+          <NavLink
+            to="/users/manage"
+            className="nav-link"
+            title="Pánel de administración de usuarios"
+          >
+            Usuarios
+          </NavLink>
+        </li>
       </ProtectedElement>
-
-      <NavDropdown
-        title="Sección de agendamientos"
-        description={
-          <>
-            Agendamiento <BsFolderPlus />
-          </>
-        }
-        h6="Sección de agendamientos"
-      >
+      <NavDropdown title="Sección de agendamientos" description="Agendamiento">
         <ProtectedElement isAllowed={permissions.includes("add")}>
-          <li>
-            <NavLink
-              to="/people/add"
-              className="nav-item nav-link"
-              title="Agendar una persona inmediatamente"
-            >
-              Agend. diario <ImUserPlus />
-            </NavLink>
-          </li>
+          <NavLink
+            to="/people/add"
+            className="dropdown-item"
+            title="Agendar una persona inmediatamente"
+          >
+            Agendamiento Diario
+          </NavLink>
         </ProtectedElement>
 
         <ProtectedElement isAllowed={permissions.includes("schedule")}>
-          <li>
-            <NavLink
-              to="/people/schedule"
-              className="nav-item nav-link"
-              title="Agendar una persona en el calendario"
-            >
-              Agend. programado <IoCalendarNumber className="mb-1" />
-            </NavLink>
-          </li>
+          <NavLink
+            to="/people/schedule"
+            className="dropdown-item"
+            title="Agendar una persona en el calendario"
+          >
+            Agend. Programado
+          </NavLink>
         </ProtectedElement>
       </NavDropdown>
-
       <ProtectedElement isAllowed={permissions.includes("schedule")}>
-        <NavLink
-          to="/people/preview"
-          className="nav-item nav-link"
-          title="Ver agendamientos en el calendario"
-        >
-          Visualizar Eventos <MdEventNote />
-        </NavLink>
-      </ProtectedElement>
-
-      <ProtectedElement isAllowed={permissions.includes("statistics")}>
-        <NavDropdown
-          title="Sección de estadísticas"
-          description={
-            <>
-              Estadísticas <BsBarChartLineFill />
-            </>
-          }
-          h6="Sección de estadísticas"
-        >
-          <li>
-            <NavLink
-              to="/people/statistics/daily"
-              className="nav-item nav-link"
-              title="Generar estadísticas de agendamiento diario"
-            >
-              Agend. diario <ImUserPlus />
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/people/statistics/scheduled"
-              className="nav-item nav-link"
-              title="Generar estadísticas de agendamiento diario"
-            >
-              Agend. programado <IoCalendarNumber className="mb-1" />
-            </NavLink>
-          </li>
-        </NavDropdown>
-      </ProtectedElement>
-
-      <NavDropdown
-        title="Sección de reportes & historial"
-        description={
-          <>
-            Reportes & Historial <FiDownloadCloud />
-          </>
-        }
-        h6="Sección de reportes & historial"
-      >
-        <li>
+        <li className="nav-item">
           <NavLink
-            to="/people/view"
-            className="nav-item nav-link"
-            title="Listado de todas las personas agendadas"
+            to="/people/preview"
+            className="nav-link"
+            title="Ver agendamientos en el calendario"
           >
-            Historial personas <ImUsers />
+            Ver Eventos
           </NavLink>
         </li>
+      </ProtectedElement>
+      <ProtectedElement isAllowed={permissions.includes("statistics")}>
+        <NavDropdown title="Sección de estadísticas" description="Estadísticas">
+          <NavLink
+            to="/people/statistics/daily"
+            className="dropdown-item"
+            title="Generar estadísticas de agendamiento diario"
+          >
+            Agendamiento Diario
+          </NavLink>
+
+          <NavLink
+            to="/people/statistics/scheduled"
+            className="dropdown-item"
+            title="Generar estadísticas de agendamiento diario"
+          >
+            Agend. Programado
+          </NavLink>
+        </NavDropdown>
+      </ProtectedElement>
+      <NavDropdown
+        title="Sección de reportes & historial"
+        description="Reportes & Historial"
+      >
+        <NavLink
+          to="/people/view"
+          className="dropdown-item"
+          title="Listado de todas las personas agendadas"
+        >
+          Historial Personas
+        </NavLink>
 
         <ProtectedElement isAllowed={permissions.includes("reports")}>
-          <li>
-            <NavLink
-              to="/people/reports"
-              className="nav-item nav-link"
-              title="Generar reportes"
-            >
-              Generar reportes <BsFilePdf />
-            </NavLink>
-          </li>
+          <NavLink
+            to="/people/reports"
+            className="dropdown-item"
+            title="Generar reportes"
+          >
+            Generar Reportes
+          </NavLink>
         </ProtectedElement>
       </NavDropdown>
 
-      <NavLink
-        to="/help/asks/frecuently"
-        className="nav-item nav-link"
-        title="Preguntas y respuestas más frecuentes"
-      >
-        FAQs <BsInfoCircle className="mb-1" />
-      </NavLink>
-    </div>
-  </nav>
+      <li className="nav-item">
+        <NavLink
+          to="/help/asks/frecuently"
+          className="nav-link"
+          title="Preguntas y respuestas más frecuentes"
+        >
+          FAQs
+        </NavLink>
+      </li>
+    </ul>
+    <NavLogoutDropdown avatar={avatar} />
+  </div>
 );

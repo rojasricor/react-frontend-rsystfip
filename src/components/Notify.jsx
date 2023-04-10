@@ -12,6 +12,6 @@ export default () => (
     pauseOnFocusLoss
     draggable
     pauseOnHover
-    theme="dark"
+    theme="light"
   />
 );

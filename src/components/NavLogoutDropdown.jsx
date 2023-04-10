@@ -34,7 +34,7 @@ export default function NavLogoutDropdown({ avatar }) {
       >
         <img src={avatar} className="rounded-circle" width="40" alt="Account" />
       </a>
-      <ul className="dropdown-menu dropdown-menu-lg-end border shadow">
+      <ul className="dropdown-menu dropdown-menu-lg-end">
         <li>
           <NavLink to="/help/asks/frecuently" className="dropdown-item">
             FAQs

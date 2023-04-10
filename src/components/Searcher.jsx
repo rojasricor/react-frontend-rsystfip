@@ -52,7 +52,7 @@ export default function Searcher() {
         <input
           onChange={filterPeople}
           type="search"
-          placeholder="Buscar una persona..."
+          placeholder="Buscar"
           className="form-control form-control-sm border"
           autoFocus
         />

@@ -39,7 +39,10 @@ export default function App() {
           <Route path="/auth/login" element={<LoginPage />} />
 
           <Route element={<ProtectedRoute isAllowed={!!user} />}>
-            <Route path="/home/welcome" element={<HomePage />} />
+            <Route
+              path="/home/welcome"
+              element={<HomePage permissions={permissions} />}
+            />
             <Route
               path="/users/manage/password/:role/change"
               element={<PswChangeUserPage />}

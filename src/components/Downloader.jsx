@@ -1,6 +1,5 @@
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
-import { formatTodaysDateTime } from "../meta/todaylib";
 import { BsDownload } from "react-icons/bs";
 
 export default ({ pdf }) => (

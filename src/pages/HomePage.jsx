@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Rower from "../components/Rower";
 import UserLoggedInfo from "../components/UserLoggedInfo";
-import { ImUserPlus } from "react-icons/im";
+import { FaUserPlus } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
 
 export default function HomePage() {
@@ -18,7 +18,7 @@ export default function HomePage() {
         className="btn btn-primary m-1"
         title="Agendamiento por día"
       >
-        Diario <ImUserPlus />
+        Diario <FaUserPlus className="mb-1" />
       </Link>
       <Link
         to="/people/schedule"

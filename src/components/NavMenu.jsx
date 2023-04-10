@@ -29,7 +29,7 @@ export default ({ permissions, avatar }) => (
             className="dropdown-item"
             title="Agendar una persona inmediatamente"
           >
-            Agendamiento Diario
+            Agendamiento diario
           </NavLink>
         </ProtectedElement>
 
@@ -39,7 +39,7 @@ export default ({ permissions, avatar }) => (
             className="dropdown-item"
             title="Agendar una persona en el calendario"
           >
-            Agend. Programado
+            Agend. programado
           </NavLink>
         </ProtectedElement>
       </NavDropdown>
@@ -61,7 +61,7 @@ export default ({ permissions, avatar }) => (
             className="dropdown-item"
             title="Generar estadísticas de agendamiento diario"
           >
-            Agendamiento Diario
+            Agendamiento diario
           </NavLink>
 
           <NavLink
@@ -69,7 +69,7 @@ export default ({ permissions, avatar }) => (
             className="dropdown-item"
             title="Generar estadísticas de agendamiento diario"
           >
-            Agend. Programado
+            Agend. programado
           </NavLink>
         </NavDropdown>
       </ProtectedElement>
@@ -82,7 +82,7 @@ export default ({ permissions, avatar }) => (
           className="dropdown-item"
           title="Listado de todas las personas agendadas"
         >
-          Historial Personas
+          Historial personas
         </NavLink>
 
         <ProtectedElement isAllowed={permissions.includes("reports")}>
@@ -91,7 +91,7 @@ export default ({ permissions, avatar }) => (
             className="dropdown-item"
             title="Generar reportes"
           >
-            Generar Reportes
+            Generar reportes
           </NavLink>
         </ProtectedElement>
       </NavDropdown>

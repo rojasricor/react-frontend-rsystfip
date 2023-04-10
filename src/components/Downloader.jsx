@@ -6,8 +6,9 @@ import { BsDownload } from "react-icons/bs";
 export default ({ pdf }) => (
   <FloatingFormCol12x x="2">
     <button
-      onClick={() =>
-        pdf.download(`RSystfip-Report-${formatTodaysDateTime()}.pdf`)
+      onClick={
+        () => pdf.open()
+        // pdf.download(`RSystfip-Report-${formatTodaysDateTime()}.pdf`)
       }
       className="form-control btn btn-light border"
       title="Reporte PDF"

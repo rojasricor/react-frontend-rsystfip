@@ -7,7 +7,7 @@ export default function Error404Actioner() {
     <div className="d-grid d-sm-flex justify-content-sm-center">
       <button
         onClick={() => navigate(-1)}
-        className="btn btn-outline-secondary btn-lg px-4"
+        className="btn btn-outline-secondary px-4"
       >
         Regresar
       </button>

@@ -16,6 +16,7 @@ import ProgrammingViewPage from "./pages/ProgrammingViewPage";
 import AddPeoplePage from "./pages/AddPeoplePage";
 import EditPeoplePage from "./pages/EditPeoplePage";
 import HistoryPeoplePage from "./pages/HistoryPeoplePage";
+import HistoryCancelledPage from "./pages/HistoryCancelledPage";
 import ReportsPeoplePage from "./pages/ReportsPeoplePage";
 import StcsDailyPage from "./pages/StcsDailyPage";
 import StcsScheduledPage from "./pages/StcsScheduledPage";
@@ -47,8 +48,9 @@ export default function App() {
               path="/users/manage/password/:role/change"
               element={<PswChangeUserPage />}
             />
-            <Route path="/people/view/:id/edit" element={<EditPeoplePage />} />
             <Route path="/people/view" element={<HistoryPeoplePage />} />
+            <Route path="/people/cancelled" element={<HistoryCancelledPage />} />
+            <Route path="/people/view/:id/edit" element={<EditPeoplePage />} />
             <Route path="/help/asks/frecuently" element={<FaqsPage />} />
           </Route>
 

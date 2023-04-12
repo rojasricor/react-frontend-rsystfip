@@ -3,8 +3,8 @@ export default ({ report }) => (
     <td>{report.name}</td>
     <td>{report.date}</td>
     <td>{report.time}</td>
-    <td>{report.presence_count}</td>
-    <td>{report.absence_count}</td>
+    <td>{report.scheduling_count}</td>
+    <td>{report.daily_count}</td>
     <td>{report.person}</td>
   </tr>
 );

@@ -78,6 +78,14 @@ export default ({ permissions, avatar }) => (
         description="Reportes & Historial"
       >
         <NavLink
+          to="/people/cancelled"
+          className="dropdown-item"
+          title="Listado de todas las citas canceladas"
+        >
+          Historial cancelados
+        </NavLink>
+
+        <NavLink
           to="/people/view"
           className="dropdown-item"
           title="Listado de todas las personas agendadas"

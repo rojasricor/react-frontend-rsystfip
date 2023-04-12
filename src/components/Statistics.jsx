@@ -128,7 +128,7 @@ export default function Statistics({ scheduling_type }) {
     );
     const statisticsData = await request.json();
     const labels = statisticsData.map(({ person }) => person);
-    const data = statisticsData.map(({ presence_count }) => presence_count);
+    const data = statisticsData.map(({ scheduling_count }) => scheduling_count);
     refreshChart(labels, data);
   }
 

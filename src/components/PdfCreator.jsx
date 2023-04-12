@@ -77,11 +77,11 @@ export default function PdfCreator({
                   { text: "Cetegoría persona", style: "tableHeader" },
                 ],
                 ...reportsFiltered.map(
-                  ({ name, date, presence_count, absence_count, person }) => [
+                  ({ name, date, scheduling_count, daily_count, person }) => [
                     name,
                     date,
-                    presence_count,
-                    absence_count,
+                    scheduling_count,
+                    daily_count,
                     person,
                   ]
                 ),

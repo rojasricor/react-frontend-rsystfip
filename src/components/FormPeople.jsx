@@ -20,7 +20,7 @@ export default function FormPeople({ action }) {
       return editPerson();
     }
 
-    setStatus(2);
+    setStatus('daily');
     schedulePerson();
   }
 

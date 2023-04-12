@@ -1,12 +1,15 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import Spinner from "./Spinner";
+import TextareaCancelledAsunt from "./TextareaCancelledAsunt";
 import { API_ROUTE } from "../constants/api";
 import { toast } from "react-toastify";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
 export default function ModalCancellPersonConfirmation({ modalRef }) {
   const { eventId, date, loading, setLoading } = useContext(PeopleContext);
+
+  const [cancelledAsunt, setCancelledAsunt] = useState("");
 
   async function cancellPerson() {
     setLoading(true);
@@ -18,6 +21,7 @@ export default function ModalCancellPersonConfirmation({ modalRef }) {
         body: JSON.stringify({
           id: eventId,
           date,
+          cancelled_asunt: cancelledAsunt,
         }),
       });
       const { ok, error } = await request.json();
@@ -50,6 +54,10 @@ export default function ModalCancellPersonConfirmation({ modalRef }) {
           </div>
           <div className="modal-body">
             Estás seguro que deseas cancelar ésta cita?
+            <TextareaCancelledAsunt
+              setCancelledAsunt={setCancelledAsunt}
+              cancelledAsunt={cancelledAsunt}
+            />
           </div>
           <div className="modal-footer">
             <button className="btn btn-light border" data-bs-dismiss="modal">

@@ -11,7 +11,7 @@ export default function TextareaAsunt() {
       <textarea
         onChange={(evt) => setAsunt(evt.target.value)}
         value={asunt}
-        className="form-control textarea-unresizable"
+        className="form-control"
         placeholder="Complete campo"
         minLength="5"
         maxLength="100"

@@ -83,7 +83,7 @@ export default function FullCalendarScheduling({ right, initialView }) {
             setDate(formatTodaysDate(start));
             setStart(formatTodaysDateTime(start));
             setEnd(formatTodaysDateTime(end));
-            setStatus(1);
+            setStatus('scheduled');
           }}
           eventClick={({ event }) => {
             new Modal(modalCancelSheduling.current).show();

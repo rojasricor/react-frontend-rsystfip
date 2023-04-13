@@ -24,7 +24,6 @@ import ListerStatistics from "./ListerStatistics";
 
 export default function Statistics({ scheduling_type }) {
   const [chart, setChart] = useState(null);
-  const [init, setInit] = useState("");
   const [start, setStart] = useState(getStartMonthDate());
   const [end, setEnd] = useState(getEndMonthDate());
   const [chartType, setChartType] = useState("bar");
@@ -145,9 +144,7 @@ export default function Statistics({ scheduling_type }) {
       `${API_ROUTE}/statistics/${scheduling_type}/alltime`
     );
     const data = await request.json();
-    const init = data[0].init;
     setMostAgendatedAlltime(data);
-    setInit(init);
   }
 
   useEffect(() => {
@@ -178,7 +175,6 @@ export default function Statistics({ scheduling_type }) {
       <ListerStatistics
         mostAgendatedOnRange={mostAgendatedOnRange}
         mostAgendatedAlltime={mostAgendatedAlltime}
-        init={init}
         start={start}
         end={end}
         scheduling_type={scheduling_type === "daily" ? "diario" : "programado"}

@@ -1,4 +1,4 @@
-export default ({ title, data, start, end }) => (
+export default ({ title, data, end }) => (
   <>
     <h5 className="text-center">{title}</h5>
     <div className="list-group w-auto mb-5">
@@ -20,9 +20,7 @@ export default ({ title, data, start, end }) => (
               <h6 className="mb-0">{person.person}</h6>
               <p className="mb-0 opacity-75">{person.counts}</p>
             </div>
-            <small className="opacity-50 text-nowrap">
-              {start} - {end}
-            </small>
+            <small className="opacity-50 text-nowrap">{end}</small>
           </div>
         </li>
       ))}

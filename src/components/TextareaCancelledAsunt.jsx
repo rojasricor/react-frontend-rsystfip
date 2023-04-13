@@ -1,11 +1,10 @@
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default ({ setCancelledAsunt, cancelledAsunt }) => (
+export default ({ setCancelledAsunt }) => (
   <FloatingFormCol12x>
     <textarea
       onChange={(evt) => setCancelledAsunt(evt.target.value)}
-      value={cancelledAsunt}
       className="form-control"
       placeholder="Complete campo"
       minLength="5"

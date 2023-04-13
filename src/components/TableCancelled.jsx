@@ -30,7 +30,7 @@ export default function TableCancelled() {
       </thead>
       <tbody>
         {people.map((person, index) => (
-          <CancelledRow key={index} person={person} />
+          <CancelledRow key={index} idx={index} person={person} />
         ))}
       </tbody>
     </Table>

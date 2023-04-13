@@ -4,7 +4,6 @@ import ListGroup from "./ListGroup";
 export default ({
   mostAgendatedOnRange,
   mostAgendatedAlltime,
-  init,
   start,
   end,
   scheduling_type,
@@ -20,7 +19,6 @@ export default ({
     <ListGroup
       title={`Agendamiento ${scheduling_type} en todas las fechas`}
       data={mostAgendatedAlltime}
-      start={init}
       end={end}
     />
   </DivCol12>

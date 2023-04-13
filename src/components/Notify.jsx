@@ -1,4 +1,5 @@
-import { ToastContainer, Flip } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import { Flip } from "react-toastify";
 
 export default () => (
   <ToastContainer
@@ -12,6 +13,6 @@ export default () => (
     pauseOnFocusLoss
     draggable
     pauseOnHover
-    theme="light"
+    theme="dark"
   />
 );

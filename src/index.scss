@@ -1,11 +1,11 @@
-@import "bootswatch/dist/lux/bootstrap.min.css";
+@import "bootswatch/dist/sandstone/bootstrap.min.css";
 @import "react-toastify/scss/variables";
 @import "react-toastify/scss/toastContainer";
 @import "react-toastify/scss/toast";
 @import "react-toastify/scss/theme";
 @import "react-toastify/scss/closeButton";
 @import "react-toastify/scss/progressBar";
-@import "react-toastify/scss/animations/flip";
+@import "react-toastify/scss/animations/zoom";
 
 body {
   padding: 140px 10px 0 10px;

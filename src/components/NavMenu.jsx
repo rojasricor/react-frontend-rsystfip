@@ -50,7 +50,7 @@ export default ({ permissions, avatar }) => (
             className="nav-link"
             title="Ver agendamientos en el calendario"
           >
-            Ver Eventos
+            Visualizar Eventos
           </NavLink>
         </li>
       </ProtectedElement>

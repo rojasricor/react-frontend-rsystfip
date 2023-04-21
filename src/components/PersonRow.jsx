@@ -8,7 +8,7 @@ export default ({ person }) => (
     <td title={person.description}>
       {person.ty_doc} {person.num_doc}
     </td>
-    <td>{person.person}</td>
+    <td>{person.category}</td>
     <td>{person.fac}</td>
     <td>{person.text_asunt}</td>
     <td>

@@ -51,9 +51,9 @@ export default function SelectPerson() {
         <option value={UNSET_STATUS} disabled>
           No seleccionado
         </option>
-        {categories.map((categorie, index) => (
-          <option key={index} value={categorie.id}>
-            {categorie.person}
+        {categories.map((category, index) => (
+          <option key={index} value={category.id}>
+            {category.category}
           </option>
         ))}
       </select>

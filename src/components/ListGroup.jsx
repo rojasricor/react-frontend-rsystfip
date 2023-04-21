@@ -17,7 +17,7 @@ export default ({ title, data, end }) => (
           />
           <div className="d-flex gap-2 w-100 justify-content-between">
             <div>
-              <h6 className="mb-0">{person.person}</h6>
+              <h6 className="mb-0">{person.category}</h6>
               <p className="mb-0 opacity-75">{person.counts}</p>
             </div>
             <small className="opacity-50 text-nowrap">{end}</small>

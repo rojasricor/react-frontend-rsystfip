@@ -136,7 +136,7 @@ export function PeopleContextProvider({ children }) {
     }
 
     for (const dean of deans) {
-      if (dean.cc === doc) {
+      if (dean._id === doc) {
         setDoctype(1);
         setName(dean.name);
         setFacultie(dean.facultie);

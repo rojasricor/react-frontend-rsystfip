@@ -21,7 +21,7 @@ export default function FilterSelectPerson({ setCategory }) {
         <option value={UNSET_STATUS}>No seleccionado</option>
         {categories.map((category, index) => (
           <option key={index} value={category.id}>
-            {category.person}
+            {category.category}
           </option>
         ))}
       </select>

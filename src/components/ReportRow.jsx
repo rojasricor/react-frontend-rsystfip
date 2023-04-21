@@ -5,6 +5,6 @@ export default ({ report }) => (
     <td>{report.time}</td>
     <td>{report.scheduling_count}</td>
     <td>{report.daily_count}</td>
-    <td>{report.person}</td>
+    <td>{report.category}</td>
   </tr>
 );

@@ -33,9 +33,9 @@ export default function SelectFaculties() {
         <option value={UNSET_STATUS} disabled>
           No seleccionado
         </option>
-        {faculties.map((facultie, index) => (
-          <option key={index} value={facultie.id}>
-            {facultie.name}
+        {faculties.map(({ id, name }, index) => (
+          <option key={index} value={id}>
+            {name}
           </option>
         ))}
       </select>

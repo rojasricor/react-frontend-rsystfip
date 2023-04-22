@@ -27,9 +27,9 @@ export default function SelectDocument() {
         <option value={UNSET_STATUS} disabled>
           No seleccionado
         </option>
-        {documents.map((document, index) => (
-          <option key={index} value={document.id}>
-            {document.description}
+        {documents.map(({ id, description }, index) => (
+          <option key={index} value={id}>
+            {description}
           </option>
         ))}
       </select>

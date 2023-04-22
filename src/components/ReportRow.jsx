@@ -1,10 +1,12 @@
-export default ({ report }) => (
+export default ({
+  report: { name, date, time, scheduling_count, daily_count, category },
+}) => (
   <tr>
-    <td>{report.name}</td>
-    <td>{report.date}</td>
-    <td>{report.time}</td>
-    <td>{report.scheduling_count}</td>
-    <td>{report.daily_count}</td>
-    <td>{report.category}</td>
+    <td>{name}</td>
+    <td>{date}</td>
+    <td>{time}</td>
+    <td>{scheduling_count}</td>
+    <td>{daily_count}</td>
+    <td>{category}</td>
   </tr>
 );

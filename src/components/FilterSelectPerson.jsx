@@ -19,9 +19,9 @@ export default function FilterSelectPerson({ setCategory }) {
         className="form-select"
       >
         <option value={UNSET_STATUS}>No seleccionado</option>
-        {categories.map((category, index) => (
-          <option key={index} value={category.id}>
-            {category.category}
+        {categories.map(({ id, category }, index) => (
+          <option key={index} value={id}>
+            {category}
           </option>
         ))}
       </select>

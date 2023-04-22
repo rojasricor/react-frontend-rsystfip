@@ -106,9 +106,9 @@ export default function FormUserAdd() {
           labelInfo="Tipo de Documento:"
           x="8"
         >
-          {documents.map((document, index) => (
-            <option key={index} value={document.id}>
-              {document.description}
+          {documents.map(({ id, description }, index) => (
+            <option key={index} value={id}>
+              {description}
             </option>
           ))}
         </SelectBasic>

@@ -126,7 +126,7 @@ export default function Statistics({ scheduling_type }) {
       `${API_ROUTE}/statistics/${scheduling_type}?start=${start}&end=${end}`
     );
     const statisticsData = await request.json();
-    const labels = statisticsData.map(({ person }) => person);
+    const labels = statisticsData.map(({ category }) => category);
     const data = statisticsData.map(({ scheduling_count }) => scheduling_count);
     refreshChart(labels, data);
   }

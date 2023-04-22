@@ -1,12 +1,23 @@
-export default ({ idx, person }) => (
+export default ({
+  idx,
+  person: {
+    name,
+    description,
+    ty_doc,
+    document_number,
+    category,
+    facultie,
+    cancelled_asunt,
+  },
+}) => (
   <tr>
     <td>{idx + 1}</td>
-    <td>{person.name}</td>
-    <td title={person.description}>
-      {person.ty_doc} {person.num_doc}
+    <td>{name}</td>
+    <td title={description}>
+      {ty_doc} {document_number}
     </td>
-    <td>{person.category}</td>
-    <td>{person.fac}</td>
-    <td>{person.cancelled_asunt}</td>
+    <td>{category}</td>
+    <td>{facultie}</td>
+    <td>{cancelled_asunt}</td>
   </tr>
 );

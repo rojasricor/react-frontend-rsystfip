@@ -40,13 +40,15 @@ export default function PdfCreator({
                     style: "tableHeader",
                   },
                 ],
-                ...people.map(({ id, name, person, fac, text_asunt }) => [
-                  id,
-                  name,
-                  person,
-                  fac,
-                  text_asunt,
-                ]),
+                ...people.map(
+                  ({ id, name, category, facultie, come_asunt }) => [
+                    id,
+                    name,
+                    category,
+                    facultie,
+                    come_asunt,
+                  ]
+                ),
               ],
             },
           }
@@ -77,12 +79,12 @@ export default function PdfCreator({
                   { text: "Cetegoría persona", style: "tableHeader" },
                 ],
                 ...reportsFiltered.map(
-                  ({ name, date, scheduling_count, daily_count, person }) => [
+                  ({ name, date, scheduling_count, daily_count, category }) => [
                     name,
                     date,
                     scheduling_count,
                     daily_count,
-                    person,
+                    category,
                   ]
                 ),
               ],
@@ -132,8 +134,8 @@ export default function PdfCreator({
                       { text: "Categoría de persona", style: "tableHeader" },
                       { text: "Cantidad personas", style: "tableHeader" },
                     ],
-                    ...reportsCountOnRange.map(({ person, counts }) => [
-                      person,
+                    ...reportsCountOnRange.map(({ category, counts }) => [
+                      category,
                       counts,
                     ]),
                   ],
@@ -154,8 +156,8 @@ export default function PdfCreator({
                       { text: "Categoría de persona", style: "tableHeader" },
                       { text: "Cantidad personas", style: "tableHeader" },
                     ],
-                    ...reportsCountAlltime.map(({ person, counts }) => [
-                      person,
+                    ...reportsCountAlltime.map(({ category, counts }) => [
+                      category,
                       counts,
                     ]),
                   ],

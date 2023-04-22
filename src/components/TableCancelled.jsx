@@ -13,7 +13,7 @@ export default function TableCancelled() {
 
   useEffect(() => {
     getCancelled();
-  });
+  }, []);
 
   return (
     <Table>

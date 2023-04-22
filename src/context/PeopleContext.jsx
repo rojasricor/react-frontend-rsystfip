@@ -116,14 +116,20 @@ export function PeopleContextProvider({ children }) {
 
   async function getUserData() {
     const request = await fetch(`${API_ROUTE}/person?id=${id}`);
-    const { person_type, id_doc, facultad, name, num_doc, text_asunt } =
-      await request.json();
-    setPerson(person_type);
-    setDoctype(id_doc);
-    setFacultie(facultad);
+    const {
+      category_id,
+      document_id,
+      facultie_id,
+      name,
+      document_number,
+      come_asunt,
+    } = await request.json();
+    setPerson(category_id);
+    setDoctype(document_id);
+    setFacultie(facultie_id);
     setName(name);
-    setDoc(num_doc);
-    setAsunt(text_asunt);
+    setDoc(document_number);
+    setAsunt(come_asunt);
   }
 
   useEffect(() => {
@@ -135,11 +141,11 @@ export function PeopleContextProvider({ children }) {
       return;
     }
 
-    for (const dean of deans) {
-      if (dean._id === doc) {
+    for (const { _id, dean, facultie_id } of deans) {
+      if (_id === doc) {
         setDoctype(1);
-        setName(dean.name);
-        setFacultie(dean.facultie);
+        setName(dean);
+        setFacultie(facultie_id);
         setDisabledAfterAutocomplete(true);
         facultieSelectRef.current.className = "form-control";
         toast.info("Se han completado los datos", { position: "top-left" });

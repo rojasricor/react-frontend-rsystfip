@@ -38,8 +38,8 @@ export default function Searcher() {
     startTransition(() =>
       setPeopleFiltered(
         people.filter(
-          ({ name, num_doc }) =>
-            name.toLowerCase().startsWith(query) || num_doc.startsWith(query)
+          ({ name, document_number }) =>
+            name.toLowerCase().startsWith(query) || document_number.startsWith(query)
         )
       )
     );

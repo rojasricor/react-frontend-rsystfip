@@ -1,6 +1,6 @@
 import Downloader from "./Downloader";
 import pdfMake from "pdfmake/build/pdfmake.min";
-import * as pdfConf from "../conf/pdfmake.conf";
+import * as pdfConf from "../config/pdfmake.config";
 
 const PdfCreator = ({
   image,

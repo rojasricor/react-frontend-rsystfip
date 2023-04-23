@@ -4,7 +4,7 @@ import Label from "./Label";
 const InputNumber = ({ setNumber, inputValue, placeholder, labelInfo }) => (
   <FloatingFormCol12x x="4">
     <input
-      onChange={(evt) => setNumber(evt.target.value)}
+      onChange={({ target: { value } }) => setNumber(value)}
       value={inputValue}
       className="form-control"
       type="number"

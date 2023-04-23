@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
-import { API_ROUTE } from "../constants/api";
+import { API_ROUTE } from "../constants";
 import TextareaCancelledAsunt from "./TextareaCancelledAsunt";
 import Spinner from "./Spinner";
 import { toast } from "react-toastify";

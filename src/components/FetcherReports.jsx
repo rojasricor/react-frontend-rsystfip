@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { API_ROUTE } from "../constants/api";
+import { API_ROUTE } from "../constants";
 import PdfCreator from "./PdfCreator";
 
 const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {

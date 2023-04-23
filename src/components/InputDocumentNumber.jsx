@@ -10,7 +10,7 @@ const InputDocumentNumber = () => {
   return (
     <FloatingFormCol12x x="6">
       <input
-        onChange={(evt) => setDoc(evt.target.value)}
+        onChange={({ target: { value } }) => setDoc(value)}
         value={doc}
         className="form-control"
         type="number"

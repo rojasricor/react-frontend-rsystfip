@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
-import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants/api";
+import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
@@ -22,7 +22,7 @@ const SelectDocument = () => {
   return (
     <FloatingFormCol12x x="6">
       <select
-        onChange={(evt) => setDoctype(evt.target.value)}
+        onChange={({ target: { value } }) => setDoctype(value)}
         value={doctype}
         className="form-select"
         disabled={disabledAll || disabledAfterAutocomplete}

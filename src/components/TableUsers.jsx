@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { API_ROUTE } from "../constants/api";
+import { API_ROUTE } from "../constants";
 import Table from "./Table";
 import UserRow from "./UserRow";
 

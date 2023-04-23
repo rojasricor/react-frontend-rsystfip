@@ -60,7 +60,7 @@ const App = () => {
           <Route
             element={
               <ProtectedRoute
-                isAllowed={!!user && user.permissions.includes("admin")}
+                isAllowed={!!user && permissions.includes("admin")}
               />
             }
           >
@@ -73,7 +73,7 @@ const App = () => {
             path="/people/add"
             element={
               <ProtectedRoute
-                isAllowed={!!user && user.permissions.includes("add")}
+                isAllowed={!!user && permissions.includes("add")}
                 navigateTo="/home/welcome"
               >
                 <AddPeoplePage />
@@ -85,7 +85,7 @@ const App = () => {
             path="/people/schedule"
             element={
               <ProtectedRoute
-                isAllowed={!!user && user.permissions.includes("schedule")}
+                isAllowed={!!user && permissions.includes("schedule")}
                 navigateTo="/home/welcome"
               >
                 <ProgrammingPage />
@@ -106,7 +106,7 @@ const App = () => {
             path="/people/reports"
             element={
               <ProtectedRoute
-                isAllowed={!!user && user.permissions.includes("reports")}
+                isAllowed={!!user && permissions.includes("reports")}
                 navigateTo="/home/welcome"
               >
                 <ReportsPeoplePage />
@@ -118,7 +118,7 @@ const App = () => {
             path="/people/statistics/daily"
             element={
               <ProtectedRoute
-                isAllowed={!!user && user.permissions.includes("statistics")}
+                isAllowed={!!user && permissions.includes("statistics")}
                 navigateTo="/home/welcome"
               >
                 <StcsDailyPage />
@@ -130,7 +130,7 @@ const App = () => {
             path="/people/statistics/scheduled"
             element={
               <ProtectedRoute
-                isAllowed={!!user && user.permissions.includes("statistics")}
+                isAllowed={!!user && permissions.includes("statistics")}
                 navigateTo="/home/welcome"
               >
                 <StcsScheduledPage />

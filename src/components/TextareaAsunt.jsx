@@ -9,7 +9,7 @@ const TextareaAsunt = () => {
   return (
     <FloatingFormCol12x>
       <textarea
-        onChange={(evt) => setAsunt(evt.target.value)}
+        onChange={({ target: { value } }) => setAsunt(value)}
         value={asunt}
         className="form-control"
         placeholder="Complete campo"

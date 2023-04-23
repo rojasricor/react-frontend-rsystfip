@@ -8,7 +8,7 @@ const InputColor = () => {
   return (
     <DivCol12>
       <input
-        onChange={(evt) => setColor(evt.target.value)}
+        onChange={({ target: { value } }) => setColor(value)}
         className="form-control form-control-color mb-3"
         type="color"
         title="Choose your color"

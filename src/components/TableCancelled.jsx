@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Table from "./Table";
 import CancelledRow from "./CancelledRow";
-import { API_ROUTE } from "../constants/api";
+import { API_ROUTE } from "../constants";
 
 const TableCancelled = () => {
   const [people, setPeople] = useState([]);

@@ -4,7 +4,7 @@ import Label from "./Label";
 const TextareaCancelledAsunt = ({ setCancelledAsunt }) => (
   <FloatingFormCol12x>
     <textarea
-      onChange={(evt) => setCancelledAsunt(evt.target.value)}
+      onChange={({ target: { value } }) => setCancelledAsunt(value)}
       className="form-control"
       placeholder="Complete campo"
       minLength="5"

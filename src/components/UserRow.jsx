@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import { API_ROUTE } from "../constants/api";
+import { API_ROUTE } from "../constants";
 import { BiTrash, BiKey } from "react-icons/bi";
 
 const UserRow = ({ user: { id, email } }) => {

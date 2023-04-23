@@ -4,7 +4,7 @@ import Label from "./Label";
 const FilterChart = ({ setChartType }) => (
   <FloatingFormCol12x x="2">
     <select
-      onChange={(evt) => setChartType(evt.target.value)}
+      onChange={({ target: { value } }) => setChartType(value)}
       className="form-select"
     >
       <option value="bar">Barra Vertical</option>

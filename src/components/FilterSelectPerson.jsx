@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants/api";
+import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
@@ -19,7 +19,7 @@ const FilterSelectPerson = ({ setCategory }) => {
   return (
     <FloatingFormCol12x x="2">
       <select
-        onChange={(evt) => setCategory(evt.target.value)}
+        onChange={({ target: { value } }) => setCategory(value)}
         className="form-select"
       >
         <option value={UNSET_STATUS}>No seleccionado</option>

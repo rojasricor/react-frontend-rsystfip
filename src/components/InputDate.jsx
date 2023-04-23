@@ -4,7 +4,7 @@ import Label from "./Label";
 const InputDate = ({ labelInfo, setDate, inputValue }) => (
   <FloatingFormCol12x x="2">
     <input
-      onChange={(evt) => setDate(evt.target.value)}
+      onChange={({ target: { value } }) => setDate(value)}
       type="date"
       value={inputValue}
       className="form-control"

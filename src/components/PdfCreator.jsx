@@ -1,6 +1,6 @@
 import Downloader from "./Downloader";
 import pdfMake from "pdfmake/build/pdfmake.min";
-import { createHeader, footer, styles, myFonts } from "../conf/pdfmake.conf";
+import * as pdfConf from "../conf/pdfmake.conf";
 
 const PdfCreator = ({
   image,
@@ -13,8 +13,8 @@ const PdfCreator = ({
 }) => {
   const pdf = pdfMake.createPdf({
     pageMargins: [28, 90],
-    header: createHeader(image, startDate, endDate),
-    footer,
+    header: pdfConf.createHeader(image, startDate, endDate),
+    footer: pdfConf.footer,
     content: [
       {
         text: `Total personas agendadas: (${people.length})`,
@@ -167,10 +167,10 @@ const PdfCreator = ({
         ],
       },
     ],
-    styles,
+    styles: pdfConf.styles,
   });
 
-  pdf.fonts = myFonts;
+  pdf.fonts = pdfConf.myFonts;
 
   return <Downloader pdf={pdf} />;
 };

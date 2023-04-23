@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } from "../constants/api";
+import * as Cst from "../constants";
 import DivRow from "./DivRow";
 import SelectBasic from "./SelectBasic";
 import InputText from "./InputText";
@@ -12,6 +12,7 @@ import Spinner from "./Spinner";
 import { FaUserPlus } from "react-icons/fa";
 
 const FormUserAdd = () => {
+  const { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } = Cst;
   const [documents, setDocuments] = useState([]);
   const [role, setRole] = useState(UNSET_STATUS);
   const [name, setName] = useState("");

@@ -10,7 +10,7 @@ const InputPassword = ({
 }) => (
   <FloatingFormCol12x x={x}>
     <input
-      onChange={(evt) => setPassword(evt.target.value)}
+      onChange={({ target: { value } }) => setPassword(value)}
       value={inputValue}
       className="form-control"
       type="password"

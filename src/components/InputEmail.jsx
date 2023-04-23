@@ -4,7 +4,7 @@ import Label from "./Label";
 const inputEmail = ({ setEmail, inputValue, labelInfo }) => (
   <FloatingFormCol12x x="8">
     <input
-      onChange={(evt) => setEmail(evt.target.value)}
+      onChange={({ target: { value } }) => setEmail(value)}
       value={inputValue}
       className="form-control"
       type="email"

@@ -1,10 +1,11 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
-import { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } from "../constants/api";
+import * as Cst from "../constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
 const SelectPerson = () => {
+  const { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } = Cst;
   const {
     setDisabledAll,
     setDisabledAfterAutocomplete,
@@ -46,7 +47,7 @@ const SelectPerson = () => {
   return (
     <FloatingFormCol12x x="6">
       <select
-        onChange={(evt) => setPerson(evt.target.value)}
+        onChange={({ target: { value } }) => setPerson(value)}
         value={person}
         className="form-select"
         required

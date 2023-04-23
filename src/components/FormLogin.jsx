@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
-import { API_ROUTE } from "../constants/api";
+import { API_ROUTE } from "../constants";
 import DivRow from "./DivRow";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
@@ -55,7 +55,7 @@ const FormLogin = () => {
       <DivRow>
         <FloatingFormCol12x>
           <input
-            onChange={(evt) => setUsername(evt.target.value)}
+            onChange={({ target: { value } }) => setUsername(value)}
             value={username}
             className="form-control"
             type="text"
@@ -69,7 +69,7 @@ const FormLogin = () => {
         </FloatingFormCol12x>
         <FloatingFormCol12x>
           <input
-            onChange={(evt) => setPassword(evt.target.value)}
+            onChange={({ target: { value } }) => setPassword(value)}
             value={password}
             type={passwordVisible ? "text" : "password"}
             className="form-control"

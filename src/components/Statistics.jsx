@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { getStartMonthDate, getEndMonthDate } from "../meta/todaylib";
-import { API_ROUTE } from "../constants/api";
+import { getStartMonthDate, getEndMonthDate } from "../libs/todaylib";
+import { API_ROUTE } from "../constants";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -102,10 +102,9 @@ const Statistics = ({ scheduling_type }) => {
         scales: { x: { beginAtZero: true }, y: { beginAtZero: true } },
         plugins: {
           datalabels: {
-            formatter: (value, { dataset }) => {
+            formatter: (value, { dataset: { data } }) => {
               const percent = Math.round(
-                (value / dataset.data.reduce((a, b) => Number(a) + Number(b))) *
-                  100
+                (value / data.reduce((a, b) => Number(a) + Number(b))) * 100
               );
               return (isNaN(percent) ? 0 : percent) + "%";
             },

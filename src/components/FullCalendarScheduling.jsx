@@ -9,9 +9,9 @@ import Container from "./Container";
 import FullCalendar from "@fullcalendar/react";
 import daygrid from "@fullcalendar/daygrid";
 import esLocale from "@fullcalendar/core/locales/es";
-import { formatTodaysDate, formatTodaysDateTime } from "../meta/todaylib";
+import { formatTodaysDate, formatTodaysDateTime } from "../libs/todaylib";
 import { globalLocales } from "fullcalendar";
-import { API_ROUTE } from "../constants/api";
+import { API_ROUTE } from "../constants";
 import Modal from "bootstrap/js/dist/modal";
 import { toast } from "react-toastify";
 
@@ -20,14 +20,14 @@ const FullCalendarScheduling = ({ right, initialView }) => {
     useContext(PeopleContext);
 
   const loadEventsRef = useRef(null);
-  const modalScheduling = useRef(null);
-  const modalCancelSheduling = useRef(null);
+  const modalSchedulingRef = useRef(null);
+  const modalCancelShedulingRef = useRef(null);
 
   return (
     <Responsive>
       <LoadCalendar loadEventsRef={loadEventsRef} />
-      <ModalSchedulePeopleForm modalRef={modalScheduling} />
-      <ModalCancellPersonConfirmation modalRef={modalCancelSheduling} />
+      <ModalSchedulePeopleForm modalRef={modalSchedulingRef} />
+      <ModalCancellPersonConfirmation modalRef={modalCancelShedulingRef} />
       <Container clAdds=" schg-sm lh-1">
         <FullCalendar
           height="auto"
@@ -55,12 +55,12 @@ const FullCalendarScheduling = ({ right, initialView }) => {
           weekNumberCalculation="ISO"
           selectable
           selectMirror
-          select={({ view, start, end }) => {
-            if ("dayGridMonth" === view.type) return;
+          select={({ view: { calendar, type }, start, end }) => {
+            if ("dayGridMonth" === type) return;
 
             const now = new Date();
             if (start < now) {
-              view.calendar.unselect();
+              calendar.unselect();
               return toast.warn(
                 "No se puede agendar en una fecha que ya ha pasado."
               );
@@ -72,21 +72,21 @@ const FullCalendarScheduling = ({ right, initialView }) => {
               end.getHours() === 0
             ) {
               // The selection is out of allow range, cancel
-              view.calendar.unselect();
+              calendar.unselect();
               return toast.warn("Agendamientos no disponible en ese horario.");
             }
 
-            new Modal(modalScheduling.current).show();
+            new Modal(modalSchedulingRef.current).show();
 
             setDate(formatTodaysDate(start));
             setStart(formatTodaysDateTime(start));
             setEnd(formatTodaysDateTime(end));
             setStatus("scheduled");
           }}
-          eventClick={({ event }) => {
-            new Modal(modalCancelSheduling.current).show();
-            setEventId(event.id);
-            setDate(formatTodaysDateTime(event.start));
+          eventClick={({ event: { id, start } }) => {
+            new Modal(modalCancelShedulingRef.current).show();
+            setEventId(id);
+            setDate(formatTodaysDateTime(start));
           }}
           editable
           dayMaxEvents

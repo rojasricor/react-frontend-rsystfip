@@ -10,7 +10,7 @@ const InputFullName = () => {
   return (
     <FloatingFormCol12x x="6">
       <input
-        onChange={(evt) => setName(evt.target.value)}
+        onChange={({ target: { value } }) => setName(value)}
         value={name}
         className="form-control"
         type="text"

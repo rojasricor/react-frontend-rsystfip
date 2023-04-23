@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
-import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants/api";
+import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
@@ -27,7 +27,7 @@ const SelectFaculties = () => {
   return (
     <FloatingFormCol12x>
       <select
-        onChange={(evt) => setFacultie(evt.target.value)}
+        onChange={({ target: { value } }) => setFacultie(value)}
         value={facultie}
         className="form-select"
         ref={facultieSelectRef}

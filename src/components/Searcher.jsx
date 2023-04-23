@@ -1,6 +1,6 @@
 import { useState, useEffect, startTransition } from "react";
 import { Link } from "react-router-dom";
-import { API_ROUTE } from "../constants/api";
+import { API_ROUTE } from "../constants";
 import Rower from "./Rower";
 import BtnGroup from "./BtnGroup";
 import Spinner from "./Spinner";

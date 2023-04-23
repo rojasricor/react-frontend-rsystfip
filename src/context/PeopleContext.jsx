@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { UNSET_STATUS, API_ROUTE } from "../constants/api";
-import { formatTodaysDate, formatTodaysDateTime } from "../meta/todaylib";
+import { UNSET_STATUS, API_ROUTE } from "../constants";
+import { formatTodaysDate, formatTodaysDateTime } from "../libs/todaylib";
 
 export const PeopleContext = createContext();
 

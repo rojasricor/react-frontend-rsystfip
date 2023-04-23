@@ -1,7 +1,7 @@
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default ({ setCancelledAsunt }) => (
+const TextareaCancelledAsunt = ({ setCancelledAsunt }) => (
   <FloatingFormCol12x>
     <textarea
       onChange={(evt) => setCancelledAsunt(evt.target.value)}
@@ -16,3 +16,5 @@ export default ({ setCancelledAsunt }) => (
     <Label labelInfo="Asunto:" />
   </FloatingFormCol12x>
 );
+
+export default TextareaCancelledAsunt;

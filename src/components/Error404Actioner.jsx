@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function Error404Actioner() {
+const Error404Actioner = () => {
   const navigate = useNavigate();
 
   return (
@@ -13,4 +13,6 @@ export default function Error404Actioner() {
       </button>
     </div>
   );
-}
+};
+
+export default Error404Actioner;

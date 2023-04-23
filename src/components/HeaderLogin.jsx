@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
-export default function HeaderLogin() {
+const HeaderLogin = () => {
   const { passwordVisible, setPasswordVisible } = useContext(AppContext);
 
   return (
@@ -22,4 +22,6 @@ export default function HeaderLogin() {
       </div>
     </div>
   );
-}
+};
+
+export default HeaderLogin;

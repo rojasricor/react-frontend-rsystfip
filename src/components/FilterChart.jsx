@@ -1,7 +1,7 @@
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default ({ setChartType }) => (
+const FilterChart = ({ setChartType }) => (
   <FloatingFormCol12x x="2">
     <select
       onChange={(evt) => setChartType(evt.target.value)}
@@ -16,3 +16,5 @@ export default ({ setChartType }) => (
     <Label labelInfo="Gráfica:" />
   </FloatingFormCol12x>
 );
+
+export default FilterChart;

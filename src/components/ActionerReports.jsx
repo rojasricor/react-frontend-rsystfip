@@ -4,21 +4,21 @@ import TableReports from "./TableReports";
 import { API_ROUTE, UNSET_STATUS } from "../constants/api";
 import { getStartMonthDate, getEndMonthDate } from "../meta/todaylib";
 
-export default function ActionerReports() {
+const ActionerReports = () => {
   const [report, setReport] = useState([]);
   const [reportFiltered, setReportFiltered] = useState([]);
   const [startDate, setStartDate] = useState(getStartMonthDate());
   const [endDate, setEndDate] = useState(getEndMonthDate());
   const [category, setCategory] = useState(UNSET_STATUS);
 
-  async function getReports() {
+  const getReports = async () => {
     const request = await fetch(
       `${API_ROUTE}/reports?start=${startDate}&end=${endDate}&category=${category}`
     );
     const reports = await request.json();
     setReport(reports);
     setReportFiltered(reports);
-  }
+  };
 
   useEffect(() => {
     getReports();
@@ -53,4 +53,6 @@ export default function ActionerReports() {
       />
     </>
   );
-}
+};
+
+export default ActionerReports;

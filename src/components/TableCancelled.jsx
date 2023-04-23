@@ -3,13 +3,13 @@ import Table from "./Table";
 import CancelledRow from "./CancelledRow";
 import { API_ROUTE } from "../constants/api";
 
-export default function TableCancelled() {
+const TableCancelled = () => {
   const [people, setPeople] = useState([]);
-  async function getCancelled() {
+  const getCancelled = async () => {
     const request = await fetch(`${API_ROUTE}/cancelled`);
     const data = await request.json();
     setPeople(data);
-  }
+  };
 
   useEffect(() => {
     getCancelled();
@@ -35,4 +35,6 @@ export default function TableCancelled() {
       </tbody>
     </Table>
   );
-}
+};
+
+export default TableCancelled;

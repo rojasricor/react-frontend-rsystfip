@@ -2,7 +2,7 @@ import Downloader from "./Downloader";
 import pdfMake from "pdfmake/build/pdfmake.min";
 import { createHeader, footer, styles, myFonts } from "../conf/pdfmake.conf";
 
-export default function PdfCreator({
+const PdfCreator = ({
   image,
   startDate,
   endDate,
@@ -10,7 +10,7 @@ export default function PdfCreator({
   reportsFiltered,
   reportsCountOnRange,
   reportsCountAlltime,
-}) {
+}) => {
   const pdf = pdfMake.createPdf({
     pageMargins: [28, 90],
     header: createHeader(image, startDate, endDate),
@@ -173,4 +173,6 @@ export default function PdfCreator({
   pdf.fonts = myFonts;
 
   return <Downloader pdf={pdf} />;
-}
+};
+
+export default PdfCreator;

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Rower from "../components/Rower";
 import TableCancelled from "../components/TableCancelled";
 
-export default function HistoryCancelledPage() {
+const HistoryCancelledPage = () => {
   useEffect(() => {
     document.title = "RSystfip | Cancelled History People";
   });
@@ -13,4 +13,6 @@ export default function HistoryCancelledPage() {
       <TableCancelled />
     </Rower>
   );
-}
+};
+
+export default HistoryCancelledPage;

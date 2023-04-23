@@ -15,7 +15,7 @@ import { API_ROUTE } from "../constants/api";
 import Modal from "bootstrap/js/dist/modal";
 import { toast } from "react-toastify";
 
-export default function FullCalendarScheduling({ right, initialView }) {
+const FullCalendarScheduling = ({ right, initialView }) => {
   const { setEventId, setDate, setStart, setEnd, setStatus } =
     useContext(PeopleContext);
 
@@ -56,9 +56,7 @@ export default function FullCalendarScheduling({ right, initialView }) {
           selectable
           selectMirror
           select={({ view, start, end }) => {
-            if ("dayGridMonth" === view.type) {
-              return;
-            }
+            if ("dayGridMonth" === view.type) return;
 
             const now = new Date();
             if (start < now) {
@@ -83,7 +81,7 @@ export default function FullCalendarScheduling({ right, initialView }) {
             setDate(formatTodaysDate(start));
             setStart(formatTodaysDateTime(start));
             setEnd(formatTodaysDateTime(end));
-            setStatus('scheduled');
+            setStatus("scheduled");
           }}
           eventClick={({ event }) => {
             new Modal(modalCancelSheduling.current).show();
@@ -112,4 +110,6 @@ export default function FullCalendarScheduling({ right, initialView }) {
       <Notify />
     </Responsive>
   );
-}
+};
+
+export default FullCalendarScheduling;

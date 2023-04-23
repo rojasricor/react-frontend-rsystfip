@@ -1,6 +1,6 @@
 import Responsive from "./Responsive";
 
-export default ({ children, clAdds = "" }) => (
+const Table = ({ children, clAdds = "" }) => (
   <Responsive>
     <table
       className={`table table-hover table-striped table-sm text-center${clAdds}`}
@@ -9,3 +9,5 @@ export default ({ children, clAdds = "" }) => (
     </table>
   </Responsive>
 );
+
+export default Table;

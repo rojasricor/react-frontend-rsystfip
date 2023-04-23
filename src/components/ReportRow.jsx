@@ -1,4 +1,4 @@
-export default ({
+const ReportRow = ({
   report: { name, date, time, scheduling_count, daily_count, category },
 }) => (
   <tr>
@@ -10,3 +10,5 @@ export default ({
     <td>{category}</td>
   </tr>
 );
+
+export default ReportRow;

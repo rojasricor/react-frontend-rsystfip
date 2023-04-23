@@ -4,7 +4,7 @@ import DivRow from "../components/DivRow";
 import Cardx from "../components/Cardx";
 import FormPeople from "../components/FormPeople";
 
-export default function AddPeoplePage() {
+const AddPeoplePage = () => {
   useEffect(() => {
     document.title = "RSystfip | Fast Scheduling";
   }, []);
@@ -18,4 +18,6 @@ export default function AddPeoplePage() {
       </Cardx>
     </DivRow>
   );
-}
+};
+
+export default AddPeoplePage;

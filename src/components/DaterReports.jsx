@@ -3,7 +3,7 @@ import InputDate from "./InputDate";
 import FilterSelectPerson from "./FilterSelectPerson";
 import FetcherReports from "./FetcherReports";
 
-export default ({
+const DaterReports = ({
   setStartDate,
   startDate,
   setEndDate,
@@ -29,3 +29,5 @@ export default ({
     />
   </DivRow>
 );
+
+export default DaterReports;

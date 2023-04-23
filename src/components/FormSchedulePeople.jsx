@@ -12,13 +12,13 @@ import Spinner from "./Spinner";
 import { IoCalendarNumber } from "react-icons/io5";
 import { GiReturnArrow } from "react-icons/gi";
 
-export default function FormSchedulePeople() {
+const FormSchedulePeople = () => {
   const { schedulePerson, loading } = useContext(PeopleContext);
 
-  function doSchedulePerson(evt) {
+  const doSchedulePerson = (evt) => {
     evt.preventDefault();
     schedulePerson();
-  }
+  };
 
   return (
     <form onSubmit={doSchedulePerson} className="row g-2 mt-2 p-2">
@@ -50,4 +50,6 @@ export default function FormSchedulePeople() {
       </div>
     </form>
   );
-}
+};
+
+export default FormSchedulePeople;

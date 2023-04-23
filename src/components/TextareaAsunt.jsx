@@ -3,7 +3,7 @@ import { PeopleContext } from "../context/PeopleContext";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default function TextareaAsunt() {
+const TextareaAsunt = () => {
   const { disabledAll, asunt, setAsunt } = useContext(PeopleContext);
 
   return (
@@ -23,4 +23,6 @@ export default function TextareaAsunt() {
       <Label labelInfo="Asunto:" />
     </FloatingFormCol12x>
   );
-}
+};
+
+export default TextareaAsunt;

@@ -9,12 +9,12 @@ import { FaSyncAlt, FaTimes } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
 import { ImUserPlus } from "react-icons/im";
 
-export default function Searcher() {
+const Searcher = () => {
   const [loading, setLoading] = useState(0);
   const [peopleFiltered, setPeopleFiltered] = useState([]);
   const [people, setPeople] = useState([]);
 
-  async function getPeople() {
+  const getPeople = async () => {
     try {
       const request = await fetch(`${API_ROUTE}/people`);
       const data = await request.json();
@@ -27,23 +27,24 @@ export default function Searcher() {
     } finally {
       setLoading(1);
     }
-  }
+  };
 
   useEffect(() => {
     getPeople();
   }, []);
 
-  function filterPeople(evt) {
-    const query = evt.target.value.toLowerCase();
+  const filterPeople = ({ target: { value } }) => {
+    const query = value.toLowerCase();
     startTransition(() =>
       setPeopleFiltered(
         people.filter(
           ({ name, document_number }) =>
-            name.toLowerCase().startsWith(query) || document_number.startsWith(query)
+            name.toLowerCase().startsWith(query) ||
+            document_number.startsWith(query)
         )
       )
     );
-  }
+  };
 
   return (
     <Rower>
@@ -87,4 +88,6 @@ export default function Searcher() {
       <TablePeople peopleFiltered={peopleFiltered} />
     </Rower>
   );
-}
+};
+
+export default Searcher;

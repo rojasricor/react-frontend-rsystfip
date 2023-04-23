@@ -1,6 +1,6 @@
 import FormCancellPerson from "./FormCancellPerson";
 
-export default ({ modalRef }) => (
+const ModalCancellPersonConfirmation = ({ modalRef }) => (
   <div
     className="modal fade"
     data-bs-backdrop="static"
@@ -22,3 +22,5 @@ export default ({ modalRef }) => (
     </div>
   </div>
 );
+
+export default ModalCancellPersonConfirmation;

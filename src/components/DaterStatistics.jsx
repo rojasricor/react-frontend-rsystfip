@@ -2,7 +2,7 @@ import DivRow from "./DivRow";
 import InputDate from "./InputDate";
 import FilterChart from "./FilterChart";
 
-export default ({ setStart, start, setEnd, end, setChartType }) => (
+const DaterStatistics = ({ setStart, start, setEnd, end, setChartType }) => (
   <DivRow>
     <InputDate labelInfo="Desde:" setDate={setStart} inputValue={start} />
 
@@ -11,3 +11,5 @@ export default ({ setStart, start, setEnd, end, setChartType }) => (
     <FilterChart setChartType={setChartType} />
   </DivRow>
 );
+
+export default DaterStatistics;

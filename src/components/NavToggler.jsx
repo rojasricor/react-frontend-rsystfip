@@ -1,4 +1,4 @@
-export default () => (
+const NavToggler = () => (
   <button
     className="navbar-toggler"
     data-bs-toggle="collapse"
@@ -7,3 +7,5 @@ export default () => (
     <span className="navbar-toggler-icon" />
   </button>
 );
+
+export default NavToggler;

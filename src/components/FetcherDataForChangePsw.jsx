@@ -4,14 +4,18 @@ import Cardx from "../components/Cardx";
 import FormChangePsw from "./FormChangePsw";
 import { API_ROUTE } from "../constants/api";
 
-export default function FetcherDataForChangePsw() {
+const FetcherDataForChangePsw = () => {
   const { role } = useParams();
   const [user, setUser] = useState([]);
 
+  const getDatauser = async () => {
+    const request = await fetch(`${API_ROUTE}/user?role=${role}`);
+    const data = await request.json();
+    setUser(data);
+  };
+
   useEffect(() => {
-    fetch(`${API_ROUTE}/user?role=${role}`)
-      .then((request) => request.json())
-      .then((data) => setUser(data));
+    getDatauser();
   }, [role]);
 
   return (
@@ -19,4 +23,6 @@ export default function FetcherDataForChangePsw() {
       <FormChangePsw userId={user.id} />
     </Cardx>
   );
-}
+};
+
+export default FetcherDataForChangePsw;

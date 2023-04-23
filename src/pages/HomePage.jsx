@@ -6,7 +6,7 @@ import ProtectedElement from "../components/ProtectedElement";
 import { FaUserPlus } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
 
-export default function HomePage({ permissions }) {
+const HomePage = ({ permissions }) => {
   useEffect(() => {
     document.title = "RSystfip | Home Welcome";
   }, []);
@@ -28,8 +28,10 @@ export default function HomePage({ permissions }) {
         className="btn btn-primary m-1"
         title="Agendamiento programado"
       >
-        Programado <IoCalendarNumber className="mb-1" />
+        Programar <IoCalendarNumber className="mb-1" />
       </Link>
     </Rower>
   );
-}
+};
+
+export default HomePage;

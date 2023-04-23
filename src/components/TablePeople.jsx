@@ -1,7 +1,7 @@
 import Table from "./Table";
 import PersonRow from "./PersonRow";
 
-export default ({ peopleFiltered }) => (
+const TablePeople = ({ peopleFiltered }) => (
   <Table>
     <caption>Scheduled people history.</caption>
     <thead>
@@ -22,3 +22,5 @@ export default ({ peopleFiltered }) => (
     </tbody>
   </Table>
 );
+
+export default TablePeople;

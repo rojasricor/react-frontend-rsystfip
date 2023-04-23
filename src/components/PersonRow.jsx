@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import { FiEdit3 } from "react-icons/fi";
 
-export default ({
-  person: { id, name, description, ty_doc, document_number, category, facultie, come_asunt },
+const PersonRow = ({
+  person: {
+    id,
+    name,
+    description,
+    ty_doc,
+    document_number,
+    category,
+    facultie,
+    come_asunt,
+  },
 }) => (
   <tr>
     <td>{id}</td>
@@ -24,3 +33,5 @@ export default ({
     </td>
   </tr>
 );
+
+export default PersonRow;

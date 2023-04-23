@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { PeopleContextProvider } from "../context/PeopleContext";
 import FullCalendarScheduling from "../components/FullCalendarScheduling";
 
-export default function ProgrammingPage() {
+const ProgrammingPage = () => {
   useEffect(() => {
     document.title = "RSystfip | Programming Scheduling";
   }, []);
@@ -15,4 +15,6 @@ export default function ProgrammingPage() {
       />
     </PeopleContextProvider>
   );
-}
+};
+
+export default ProgrammingPage;

@@ -3,7 +3,7 @@ import ProtectedElement from "./ProtectedElement";
 import NavDropdown from "./NavDropdown";
 import NavLogoutDropdown from "./NavLogoutDropdown";
 
-export default ({ permissions, avatar }) => (
+const NavMenu = ({ permissions, avatar }) => (
   <div className="collapse navbar-collapse" id="rs-nav">
     <ul className="navbar-nav me-auto">
       <li className="nav-item">
@@ -117,3 +117,5 @@ export default ({ permissions, avatar }) => (
     <NavLogoutDropdown avatar={avatar} />
   </div>
 );
+
+export default NavMenu;

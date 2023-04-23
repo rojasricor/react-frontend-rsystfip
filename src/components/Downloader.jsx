@@ -2,7 +2,7 @@ import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 import { BsDownload } from "react-icons/bs";
 
-export default ({ pdf }) => (
+const Downloader = ({ pdf }) => (
   <FloatingFormCol12x x="2">
     <button
       onClick={
@@ -17,3 +17,5 @@ export default ({ pdf }) => (
     <Label labelInfo="Descargar:" />
   </FloatingFormCol12x>
 );
+
+export default Downloader;

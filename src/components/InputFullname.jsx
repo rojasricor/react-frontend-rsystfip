@@ -3,7 +3,7 @@ import { PeopleContext } from "../context/PeopleContext";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default function InputFullname() {
+const InputFullName = () => {
   const { disabledAll, disabledAfterAutocomplete, name, setName } =
     useContext(PeopleContext);
 
@@ -25,4 +25,6 @@ export default function InputFullname() {
       <Label labelInfo="Nombres y Apellidos:" />
     </FloatingFormCol12x>
   );
-}
+};
+
+export default InputFullName;

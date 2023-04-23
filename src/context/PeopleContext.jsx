@@ -6,7 +6,7 @@ import { formatTodaysDate, formatTodaysDateTime } from "../meta/todaylib";
 
 export const PeopleContext = createContext();
 
-export function PeopleContextProvider({ children }) {
+export const PeopleContextProvider = ({ children }) => {
   // Id person param url GET
   const { id } = useParams();
 
@@ -36,7 +36,7 @@ export function PeopleContextProvider({ children }) {
   // Ref to component select of facultie
   const facultieSelectRef = useRef(null);
 
-  async function schedulePerson() {
+  const schedulePerson = async () => {
     setLoading(true);
 
     try {
@@ -59,9 +59,7 @@ export function PeopleContextProvider({ children }) {
       });
       const { ok, error } = await request.json();
 
-      if (error) {
-        return toast.warn(error);
-      }
+      if (error) return toast.warn(error);
 
       setPerson("unset");
       setDoc("");
@@ -75,9 +73,9 @@ export function PeopleContextProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  async function editPerson() {
+  const editPerson = async () => {
     setLoading(true);
 
     try {
@@ -96,9 +94,7 @@ export function PeopleContextProvider({ children }) {
       });
       const { ok, error } = await request.json();
 
-      if (error) {
-        return toast.warn(error);
-      }
+      if (error) return toast.warn(error);
 
       setPerson("unset");
       setDoc("");
@@ -112,9 +108,9 @@ export function PeopleContextProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  async function getUserData() {
+  const getUserData = async () => {
     const request = await fetch(`${API_ROUTE}/person?id=${id}`);
     const {
       category_id,
@@ -130,16 +126,14 @@ export function PeopleContextProvider({ children }) {
     setName(name);
     setDoc(document_number);
     setAsunt(come_asunt);
-  }
+  };
 
   useEffect(() => {
     id && getUserData();
   }, []);
 
   useEffect(() => {
-    if (!deans || person !== "4") {
-      return;
-    }
+    if (!deans || person !== "4") return;
 
     for (const { _id, dean, facultie_id } of deans) {
       if (_id === doc) {
@@ -193,4 +187,4 @@ export function PeopleContextProvider({ children }) {
       {children}
     </PeopleContext.Provider>
   );
-}
+};

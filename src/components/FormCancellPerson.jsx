@@ -6,12 +6,12 @@ import Spinner from "./Spinner";
 import { toast } from "react-toastify";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
-export default function FormCancellPerson() {
+const FormCancellPerson = () => {
   const { eventId, date, loading, setLoading } = useContext(PeopleContext);
 
   const [cancelledAsunt, setCancelledAsunt] = useState("");
 
-  async function cancellPerson(evt) {
+  const cancellPerson = async (evt) => {
     evt.preventDefault();
     setLoading(true);
 
@@ -27,9 +27,7 @@ export default function FormCancellPerson() {
       });
       const { ok, error } = await request.json();
 
-      if (error) {
-        return toast.warn(error);
-      }
+      if (error) return toast.warn(error);
 
       toast.success(ok, { position: "top-left" });
     } catch (err) {
@@ -37,7 +35,7 @@ export default function FormCancellPerson() {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={cancellPerson} className="row g-2 my-2">
@@ -63,4 +61,6 @@ export default function FormCancellPerson() {
       </div>
     </form>
   );
-}
+};
+
+export default FormCancellPerson;

@@ -22,7 +22,7 @@ import DaterStatistics from "./DaterStatistics";
 import Ctx from "./Ctx";
 import ListerStatistics from "./ListerStatistics";
 
-export default function Statistics({ scheduling_type }) {
+const Statistics = ({ scheduling_type }) => {
   const [chart, setChart] = useState(null);
   const [start, setStart] = useState(getStartMonthDate());
   const [end, setEnd] = useState(getEndMonthDate());
@@ -48,10 +48,8 @@ export default function Statistics({ scheduling_type }) {
     Tooltip
   );
 
-  function refreshChart(labels, data) {
-    if (chart) {
-      chart.destroy();
-    }
+  const refreshChart = (labels, data) => {
+    if (chart) chart.destroy();
 
     const label = `Agendamiento ${
       scheduling_type === "daily" ? "diario" : "programado"
@@ -119,9 +117,9 @@ export default function Statistics({ scheduling_type }) {
     });
 
     setChart(newChart);
-  }
+  };
 
-  async function getStatistics() {
+  const getStatistics = async () => {
     const request = await fetch(
       `${API_ROUTE}/statistics/${scheduling_type}?start=${start}&end=${end}`
     );
@@ -129,23 +127,23 @@ export default function Statistics({ scheduling_type }) {
     const labels = statisticsData.map(({ category }) => category);
     const data = statisticsData.map(({ scheduling_count }) => scheduling_count);
     refreshChart(labels, data);
-  }
+  };
 
-  async function getMostAgendatedOnRange() {
+  const getMostAgendatedOnRange = async () => {
     const request = await fetch(
       `${API_ROUTE}/statistics/${scheduling_type}/onrange?start=${start}&end=${end}`
     );
     const data = await request.json();
     setMostAgendatedOnRange(data);
-  }
+  };
 
-  async function getMostAgendatedAlltime() {
+  const getMostAgendatedAlltime = async () => {
     const request = await fetch(
       `${API_ROUTE}/statistics/${scheduling_type}/alltime`
     );
     const data = await request.json();
     setMostAgendatedAlltime(data);
-  }
+  };
 
   useEffect(() => {
     getStatistics();
@@ -181,4 +179,6 @@ export default function Statistics({ scheduling_type }) {
       />
     </>
   );
-}
+};
+
+export default Statistics;

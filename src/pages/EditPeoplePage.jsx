@@ -4,7 +4,7 @@ import DivRow from "../components/DivRow";
 import Cardx from "../components/Cardx";
 import FormPeople from "../components/FormPeople";
 
-export default function EditPeoplePage() {
+const EditPeoplePage = () => {
   useEffect(() => {
     document.title = "RSystfip | Data Person";
   }, []);
@@ -18,4 +18,6 @@ export default function EditPeoplePage() {
       </Cardx>
     </DivRow>
   );
-}
+};
+
+export default EditPeoplePage;

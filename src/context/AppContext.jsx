@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const AppContext = createContext();
 
-export function AppContextProvider({ children }) {
+export const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [username, setUsername] = useState("");
@@ -24,4 +24,4 @@ export function AppContextProvider({ children }) {
       {children}
     </AppContext.Provider>
   );
-}
+};

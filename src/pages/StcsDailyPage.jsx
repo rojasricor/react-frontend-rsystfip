@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import DivRow from "../components/DivRow";
 import Statistics from "../components/Statistics";
 
-export default function StcsDailyPage() {
+const StcsDailyPage = () => {
   useEffect(() => {
     document.title = "RSystfip | Statistics Daily People";
   }, []);
@@ -12,4 +12,6 @@ export default function StcsDailyPage() {
       <Statistics scheduling_type="daily" />
     </DivRow>
   );
-}
+};
+
+export default StcsDailyPage;

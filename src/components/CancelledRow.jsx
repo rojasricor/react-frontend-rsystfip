@@ -1,4 +1,4 @@
-export default ({
+const CancelledRow = ({
   idx,
   person: {
     name,
@@ -21,3 +21,5 @@ export default ({
     <td>{cancelled_asunt}</td>
   </tr>
 );
+
+export default CancelledRow;

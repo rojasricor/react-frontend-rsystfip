@@ -2,41 +2,39 @@ import { useState, useEffect } from "react";
 import { API_ROUTE } from "../constants/api";
 import PdfCreator from "./PdfCreator";
 
-export default function FetcherReports({
-  startDate,
-  endDate,
-  reportsFiltered,
-}) {
+const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
   const [pngbase64, setPngbase64] = useState("");
   const [people, setPeople] = useState([]);
   const [reportsCountOnRange, setReportsCountOnRange] = useState([]);
   const [reportsCountAlltime, setReportsCountAlltime] = useState([]);
 
-  function getPeople() {
-    fetch(`${API_ROUTE}/people`)
-      .then((request) => request.json())
-      .then((data) => setPeople(data));
-  }
+  const getPeople = async () => {
+    const request = await fetch(`${API_ROUTE}/people`);
+    const data = await request.json();
+    setPeople(data);
+  };
 
-  function getReportsCountOnRange() {
-    fetch(`${API_ROUTE}/reports/count?start=${startDate}&end=${endDate}`)
-      .then((request) => request.json())
-      .then((data) => setReportsCountOnRange(data));
-  }
+  const getReportsCountOnRange = async () => {
+    const request = await fetch(
+      `${API_ROUTE}/reports/count?start=${startDate}&end=${endDate}`
+    );
+    const data = await request.json();
+    setReportsCountOnRange(data);
+  };
 
-  function getReportsCountAlltime() {
-    fetch(`${API_ROUTE}/reports/counts`)
-      .then((request) => request.json())
-      .then((data) => setReportsCountAlltime(data));
-  }
+  const getReportsCountAlltime = async () => {
+    const request = await fetch(`${API_ROUTE}/reports/counts`);
+    const data = await request.json();
+    setReportsCountAlltime(data);
+  };
 
-  async function getPngbase64() {
+  const getPngbase64 = async () => {
     const request = await fetch("/img/admin/avatar.png");
     const response = await request.blob();
     const reader = new FileReader();
     reader.readAsDataURL(response);
     reader.addEventListener("load", () => setPngbase64(reader.result));
-  }
+  };
 
   useEffect(() => {
     getPeople();
@@ -59,4 +57,6 @@ export default function FetcherReports({
       reportsCountAlltime={reportsCountAlltime}
     />
   );
-}
+};
+
+export default FetcherReports;

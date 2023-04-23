@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import ContainerFluid from "./ContainerFluid";
 import { FaCodeBranch } from "react-icons/fa";
 
-export default () => (
+const Footer = () => (
   <ContainerFluid>
     <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <p className="col-md-4 mb-0 text-body-secondary">
@@ -43,3 +43,5 @@ export default () => (
     </footer>
   </ContainerFluid>
 );
+
+export default Footer;

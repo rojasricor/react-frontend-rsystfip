@@ -1,6 +1,6 @@
 import { ToastContainer, Zoom } from "react-toastify";
 
-export default () => (
+const Notify = () => (
   <ToastContainer
     position="top-right"
     autoClose={2000}
@@ -15,3 +15,5 @@ export default () => (
     theme="dark"
   />
 );
+
+export default Notify;

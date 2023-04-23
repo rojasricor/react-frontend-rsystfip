@@ -7,7 +7,7 @@ import TableUsers from "../components/TableUsers";
 import Notify from "../components/Notify";
 import { FaUserPlus } from "react-icons/fa";
 
-export default function DashboardPage() {
+const UsersPage = () => {
   useEffect(() => {
     document.title = "RSystfip | Administrate Users";
   }, []);
@@ -25,4 +25,6 @@ export default function DashboardPage() {
       <Notify />
     </DivRow>
   );
-}
+};
+
+export default UsersPage;

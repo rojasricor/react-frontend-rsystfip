@@ -1,6 +1,6 @@
 import FormSchedulePeople from "./FormSchedulePeople";
 
-export default ({ modalRef }) => (
+const ModalSchedulePeopleForm = ({ modalRef }) => (
   <div
     className="modal fade"
     data-bs-backdrop="static"
@@ -21,3 +21,5 @@ export default ({ modalRef }) => (
     </div>
   </div>
 );
+
+export default ModalSchedulePeopleForm;

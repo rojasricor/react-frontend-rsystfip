@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 import { API_ROUTE } from "../constants/api";
 import { BiTrash, BiKey } from "react-icons/bi";
 
-export default function DashboardRow({ user: { id, email } }) {
+const UserRow = ({ user: { id, email } }) => {
   const [deleted, setDeleted] = useState(false);
 
-  async function deleteUser(role) {
-    if (!confirm("Seguro(a) de eliminar ese usuario?")) {
-      return;
-    }
+  const deleteUser = async (role) => {
+    if (!confirm("Seguro(a) de eliminar ese usuario?")) return;
 
     try {
       const request = await fetch(`${API_ROUTE}/user`, {
@@ -22,9 +20,7 @@ export default function DashboardRow({ user: { id, email } }) {
       });
       const response = request.json();
 
-      if (!response) {
-        return toast.error("Error al eliminar");
-      }
+      if (!response) return toast.error("Error al eliminar");
 
       setDeleted(true);
       toast.success("Usuario eliminado exitosamente", {
@@ -33,11 +29,9 @@ export default function DashboardRow({ user: { id, email } }) {
     } catch (err) {
       toast.error(err);
     }
-  }
+  };
 
-  if (deleted) {
-    return null;
-  }
+  if (deleted) return null;
 
   return (
     <tr>
@@ -62,4 +56,6 @@ export default function DashboardRow({ user: { id, email } }) {
       </td>
     </tr>
   );
-}
+};
+
+export default UserRow;

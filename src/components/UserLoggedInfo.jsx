@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
-export default function UserLoggedInfo() {
+const UserLoggedInfo = () => {
   const { user } = useContext(AppContext);
 
   return (
@@ -11,4 +11,6 @@ export default function UserLoggedInfo() {
       }: ${user.name}`}
     </h1>
   );
-}
+};
+
+export default UserLoggedInfo;

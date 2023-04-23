@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import DivRow from "../components/DivRow";
 import DivCol12 from "../components/DivCol12";
 
-export default function FaqsPage() {
+const FaqsPage = () => {
   useEffect(() => {
     document.title = "RSystfip | Frecuently Asked Questions";
   }, []);
@@ -224,4 +224,6 @@ export default function FaqsPage() {
       </DivCol12>
     </DivRow>
   );
-}
+};
+
+export default FaqsPage;

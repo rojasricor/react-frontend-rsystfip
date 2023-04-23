@@ -8,7 +8,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
-import DashboardPage from "./pages/DashboardPage";
+import UsersPage from "./pages/UsersPage";
 import AddUserPage from "./pages/AddUserPage";
 import PswChangeUserPage from "./pages/PswChangeUserPage";
 import ProgrammingPage from "./pages/ProgrammingPage";
@@ -24,7 +24,7 @@ import FaqsPage from "./pages/FaqsPage";
 import Error404Page from "./pages/Error404Page";
 import "./index.scss";
 
-export default function App() {
+const App = () => {
   const { user } = useContext(AppContext);
   const avatar = user ? `/img/${user.role}/avatar.png` : "";
   const permissions = user ? user.permissions : [];
@@ -49,7 +49,10 @@ export default function App() {
               element={<PswChangeUserPage />}
             />
             <Route path="/people/view" element={<HistoryPeoplePage />} />
-            <Route path="/people/cancelled" element={<HistoryCancelledPage />} />
+            <Route
+              path="/people/cancelled"
+              element={<HistoryCancelledPage />}
+            />
             <Route path="/people/view/:id/edit" element={<EditPeoplePage />} />
             <Route path="/help/asks/frecuently" element={<FaqsPage />} />
           </Route>
@@ -61,12 +64,9 @@ export default function App() {
               />
             }
           >
-            <Route path="/users/manage" element={<DashboardPage />} />
+            <Route path="/users/manage" element={<UsersPage />} />
             <Route path="/users/manage/add" element={<AddUserPage />} />
-            <Route
-              path="/users/manage/:role/delete"
-              element={<DashboardPage />}
-            />
+            <Route path="/users/manage/:role/delete" element={<UsersPage />} />
           </Route>
 
           <Route
@@ -145,4 +145,6 @@ export default function App() {
       <Footer />
     </BrowserRouter>
   );
-}
+};
+
+export default App;

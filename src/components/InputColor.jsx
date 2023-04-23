@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import DivCol12 from "./DivCol12";
 
-export default function InputColor() {
+const InputColor = () => {
   const { color, setColor } = useContext(PeopleContext);
 
   return (
@@ -16,4 +16,6 @@ export default function InputColor() {
       />
     </DivCol12>
   );
-}
+};
+
+export default InputColor;

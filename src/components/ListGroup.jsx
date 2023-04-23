@@ -1,4 +1,4 @@
-export default ({ title, data, end }) => (
+const ListGroup = ({ title, data, end }) => (
   <>
     <h5 className="text-center">{title}</h5>
     <div className="list-group w-auto mb-5">
@@ -27,3 +27,5 @@ export default ({ title, data, end }) => (
     </div>
   </>
 );
+
+export default ListGroup;

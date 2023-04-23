@@ -4,7 +4,7 @@ import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants/api";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default function SelectFaculties() {
+const SelectFaculties = () => {
   const {
     disabledAll,
     disabledAfterAutocomplete,
@@ -14,10 +14,14 @@ export default function SelectFaculties() {
   } = useContext(PeopleContext);
   const [faculties, setFaculties] = useState([]);
 
+  const getFaculties = async () => {
+    const request = await fetch(`${RESOURCE_ROUTE}?resource=faculties`);
+    const data = await request.json();
+    setFaculties(data);
+  };
+
   useEffect(() => {
-    fetch(`${RESOURCE_ROUTE}?resource=faculties`)
-      .then((request) => request.json())
-      .then((data) => setFaculties(data));
+    getFaculties();
   }, []);
 
   return (
@@ -42,4 +46,6 @@ export default function SelectFaculties() {
       <Label labelInfo="Facultad:" />
     </FloatingFormCol12x>
   );
-}
+};
+
+export default SelectFaculties;

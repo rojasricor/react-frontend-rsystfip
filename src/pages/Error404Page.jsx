@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import DivCol12 from "../components/DivCol12";
 import Error404Actioner from "../components/Error404Actioner";
 
-export default function Error404Page() {
+const Error404Page = () => {
   useEffect(() => {
     document.title = "RSystfip | 404 Not Found";
   }, []);
@@ -23,4 +23,6 @@ export default function Error404Page() {
       </DivCol12>
     </div>
   );
-}
+};
+
+export default Error404Page;

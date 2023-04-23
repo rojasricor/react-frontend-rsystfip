@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import Searcher from "../components/Searcher";
 
-export default function HistoryPeoplePage() {
+const HistoryPeoplePage = () => {
   useEffect(() => {
     document.title = "RSystfip | Agendated People";
   }, []);
 
   return <Searcher />;
-}
+};
+
+export default HistoryPeoplePage;

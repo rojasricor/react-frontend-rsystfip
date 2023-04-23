@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import DropdownMenu from "./Dropdown";
 import Dropdown from "bootstrap/js/dist/dropdown";
 
-export default function NavDropdown({ children, title, description }) {
+const NavDropdown = ({ children, title, description }) => {
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -22,4 +22,6 @@ export default function NavDropdown({ children, title, description }) {
       <DropdownMenu>{children}</DropdownMenu>
     </div>
   );
-}
+};
+
+export default NavDropdown;

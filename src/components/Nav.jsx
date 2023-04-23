@@ -4,7 +4,7 @@ import NavToggler from "./NavToggler";
 import NavMenu from "./NavMenu";
 import "bootstrap/js/dist/collapse";
 
-export default ({ avatar, permissions }) => (
+const Nav = ({ avatar, permissions }) => (
   <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <ContainerFluid>
       <NavBrand />
@@ -13,3 +13,5 @@ export default ({ avatar, permissions }) => (
     </ContainerFluid>
   </nav>
 );
+
+export default Nav;

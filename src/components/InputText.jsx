@@ -1,7 +1,7 @@
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default ({ setText, inputValue, placeholder, labelInfo }) => (
+const InputText = ({ setText, inputValue, placeholder, labelInfo }) => (
   <FloatingFormCol12x x="4">
     <input
       onChange={(evt) => setText(evt.target.value)}
@@ -17,3 +17,5 @@ export default ({ setText, inputValue, placeholder, labelInfo }) => (
     <Label labelInfo={labelInfo} />
   </FloatingFormCol12x>
 );
+
+export default InputText;

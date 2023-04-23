@@ -3,7 +3,7 @@ import { PeopleContext } from "../context/PeopleContext";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default function InputDocumentNumber() {
+const InputDocumentNumber = () => {
   const { disabledAll, disabledAfterAutocomplete, doc, setDoc } =
     useContext(PeopleContext);
 
@@ -22,4 +22,6 @@ export default function InputDocumentNumber() {
       <Label labelInfo="Cédula:" />
     </FloatingFormCol12x>
   );
-}
+};
+
+export default InputDocumentNumber;

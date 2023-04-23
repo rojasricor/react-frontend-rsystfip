@@ -10,7 +10,7 @@ import Spinner from "./Spinner";
 import { toast } from "react-toastify";
 import { IoMdLogIn } from "react-icons/io";
 
-export default function FormLogin() {
+const FormLogin = () => {
   const {
     setUser,
     username,
@@ -24,7 +24,7 @@ export default function FormLogin() {
 
   const navigate = useNavigate();
 
-  async function doLogin(evt) {
+  const doLogin = async (evt) => {
     evt.preventDefault();
     setLoading(true);
 
@@ -39,9 +39,7 @@ export default function FormLogin() {
       });
       const { auth, user, error } = await response.json();
 
-      if (error || !auth) {
-        return toast.warn(error);
-      }
+      if (error || !auth) return toast.warn(error);
 
       setUser(user);
       navigate("/home/welcome");
@@ -50,7 +48,7 @@ export default function FormLogin() {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={doLogin}>
@@ -93,4 +91,6 @@ export default function FormLogin() {
       </DivRow>
     </form>
   );
-}
+};
+
+export default FormLogin;

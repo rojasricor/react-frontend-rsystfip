@@ -7,13 +7,13 @@ import Submitter from "./Submitter";
 import Spinner from "./Spinner";
 import { BiKey } from "react-icons/bi";
 
-export default function FormChangePsw({ userId }) {
+const FormChangePsw = ({ userId }) => {
   const [current_password, setCurrent_password] = useState("");
   const [new_password, setNew_password] = useState("");
   const [new_password_confirm, setNew_password_confirm] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function doChangePassword(evt) {
+  const doChangePassword = async (evt) => {
     evt.preventDefault();
     setLoading(true);
 
@@ -30,9 +30,7 @@ export default function FormChangePsw({ userId }) {
       });
       const { error, ok } = await request.json();
 
-      if (error) {
-        return toast.warn(error);
-      }
+      if (error) return toast.warn(error);
 
       setCurrent_password("");
       setNew_password("");
@@ -43,7 +41,7 @@ export default function FormChangePsw({ userId }) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={doChangePassword}>
@@ -81,4 +79,6 @@ export default function FormChangePsw({ userId }) {
       </DivRow>
     </form>
   );
-}
+};
+
+export default FormChangePsw;

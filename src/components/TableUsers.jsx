@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 import { API_ROUTE } from "../constants/api";
 import Table from "./Table";
-import DashboardRow from "./DashboardRow";
+import UserRow from "./UserRow";
 
-export default function TableUsers() {
-  const [usersDashboard, setUsersDashboard] = useState([]);
+const TableUsers = () => {
+  const [users, setUsers] = useState([]);
+
+  const getUsers = async () => {
+    const request = await fetch(`${API_ROUTE}/users`);
+    const data = await request.json();
+    setUsers(data);
+  };
 
   useEffect(() => {
-    fetch(`${API_ROUTE}/users`)
-      .then((request) => request.json())
-      .then((data) => setUsersDashboard(data));
+    getUsers();
   }, []);
 
   return (
@@ -22,10 +26,12 @@ export default function TableUsers() {
         </tr>
       </thead>
       <tbody>
-        {usersDashboard.map((user, index) => (
-          <DashboardRow key={index} user={user} />
+        {users.map((user, index) => (
+          <UserRow key={index} user={user} />
         ))}
       </tbody>
     </Table>
   );
-}
+};
+
+export default TableUsers;

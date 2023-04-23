@@ -9,14 +9,14 @@ import { FaUserPlus } from "react-icons/fa";
 import { GiReturnArrow } from "react-icons/gi";
 import Notify from "./Notify";
 
-export default function FooterFormPeople({ isAllowed }) {
+const FooterFormPeople = ({ isAllowed }) => {
   const { loading } = useContext(PeopleContext);
   const navigate = useNavigate();
 
-  function returnToBack(evt) {
+  const returnToBack = (evt) => {
     evt.preventDefault();
     navigate(-1);
-  }
+  };
 
   return (
     <>
@@ -45,4 +45,6 @@ export default function FooterFormPeople({ isAllowed }) {
       <Notify />
     </>
   );
-}
+};
+
+export default FooterFormPeople;

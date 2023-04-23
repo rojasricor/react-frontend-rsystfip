@@ -4,7 +4,7 @@ import Cardx from "../components/Cardx";
 import FormUserAdd from "../components/FormUserAdd";
 import Notify from "../components/Notify";
 
-export default function AddUserPage() {
+const AddUserPage = () => {
   useEffect(() => {
     document.title = "RSystfip | Register New User";
   }, []);
@@ -17,4 +17,6 @@ export default function AddUserPage() {
       <Notify />
     </DivRow>
   );
-}
+};
+
+export default AddUserPage;

@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { BiLogOutCircle } from "react-icons/bi";
 import Dropdown from "bootstrap/js/dist/dropdown";
 
-export default function NavLogoutDropdown({ avatar }) {
+const NavLogoutDropdown = ({ avatar }) => {
   const { user, setUser, setUsername, setPassword } = useContext(AppContext);
 
   const dropdownRef = useRef(null);
@@ -14,16 +14,15 @@ export default function NavLogoutDropdown({ avatar }) {
     new Dropdown(dropdownRef.current);
   }, []);
 
-  function logout() {
-    if (!confirm(`${user.name} estás seguro(a)que deseas cerrar sesión?`)) {
+  const logout = () => {
+    if (!confirm(`${user.name} estás seguro(a)que deseas cerrar sesión?`))
       return;
-    }
 
     setUser(null);
     setUsername("");
     setPassword("");
     <Navigate to="/auth/login" replace />;
-  }
+  };
 
   return (
     <div className="dropdown">
@@ -59,4 +58,6 @@ export default function NavLogoutDropdown({ avatar }) {
       </ul>
     </div>
   );
-}
+};
+
+export default NavLogoutDropdown;

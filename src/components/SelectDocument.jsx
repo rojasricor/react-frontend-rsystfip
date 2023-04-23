@@ -4,15 +4,19 @@ import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants/api";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default function SelectDocument() {
+const SelectDocument = () => {
   const { setDoctype, doctype, disabledAll, disabledAfterAutocomplete } =
     useContext(PeopleContext);
   const [documents, setDocuments] = useState([]);
 
+  const getDocuments = async () => {
+    const request = await fetch(`${RESOURCE_ROUTE}?resource=documents`);
+    const data = await request.json();
+    setDocuments(data);
+  };
+
   useEffect(() => {
-    fetch(`${RESOURCE_ROUTE}?resource=documents`)
-      .then((request) => request.json())
-      .then((data) => setDocuments(data));
+    getDocuments();
   }, []);
 
   return (
@@ -36,4 +40,6 @@ export default function SelectDocument() {
       <Label labelInfo="Tipo de Documento:" />
     </FloatingFormCol12x>
   );
-}
+};
+
+export default SelectDocument;

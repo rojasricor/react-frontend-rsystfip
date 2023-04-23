@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Rower from "../components/Rower";
 import ActionerReports from "../components/ActionerReports";
 
-export default function ReportsPeoplePage() {
+const ReportsPeoplePage = () => {
   useEffect(() => {
     document.title = "RSystfip | Generate Reports";
   }, []);
@@ -13,4 +13,6 @@ export default function ReportsPeoplePage() {
       <ActionerReports />
     </Rower>
   );
-}
+};
+
+export default ReportsPeoplePage;

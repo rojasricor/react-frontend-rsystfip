@@ -3,7 +3,7 @@ import DivRow from "../components/DivRow";
 import FetcherDataForChangePsw from "../components/FetcherDataForChangePsw";
 import Notify from "../components/Notify";
 
-export default function PswChangeUserPage() {
+const PswChangeUserPage = () => {
   useEffect(() => {
     document.title = "RSystfip | Change Password Users";
   }, []);
@@ -14,4 +14,6 @@ export default function PswChangeUserPage() {
       <Notify />
     </DivRow>
   );
-}
+};
+
+export default PswChangeUserPage;

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import DivRow from "../components/DivRow";
 import Statistics from "../components/Statistics";
 
-export default function StcsScheduledPage() {
+const StcsSchedulePage = () => {
   useEffect(() => {
     document.title = "RSystfip | Statistics Scheduled People";
   }, []);
@@ -12,4 +12,6 @@ export default function StcsScheduledPage() {
       <Statistics scheduling_type="scheduled" />
     </DivRow>
   );
-}
+};
+
+export default StcsSchedulePage;

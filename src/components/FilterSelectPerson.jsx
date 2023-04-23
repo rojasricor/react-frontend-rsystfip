@@ -3,13 +3,17 @@ import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants/api";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default function FilterSelectPerson({ setCategory }) {
+const FilterSelectPerson = ({ setCategory }) => {
   const [categories, setCategories] = useState([]);
 
+  const getCategories = async () => {
+    const request = await fetch(`${RESOURCE_ROUTE}?resource=categories`);
+    const data = await request.json();
+    setCategories(data);
+  };
+
   useEffect(() => {
-    fetch(`${RESOURCE_ROUTE}?resource=categories`)
-      .then((request) => request.json())
-      .then((data) => setCategories(data));
+    getCategories();
   }, []);
 
   return (
@@ -28,4 +32,6 @@ export default function FilterSelectPerson({ setCategory }) {
       <Label labelInfo="Persona:" />
     </FloatingFormCol12x>
   );
-}
+};
+
+export default FilterSelectPerson;

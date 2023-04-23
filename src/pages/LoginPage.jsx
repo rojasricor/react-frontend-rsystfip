@@ -6,7 +6,7 @@ import Container from "../components/Container";
 import FormLogin from "../components/FormLogin";
 import Notify from "../components/Notify";
 
-export default function LoginPage() {
+const LoginPage = () => {
   useEffect(() => {
     document.title = "RSystfip | Auth";
   }, []);
@@ -22,4 +22,6 @@ export default function LoginPage() {
       <Notify />
     </DivRow>
   );
-}
+};
+
+export default LoginPage;

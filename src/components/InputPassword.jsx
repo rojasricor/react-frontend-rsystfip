@@ -1,7 +1,13 @@
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default ({ setPassword, inputValue, placeholder, labelInfo, x }) => (
+const InputPassword = ({
+  setPassword,
+  inputValue,
+  placeholder,
+  labelInfo,
+  x,
+}) => (
   <FloatingFormCol12x x={x}>
     <input
       onChange={(evt) => setPassword(evt.target.value)}
@@ -15,3 +21,5 @@ export default ({ setPassword, inputValue, placeholder, labelInfo, x }) => (
     <Label labelInfo={labelInfo} />
   </FloatingFormCol12x>
 );
+
+export default InputPassword;

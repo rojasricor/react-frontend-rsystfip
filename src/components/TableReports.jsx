@@ -1,7 +1,7 @@
 import Table from "./Table";
 import ReportRow from "./ReportRow";
 
-export default ({ start, end, reportFiltered }) => (
+const TableReports = ({ start, end, reportFiltered }) => (
   <Table clAdds=" table-borderless">
     <caption>
       Data about people schedule between {start} and {end}.
@@ -23,3 +23,5 @@ export default ({ start, end, reportFiltered }) => (
     </tbody>
   </Table>
 );
+
+export default TableReports;

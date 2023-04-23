@@ -4,7 +4,7 @@ import { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } from "../constants/api";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
 
-export default function SelectPerson() {
+const SelectPerson = () => {
   const {
     setDisabledAll,
     setDisabledAfterAutocomplete,
@@ -15,11 +15,11 @@ export default function SelectPerson() {
   } = useContext(PeopleContext);
   const [categories, setCategories] = useState([]);
 
-  async function getDeans() {
+  const getDeans = async () => {
     const request = await fetch(`${API_ROUTE}/deans`);
     const data = await request.json();
     setDeans(data);
-  }
+  };
 
   useEffect(() => {
     if (person !== UNSET_STATUS) {
@@ -27,17 +27,20 @@ export default function SelectPerson() {
       setDisabledAfterAutocomplete(false);
       facultieSelectRef.current.className = "form-select";
       facultieSelectRef.current.disabled = false;
-      if (person === "5") {
-        facultieSelectRef.current.disabled = true;
-      }
+      if (person === "5") facultieSelectRef.current.disabled = true;
+
       person === "4" && getDeans();
     }
   }, [person]);
 
+  const getCategories = async () => {
+    const request = await fetch(`${RESOURCE_ROUTE}?resource=categories`);
+    const data = await request.json();
+    setCategories(data);
+  };
+
   useEffect(() => {
-    fetch(`${RESOURCE_ROUTE}?resource=categories`)
-      .then((request) => request.json())
-      .then((data) => setCategories(data));
+    getCategories();
   }, []);
 
   return (
@@ -60,4 +63,6 @@ export default function SelectPerson() {
       <Label labelInfo="Persona a registrar:" />
     </FloatingFormCol12x>
   );
-}
+};
+
+export default SelectPerson;

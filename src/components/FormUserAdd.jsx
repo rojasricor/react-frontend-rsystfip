@@ -11,7 +11,7 @@ import Submitter from "./Submitter";
 import Spinner from "./Spinner";
 import { FaUserPlus } from "react-icons/fa";
 
-export default function FormUserAdd() {
+const FormUserAdd = () => {
   const [documents, setDocuments] = useState([]);
   const [role, setRole] = useState(UNSET_STATUS);
   const [name, setName] = useState("");
@@ -24,7 +24,7 @@ export default function FormUserAdd() {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function doCreateUser(evt) {
+  const doCreateUser = async (evt) => {
     evt.preventDefault();
     setLoading(true);
 
@@ -46,9 +46,7 @@ export default function FormUserAdd() {
       });
       const { error, ok } = await request.json();
 
-      if (error) {
-        return toast.warn(error);
-      }
+      if (error) return toast.warn(error);
 
       setRole(UNSET_STATUS);
       setName("");
@@ -65,12 +63,16 @@ export default function FormUserAdd() {
     } finally {
       setLoading(false);
     }
-  }
+  };
+
+  const getDocuments = async () => {
+    const request = await fetch(`${RESOURCE_ROUTE}?resource=documents`);
+    const data = await request.json();
+    setDocuments(data);
+  };
 
   useEffect(() => {
-    fetch(`${RESOURCE_ROUTE}?resource=documents`)
-      .then((request) => request.json())
-      .then((data) => setDocuments(data));
+    getDocuments();
   }, []);
 
   return (
@@ -161,4 +163,6 @@ export default function FormUserAdd() {
       </DivRow>
     </form>
   );
-}
+};
+
+export default FormUserAdd;

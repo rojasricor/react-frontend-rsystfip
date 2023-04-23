@@ -1,7 +1,7 @@
 import DivCol12 from "./DivCol12";
 import ListGroup from "./ListGroup";
 
-export default ({
+const ListerStatistics = ({
   mostAgendatedOnRange,
   mostAgendatedAlltime,
   start,
@@ -23,3 +23,5 @@ export default ({
     />
   </DivCol12>
 );
+
+export default ListerStatistics;

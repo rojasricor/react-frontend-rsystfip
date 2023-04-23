@@ -9,20 +9,19 @@ import InputFullname from "./InputFullname";
 import TextareaAsunt from "./TextareaAsunt";
 import FooterFormPeople from "./FooterFormPeople";
 
-export default function FormPeople({ action }) {
+const FormPeople = ({ action }) => {
   const { setStatus, schedulePerson, editPerson } = useContext(PeopleContext);
 
   const isEdit = action === "edit";
 
-  function doForPerson(evt) {
+  const doForPerson = (evt) => {
     evt.preventDefault();
-    if (isEdit) {
-      return editPerson();
-    }
 
-    setStatus('daily');
+    if (isEdit) return editPerson();
+
+    setStatus("daily");
     schedulePerson();
-  }
+  };
 
   return (
     <form onSubmit={doForPerson}>
@@ -37,4 +36,6 @@ export default function FormPeople({ action }) {
       </DivRow>
     </form>
   );
-}
+};
+
+export default FormPeople;

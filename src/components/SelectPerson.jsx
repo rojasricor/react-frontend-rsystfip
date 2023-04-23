@@ -3,6 +3,7 @@ import { PeopleContext } from "../context/PeopleContext";
 import * as Cst from "../constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
+import { toast } from "react-toastify";
 
 const SelectPerson = () => {
   const { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } = Cst;
@@ -17,9 +18,13 @@ const SelectPerson = () => {
   const [categories, setCategories] = useState([]);
 
   const getDeans = async () => {
-    const request = await fetch(`${API_ROUTE}/deans`);
-    const data = await request.json();
-    setDeans(data);
+    try {
+      const request = await fetch(`${API_ROUTE}/deans`);
+      const data = await request.json();
+      setDeans(data);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   useEffect(() => {
@@ -35,9 +40,13 @@ const SelectPerson = () => {
   }, [person]);
 
   const getCategories = async () => {
-    const request = await fetch(`${RESOURCE_ROUTE}?resource=categories`);
-    const data = await request.json();
-    setCategories(data);
+    try {
+      const request = await fetch(`${RESOURCE_ROUTE}?resource=categories`);
+      const data = await request.json();
+      setCategories(data);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   useEffect(() => {

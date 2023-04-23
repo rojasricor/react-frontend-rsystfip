@@ -8,6 +8,7 @@ import InputDocumentNumber from "./InputDocumentNumber";
 import InputFullname from "./InputFullname";
 import TextareaAsunt from "./TextareaAsunt";
 import FooterFormPeople from "./FooterFormPeople";
+import Notify from "./Notify";
 
 const FormPeople = ({ action }) => {
   const { setStatus, schedulePerson, editPerson } = useContext(PeopleContext);
@@ -34,6 +35,7 @@ const FormPeople = ({ action }) => {
         <TextareaAsunt />
         <FooterFormPeople isAllowed={isEdit} />
       </DivRow>
+      <Notify />
     </form>
   );
 };

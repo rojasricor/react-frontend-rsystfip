@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import DaterReports from "./DaterReports";
 import TableReports from "./TableReports";
+import Notify from "./Notify";
 import { API_ROUTE, UNSET_STATUS } from "../constants";
 import { getStartMonthDate, getEndMonthDate } from "../libs/todaylib";
+import { toast } from "react-toastify";
 
 const ActionerReports = () => {
   const [report, setReport] = useState([]);
@@ -12,12 +14,16 @@ const ActionerReports = () => {
   const [category, setCategory] = useState(UNSET_STATUS);
 
   const getReports = async () => {
-    const request = await fetch(
-      `${API_ROUTE}/reports?start=${startDate}&end=${endDate}&category=${category}`
-    );
-    const reports = await request.json();
-    setReport(reports);
-    setReportFiltered(reports);
+    try {
+      const request = await fetch(
+        `${API_ROUTE}/reports?start=${startDate}&end=${endDate}&category=${category}`
+      );
+      const reports = await request.json();
+      setReport(reports);
+      setReportFiltered(reports);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   useEffect(() => {
@@ -51,6 +57,7 @@ const ActionerReports = () => {
         end={endDate}
         reportFiltered={reportFiltered}
       />
+      <Notify />
     </>
   );
 };

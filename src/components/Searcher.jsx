@@ -1,10 +1,12 @@
 import { useState, useEffect, startTransition } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { API_ROUTE } from "../constants";
 import Rower from "./Rower";
 import BtnGroup from "./BtnGroup";
 import Spinner from "./Spinner";
 import TablePeople from "./TablePeople";
+import Notify from "./Notify";
 import { FaSyncAlt, FaTimes } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
 import { ImUserPlus } from "react-icons/im";
@@ -22,8 +24,9 @@ const Searcher = () => {
         setPeople(data);
         setPeopleFiltered(data);
       });
-    } catch {
+    } catch (err) {
       setLoading(2);
+      toast.error(err);
     } finally {
       setLoading(1);
     }
@@ -86,6 +89,7 @@ const Searcher = () => {
         </Link>
       </BtnGroup>
       <TablePeople peopleFiltered={peopleFiltered} />
+      <Notify />
     </Rower>
   );
 };

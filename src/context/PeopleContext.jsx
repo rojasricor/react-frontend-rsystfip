@@ -111,21 +111,25 @@ export const PeopleContextProvider = ({ children }) => {
   };
 
   const getUserData = async () => {
-    const request = await fetch(`${API_ROUTE}/person?id=${id}`);
-    const {
-      category_id,
-      document_id,
-      facultie_id,
-      name,
-      document_number,
-      come_asunt,
-    } = await request.json();
-    setPerson(category_id);
-    setDoctype(document_id);
-    setFacultie(facultie_id);
-    setName(name);
-    setDoc(document_number);
-    setAsunt(come_asunt);
+    try {
+      const request = await fetch(`${API_ROUTE}/person?id=${id}`);
+      const {
+        category_id,
+        document_id,
+        facultie_id,
+        name,
+        document_number,
+        come_asunt,
+      } = await request.json();
+      setPerson(category_id);
+      setDoctype(document_id);
+      setFacultie(facultie_id);
+      setName(name);
+      setDoc(document_number);
+      setAsunt(come_asunt);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   useEffect(() => {

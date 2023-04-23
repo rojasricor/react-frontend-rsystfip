@@ -21,6 +21,8 @@ import DivCol12 from "./DivCol12";
 import DaterStatistics from "./DaterStatistics";
 import Ctx from "./Ctx";
 import ListerStatistics from "./ListerStatistics";
+import Notify from "./Notify";
+import { toast } from "react-toastify";
 
 const Statistics = ({ scheduling_type }) => {
   const [chart, setChart] = useState(null);
@@ -119,29 +121,43 @@ const Statistics = ({ scheduling_type }) => {
   };
 
   const getStatistics = async () => {
-    const request = await fetch(
-      `${API_ROUTE}/statistics/${scheduling_type}?start=${start}&end=${end}`
-    );
-    const statisticsData = await request.json();
-    const labels = statisticsData.map(({ category }) => category);
-    const data = statisticsData.map(({ scheduling_count }) => scheduling_count);
-    refreshChart(labels, data);
+    try {
+      const request = await fetch(
+        `${API_ROUTE}/statistics/${scheduling_type}?start=${start}&end=${end}`
+      );
+      const statisticsData = await request.json();
+      const labels = statisticsData.map(({ category }) => category);
+      const data = statisticsData.map(
+        ({ scheduling_count }) => scheduling_count
+      );
+      refreshChart(labels, data);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   const getMostAgendatedOnRange = async () => {
-    const request = await fetch(
-      `${API_ROUTE}/statistics/${scheduling_type}/onrange?start=${start}&end=${end}`
-    );
-    const data = await request.json();
-    setMostAgendatedOnRange(data);
+    try {
+      const request = await fetch(
+        `${API_ROUTE}/statistics/${scheduling_type}/onrange?start=${start}&end=${end}`
+      );
+      const data = await request.json();
+      setMostAgendatedOnRange(data);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   const getMostAgendatedAlltime = async () => {
-    const request = await fetch(
-      `${API_ROUTE}/statistics/${scheduling_type}/alltime`
-    );
-    const data = await request.json();
-    setMostAgendatedAlltime(data);
+    try {
+      const request = await fetch(
+        `${API_ROUTE}/statistics/${scheduling_type}/alltime`
+      );
+      const data = await request.json();
+      setMostAgendatedAlltime(data);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   useEffect(() => {
@@ -176,6 +192,8 @@ const Statistics = ({ scheduling_type }) => {
         end={end}
         scheduling_type={scheduling_type === "daily" ? "diario" : "programado"}
       />
+
+      <Notify />
     </>
   );
 };

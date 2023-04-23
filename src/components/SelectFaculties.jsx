@@ -3,6 +3,7 @@ import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
+import { toast } from "react-toastify";
 
 const SelectFaculties = () => {
   const {
@@ -15,9 +16,13 @@ const SelectFaculties = () => {
   const [faculties, setFaculties] = useState([]);
 
   const getFaculties = async () => {
-    const request = await fetch(`${RESOURCE_ROUTE}?resource=faculties`);
-    const data = await request.json();
-    setFaculties(data);
+    try {
+      const request = await fetch(`${RESOURCE_ROUTE}?resource=faculties`);
+      const data = await request.json();
+      setFaculties(data);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   useEffect(() => {

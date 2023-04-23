@@ -2,13 +2,19 @@ import { useState, useEffect } from "react";
 import Table from "./Table";
 import CancelledRow from "./CancelledRow";
 import { API_ROUTE } from "../constants";
+import { toast } from "react-toastify";
 
 const TableCancelled = () => {
   const [people, setPeople] = useState([]);
+
   const getCancelled = async () => {
-    const request = await fetch(`${API_ROUTE}/cancelled`);
-    const data = await request.json();
-    setPeople(data);
+    try {
+      const request = await fetch(`${API_ROUTE}/cancelled`);
+      const data = await request.json();
+      setPeople(data);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   useEffect(() => {

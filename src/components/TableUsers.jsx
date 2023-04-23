@@ -2,14 +2,19 @@ import { useState, useEffect } from "react";
 import { API_ROUTE } from "../constants";
 import Table from "./Table";
 import UserRow from "./UserRow";
+import { toast } from "react-toastify";
 
 const TableUsers = () => {
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
-    const request = await fetch(`${API_ROUTE}/users`);
-    const data = await request.json();
-    setUsers(data);
+    try {
+      const request = await fetch(`${API_ROUTE}/users`);
+      const data = await request.json();
+      setUsers(data);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   useEffect(() => {

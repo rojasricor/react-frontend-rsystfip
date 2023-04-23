@@ -3,6 +3,7 @@ import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
+import { toast } from "react-toastify";
 
 const SelectDocument = () => {
   const { setDoctype, doctype, disabledAll, disabledAfterAutocomplete } =
@@ -10,9 +11,13 @@ const SelectDocument = () => {
   const [documents, setDocuments] = useState([]);
 
   const getDocuments = async () => {
-    const request = await fetch(`${RESOURCE_ROUTE}?resource=documents`);
-    const data = await request.json();
-    setDocuments(data);
+    try {
+      const request = await fetch(`${RESOURCE_ROUTE}?resource=documents`);
+      const data = await request.json();
+      setDocuments(data);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   useEffect(() => {

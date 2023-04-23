@@ -2,6 +2,7 @@ import DivRow from "./DivRow";
 import InputDate from "./InputDate";
 import FilterSelectPerson from "./FilterSelectPerson";
 import FetcherReports from "./FetcherReports";
+import Notify from "./Notify";
 
 const DaterReports = ({
   setStartDate,
@@ -27,6 +28,8 @@ const DaterReports = ({
       endDate={endDate}
       reportsFiltered={reportsFiltered}
     />
+
+    <Notify />
   </DivRow>
 );
 

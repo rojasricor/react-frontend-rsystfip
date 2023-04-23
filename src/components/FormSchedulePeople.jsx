@@ -9,6 +9,7 @@ import TextareaAsunt from "./TextareaAsunt";
 import InputColor from "./InputColor";
 import SmallCaption from "./SmallCaption";
 import Spinner from "./Spinner";
+import Notify from "./Notify";
 import { IoCalendarNumber } from "react-icons/io5";
 import { GiReturnArrow } from "react-icons/gi";
 
@@ -48,6 +49,7 @@ const FormSchedulePeople = () => {
           )}
         </button>
       </div>
+      <Notify />
     </form>
   );
 };

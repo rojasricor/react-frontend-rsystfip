@@ -2,14 +2,19 @@ import { useState, useEffect } from "react";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
 import FloatingFormCol12x from "./FloatingFormCol12x";
 import Label from "./Label";
+import { toast } from "react-toastify";
 
 const FilterSelectPerson = ({ setCategory }) => {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
-    const request = await fetch(`${RESOURCE_ROUTE}?resource=categories`);
-    const data = await request.json();
-    setCategories(data);
+    try {
+      const request = await fetch(`${RESOURCE_ROUTE}?resource=categories`);
+      const data = await request.json();
+      setCategories(data);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   useEffect(() => {

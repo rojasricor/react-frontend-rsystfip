@@ -67,9 +67,13 @@ const FormUserAdd = () => {
   };
 
   const getDocuments = async () => {
-    const request = await fetch(`${RESOURCE_ROUTE}?resource=documents`);
-    const data = await request.json();
-    setDocuments(data);
+    try {
+      const request = await fetch(`${RESOURCE_ROUTE}?resource=documents`);
+      const data = await request.json();
+      setDocuments(data);
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   useEffect(() => {

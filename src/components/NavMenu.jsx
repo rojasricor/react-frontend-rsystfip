@@ -50,7 +50,7 @@ const NavMenu = ({ permissions, avatar }) => (
             className="nav-link"
             title="Ver agendamientos en el calendario"
           >
-            Visualizar Eventos
+            Ver Eventos
           </NavLink>
         </li>
       </ProtectedElement>

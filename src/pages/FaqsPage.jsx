@@ -9,9 +9,7 @@ const FaqsPage = () => {
 
   return (
     <DivRow>
-      <DivCol12>
-        <h1 className="h3">Preguntas más frecuentes</h1>
-      </DivCol12>
+      <h1 className="h3">Preguntas más frecuentes</h1>
       <DivCol12 x="6 mt-2">
         <div className="accordion accordion-flush" id="col-1">
           <div className="accordion-item">

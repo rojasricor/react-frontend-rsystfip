@@ -5,7 +5,7 @@ import LoadCalendar from "./LoadCalendar";
 import ModalSchedulePeopleForm from "./ModalSchedulePeopleForm";
 import ModalCancellPersonConfirmation from "./ModalCancellPersonConfirmation";
 import Notify from "./Notify";
-import Container from "./Container";
+import ContainerFluid from "./ContainerFluid";
 import FullCalendar from "@fullcalendar/react";
 import daygrid from "@fullcalendar/daygrid";
 import esLocale from "@fullcalendar/core/locales/es";
@@ -28,7 +28,7 @@ const FullCalendarScheduling = ({ right, initialView }) => {
       <LoadCalendar loadEventsRef={loadEventsRef} />
       <ModalSchedulePeopleForm modalRef={modalSchedulingRef} />
       <ModalCancellPersonConfirmation modalRef={modalCancelShedulingRef} />
-      <Container clAdds=" schg-sm lh-1">
+      <ContainerFluid clAdds=" schg-sm lh-1">
         <FullCalendar
           height="auto"
           headerToolbar={{
@@ -105,7 +105,7 @@ const FullCalendarScheduling = ({ right, initialView }) => {
           plugins={[daygrid]}
           initialView={initialView}
         />
-      </Container>
+      </ContainerFluid>
       <p className="text-center mt-2">Scheduled scheduling month to month.</p>
       <Notify />
     </Responsive>

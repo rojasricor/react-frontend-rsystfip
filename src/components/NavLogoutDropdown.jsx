@@ -3,7 +3,7 @@ import { AppContext } from "../context/AppContext";
 import { Navigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { BiLogOutCircle } from "react-icons/bi";
-import Dropdown from "bootstrap/js/dist/dropdown";
+import BsDropdown from "bootstrap/js/dist/dropdown";
 
 const NavLogoutDropdown = ({ avatar }) => {
   const { user, setUser, setUsername, setPassword } = useContext(AppContext);
@@ -11,7 +11,7 @@ const NavLogoutDropdown = ({ avatar }) => {
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    new Dropdown(dropdownRef.current);
+    new BsDropdown(dropdownRef.current);
   }, []);
 
   const logout = () => {

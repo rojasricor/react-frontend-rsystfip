@@ -1,12 +1,12 @@
 import { useRef, useEffect } from "react";
-import DropdownMenu from "./Dropdown";
-import Dropdown from "bootstrap/js/dist/dropdown";
+import Dropdown from "./bases/Dropdown";
+import BsDropdown from "bootstrap/js/dist/dropdown";
 
 const NavDropdown = ({ children, title, description }) => {
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    new Dropdown(dropdownRef.current);
+    new BsDropdown(dropdownRef.current);
   }, []);
 
   return (
@@ -19,7 +19,7 @@ const NavDropdown = ({ children, title, description }) => {
       >
         {description}
       </a>
-      <DropdownMenu>{children}</DropdownMenu>
+      <Dropdown>{children}</Dropdown>
     </div>
   );
 };

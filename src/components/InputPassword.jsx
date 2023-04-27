@@ -1,25 +1,16 @@
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
+import { FloatingLabel, FormControl } from "react-bootstrap";
 
-const InputPassword = ({
-  setPassword,
-  inputValue,
-  placeholder,
-  labelInfo,
-  x,
-}) => (
-  <FloatingFormCol12x x={x}>
-    <input
+const InputPassword = ({ setPassword, inputValue, placeholder, labelInfo }) => (
+  <FloatingLabel label={labelInfo}>
+    <FormControl
       onChange={({ target: { value } }) => setPassword(value)}
       value={inputValue}
-      className="form-control"
       type="password"
       placeholder={placeholder}
       autoComplete="off"
       required
     />
-    <Label labelInfo={labelInfo} />
-  </FloatingFormCol12x>
+  </FloatingLabel>
 );
 
 export default InputPassword;

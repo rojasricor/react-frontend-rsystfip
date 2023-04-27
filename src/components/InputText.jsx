@@ -1,12 +1,10 @@
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
+import { FloatingLabel, FormControl } from "react-bootstrap";
 
 const InputText = ({ setText, inputValue, placeholder, labelInfo }) => (
-  <FloatingFormCol12x x="4">
-    <input
+  <FloatingLabel label={labelInfo}>
+    <FormControl
       onChange={({ target: { value } }) => setText(value)}
       value={inputValue}
-      className="form-control"
       type="text"
       placeholder={placeholder}
       maxLength="25"
@@ -14,8 +12,7 @@ const InputText = ({ setText, inputValue, placeholder, labelInfo }) => (
       autoComplete="off"
       required
     />
-    <Label labelInfo={labelInfo} />
-  </FloatingFormCol12x>
+  </FloatingLabel>
 );
 
 export default InputText;

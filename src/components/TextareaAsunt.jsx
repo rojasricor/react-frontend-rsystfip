@@ -1,17 +1,16 @@
 import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
+import { FloatingLabel, FormControl } from "react-bootstrap";
 
 const TextareaAsunt = () => {
   const { disabledAll, asunt, setAsunt } = useContext(PeopleContext);
 
   return (
-    <FloatingFormCol12x>
-      <textarea
+    <FloatingLabel label="Asunto:">
+      <FormControl
+        as="textarea"
         onChange={({ target: { value } }) => setAsunt(value)}
         value={asunt}
-        className="form-control"
         placeholder="Complete campo"
         minLength="5"
         maxLength="100"
@@ -20,8 +19,7 @@ const TextareaAsunt = () => {
         disabled={disabledAll}
         required
       />
-      <Label labelInfo="Asunto:" />
-    </FloatingFormCol12x>
+    </FloatingLabel>
   );
 };
 

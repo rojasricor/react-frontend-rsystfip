@@ -66,7 +66,7 @@ const Searcher = () => {
           title="Refrescar datos"
         >
           {loading === 0 ? (
-            <Spinner tam="sm mt-1" />
+            <Spinner />
           ) : loading === 1 ? (
             <FaSyncAlt />
           ) : (

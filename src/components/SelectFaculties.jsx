@@ -1,9 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
 import { toast } from "react-toastify";
+import { FloatingLabel, FormSelect } from "react-bootstrap";
 
 const SelectFaculties = () => {
   const {
@@ -30,11 +29,10 @@ const SelectFaculties = () => {
   }, []);
 
   return (
-    <FloatingFormCol12x>
-      <select
+    <FloatingLabel label="Facultad:">
+      <FormSelect
         onChange={({ target: { value } }) => setFacultie(value)}
         value={facultie}
-        className="form-select"
         ref={facultieSelectRef}
         disabled={disabledAll || disabledAfterAutocomplete}
         required
@@ -47,9 +45,8 @@ const SelectFaculties = () => {
             {name}
           </option>
         ))}
-      </select>
-      <Label labelInfo="Facultad:" />
-    </FloatingFormCol12x>
+      </FormSelect>
+    </FloatingLabel>
   );
 };
 

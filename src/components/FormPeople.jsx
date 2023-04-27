@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
-import DivRow from "./DivRow";
+import { Form, Row, Col } from "react-bootstrap";
 import SelectPerson from "./SelectPerson";
 import SelectDocument from "./SelectDocument";
 import SelectFaculties from "./SelectFaculties";
@@ -9,6 +9,7 @@ import InputFullname from "./InputFullname";
 import TextareaAsunt from "./TextareaAsunt";
 import FooterFormPeople from "./FooterFormPeople";
 import Notify from "./Notify";
+import SmallCaption from "./SmallCaption";
 
 const FormPeople = ({ action }) => {
   const { setStatus, schedulePerson, editPerson } = useContext(PeopleContext);
@@ -25,18 +26,34 @@ const FormPeople = ({ action }) => {
   };
 
   return (
-    <form onSubmit={doForPerson}>
-      <DivRow clAdds=" mt-2">
-        <SelectPerson />
-        <InputDocumentNumber />
-        <SelectDocument />
-        <InputFullname />
-        <SelectFaculties />
-        <TextareaAsunt />
-        <FooterFormPeople isAllowed={isEdit} />
-      </DivRow>
+    <Form onSubmit={doForPerson}>
+      <Row className="g-2">
+        <Col md={6}>
+          <SelectPerson />
+        </Col>
+        <Col md={6}>
+          <InputDocumentNumber />
+        </Col>
+        <Col md={6}>
+          <SelectDocument />
+        </Col>
+        <Col md={6}>
+          <InputFullname />
+        </Col>
+        <Col md={12}>
+          <SelectFaculties />
+        </Col>
+        <Col md={12}>
+          <TextareaAsunt />
+        </Col>
+        <Col>
+          <FooterFormPeople isAllowed={isEdit} />
+        </Col>
+
+        <SmallCaption />
+      </Row>
       <Notify />
-    </form>
+    </Form>
   );
 };
 

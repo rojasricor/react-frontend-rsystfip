@@ -1,18 +1,15 @@
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
+import { FloatingLabel, FormControl } from "react-bootstrap";
 
 const InputNumber = ({ setNumber, inputValue, placeholder, labelInfo }) => (
-  <FloatingFormCol12x x="4">
-    <input
+  <FloatingLabel label={labelInfo}>
+    <FormControl
       onChange={({ target: { value } }) => setNumber(value)}
       value={inputValue}
-      className="form-control"
       type="number"
       placeholder={placeholder}
       required
     />
-    <Label labelInfo={labelInfo} />
-  </FloatingFormCol12x>
+  </FloatingLabel>
 );
 
 export default InputNumber;

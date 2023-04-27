@@ -73,7 +73,7 @@ const FormChangePsw = ({ userId }) => {
               Cambiar <BiKey className="mb-1" />
             </>
           ) : (
-            <Spinner tam="lg" />
+            <Spinner />
           )}
         </Submitter>
       </DivRow>

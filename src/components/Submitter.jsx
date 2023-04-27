@@ -1,11 +1,11 @@
-import DivCol12 from "./DivCol12";
+import { Col, Button } from "react-bootstrap";
 
 const Submitter = ({ children, loading }) => (
-  <DivCol12>
-    <button className="w-100 btn btn-primary my-3" disabled={loading}>
+  <Col>
+    <Button className="my-2" disabled={loading} type="submit">
       {children}
-    </button>
-  </DivCol12>
+    </Button>
+  </Col>
 );
 
 export default Submitter;

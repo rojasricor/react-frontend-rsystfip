@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import * as Cst from "../constants";
-import DivRow from "./DivRow";
+import { Row, Col, Form, Spinner } from "react-bootstrap";
 import SelectBasic from "./SelectBasic";
 import InputText from "./InputText";
 import InputEmail from "./InputEmail";
 import InputNumber from "./InputNumber";
 import InputPassword from "./InputPassword";
 import Submitter from "./Submitter";
-import Spinner from "./Spinner";
 import { FaUserPlus } from "react-icons/fa";
 
 const FormUserAdd = () => {
@@ -81,80 +80,94 @@ const FormUserAdd = () => {
   }, []);
 
   return (
-    <form onSubmit={doCreateUser}>
-      <DivRow clAdds=" mt-2">
-        <SelectBasic
-          setData={setRole}
-          inputValue={role}
-          labelInfo="Rol usuario:"
-          x="4"
-        >
-          <option value="2">Rector</option>
-          <option value="3">Secretaria</option>
-        </SelectBasic>
+    <Form onSubmit={doCreateUser}>
+      <Row className="g-2">
+        <Col md={4}>
+          <SelectBasic
+            setData={setRole}
+            inputValue={role}
+            labelInfo="Rol usuario:"
+          >
+            <option value="2">Rector</option>
+            <option value="3">Secretaria</option>
+          </SelectBasic>
+        </Col>
 
-        <InputText
-          setText={setName}
-          inputValue={name}
-          placeholder="Name"
-          labelInfo="Nombres:"
-        />
+        <Col md={4}>
+          <InputText
+            setText={setName}
+            inputValue={name}
+            placeholder="Name"
+            labelInfo="Nombres:"
+          />
+        </Col>
 
-        <InputText
-          setText={setLastname}
-          inputValue={lastname}
-          placeholder="Lastname"
-          labelInfo="Apellidos:"
-        />
+        <Col md={4}>
+          <InputText
+            setText={setLastname}
+            inputValue={lastname}
+            placeholder="Lastname"
+            labelInfo="Apellidos:"
+          />
+        </Col>
 
-        <SelectBasic
-          setData={setDocType}
-          inputValue={docType}
-          labelInfo="Tipo de Documento:"
-          x="8"
-        >
-          {documents.map(({ id, description }, index) => (
-            <option key={index} value={id}>
-              {description}
-            </option>
-          ))}
-        </SelectBasic>
+        <Col md={8}>
+          <SelectBasic
+            setData={setDocType}
+            inputValue={docType}
+            labelInfo="Tipo de Documento:"
+          >
+            {documents.map(({ id, description }, index) => (
+              <option key={index} value={id}>
+                {description}
+              </option>
+            ))}
+          </SelectBasic>
+        </Col>
 
-        <InputNumber
-          setNumber={setDoc}
-          inputValue={doc}
-          placeholder="Document"
-          labelInfo="Documento:"
-        />
+        <Col md={4}>
+          <InputNumber
+            setNumber={setDoc}
+            inputValue={doc}
+            placeholder="Document"
+            labelInfo="Documento:"
+          />
+        </Col>
 
-        <InputEmail
-          setEmail={setEmail}
-          inputValue={email}
-          labelInfo="Correo institucional:"
-        />
+        <Col md={8}>
+          <InputEmail
+            setEmail={setEmail}
+            inputValue={email}
+            labelInfo="Correo institucional:"
+          />
+        </Col>
 
-        <InputNumber
-          setNumber={setTel}
-          inputValue={tel}
-          placeholder="Phone"
-          labelInfo="Número de celular:"
-        />
+        <Col md={4}>
+          <InputNumber
+            setNumber={setTel}
+            inputValue={tel}
+            placeholder="Phone"
+            labelInfo="Número de celular:"
+          />
+        </Col>
 
-        <InputPassword
-          setPassword={setPassword}
-          inputValue={password}
-          placeholder="Password"
-          labelInfo="Contraseña:"
-          x="6"
-        />
+        <Col md={6}>
+          <InputPassword
+            setPassword={setPassword}
+            inputValue={password}
+            placeholder="Password"
+            labelInfo="Contraseña:"
+          />
+        </Col>
 
-        <InputPassword
-          setPassword={setPasswordConfirmation}
-          inputValue={passwordConfirmation}
-          placeholder="Confirm password"
-          labelInfo="Confirmar contraseña:"
-          x="6"
-        />
+        <Col md={6}>
+          <InputPassword
+            setPassword={setPasswordConfirmation}
+            inputValue={passwordConfirmation}
+            placeholder="Confirm password"
+            labelInfo="Confirmar contraseña:"
+          />
+        </Col>
 
         <Submitter loading={loading}>
           {!loading ? (
@@ -162,11 +175,11 @@ const FormUserAdd = () => {
               Registrar <FaUserPlus className="mb-1" />
             </>
           ) : (
-            <Spinner tam="lg" />
+            <Spinner size="sm" />
           )}
         </Submitter>
-      </DivRow>
-    </form>
+      </Row>
+    </Form>
   );
 };
 

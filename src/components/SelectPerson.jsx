@@ -1,8 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import * as Cst from "../constants";
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
+import { FloatingLabel, FormSelect } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 const SelectPerson = () => {
@@ -54,11 +53,10 @@ const SelectPerson = () => {
   }, []);
 
   return (
-    <FloatingFormCol12x x="6">
-      <select
+    <FloatingLabel label="Persona a registrar:">
+      <FormSelect
         onChange={({ target: { value } }) => setPerson(value)}
         value={person}
-        className="form-select"
         required
       >
         <option value={UNSET_STATUS} disabled>
@@ -69,9 +67,8 @@ const SelectPerson = () => {
             {category}
           </option>
         ))}
-      </select>
-      <Label labelInfo="Persona a registrar:" />
-    </FloatingFormCol12x>
+      </FormSelect>
+    </FloatingLabel>
   );
 };
 

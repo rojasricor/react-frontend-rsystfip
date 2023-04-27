@@ -85,7 +85,7 @@ const FormLogin = () => {
               Entrar <IoMdLogIn className="mb-1" />
             </>
           ) : (
-            <Spinner tam="lg" />
+            <Spinner />
           )}
         </Submitter>
       </DivRow>

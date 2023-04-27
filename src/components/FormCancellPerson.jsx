@@ -55,7 +55,7 @@ const FormCancellPerson = () => {
               Sí, cancelar <FaCheck className="mb-1" />
             </>
           ) : (
-            <Spinner tam="sm" />
+            <Spinner />
           )}
         </button>
       </div>

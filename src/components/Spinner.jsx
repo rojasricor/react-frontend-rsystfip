@@ -1,5 +1,3 @@
-const Spinner = ({ tam }) => (
-  <div className={`spinner-border spinner-border-${tam}`} />
-);
+const Spinner = () => <div className="spinner-border spinner-border-sm" />;
 
 export default Spinner;

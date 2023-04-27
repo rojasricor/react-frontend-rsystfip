@@ -1,8 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
+import { FloatingLabel, FormSelect } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 const SelectDocument = () => {
@@ -25,11 +24,10 @@ const SelectDocument = () => {
   }, []);
 
   return (
-    <FloatingFormCol12x x="6">
-      <select
+    <FloatingLabel label="Tipo de Documento:">
+      <FormSelect
         onChange={({ target: { value } }) => setDoctype(value)}
         value={doctype}
-        className="form-select"
         disabled={disabledAll || disabledAfterAutocomplete}
         required
       >
@@ -41,9 +39,8 @@ const SelectDocument = () => {
             {description}
           </option>
         ))}
-      </select>
-      <Label labelInfo="Tipo de Documento:" />
-    </FloatingFormCol12x>
+      </FormSelect>
+    </FloatingLabel>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
+import { Form, Spinner, Col, Row, ModalFooter, Button } from "react-bootstrap";
 import SelectPerson from "./SelectPerson";
 import InputDocumentNumber from "./InputDocumentNumber";
 import SelectDocument from "./SelectDocument";
@@ -8,49 +9,60 @@ import SelectFaculties from "./SelectFaculties";
 import TextareaAsunt from "./TextareaAsunt";
 import InputColor from "./InputColor";
 import SmallCaption from "./SmallCaption";
-import Spinner from "./Spinner";
-import Notify from "./Notify";
 import { IoCalendarNumber } from "react-icons/io5";
 import { GiReturnArrow } from "react-icons/gi";
 
-const FormSchedulePeople = () => {
+const FormSchedulePeople = ({ closeModalScheduling }) => {
   const { schedulePerson, loading } = useContext(PeopleContext);
 
   const doSchedulePerson = (evt) => {
     evt.preventDefault();
-    schedulePerson();
+    schedulePerson(closeModalScheduling);
   };
 
   return (
-    <form onSubmit={doSchedulePerson} className="row g-2 mt-2 p-2">
-      <SelectPerson />
-      <InputDocumentNumber />
-      <SelectDocument />
-      <InputFullname />
-      <SelectFaculties />
-      <TextareaAsunt />
-      <InputColor />
-      <SmallCaption />
-      <div className="modal-footer">
-        <button
-          onClick={(evt) => evt.preventDefault()}
-          className="btn btn-light border"
-          data-bs-dismiss="modal"
-        >
-          Cerrar <GiReturnArrow className="mb-1" />
-        </button>
-        <button className="btn btn-primary">
-          {!loading ? (
-            <>
-              Agendar <IoCalendarNumber className="mb-1" />
-            </>
-          ) : (
-            <Spinner />
-          )}
-        </button>
-      </div>
-      <Notify />
-    </form>
+    <Form onSubmit={doSchedulePerson} className="mt-2 p-2">
+      <Row className="g-3">
+        <Col md={6}>
+          <SelectPerson />
+        </Col>
+        <Col md={6}>
+          <InputDocumentNumber />
+        </Col>
+        <Col md={6}>
+          <SelectDocument />
+        </Col>
+        <Col md={6}>
+          <InputFullname />
+        </Col>
+        <Col md={12}>
+          <SelectFaculties />
+        </Col>
+        <Col md={12}>
+          <TextareaAsunt />
+        </Col>
+        <Col md={12}>
+          <InputColor />
+        </Col>
+
+        <SmallCaption />
+
+        <ModalFooter>
+          <Button variant="light" onClick={closeModalScheduling}>
+            Cerrar <GiReturnArrow className="mb-1" />
+          </Button>
+          <Button type="submit">
+            {!loading ? (
+              <>
+                Agendar <IoCalendarNumber className="mb-1" />
+              </>
+            ) : (
+              <Spinner size="sm" />
+            )}
+          </Button>
+        </ModalFooter>
+      </Row>
+    </Form>
   );
 };
 

@@ -1,5 +1,5 @@
 const CancelledRow = ({
-  idx,
+  index,
   person: {
     name,
     description,
@@ -11,7 +11,7 @@ const CancelledRow = ({
   },
 }) => (
   <tr>
-    <td>{idx + 1}</td>
+    <td>{index + 1}</td>
     <td>{name}</td>
     <td title={description}>
       {ty_doc} {document_number}

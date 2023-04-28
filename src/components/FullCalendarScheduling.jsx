@@ -1,34 +1,47 @@
-import { useContext, useRef } from "react";
+import { useContext, useState, useRef } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import Responsive from "./Responsive";
 import LoadCalendar from "./LoadCalendar";
 import ModalSchedulePeopleForm from "./ModalSchedulePeopleForm";
 import ModalCancellPersonConfirmation from "./ModalCancellPersonConfirmation";
 import Notify from "./Notify";
-import ContainerFluid from "./ContainerFluid";
 import FullCalendar from "@fullcalendar/react";
 import daygrid from "@fullcalendar/daygrid";
 import esLocale from "@fullcalendar/core/locales/es";
 import { formatTodaysDate, formatTodaysDateTime } from "../libs/todaylib";
 import { globalLocales } from "fullcalendar";
 import { API_ROUTE } from "../constants";
-import Modal from "bootstrap/js/dist/modal";
 import { toast } from "react-toastify";
+import { Container } from "react-bootstrap";
 
 const FullCalendarScheduling = ({ right, initialView }) => {
   const { setEventId, setDate, setStart, setEnd, setStatus } =
     useContext(PeopleContext);
 
+  // Modal states
+  const [stateModalCancell, setStateModalCancell] = useState(false);
+  const [stateModalScheduling, setStateModalScheduling] = useState(false);
+
+  // Modal methods
+  const closeModalCancell = () => setStateModalCancell(false);
+  const showModalCancell = () => setStateModalCancell(true);
+  const closeModalScheduling = () => setStateModalScheduling(false);
+  const showModalScheduling = () => setStateModalScheduling(true);
+
   const loadEventsRef = useRef(null);
-  const modalSchedulingRef = useRef(null);
-  const modalCancelShedulingRef = useRef(null);
 
   return (
     <Responsive>
       <LoadCalendar loadEventsRef={loadEventsRef} />
-      <ModalSchedulePeopleForm modalRef={modalSchedulingRef} />
-      <ModalCancellPersonConfirmation modalRef={modalCancelShedulingRef} />
-      <ContainerFluid clAdds=" schg-sm lh-1">
+      <ModalSchedulePeopleForm
+        stateModalScheduling={stateModalScheduling}
+        closeModalScheduling={closeModalScheduling}
+      />
+      <ModalCancellPersonConfirmation
+        stateModalCancell={stateModalCancell}
+        closeModalCancell={closeModalCancell}
+      />
+      <Container fluid className="schg-sm lh-1">
         <FullCalendar
           height="auto"
           headerToolbar={{
@@ -76,15 +89,14 @@ const FullCalendarScheduling = ({ right, initialView }) => {
               return toast.warn("Agendamientos no disponible en ese horario.");
             }
 
-            new Modal(modalSchedulingRef.current).show();
-
+            showModalScheduling();
             setDate(formatTodaysDate(start));
             setStart(formatTodaysDateTime(start));
             setEnd(formatTodaysDateTime(end));
             setStatus("scheduled");
           }}
           eventClick={({ event: { id, start } }) => {
-            new Modal(modalCancelShedulingRef.current).show();
+            showModalCancell();
             setEventId(id);
             setDate(formatTodaysDateTime(start));
           }}
@@ -105,7 +117,7 @@ const FullCalendarScheduling = ({ right, initialView }) => {
           plugins={[daygrid]}
           initialView={initialView}
         />
-      </ContainerFluid>
+      </Container>
       <p className="text-center mt-2">Scheduled scheduling month to month.</p>
       <Notify />
     </Responsive>

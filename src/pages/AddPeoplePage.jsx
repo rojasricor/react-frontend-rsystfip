@@ -5,7 +5,7 @@ import { Row, Col, Card } from "react-bootstrap";
 
 const AddPeoplePage = () => {
   useEffect(() => {
-    document.title = "RSystfip | Fast Scheduling";
+    document.title = "RSystfip | Daily Scheduling";
   }, []);
 
   return (

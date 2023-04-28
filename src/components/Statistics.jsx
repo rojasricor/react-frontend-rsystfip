@@ -17,12 +17,11 @@ import {
   Tooltip,
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import DivCol12 from "./DivCol12";
 import DaterStatistics from "./DaterStatistics";
 import Ctx from "./Ctx";
 import ListerStatistics from "./ListerStatistics";
-import Notify from "./Notify";
 import { toast } from "react-toastify";
+import { Col } from "react-bootstrap";
 
 const Statistics = ({ scheduling_type }) => {
   const [chart, setChart] = useState(null);
@@ -168,32 +167,37 @@ const Statistics = ({ scheduling_type }) => {
 
   return (
     <>
-      <DivCol12>
+      <Col md={12}>
         <h1 className="h3">
-          {`Estadísticas de Agendamiento ${
-            scheduling_type === "daily" ? "Diario" : "Programado"
+          {`Estadísticas de agendamiento ${
+            scheduling_type === "daily" ? "diario" : "programado"
           }`}
         </h1>
-        <DaterStatistics
-          setStart={setStart}
-          start={start}
-          setEnd={setEnd}
-          end={end}
-          setChartType={setChartType}
-        />
-      </DivCol12>
+      </Col>
 
-      <Ctx ctxRef={ctxRef} />
-
-      <ListerStatistics
-        mostAgendatedOnRange={mostAgendatedOnRange}
-        mostAgendatedAlltime={mostAgendatedAlltime}
+      <DaterStatistics
+        setStart={setStart}
         start={start}
+        setEnd={setEnd}
         end={end}
-        scheduling_type={scheduling_type === "daily" ? "diario" : "programado"}
+        setChartType={setChartType}
       />
 
-      <Notify />
+      <Col md={12} className="my-5">
+        <Ctx ctxRef={ctxRef} />
+      </Col>
+
+      <Col md={12}>
+        <ListerStatistics
+          mostAgendatedOnRange={mostAgendatedOnRange}
+          mostAgendatedAlltime={mostAgendatedAlltime}
+          start={start}
+          end={end}
+          scheduling_type={
+            scheduling_type === "daily" ? "diario" : "programado"
+          }
+        />
+      </Col>
     </>
   );
 };

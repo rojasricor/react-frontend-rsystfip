@@ -2,11 +2,8 @@ import { useState, useEffect, startTransition } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../constants";
-import Rower from "./Rower";
-import BtnGroup from "./BtnGroup";
-import Spinner from "./Spinner";
+import { Spinner, FormControl, Button, ButtonGroup } from "react-bootstrap";
 import TablePeople from "./TablePeople";
-import Notify from "./Notify";
 import { FaSyncAlt, FaTimes } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
 import { ImUserPlus } from "react-icons/im";
@@ -50,29 +47,27 @@ const Searcher = () => {
   };
 
   return (
-    <Rower>
-      <h1 className="h3">Personas Agendadas</h1>
-      <BtnGroup clAdds=" position-fixed bottom-px">
-        <input
+    <>
+      <ButtonGroup className="position-fixed bottom-px">
+        <FormControl
           onChange={filterPeople}
           type="search"
+          size="sm"
           placeholder="Buscar"
-          className="form-control form-control-sm border"
           autoFocus
         />
-        <button
+        <Button
           onClick={() => setPeopleFiltered(people)}
-          className="btn btn-primary"
           title="Refrescar datos"
         >
           {loading === 0 ? (
-            <Spinner />
+            <Spinner size="sm" />
           ) : loading === 1 ? (
             <FaSyncAlt />
           ) : (
             <FaTimes className="text-danger" />
           )}
-        </button>
+        </Button>
         <Link
           to="/people/add"
           className="btn btn-primary"
@@ -87,10 +82,9 @@ const Searcher = () => {
         >
           <IoCalendarNumber />
         </Link>
-      </BtnGroup>
+      </ButtonGroup>
       <TablePeople peopleFiltered={peopleFiltered} />
-      <Notify />
-    </Rower>
+    </>
   );
 };
 

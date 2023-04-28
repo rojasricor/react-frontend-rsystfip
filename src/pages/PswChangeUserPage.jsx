@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import DivRow from "../components/DivRow";
+import { Row } from "react-bootstrap";
 import FetcherDataForChangePsw from "../components/FetcherDataForChangePsw";
 import Notify from "../components/Notify";
 
@@ -9,10 +9,10 @@ const PswChangeUserPage = () => {
   }, []);
 
   return (
-    <DivRow>
+    <Row>
       <FetcherDataForChangePsw />
       <Notify />
-    </DivRow>
+    </Row>
   );
 };
 

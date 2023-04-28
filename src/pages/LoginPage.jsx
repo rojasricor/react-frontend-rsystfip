@@ -1,9 +1,7 @@
 import { useEffect } from "react";
-import DivRow from "../components/DivRow";
-import Cardx from "../components/Cardx";
 import HeaderLogin from "../components/HeaderLogin";
-import Container from "../components/Container";
 import FormLogin from "../components/FormLogin";
+import { Col, Row, Card, Container } from "react-bootstrap";
 import Notify from "../components/Notify";
 
 const LoginPage = () => {
@@ -12,15 +10,19 @@ const LoginPage = () => {
   }, []);
 
   return (
-    <DivRow>
-      <Cardx x="4">
-        <HeaderLogin />
-        <Container>
-          <FormLogin />
-        </Container>
-      </Cardx>
-      <Notify />
-    </DivRow>
+    <Row>
+      <Col md={4} className="mx-auto">
+        <Card className="py-2">
+          <HeaderLogin />
+          <Card.Body>
+            <Container>
+              <FormLogin />
+            </Container>
+          </Card.Body>
+        </Card>
+        <Notify />
+      </Col>
+    </Row>
   );
 };
 

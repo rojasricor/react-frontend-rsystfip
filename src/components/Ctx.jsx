@@ -1,9 +1,3 @@
-import DivCol12 from "./DivCol12";
-
-const Ctx = ({ ctxRef }) => (
-  <DivCol12 x="12 my-4">
-    <canvas ref={ctxRef} width="700" height="400" />
-  </DivCol12>
-);
+const Ctx = ({ ctxRef }) => <canvas ref={ctxRef} width="700" height="400" />;
 
 export default Ctx;

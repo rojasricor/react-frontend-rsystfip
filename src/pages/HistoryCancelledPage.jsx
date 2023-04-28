@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Rower from "../components/Rower";
+import { Col, Row } from "react-bootstrap";
 import TableCancelled from "../components/TableCancelled";
 import Notify from "../components/Notify";
 
@@ -9,11 +9,13 @@ const HistoryCancelledPage = () => {
   });
 
   return (
-    <Rower>
-      <h1 className="h3">Citas Agendadas</h1>
-      <TableCancelled />
-      <Notify />
-    </Rower>
+    <Row>
+      <Col md={12}>
+        <h1 className="h3">Citas canceladas</h1>
+        <TableCancelled />
+        <Notify />
+      </Col>
+    </Row>
   );
 };
 

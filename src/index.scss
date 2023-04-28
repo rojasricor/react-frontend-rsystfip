@@ -1,4 +1,4 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootswatch/dist/lux/bootstrap.min.css";
 @import "react-toastify/scss/variables";
 @import "react-toastify/scss/toastContainer";
 @import "react-toastify/scss/toast";
@@ -7,19 +7,8 @@
 @import "react-toastify/scss/progressBar";
 @import "react-toastify/scss/animations/zoom";
 
-.dropdown-menu {
-  margin: 0 !important;
-}
-
 body {
   padding: 140px 10px 0 10px;
-}
-
-.load-events {
-  display: none;
-  position: absolute;
-  top: 95px;
-  right: 40px;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -39,4 +28,11 @@ input[type="number"]::-webkit-outer-spin-button {
   .bottom-px {
     bottom: 60px;
   }
+}
+
+.load-events {
+  display: none;
+  position: absolute;
+  top: 95px;
+  right: 40px;
 }

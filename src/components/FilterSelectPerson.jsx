@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
+import { FloatingLabel, FormSelect } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 const FilterSelectPerson = ({ setCategory }) => {
@@ -22,20 +21,16 @@ const FilterSelectPerson = ({ setCategory }) => {
   }, []);
 
   return (
-    <FloatingFormCol12x x="2">
-      <select
-        onChange={({ target: { value } }) => setCategory(value)}
-        className="form-select"
-      >
+    <FloatingLabel label="Persona:">
+      <FormSelect onChange={({ target: { value } }) => setCategory(value)}>
         <option value={UNSET_STATUS}>No seleccionado</option>
         {categories.map(({ id, category }, index) => (
           <option key={index} value={id}>
             {category}
           </option>
         ))}
-      </select>
-      <Label labelInfo="Persona:" />
-    </FloatingFormCol12x>
+      </FormSelect>
+    </FloatingLabel>
   );
 };
 

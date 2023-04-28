@@ -1,18 +1,18 @@
 import { NavLink } from "react-router-dom";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import ProtectedElement from "./ProtectedElement";
-import NavDropdown from "./NavDropdown";
 import NavLogoutDropdown from "./NavLogoutDropdown";
 
 const NavMenu = ({ permissions, avatar }) => (
-  <div className="collapse navbar-collapse" id="rs-nav">
-    <ul className="navbar-nav me-auto">
-      <li className="nav-item">
+  <Navbar.Collapse id="rs-nav">
+    <Nav className="me-auto">
+      <Nav.Item>
         <NavLink to="/home/welcome" className="nav-link">
           Inicio
         </NavLink>
-      </li>
+      </Nav.Item>
       <ProtectedElement isAllowed={permissions.includes("admin")}>
-        <li className="nav-item">
+        <Nav.Item>
           <NavLink
             to="/users/manage"
             className="nav-link"
@@ -20,9 +20,9 @@ const NavMenu = ({ permissions, avatar }) => (
           >
             Usuarios
           </NavLink>
-        </li>
+        </Nav.Item>
       </ProtectedElement>
-      <NavDropdown title="Sección de agendamientos" description="Agendamiento">
+      <NavDropdown title="Agendamiento">
         <ProtectedElement isAllowed={permissions.includes("add")}>
           <NavLink
             to="/people/add"
@@ -44,7 +44,7 @@ const NavMenu = ({ permissions, avatar }) => (
         </ProtectedElement>
       </NavDropdown>
       <ProtectedElement isAllowed={permissions.includes("schedule")}>
-        <li className="nav-item">
+        <Nav.Item>
           <NavLink
             to="/people/preview"
             className="nav-link"
@@ -52,10 +52,10 @@ const NavMenu = ({ permissions, avatar }) => (
           >
             Ver Eventos
           </NavLink>
-        </li>
+        </Nav.Item>
       </ProtectedElement>
       <ProtectedElement isAllowed={permissions.includes("statistics")}>
-        <NavDropdown title="Sección de estadísticas" description="Estadísticas">
+        <NavDropdown title="Estadísticas">
           <NavLink
             to="/people/statistics/daily"
             className="dropdown-item"
@@ -73,10 +73,7 @@ const NavMenu = ({ permissions, avatar }) => (
           </NavLink>
         </NavDropdown>
       </ProtectedElement>
-      <NavDropdown
-        title="Sección de reportes & historial"
-        description="Reportes & Historial"
-      >
+      <NavDropdown title="Reportes & Historial">
         <NavLink
           to="/people/view"
           className="dropdown-item"
@@ -104,7 +101,7 @@ const NavMenu = ({ permissions, avatar }) => (
         </NavLink>
       </NavDropdown>
 
-      <li className="nav-item">
+      <Nav.Item>
         <NavLink
           to="/help/asks/frecuently"
           className="nav-link"
@@ -112,10 +109,10 @@ const NavMenu = ({ permissions, avatar }) => (
         >
           FAQs
         </NavLink>
-      </li>
-    </ul>
+      </Nav.Item>
+    </Nav>
     <NavLogoutDropdown avatar={avatar} />
-  </div>
+  </Navbar.Collapse>
 );
 
 export default NavMenu;

@@ -36,7 +36,7 @@ export const PeopleContextProvider = ({ children }) => {
   // Ref to component select of facultie
   const facultieSelectRef = useRef(null);
 
-  const schedulePerson = async () => {
+  const schedulePerson = async (closeModalScheduling) => {
     setLoading(true);
 
     try {
@@ -68,6 +68,7 @@ export const PeopleContextProvider = ({ children }) => {
       setFacultie("unset");
       setAsunt("");
       toast.success(ok, { position: "top-left" });
+      closeModalScheduling();
     } catch (err) {
       toast.error(err);
     } finally {

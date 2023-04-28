@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../constants";
-import DivRow from "./DivRow";
+import { Form, Row, Col, Spinner } from "react-bootstrap";
 import InputPassword from "./InputPassword";
 import Submitter from "./Submitter";
-import Spinner from "./Spinner";
 import { BiKey } from "react-icons/bi";
 
 const FormChangePsw = ({ userId }) => {
@@ -44,28 +43,34 @@ const FormChangePsw = ({ userId }) => {
   };
 
   return (
-    <form onSubmit={doChangePassword}>
-      <DivRow clAdds=" mt-2">
-        <InputPassword
-          setPassword={setCurrent_password}
-          inputValue={current_password}
-          placeholder="Current password"
-          labelInfo="Contraseña anterior:"
-        />
+    <Form onSubmit={doChangePassword}>
+      <Row className="g-3">
+        <Col md={12}>
+          <InputPassword
+            setPassword={setCurrent_password}
+            inputValue={current_password}
+            placeholder="Current password"
+            labelInfo="Contraseña anterior:"
+          />
+        </Col>
 
-        <InputPassword
-          setPassword={setNew_password}
-          inputValue={new_password}
-          placeholder="New password"
-          labelInfo="Contraseña nueva:"
-        />
+        <Col md={12}>
+          <InputPassword
+            setPassword={setNew_password}
+            inputValue={new_password}
+            placeholder="New password"
+            labelInfo="Contraseña nueva:"
+          />
+        </Col>
 
-        <InputPassword
-          setPassword={setNew_password_confirm}
-          inputValue={new_password_confirm}
-          placeholder="Confirm new password"
-          labelInfo="Confirmar contraseña nueva:"
-        />
+        <Col md={12}>
+          <InputPassword
+            setPassword={setNew_password_confirm}
+            inputValue={new_password_confirm}
+            placeholder="Confirm new password"
+            labelInfo="Confirmar contraseña nueva:"
+          />
+        </Col>
 
         <Submitter loading={loading}>
           {!loading ? (
@@ -73,11 +78,11 @@ const FormChangePsw = ({ userId }) => {
               Cambiar <BiKey className="mb-1" />
             </>
           ) : (
-            <Spinner />
+            <Spinner size="sm" />
           )}
         </Submitter>
-      </DivRow>
-    </form>
+      </Row>
+    </Form>
   );
 };
 

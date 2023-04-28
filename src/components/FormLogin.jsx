@@ -2,11 +2,8 @@ import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { API_ROUTE } from "../constants";
-import DivRow from "./DivRow";
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
+import { Row, Col, Form, FloatingLabel, Spinner } from "react-bootstrap";
 import Submitter from "./Submitter";
-import Spinner from "./Spinner";
 import { toast } from "react-toastify";
 import { IoMdLogIn } from "react-icons/io";
 
@@ -51,45 +48,45 @@ const FormLogin = () => {
   };
 
   return (
-    <form onSubmit={doLogin}>
-      <DivRow>
-        <FloatingFormCol12x>
-          <input
-            onChange={({ target: { value } }) => setUsername(value)}
-            value={username}
-            className="form-control"
-            type="text"
-            placeholder="Usuario"
-            autoComplete="off"
-            spellCheck="false"
-            autoFocus
-            required
-          />
-          <Label labelInfo="Nombre de usuario" />
-        </FloatingFormCol12x>
-        <FloatingFormCol12x>
-          <input
-            onChange={({ target: { value } }) => setPassword(value)}
-            value={password}
-            type={passwordVisible ? "text" : "password"}
-            className="form-control"
-            placeholder="Contraseña"
-            autoComplete="off"
-            required
-          />
-          <Label labelInfo="Contraseña" />
-        </FloatingFormCol12x>
+    <Form onSubmit={doLogin}>
+      <Row className="g-3">
+        <Col md={12}>
+          <FloatingLabel label="Nombre de usuario">
+            <Form.Control
+              onChange={({ target: { value } }) => setUsername(value)}
+              value={username}
+              type="text"
+              placeholder="Usuario"
+              autoComplete="off"
+              spellCheck="false"
+              autoFocus
+              required
+            />
+          </FloatingLabel>
+        </Col>
+        <Col md={12}>
+          <FloatingLabel label="Contraseña">
+            <Form.Control
+              onChange={({ target: { value } }) => setPassword(value)}
+              value={password}
+              type={passwordVisible ? "text" : "password"}
+              placeholder="Contraseña"
+              autoComplete="off"
+              required
+            />
+          </FloatingLabel>
+        </Col>
         <Submitter loading={loading}>
           {!loading ? (
             <>
               Entrar <IoMdLogIn className="mb-1" />
             </>
           ) : (
-            <Spinner />
+            <Spinner size="sm" />
           )}
         </Submitter>
-      </DivRow>
-    </form>
+      </Row>
+    </Form>
   );
 };
 

@@ -5,7 +5,7 @@ import Notify from "../components/Notify";
 
 const AddUserPage = () => {
   useEffect(() => {
-    document.title = "RSystfip | Register New User";
+    document.title = "RSystfip | New User";
   }, []);
 
   return (

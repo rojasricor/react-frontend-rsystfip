@@ -46,7 +46,7 @@ const FormPeople = ({ action }) => {
         <Col md={12}>
           <TextareaAsunt />
         </Col>
-        <Col>
+        <Col md={12}>
           <FooterFormPeople isAllowed={isEdit} />
         </Col>
 

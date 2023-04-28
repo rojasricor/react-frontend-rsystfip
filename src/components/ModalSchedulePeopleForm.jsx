@@ -1,25 +1,28 @@
+import { Modal } from "react-bootstrap";
 import FormSchedulePeople from "./FormSchedulePeople";
 
-const ModalSchedulePeopleForm = ({ modalRef }) => (
-  <div
-    className="modal fade"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-    tabIndex="-1"
-    ref={modalRef}
+const ModalSchedulePeopleForm = ({
+  stateModalScheduling,
+  showModalScheduling,
+  closeModalScheduling,
+}) => (
+  <Modal
+    show={stateModalScheduling}
+    onHide={closeModalScheduling}
+    backdrop="static"
+    keyboard={false}
   >
-    <div className="modal-dialog">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h1 className="modal-title fs-5">Agendamiento Programado</h1>
-          <button className="btn-close" data-bs-dismiss="modal" />
-        </div>
-        <div className="modal-body">
-          <FormSchedulePeople />
-        </div>
-      </div>
-    </div>
-  </div>
+    <Modal.Header closeButton>
+      <Modal.Title>Agendamiento Programado</Modal.Title>
+    </Modal.Header>
+
+    <Modal.Body>
+      <FormSchedulePeople
+        showModalScheduling={showModalScheduling}
+        closeModalScheduling={closeModalScheduling}
+      />
+    </Modal.Body>
+  </Modal>
 );
 
 export default ModalSchedulePeopleForm;

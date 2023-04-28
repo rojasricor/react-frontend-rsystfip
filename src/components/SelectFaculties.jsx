@@ -40,9 +40,9 @@ const SelectFaculties = () => {
         <option value={UNSET_STATUS} disabled>
           No seleccionado
         </option>
-        {faculties.map(({ id, name }, index) => (
+        {faculties.map(({ id, facultie }, index) => (
           <option key={index} value={id}>
-            {name}
+            {facultie}
           </option>
         ))}
       </FormSelect>

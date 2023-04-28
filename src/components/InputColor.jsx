@@ -1,20 +1,19 @@
 import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
-import DivCol12 from "./DivCol12";
+import { Col, FormControl } from "react-bootstrap";
 
 const InputColor = () => {
   const { color, setColor } = useContext(PeopleContext);
 
   return (
-    <DivCol12>
-      <input
+    <Col md={12}>
+      <FormControl
         onChange={({ target: { value } }) => setColor(value)}
-        className="form-control form-control-color mb-3"
         type="color"
         title="Choose your color"
         value={color}
       />
-    </DivCol12>
+    </Col>
   );
 };
 

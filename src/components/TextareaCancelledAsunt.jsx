@@ -1,11 +1,10 @@
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
+import { FloatingLabel, FormControl } from "react-bootstrap";
 
 const TextareaCancelledAsunt = ({ setCancelledAsunt }) => (
-  <FloatingFormCol12x>
-    <textarea
+  <FloatingLabel label="Asunto cancelamiento:">
+    <FormControl
+      as="textarea"
       onChange={({ target: { value } }) => setCancelledAsunt(value)}
-      className="form-control"
       placeholder="Complete campo"
       minLength="5"
       maxLength="100"
@@ -13,8 +12,7 @@ const TextareaCancelledAsunt = ({ setCancelledAsunt }) => (
       autoComplete="off"
       required
     />
-    <Label labelInfo="Asunto:" />
-  </FloatingFormCol12x>
+  </FloatingLabel>
 );
 
 export default TextareaCancelledAsunt;

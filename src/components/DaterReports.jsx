@@ -1,8 +1,7 @@
-import DivRow from "./DivRow";
 import InputDate from "./InputDate";
 import FilterSelectPerson from "./FilterSelectPerson";
 import FetcherReports from "./FetcherReports";
-import Notify from "./Notify";
+import { Col, Row } from "react-bootstrap";
 
 const DaterReports = ({
   setStartDate,
@@ -12,25 +11,31 @@ const DaterReports = ({
   setCategory,
   reportsFiltered,
 }) => (
-  <DivRow clAdds=" mb-5">
-    <InputDate
-      labelInfo="Desde:"
-      setDate={setStartDate}
-      inputValue={startDate}
-    />
+  <Row className="g-3 mb-5">
+    <Col md={2}>
+      <InputDate
+        labelInfo="Desde:"
+        setDate={setStartDate}
+        inputValue={startDate}
+      />
+    </Col>
 
-    <InputDate labelInfo="Hasta:" setDate={setEndDate} inputValue={endDate} />
+    <Col md={2}>
+      <InputDate labelInfo="Hasta:" setDate={setEndDate} inputValue={endDate} />
+    </Col>
 
-    <FilterSelectPerson setCategory={setCategory} />
+    <Col md={2}>
+      <FilterSelectPerson setCategory={setCategory} />
+    </Col>
 
-    <FetcherReports
-      startDate={startDate}
-      endDate={endDate}
-      reportsFiltered={reportsFiltered}
-    />
-
-    <Notify />
-  </DivRow>
+    <Col md={2}>
+      <FetcherReports
+        startDate={startDate}
+        endDate={endDate}
+        reportsFiltered={reportsFiltered}
+      />
+    </Col>
+  </Row>
 );
 
 export default DaterReports;

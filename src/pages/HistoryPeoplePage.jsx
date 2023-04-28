@@ -1,12 +1,22 @@
 import { useEffect } from "react";
+import { Col, Row } from "react-bootstrap";
 import Searcher from "../components/Searcher";
+import Notify from "../components/Notify";
 
 const HistoryPeoplePage = () => {
   useEffect(() => {
     document.title = "RSystfip | Agendated People";
   }, []);
 
-  return <Searcher />;
+  return (
+    <Row>
+      <Col md={12}>
+        <h1 className="h3">Personas agendadas</h1>
+        <Searcher />
+        <Notify />
+      </Col>
+    </Row>
+  );
 };
 
 export default HistoryPeoplePage;

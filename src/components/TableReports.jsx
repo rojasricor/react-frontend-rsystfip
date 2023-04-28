@@ -1,8 +1,8 @@
-import Table from "./Table";
+import { Table } from "react-bootstrap";
 import ReportRow from "./ReportRow";
 
 const TableReports = ({ start, end, reportFiltered }) => (
-  <Table clAdds=" table-borderless">
+  <Table hover striped size="sm" borderless className="text-center">
     <caption>
       Data about people schedule between {start} and {end}.
     </caption>

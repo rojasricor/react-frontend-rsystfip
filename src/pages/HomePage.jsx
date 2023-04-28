@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Rower from "../components/Rower";
+import { Row, Col } from "react-bootstrap";
 import UserLoggedInfo from "../components/UserLoggedInfo";
 import ProtectedElement from "../components/ProtectedElement";
 import { FaUserPlus } from "react-icons/fa";
@@ -12,25 +12,27 @@ const HomePage = ({ permissions }) => {
   }, []);
 
   return (
-    <Rower>
-      <UserLoggedInfo />
-      <ProtectedElement isAllowed={permissions.includes("add")}>
+    <Row>
+      <Col md={12}>
+        <UserLoggedInfo />
+        <ProtectedElement isAllowed={permissions.includes("add")}>
+          <Link
+            to="/people/add"
+            className="btn btn-primary m-1"
+            title="Agendamiento por día"
+          >
+            Diario <FaUserPlus className="mb-1" />
+          </Link>
+        </ProtectedElement>
         <Link
-          to="/people/add"
+          to="/people/schedule"
           className="btn btn-primary m-1"
-          title="Agendamiento por día"
+          title="Agendamiento programado"
         >
-          Diario <FaUserPlus className="mb-1" />
+          Programar <IoCalendarNumber className="mb-1" />
         </Link>
-      </ProtectedElement>
-      <Link
-        to="/people/schedule"
-        className="btn btn-primary m-1"
-        title="Agendamiento programado"
-      >
-        Programar <IoCalendarNumber className="mb-1" />
-      </Link>
-    </Rower>
+      </Col>
+    </Row>
   );
 };
 

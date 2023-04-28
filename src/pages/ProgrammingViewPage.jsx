@@ -9,7 +9,7 @@ const ProgrammingViewPage = () => {
 
   return (
     <PeopleContextProvider>
-      <h1 className="h3 mb-2">Ver agendamientos programados</h1>
+      <h1 className="h3">Ver agendamientos programados</h1>
       <FullCalendarScheduling
         right="listMonth,dayGridMonth"
         initialView="listMonth"

@@ -1,15 +1,21 @@
-import DivRow from "./DivRow";
 import InputDate from "./InputDate";
 import FilterChart from "./FilterChart";
+import { Col } from "react-bootstrap";
 
 const DaterStatistics = ({ setStart, start, setEnd, end, setChartType }) => (
-  <DivRow>
-    <InputDate labelInfo="Desde:" setDate={setStart} inputValue={start} />
+  <>
+    <Col md={2}>
+      <InputDate labelInfo="Desde:" setDate={setStart} inputValue={start} />
+    </Col>
 
-    <InputDate labelInfo="Hasta:" setDate={setEnd} inputValue={end} />
+    <Col md={2}>
+      <InputDate labelInfo="Hasta:" setDate={setEnd} inputValue={end} />
+    </Col>
 
-    <FilterChart setChartType={setChartType} />
-  </DivRow>
+    <Col md={2}>
+      <FilterChart setChartType={setChartType} />
+    </Col>
+  </>
 );
 
 export default DaterStatistics;

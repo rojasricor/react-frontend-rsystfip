@@ -1,8 +1,8 @@
-import Table from "./Table";
+import { Table } from "react-bootstrap";
 import PersonRow from "./PersonRow";
 
 const TablePeople = ({ peopleFiltered }) => (
-  <Table>
+  <Table responsive hover striped size="sm" className="text-center">
     <caption>Scheduled people history.</caption>
     <thead>
       <tr>

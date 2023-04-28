@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import { API_ROUTE } from "../constants";
 import { BiTrash, BiKey } from "react-icons/bi";
 
@@ -39,20 +40,19 @@ const UserRow = ({ user: { id, email } }) => {
       <td>
         <Link
           to={`/users/manage/password/${id}/change`}
-          className="btn btn-light border m-1"
+          className="btn btn-light m-1"
           title={`Change password for user ${email}`}
         >
           <BiKey />
         </Link>
-        <button
+        <Button
           onClick={() => deleteUser(id)}
-          className={
-            id !== 3 ? "btn btn-danger m-1" : "btn btn-danger m-1 disabled"
-          }
+          variant="danger"
+          className={"m-1".concat(id !== 3 ? "" : " disabled")}
           title={`Delete user ${email} (Requires confirmation)`}
         >
           <BiTrash />
-        </button>
+        </Button>
       </td>
     </tr>
   );

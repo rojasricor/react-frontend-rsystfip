@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import DivRow from "../components/DivRow";
 import Statistics from "../components/Statistics";
+import { Row } from "react-bootstrap";
+import Notify from "../components/Notify";
 
 const StcsDailyPage = () => {
   useEffect(() => {
@@ -8,9 +9,10 @@ const StcsDailyPage = () => {
   }, []);
 
   return (
-    <DivRow>
+    <Row className="g-3">
       <Statistics scheduling_type="daily" />
-    </DivRow>
+      <Notify />
+    </Row>
   );
 };
 

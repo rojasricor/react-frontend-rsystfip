@@ -1,16 +1,13 @@
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
+import { FloatingLabel, FormControl } from "react-bootstrap";
 
 const InputDate = ({ labelInfo, setDate, inputValue }) => (
-  <FloatingFormCol12x x="2">
-    <input
+  <FloatingLabel label={labelInfo}>
+    <FormControl
       onChange={({ target: { value } }) => setDate(value)}
       type="date"
       value={inputValue}
-      className="form-control"
     />
-    <Label labelInfo={labelInfo} />
-  </FloatingFormCol12x>
+  </FloatingLabel>
 );
 
 export default InputDate;

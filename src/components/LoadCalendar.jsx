@@ -1,8 +1,8 @@
-import Spinner from "./Spinner";
+import { Spinner } from "react-bootstrap";
 
 const LoadCalendar = ({ loadEventsRef }) => (
   <div className="load-events" ref={loadEventsRef}>
-    Cargando <Spinner />
+    Cargando <Spinner size="sm" />
   </div>
 );
 

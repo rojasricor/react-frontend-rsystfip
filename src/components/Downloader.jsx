@@ -1,21 +1,20 @@
-import FloatingFormCol12x from "./FloatingFormCol12x";
-import Label from "./Label";
+import { FloatingLabel, Button } from "react-bootstrap";
 import { BsDownload } from "react-icons/bs";
 
 const Downloader = ({ pdf }) => (
-  <FloatingFormCol12x x="2">
-    <button
+  <FloatingLabel label="Descargar:">
+    <Button
+      variant="light"
       onClick={
         () => pdf.open()
         // pdf.download(`RSystfip-Report-${formatTodaysDateTime()}.pdf`)
       }
-      className="form-control btn btn-light border"
+      className="form-control"
       title="Reporte PDF"
     >
       PDF <BsDownload className="mb-1" />
-    </button>
-    <Label labelInfo="Descargar:" />
-  </FloatingFormCol12x>
+    </Button>
+  </FloatingLabel>
 );
 
 export default Downloader;

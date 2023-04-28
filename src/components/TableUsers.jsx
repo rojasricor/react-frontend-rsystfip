@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { API_ROUTE } from "../constants";
-import Table from "./Table";
+import { Table } from "react-bootstrap";
 import UserRow from "./UserRow";
 import { toast } from "react-toastify";
 
@@ -22,7 +22,7 @@ const TableUsers = () => {
   }, []);
 
   return (
-    <Table>
+    <Table responsive hover striped size="sm" className="text-center">
       <caption>Access users.</caption>
       <thead>
         <tr>

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import Rower from "../components/Rower";
 import ActionerReports from "../components/ActionerReports";
+import { Col, Row } from "react-bootstrap";
+import Notify from "../components/Notify";
 
 const ReportsPeoplePage = () => {
   useEffect(() => {
@@ -8,10 +9,13 @@ const ReportsPeoplePage = () => {
   }, []);
 
   return (
-    <Rower>
-      <h1 className="h3">Reportes por mes</h1>
-      <ActionerReports />
-    </Rower>
+    <Row>
+      <Col md={12}>
+        <h1 className="h3">Reportes por mes</h1>
+        <ActionerReports />
+        <Notify />
+      </Col>
+    </Row>
   );
 };
 

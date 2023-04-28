@@ -1,18 +1,11 @@
-import { useContext, useRef, useEffect } from "react";
+import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
-import { Navigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
+import { Dropdown, Image, Button } from "react-bootstrap";
 import { BiLogOutCircle } from "react-icons/bi";
-import BsDropdown from "bootstrap/js/dist/dropdown";
 
 const NavLogoutDropdown = ({ avatar }) => {
   const { user, setUser, setUsername, setPassword } = useContext(AppContext);
-
-  const dropdownRef = useRef(null);
-
-  useEffect(() => {
-    new BsDropdown(dropdownRef.current);
-  }, []);
 
   const logout = () => {
     if (!confirm(`${user.name} estás seguro(a)que deseas cerrar sesión?`))
@@ -25,38 +18,30 @@ const NavLogoutDropdown = ({ avatar }) => {
   };
 
   return (
-    <div className="dropdown">
-      <a
-        className="d-flex align-items-center mt-3 mt-lg-0 mb-2 mb-lg-0 link-dark text-decoration-none dropdown-toggle me-3"
-        data-bs-toggle="dropdown"
-        ref={dropdownRef}
+    <Dropdown>
+      <Dropdown.Toggle
+        as="a"
+        className="d-flex align-items-center mt-3 mt-lg-0 mb-2 mb-lg-0 link-dark text-decoration-none me-3"
       >
-        <img src={avatar} className="rounded-circle" width="40" alt="Account" />
-      </a>
-      <ul className="dropdown-menu dropdown-menu-lg-end">
-        <li>
-          <NavLink to="/help/asks/frecuently" className="dropdown-item">
-            FAQs
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={`/users/manage/password/${user.id}/change`}
-            className="dropdown-item"
-          >
-            Cambiar contraseña
-          </NavLink>
-        </li>
-        <li>
-          <hr className="dropdown-divider" />
-        </li>
-        <li>
-          <button onClick={logout} className="dropdown-item">
-            Cerrar sesión <BiLogOutCircle />
-          </button>
-        </li>
-      </ul>
-    </div>
+        <Image roundedCircle src={avatar} width="40" alt="Account" />
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu align={{ lg: "end" }}>
+        <NavLink to="/help/asks/frecuently" className="dropdown-item">
+          FAQs
+        </NavLink>
+        <NavLink
+          to={`/users/manage/password/${user.id}/change`}
+          className="dropdown-item"
+        >
+          Cambiar contraseña
+        </NavLink>
+        <Dropdown.Divider />
+        <Button onClick={logout} className="dropdown-item">
+          Cerrar sesión <BiLogOutCircle />
+        </Button>
+      </Dropdown.Menu>
+    </Dropdown>
   );
 };
 

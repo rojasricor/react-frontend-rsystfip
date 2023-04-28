@@ -3,8 +3,8 @@ import { AppContext } from "./context/AppContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedElement from "./components/ProtectedElement";
 import ProtectedRoute from "./components/ProtectedRoute";
-import ContainerFluid from "./components/ContainerFluid";
-import Nav from "./components/Nav";
+import { Container } from "react-bootstrap";
+import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
@@ -31,9 +31,9 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <ContainerFluid>
+      <Container fluid>
         <ProtectedElement isAllowed={!!user}>
-          <Nav avatar={avatar} permissions={permissions} />
+          <NavBar avatar={avatar} permissions={permissions} />
         </ProtectedElement>
         <Routes>
           <Route index element={<LoginPage />} />
@@ -140,7 +140,7 @@ const App = () => {
 
           <Route path="*" element={<Error404Page />} />
         </Routes>
-      </ContainerFluid>
+      </Container>
 
       <Footer />
     </BrowserRouter>

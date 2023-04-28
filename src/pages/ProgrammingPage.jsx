@@ -9,7 +9,7 @@ const ProgrammingPage = () => {
 
   return (
     <PeopleContextProvider>
-      <h1 className="h3 mb-2">Agendamiento programado</h1>
+      <h1 className="h3">Agendamiento programado</h1>
       <FullCalendarScheduling
         right="timeGridDay,timeGridWeek"
         initialView="timeGridDay"

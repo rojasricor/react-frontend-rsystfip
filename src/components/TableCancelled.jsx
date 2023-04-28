@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Table from "./Table";
+import { Table } from "react-bootstrap";
 import CancelledRow from "./CancelledRow";
 import { API_ROUTE } from "../constants";
 import { toast } from "react-toastify";
@@ -22,7 +22,7 @@ const TableCancelled = () => {
   }, []);
 
   return (
-    <Table>
+    <Table responsive hover striped size="sm" className="text-center">
       <caption>Cancelled people history.</caption>
       <thead>
         <tr>
@@ -36,7 +36,7 @@ const TableCancelled = () => {
       </thead>
       <tbody>
         {people.map((person, index) => (
-          <CancelledRow key={index} idx={index} person={person} />
+          <CancelledRow key={index} index={index} person={person} />
         ))}
       </tbody>
     </Table>

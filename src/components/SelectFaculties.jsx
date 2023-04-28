@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
+import axios from "axios";
 import { toast } from "react-toastify";
 import { FloatingLabel, FormSelect } from "react-bootstrap";
 
@@ -16,8 +17,7 @@ const SelectFaculties = () => {
 
   const getFaculties = async () => {
     try {
-      const request = await fetch(`${RESOURCE_ROUTE}?resource=faculties`);
-      const data = await request.json();
+      const { data } = await axios(`${RESOURCE_ROUTE}?resource=faculties`);
       setFaculties(data);
     } catch (err) {
       toast.error(err);

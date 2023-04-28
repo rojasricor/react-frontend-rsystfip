@@ -1,5 +1,6 @@
 import { useState, useEffect, startTransition } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../constants";
 import { Spinner, FormControl, Button, ButtonGroup } from "react-bootstrap";
@@ -15,8 +16,7 @@ const Searcher = () => {
 
   const getPeople = async () => {
     try {
-      const request = await fetch(`${API_ROUTE}/people`);
-      const data = await request.json();
+      const { data } = await axios(`${API_ROUTE}/people`);
       startTransition(() => {
         setPeople(data);
         setPeopleFiltered(data);

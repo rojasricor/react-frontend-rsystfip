@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import CancelledRow from "./CancelledRow";
 import { API_ROUTE } from "../constants";
+import axios from "axios";
 import { toast } from "react-toastify";
 
 const TableCancelled = () => {
@@ -9,8 +10,7 @@ const TableCancelled = () => {
 
   const getCancelled = async () => {
     try {
-      const request = await fetch(`${API_ROUTE}/cancelled`);
-      const data = await request.json();
+      const { data } = await axios(`${API_ROUTE}/cancelled`);
       setPeople(data);
     } catch (err) {
       toast.error(err);

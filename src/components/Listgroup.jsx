@@ -5,7 +5,7 @@ const Listgroup = ({ title, data, end }) => (
     <h5 className="text-center">{title}</h5>
     <ListGroup className="mb-5">
       {data.map(({ category, counts }, index) => (
-        <ListGroup.Item action className="d-flex gap-3 py-3">
+        <ListGroup.Item key={index} action className="d-flex gap-3 py-3">
           <Image src="/rsystfip.svg" alt="twbs" width="32" height="27" />
           <div className="d-flex gap-2 w-100 justify-content-between">
             <div>

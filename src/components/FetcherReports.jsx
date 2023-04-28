@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { API_ROUTE } from "../constants";
 import PdfCreator from "./PdfCreator";
+import axios from "axios";
 import { toast } from "react-toastify";
 
 const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
@@ -11,8 +12,7 @@ const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
 
   const getPeople = async () => {
     try {
-      const request = await fetch(`${API_ROUTE}/people`);
-      const data = await request.json();
+      const { data } = await axios(`${API_ROUTE}/people`);
       setPeople(data);
     } catch (err) {
       toast.error(err);
@@ -21,10 +21,9 @@ const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
 
   const getReportsCountOnRange = async () => {
     try {
-      const request = await fetch(
+      const { data } = await axios(
         `${API_ROUTE}/reports/count?start=${startDate}&end=${endDate}`
       );
-      const data = await request.json();
       setReportsCountOnRange(data);
     } catch (err) {
       toast.error(err);
@@ -33,8 +32,7 @@ const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
 
   const getReportsCountAlltime = async () => {
     try {
-      const request = await fetch(`${API_ROUTE}/reports/counts`);
-      const data = await request.json();
+      const { data } = await axios(`${API_ROUTE}/reports/counts`);
       setReportsCountAlltime(data);
     } catch (err) {
       toast.error(err);
@@ -43,10 +41,11 @@ const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
 
   const getPngbase64 = async () => {
     try {
-      const request = await fetch("/img/admin/avatar.png");
-      const response = await request.blob();
+      const { data } = await axios("/img/admin/avatar.png", {
+        responseType: "blob",
+      });
       const reader = new FileReader();
-      reader.readAsDataURL(response);
+      reader.readAsDataURL(data);
       reader.addEventListener("load", () => setPngbase64(reader.result));
     } catch (err) {
       toast.error(err);

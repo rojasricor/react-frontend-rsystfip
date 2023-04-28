@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { API_ROUTE } from "../constants";
 import { Row, Col, Form, FloatingLabel, Spinner } from "react-bootstrap";
 import Submitter from "./Submitter";
+import axios from "axios";
 import { toast } from "react-toastify";
 import { IoMdLogIn } from "react-icons/io";
 
@@ -26,15 +27,12 @@ const FormLogin = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_ROUTE}/auth`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
+      const {
+        data: { auth, user, error },
+      } = await axios.post(`${API_ROUTE}/auth`, {
+        username,
+        password,
       });
-      const { auth, user, error } = await response.json();
 
       if (error || !auth) return toast.warn(error);
 

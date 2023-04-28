@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
 import { FloatingLabel, FormSelect } from "react-bootstrap";
+import axios from "axios";
 import { toast } from "react-toastify";
 
 const SelectDocument = () => {
@@ -11,8 +12,7 @@ const SelectDocument = () => {
 
   const getDocuments = async () => {
     try {
-      const request = await fetch(`${RESOURCE_ROUTE}?resource=documents`);
-      const data = await request.json();
+      const { data } = await axios(`${RESOURCE_ROUTE}?resource=documents`);
       setDocuments(data);
     } catch (err) {
       toast.error(err);

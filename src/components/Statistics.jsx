@@ -20,6 +20,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import DaterStatistics from "./DaterStatistics";
 import Ctx from "./Ctx";
 import ListerStatistics from "./ListerStatistics";
+import axios from "axios";
 import { toast } from "react-toastify";
 import { Col } from "react-bootstrap";
 
@@ -121,15 +122,12 @@ const Statistics = ({ scheduling_type }) => {
 
   const getStatistics = async () => {
     try {
-      const request = await fetch(
+      const { data } = await axios(
         `${API_ROUTE}/statistics/${scheduling_type}?start=${start}&end=${end}`
       );
-      const statisticsData = await request.json();
-      const labels = statisticsData.map(({ category }) => category);
-      const data = statisticsData.map(
-        ({ scheduling_count }) => scheduling_count
-      );
-      refreshChart(labels, data);
+      const labels = data.map(({ category }) => category);
+      const dataset = data.map(({ scheduling_count }) => scheduling_count);
+      refreshChart(labels, dataset);
     } catch (err) {
       toast.error(err);
     }
@@ -137,10 +135,9 @@ const Statistics = ({ scheduling_type }) => {
 
   const getMostAgendatedOnRange = async () => {
     try {
-      const request = await fetch(
+      const { data } = await axios(
         `${API_ROUTE}/statistics/${scheduling_type}/onrange?start=${start}&end=${end}`
       );
-      const data = await request.json();
       setMostAgendatedOnRange(data);
     } catch (err) {
       toast.error(err);
@@ -149,10 +146,9 @@ const Statistics = ({ scheduling_type }) => {
 
   const getMostAgendatedAlltime = async () => {
     try {
-      const request = await fetch(
+      const { data } = await axios(
         `${API_ROUTE}/statistics/${scheduling_type}/alltime`
       );
-      const data = await request.json();
       setMostAgendatedAlltime(data);
     } catch (err) {
       toast.error(err);

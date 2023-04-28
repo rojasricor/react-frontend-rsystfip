@@ -3,6 +3,7 @@ import DaterReports from "./DaterReports";
 import TableReports from "./TableReports";
 import { API_ROUTE, UNSET_STATUS } from "../constants";
 import { getStartMonthDate, getEndMonthDate } from "../libs/todaylib";
+import axios from "axios";
 import { toast } from "react-toastify";
 
 const ActionerReports = () => {
@@ -14,12 +15,11 @@ const ActionerReports = () => {
 
   const getReports = async () => {
     try {
-      const request = await fetch(
+      const { data } = await axios(
         `${API_ROUTE}/reports?start=${startDate}&end=${endDate}&category=${category}`
       );
-      const reports = await request.json();
-      setReport(reports);
-      setReportFiltered(reports);
+      setReport(data);
+      setReportFiltered(data);
     } catch (err) {
       toast.error(err);
     }

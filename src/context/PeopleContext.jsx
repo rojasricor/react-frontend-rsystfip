@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import { toast } from "react-toastify";
 import { UNSET_STATUS, API_ROUTE } from "../constants";
 import { formatTodaysDate, formatTodaysDateTime } from "../libs/todaylib";
@@ -40,24 +41,21 @@ export const PeopleContextProvider = ({ children }) => {
     setLoading(true);
 
     try {
-      const request = await fetch(`${API_ROUTE}/person`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          person,
-          name,
-          doctype,
-          doc,
-          facultie,
-          asunt,
-          color,
-          date,
-          start,
-          end,
-          status,
-        }),
+      const {
+        data: { ok, error },
+      } = await axios.post(`${API_ROUTE}/person`, {
+        person,
+        name,
+        doctype,
+        doc,
+        facultie,
+        asunt,
+        color,
+        date,
+        start,
+        end,
+        status,
       });
-      const { ok, error } = await request.json();
 
       if (error) return toast.warn(error);
 
@@ -80,20 +78,17 @@ export const PeopleContextProvider = ({ children }) => {
     setLoading(true);
 
     try {
-      const request = await fetch(`${API_ROUTE}/person`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id,
-          person,
-          name,
-          doctype,
-          doc,
-          facultie,
-          asunt,
-        }),
+      const {
+        data: { ok, error },
+      } = await axios.put(`${API_ROUTE}/person`, {
+        id,
+        person,
+        name,
+        doctype,
+        doc,
+        facultie,
+        asunt,
       });
-      const { ok, error } = await request.json();
 
       if (error) return toast.warn(error);
 
@@ -113,15 +108,17 @@ export const PeopleContextProvider = ({ children }) => {
 
   const getUserData = async () => {
     try {
-      const request = await fetch(`${API_ROUTE}/person?id=${id}`);
       const {
-        category_id,
-        document_id,
-        facultie_id,
-        name,
-        document_number,
-        come_asunt,
-      } = await request.json();
+        data: {
+          category_id,
+          document_id,
+          facultie_id,
+          name,
+          document_number,
+          come_asunt,
+        },
+      } = await axios(`${API_ROUTE}/person?id=${id}`);
+
       setPerson(category_id);
       setDoctype(document_id);
       setFacultie(facultie_id);

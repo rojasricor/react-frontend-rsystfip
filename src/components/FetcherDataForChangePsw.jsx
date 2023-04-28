@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Col, Card } from "react-bootstrap";
 import FormChangePsw from "./FormChangePsw";
 import { API_ROUTE } from "../constants";
+import axios from "axios";
 import { toast } from "react-toastify";
 
 const FetcherDataForChangePsw = () => {
@@ -11,8 +12,7 @@ const FetcherDataForChangePsw = () => {
 
   const getDatauser = async () => {
     try {
-      const request = await fetch(`${API_ROUTE}/user?role=${role}`);
-      const data = await request.json();
+      const { data } = await axios(`${API_ROUTE}/user?role=${role}`);
       setUser(data);
     } catch (err) {
       toast.error(err);

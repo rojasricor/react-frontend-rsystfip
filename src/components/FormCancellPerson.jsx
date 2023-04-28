@@ -3,6 +3,7 @@ import { PeopleContext } from "../context/PeopleContext";
 import { API_ROUTE } from "../constants";
 import { Form, Spinner, ModalFooter, Button, Row, Col } from "react-bootstrap";
 import TextareaCancelledAsunt from "./TextareaCancelledAsunt";
+import axios from "axios";
 import { toast } from "react-toastify";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
@@ -16,21 +17,20 @@ const FormCancellPerson = ({ closeModalCancell }) => {
     setLoading(true);
 
     try {
-      const request = await fetch(`${API_ROUTE}/person`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: eventId,
-          date,
-          cancelled_asunt: cancelledAsunt,
-        }),
+      const {
+        data: { ok, error },
+      } = await axios.patch(`${API_ROUTE}/person`, {
+        id: eventId,
+        date,
+        cancelled_asunt: cancelledAsunt,
       });
-      const { ok, error } = await request.json();
 
-      if (error) return toast.warn(error);
+      if (ok) {
+        toast.success(ok, { position: "top-left" });
+        return closeModalCancell();
+      }
 
-      toast.success(ok, { position: "top-left" });
-      closeModalCancell();
+      toast.warn(error);
     } catch (err) {
       toast.error(err);
     } finally {

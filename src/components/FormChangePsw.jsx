@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../constants";
 import { Form, Row, Col, Spinner } from "react-bootstrap";
@@ -17,17 +18,14 @@ const FormChangePsw = ({ userId }) => {
     setLoading(true);
 
     try {
-      const request = await fetch(`${API_ROUTE}/password`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/javascript" },
-        body: JSON.stringify({
-          id: userId,
-          current_password,
-          new_password,
-          new_password_confirm,
-        }),
+      const {
+        data: { error, ok },
+      } = await axios.put(`${API_ROUTE}/password`, {
+        id: userId,
+        current_password,
+        new_password,
+        new_password_confirm,
       });
-      const { error, ok } = await request.json();
 
       if (error) return toast.warn(error);
 

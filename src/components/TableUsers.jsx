@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { API_ROUTE } from "../constants";
 import { Table } from "react-bootstrap";
 import UserRow from "./UserRow";
+import axios from "axios";
 import { toast } from "react-toastify";
 
 const TableUsers = () => {
@@ -9,8 +10,7 @@ const TableUsers = () => {
 
   const getUsers = async () => {
     try {
-      const request = await fetch(`${API_ROUTE}/users`);
-      const data = await request.json();
+      const { data } = await axios(`${API_ROUTE}/users`);
       setUsers(data);
     } catch (err) {
       toast.error(err);

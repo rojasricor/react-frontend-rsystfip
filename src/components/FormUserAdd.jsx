@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import { toast } from "react-toastify";
 import * as Cst from "../constants";
 import { Row, Col, Form, Spinner } from "react-bootstrap";
@@ -29,22 +30,19 @@ const FormUserAdd = () => {
     setLoading(true);
 
     try {
-      const request = await fetch(`${API_ROUTE}/user`, {
-        method: "POST",
-        headers: { "Content-Type": "application/javascript" },
-        body: JSON.stringify({
-          role,
-          name,
-          lastname,
-          docType,
-          doc,
-          email,
-          tel,
-          password,
-          passwordConfirmation,
-        }),
+      const {
+        data: { error, ok },
+      } = await axios.post(`${API_ROUTE}/user`, {
+        role,
+        name,
+        lastname,
+        docType,
+        doc,
+        email,
+        tel,
+        password,
+        passwordConfirmation,
       });
-      const { error, ok } = await request.json();
 
       if (error) return toast.warn(error);
 
@@ -67,8 +65,7 @@ const FormUserAdd = () => {
 
   const getDocuments = async () => {
     try {
-      const request = await fetch(`${RESOURCE_ROUTE}?resource=documents`);
-      const data = await request.json();
+      const { data } = await axios(`${RESOURCE_ROUTE}?resource=documents`);
       setDocuments(data);
     } catch (err) {
       toast.error(err);

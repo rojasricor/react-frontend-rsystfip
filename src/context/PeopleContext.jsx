@@ -57,7 +57,7 @@ export const PeopleContextProvider = ({ children }) => {
         status,
       });
 
-      if (error) return toast.warn(error);
+      if (error || !ok) return toast.warn(error);
 
       setPerson("unset");
       setDoc("");
@@ -67,8 +67,8 @@ export const PeopleContextProvider = ({ children }) => {
       setAsunt("");
       toast.success(ok, { position: "top-left" });
       closeModalScheduling();
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -90,7 +90,7 @@ export const PeopleContextProvider = ({ children }) => {
         asunt,
       });
 
-      if (error) return toast.warn(error);
+      if (error || !ok) return toast.warn(error);
 
       setPerson("unset");
       setDoc("");
@@ -99,8 +99,8 @@ export const PeopleContextProvider = ({ children }) => {
       setFacultie("unset");
       setAsunt("");
       toast.success(ok, { position: "top-left" });
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -125,8 +125,8 @@ export const PeopleContextProvider = ({ children }) => {
       setName(name);
       setDoc(document_number);
       setAsunt(come_asunt);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

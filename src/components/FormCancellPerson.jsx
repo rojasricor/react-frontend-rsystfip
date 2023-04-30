@@ -25,14 +25,12 @@ const FormCancellPerson = ({ closeModalCancell }) => {
         cancelled_asunt: cancelledAsunt,
       });
 
-      if (ok) {
-        toast.success(ok, { position: "top-left" });
-        return closeModalCancell();
-      }
+      if (error || !ok) return toast.warn(error);
 
-      toast.warn(error);
-    } catch (err) {
-      toast.error(err);
+      toast.success(ok, { position: "top-left" });
+      closeModalCancell();
+    } catch ({ message }) {
+      toast.error(message);
     } finally {
       setLoading(false);
     }

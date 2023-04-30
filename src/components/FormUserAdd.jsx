@@ -44,7 +44,7 @@ const FormUserAdd = () => {
         passwordConfirmation,
       });
 
-      if (error) return toast.warn(error);
+      if (error || !ok) return toast.warn(error);
 
       setRole(UNSET_STATUS);
       setName("");
@@ -56,8 +56,8 @@ const FormUserAdd = () => {
       setPassword("");
       setPasswordConfirmation("");
       toast.success(ok, { position: "top-left" });
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -67,8 +67,8 @@ const FormUserAdd = () => {
     try {
       const { data } = await axios(`${RESOURCE_ROUTE}?resource=documents`);
       setDocuments(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

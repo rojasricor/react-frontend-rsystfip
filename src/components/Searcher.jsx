@@ -21,9 +21,9 @@ const Searcher = () => {
         setPeople(data);
         setPeopleFiltered(data);
       });
-    } catch (err) {
+    } catch ({ message }) {
       setLoading(2);
-      toast.error(err);
+      toast.error(message);
     } finally {
       setLoading(1);
     }

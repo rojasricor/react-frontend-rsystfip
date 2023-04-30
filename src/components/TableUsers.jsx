@@ -12,8 +12,8 @@ const TableUsers = () => {
     try {
       const { data } = await axios(`${API_ROUTE}/users`);
       setUsers(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

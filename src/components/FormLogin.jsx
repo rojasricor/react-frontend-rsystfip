@@ -39,8 +39,8 @@ const FormLogin = () => {
 
       setUser(user);
       navigate("/home/welcome");
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     } finally {
       setLoading(false);
     }

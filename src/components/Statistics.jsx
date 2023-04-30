@@ -128,8 +128,8 @@ const Statistics = ({ scheduling_type }) => {
       const labels = data.map(({ category }) => category);
       const dataset = data.map(({ scheduling_count }) => scheduling_count);
       refreshChart(labels, dataset);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 
@@ -139,8 +139,8 @@ const Statistics = ({ scheduling_type }) => {
         `${API_ROUTE}/statistics/${scheduling_type}/onrange?start=${start}&end=${end}`
       );
       setMostAgendatedOnRange(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 
@@ -150,8 +150,8 @@ const Statistics = ({ scheduling_type }) => {
         `${API_ROUTE}/statistics/${scheduling_type}/alltime`
       );
       setMostAgendatedAlltime(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

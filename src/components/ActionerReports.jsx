@@ -20,8 +20,8 @@ const ActionerReports = () => {
       );
       setReport(data);
       setReportFiltered(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

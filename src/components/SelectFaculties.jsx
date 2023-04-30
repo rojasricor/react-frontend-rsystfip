@@ -19,8 +19,8 @@ const SelectFaculties = () => {
     try {
       const { data } = await axios(`${RESOURCE_ROUTE}?resource=faculties`);
       setFaculties(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

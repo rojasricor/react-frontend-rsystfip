@@ -27,14 +27,14 @@ const FormChangePsw = ({ userId }) => {
         new_password_confirm,
       });
 
-      if (error) return toast.warn(error);
+      if (error || !ok) return toast.warn(error);
 
       setCurrent_password("");
       setNew_password("");
       setNew_password_confirm("");
       toast.success(ok, { position: "top-left" });
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     } finally {
       setLoading(false);
     }

@@ -14,8 +14,8 @@ const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
     try {
       const { data } = await axios(`${API_ROUTE}/people`);
       setPeople(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 
@@ -25,8 +25,8 @@ const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
         `${API_ROUTE}/reports/count?start=${startDate}&end=${endDate}`
       );
       setReportsCountOnRange(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 
@@ -34,8 +34,8 @@ const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
     try {
       const { data } = await axios(`${API_ROUTE}/reports/counts`);
       setReportsCountAlltime(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 
@@ -47,8 +47,8 @@ const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
       const reader = new FileReader();
       reader.readAsDataURL(data);
       reader.addEventListener("load", () => setPngbase64(reader.result));
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

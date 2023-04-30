@@ -23,8 +23,8 @@ const UserRow = ({ user: { id, email } }) => {
       toast.success("Usuario eliminado exitosamente", {
         position: "top-left",
       });
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

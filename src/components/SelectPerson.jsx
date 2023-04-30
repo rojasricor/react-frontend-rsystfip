@@ -21,8 +21,8 @@ const SelectPerson = () => {
     try {
       const { data } = await axios(`${API_ROUTE}/deans`);
       setDeans(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 
@@ -42,8 +42,8 @@ const SelectPerson = () => {
     try {
       const { data } = await axios(`${RESOURCE_ROUTE}?resource=categories`);
       setCategories(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

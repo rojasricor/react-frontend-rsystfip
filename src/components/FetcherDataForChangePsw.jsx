@@ -14,8 +14,8 @@ const FetcherDataForChangePsw = () => {
     try {
       const { data } = await axios(`${API_ROUTE}/user?role=${role}`);
       setUser(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

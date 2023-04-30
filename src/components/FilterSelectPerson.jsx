@@ -11,8 +11,8 @@ const FilterSelectPerson = ({ setCategory }) => {
     try {
       const { data } = await axios(`${RESOURCE_ROUTE}?resource=categories`);
       setCategories(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

@@ -14,8 +14,8 @@ const SelectDocument = () => {
     try {
       const { data } = await axios(`${RESOURCE_ROUTE}?resource=documents`);
       setDocuments(data);
-    } catch (err) {
-      toast.error(err);
+    } catch ({ message }) {
+      toast.error(message);
     }
   };
 

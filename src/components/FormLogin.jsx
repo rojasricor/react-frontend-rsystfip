@@ -16,6 +16,7 @@ const FormLogin = () => {
     password,
     setPassword,
     passwordVisible,
+    setPasswordVisible,
   } = useContext(AppContext);
 
   const [loading, setLoading] = useState(false);
@@ -73,6 +74,13 @@ const FormLogin = () => {
               required
             />
           </FloatingLabel>
+        </Col>
+        <Col md={12}>
+          <Form.Check
+            onClick={() => setPasswordVisible(!passwordVisible)}
+            type="switch"
+            label="Mostrar contraseña"
+          />
         </Col>
         <Submitter loading={loading}>
           {!loading ? (

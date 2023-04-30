@@ -3,9 +3,9 @@ import { Col, Row } from "react-bootstrap";
 import TableCancelled from "../components/TableCancelled";
 import Notify from "../components/Notify";
 
-const HistoryCancelledPage = () => {
+const PageCancelledPeople = () => {
   useEffect(() => {
-    document.title = "RSystfip | Cancelled History People";
+    document.title = "Rsystfip | Cancelled people";
   });
 
   return (
@@ -19,4 +19,4 @@ const HistoryCancelledPage = () => {
   );
 };
 
-export default HistoryCancelledPage;
+export default PageCancelledPeople;

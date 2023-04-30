@@ -3,9 +3,9 @@ import { PeopleContextProvider } from "../context/PeopleContext";
 import { Card, Col, Row } from "react-bootstrap";
 import FormPeople from "../components/FormPeople";
 
-const EditPeoplePage = () => {
+const PageEditPeople = () => {
   useEffect(() => {
-    document.title = "RSystfip | Data Person";
+    document.title = "Rsystfip | Edit people";
   }, []);
 
   return (
@@ -24,4 +24,4 @@ const EditPeoplePage = () => {
   );
 };
 
-export default EditPeoplePage;
+export default PageEditPeople;

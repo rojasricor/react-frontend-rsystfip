@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import Error404Actioner from "../components/Error404Actioner";
 
-const Error404Page = () => {
+const PageNotFound = () => {
   useEffect(() => {
-    document.title = "RSystfip | 404 Not Found";
+    document.title = "Rsystfip | Not found";
   }, []);
 
   return (
@@ -27,4 +27,4 @@ const Error404Page = () => {
   );
 };
 
-export default Error404Page;
+export default PageNotFound;

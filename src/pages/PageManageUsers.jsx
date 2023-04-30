@@ -5,9 +5,9 @@ import TableUsers from "../components/TableUsers";
 import Notify from "../components/Notify";
 import { FaUserPlus } from "react-icons/fa";
 
-const UsersPage = () => {
+const PageManageUsers = () => {
   useEffect(() => {
-    document.title = "RSystfip | Administrate Users";
+    document.title = "Rsystfip | Manage users";
   }, []);
 
   return (
@@ -30,4 +30,4 @@ const UsersPage = () => {
   );
 };
 
-export default UsersPage;
+export default PageManageUsers;

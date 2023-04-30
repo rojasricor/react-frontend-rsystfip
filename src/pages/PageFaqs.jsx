@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Row, Col, Accordion } from "react-bootstrap";
 
-const FaqsPage = () => {
+const PageFaqs = () => {
   useEffect(() => {
-    document.title = "RSystfip | Frecuently Asked Questions";
+    document.title = "Rsystfip | Frecuently asked questions";
   }, []);
 
   return (
@@ -66,7 +66,7 @@ const FaqsPage = () => {
           <Accordion.Item eventKey="2">
             <Accordion.Header>
               #3 Cómo hacer un agendamiento rápido del día a día en el
-              aplicativo web RSystfip?
+              aplicativo web Rsystfip?
             </Accordion.Header>
             <Accordion.Body>
               Hacer un agendamiento del día a día, significa agendar a la
@@ -158,4 +158,4 @@ const FaqsPage = () => {
   );
 };
 
-export default FaqsPage;
+export default PageFaqs;

@@ -3,17 +3,17 @@ import Statistics from "../components/Statistics";
 import { Row } from "react-bootstrap";
 import Notify from "../components/Notify";
 
-const StcsSchedulePage = () => {
+const PageStcsDaily = () => {
   useEffect(() => {
-    document.title = "RSystfip | Statistics Scheduled People";
+    document.title = "Rsystfip | Statistics daily people";
   }, []);
 
   return (
     <Row className="g-3">
-      <Statistics scheduling_type="scheduled" />
+      <Statistics scheduling_type="daily" />
       <Notify />
     </Row>
   );
 };
 
-export default StcsSchedulePage;
+export default PageStcsDaily;

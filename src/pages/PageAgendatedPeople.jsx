@@ -3,9 +3,9 @@ import { Col, Row } from "react-bootstrap";
 import Searcher from "../components/Searcher";
 import Notify from "../components/Notify";
 
-const HistoryPeoplePage = () => {
+const PageAgendatedPeople = () => {
   useEffect(() => {
-    document.title = "RSystfip | Agendated People";
+    document.title = "Rsystfip | Agendated People";
   }, []);
 
   return (
@@ -19,4 +19,4 @@ const HistoryPeoplePage = () => {
   );
 };
 
-export default HistoryPeoplePage;
+export default PageAgendatedPeople;

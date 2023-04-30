@@ -16,7 +16,7 @@ const Footer = () => (
           href="#"
           className="d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
         >
-          <Image src="/rsystfip.svg" alt="RSystfip" width="40" height="32" />
+          <Image src="/rsystfip.svg" alt="Rsystfip" width="40" height="32" />
         </Button>
       </Col>
 

@@ -6,7 +6,7 @@ const NavBar = ({ avatar, permissions }) => (
   <Navbar expand="lg" bg="light" fixed="top">
     <Container fluid>
       <Navbar.Brand className="px-lg-3">
-        <Image src="/rsystfip.svg" alt="RSystfip" width="40" height="32" />
+        <Image src="/rsystfip.svg" alt="Rsystfip" width="40" height="32" />
       </Navbar.Brand>
       <Navbar.Toggle />
       <NavMenu permissions={permissions} avatar={avatar} />

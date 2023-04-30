@@ -3,9 +3,9 @@ import { Row } from "react-bootstrap";
 import FetcherDataForChangePsw from "../components/FetcherDataForChangePsw";
 import Notify from "../components/Notify";
 
-const PswChangeUserPage = () => {
+const PageChangePassword = () => {
   useEffect(() => {
-    document.title = "RSystfip | Change Password Users";
+    document.title = "Rsystfip | Change password users";
   }, []);
 
   return (
@@ -16,4 +16,4 @@ const PswChangeUserPage = () => {
   );
 };
 
-export default PswChangeUserPage;
+export default PageChangePassword;

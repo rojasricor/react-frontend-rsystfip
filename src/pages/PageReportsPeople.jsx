@@ -3,9 +3,9 @@ import ActionerReports from "../components/ActionerReports";
 import { Col, Row } from "react-bootstrap";
 import Notify from "../components/Notify";
 
-const ReportsPeoplePage = () => {
+const PageReportsPeople = () => {
   useEffect(() => {
-    document.title = "RSystfip | Generate Reports";
+    document.title = "Rsystfip | Generate reports";
   }, []);
 
   return (
@@ -19,4 +19,4 @@ const ReportsPeoplePage = () => {
   );
 };
 
-export default ReportsPeoplePage;
+export default PageReportsPeople;

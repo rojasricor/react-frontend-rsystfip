@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { PeopleContextProvider } from "../context/PeopleContext";
 import FullCalendarScheduling from "../components/FullCalendarScheduling";
 
-const ProgrammingPage = () => {
+const PageProgramming = () => {
   useEffect(() => {
-    document.title = "RSystfip | Programming Scheduling";
+    document.title = "Rsystfip | Programming scheduling";
   }, []);
 
   return (
@@ -18,4 +18,4 @@ const ProgrammingPage = () => {
   );
 };
 
-export default ProgrammingPage;
+export default PageProgramming;

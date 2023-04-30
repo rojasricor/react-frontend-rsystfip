@@ -3,9 +3,9 @@ import { Row, Col, Card } from "react-bootstrap";
 import FormUserAdd from "../components/FormUserAdd";
 import Notify from "../components/Notify";
 
-const AddUserPage = () => {
+const PageRegisterUsers = () => {
   useEffect(() => {
-    document.title = "RSystfip | New User";
+    document.title = "Rsystfip | Register user";
   }, []);
 
   return (
@@ -23,4 +23,4 @@ const AddUserPage = () => {
   );
 };
 
-export default AddUserPage;
+export default PageRegisterUsers;

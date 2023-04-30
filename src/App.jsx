@@ -6,22 +6,22 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { Container } from "react-bootstrap";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
-import UsersPage from "./pages/UsersPage";
-import AddUserPage from "./pages/AddUserPage";
-import PswChangeUserPage from "./pages/PswChangeUserPage";
-import ProgrammingPage from "./pages/ProgrammingPage";
-import ProgrammingViewPage from "./pages/ProgrammingViewPage";
-import AddPeoplePage from "./pages/AddPeoplePage";
-import EditPeoplePage from "./pages/EditPeoplePage";
-import HistoryPeoplePage from "./pages/HistoryPeoplePage";
-import HistoryCancelledPage from "./pages/HistoryCancelledPage";
-import ReportsPeoplePage from "./pages/ReportsPeoplePage";
-import StcsDailyPage from "./pages/StcsDailyPage";
-import StcsScheduledPage from "./pages/StcsScheduledPage";
-import FaqsPage from "./pages/FaqsPage";
-import Error404Page from "./pages/Error404Page";
+import PageAuth from "./pages/PageAuth";
+import PageHome from "./pages/PageHome";
+import PageManageUsers from "./pages/PageManageUsers";
+import PageRegisterUsers from "./pages/PageRegisterUsers";
+import PageChangePassword from "./pages/PageChangePassword";
+import PageProgramming from "./pages/PageProgramming";
+import PageCalendar from "./pages/PageCalendar";
+import PageAddPeople from "./pages/PageAddPeople";
+import PageEditPeople from "./pages/PageEditPeople";
+import PageAgendatedPeople from "./pages/PageAgendatedPeople";
+import PageCancelledPeople from "./pages/PageCancelledPeople";
+import PageReportsPeople from "./pages/PageReportsPeople";
+import PageStcsDaily from "./pages/PageStcsDaily";
+import PageStcsScheduled from "./pages/PageStcsScheduled";
+import PageFaqs from "./pages/PageFaqs";
+import PageNotFound from "./pages/PageNotFound";
 import "./index.scss";
 
 const App = () => {
@@ -36,25 +36,22 @@ const App = () => {
           <NavBar avatar={avatar} permissions={permissions} />
         </ProtectedElement>
         <Routes>
-          <Route index element={<LoginPage />} />
-          <Route path="/auth/login" element={<LoginPage />} />
+          <Route index element={<PageAuth />} />
+          <Route path="/auth/login" element={<PageAuth />} />
 
           <Route element={<ProtectedRoute isAllowed={!!user} />}>
             <Route
               path="/home/welcome"
-              element={<HomePage permissions={permissions} />}
+              element={<PageHome permissions={permissions} />}
             />
             <Route
               path="/users/manage/password/:role/change"
-              element={<PswChangeUserPage />}
+              element={<PageChangePassword />}
             />
-            <Route path="/people/view" element={<HistoryPeoplePage />} />
-            <Route
-              path="/people/cancelled"
-              element={<HistoryCancelledPage />}
-            />
-            <Route path="/people/view/:id/edit" element={<EditPeoplePage />} />
-            <Route path="/help/asks/frecuently" element={<FaqsPage />} />
+            <Route path="/people/view" element={<PageAgendatedPeople />} />
+            <Route path="/people/cancelled" element={<PageCancelledPeople />} />
+            <Route path="/people/view/:id/edit" element={<PageEditPeople />} />
+            <Route path="/help/asks/frecuently" element={<PageFaqs />} />
           </Route>
 
           <Route
@@ -64,9 +61,12 @@ const App = () => {
               />
             }
           >
-            <Route path="/users/manage" element={<UsersPage />} />
-            <Route path="/users/manage/add" element={<AddUserPage />} />
-            <Route path="/users/manage/:role/delete" element={<UsersPage />} />
+            <Route path="/users/manage" element={<PageManageUsers />} />
+            <Route path="/users/manage/add" element={<PageRegisterUsers />} />
+            <Route
+              path="/users/manage/:role/delete"
+              element={<PageManageUsers />}
+            />
           </Route>
 
           <Route
@@ -76,7 +76,7 @@ const App = () => {
                 isAllowed={!!user && permissions.includes("add")}
                 navigateTo="/home/welcome"
               >
-                <AddPeoplePage />
+                <PageAddPeople />
               </ProtectedRoute>
             }
           />
@@ -88,7 +88,7 @@ const App = () => {
                 isAllowed={!!user && permissions.includes("schedule")}
                 navigateTo="/home/welcome"
               >
-                <ProgrammingPage />
+                <PageProgramming />
               </ProtectedRoute>
             }
           />
@@ -97,7 +97,7 @@ const App = () => {
             path="/people/preview"
             element={
               <ProtectedRoute isAllowed={!!user} navigateTo="/home/welcome">
-                <ProgrammingViewPage />
+                <PageCalendar />
               </ProtectedRoute>
             }
           />
@@ -109,7 +109,7 @@ const App = () => {
                 isAllowed={!!user && permissions.includes("reports")}
                 navigateTo="/home/welcome"
               >
-                <ReportsPeoplePage />
+                <PageReportsPeople />
               </ProtectedRoute>
             }
           />
@@ -121,7 +121,7 @@ const App = () => {
                 isAllowed={!!user && permissions.includes("statistics")}
                 navigateTo="/home/welcome"
               >
-                <StcsDailyPage />
+                <PageStcsDaily />
               </ProtectedRoute>
             }
           />
@@ -133,12 +133,12 @@ const App = () => {
                 isAllowed={!!user && permissions.includes("statistics")}
                 navigateTo="/home/welcome"
               >
-                <StcsScheduledPage />
+                <PageStcsScheduled />
               </ProtectedRoute>
             }
           />
 
-          <Route path="*" element={<Error404Page />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Container>
 

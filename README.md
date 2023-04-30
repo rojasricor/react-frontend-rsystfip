@@ -1,3 +1,3 @@
 # react-frontend-rsystfip
 
-Scheduling System RSystfip By Instituto Tolimense De Formación Técnica Profesional
+Scheduling System Rsystfip By Instituto Tolimense De Formación Técnica Profesional

@@ -6,9 +6,9 @@ import ProtectedElement from "../components/ProtectedElement";
 import { FaUserPlus } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
 
-const HomePage = ({ permissions }) => {
+const PageHome = ({ permissions }) => {
   useEffect(() => {
-    document.title = "RSystfip | Home Welcome";
+    document.title = "Rsystfip | Home";
   }, []);
 
   return (
@@ -36,4 +36,4 @@ const HomePage = ({ permissions }) => {
   );
 };
 
-export default HomePage;
+export default PageHome;

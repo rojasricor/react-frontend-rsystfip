@@ -8,7 +8,7 @@ export const createHeader = (image, startDate, endDate) => ({
       link: "https://www.itfip.edu.co",
     },
     {
-      text: `RSystfip / Report between ${startDate} and ${endDate}.`,
+      text: `Rsystfip / Report between ${startDate} and ${endDate}.`,
       fontSize: 8,
       alignment: "center",
       marginTop: 37,
@@ -18,7 +18,7 @@ export const createHeader = (image, startDate, endDate) => ({
 });
 
 export const footer = (currentPage, pageCount) => ({
-  text: `Page ${currentPage}/${pageCount} - RSystfip`,
+  text: `Page ${currentPage}/${pageCount} - Rsystfip`,
   alignment: "center",
   fontSize: 8,
   italics: true,

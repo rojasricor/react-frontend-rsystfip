@@ -7,7 +7,7 @@ const Downloader = ({ pdf }) => (
       variant="light"
       onClick={
         () => pdf.open()
-        // pdf.download(`RSystfip-Report-${formatTodaysDateTime()}.pdf`)
+        // pdf.download(`Rsystfip-Report-${formatTodaysDateTime()}.pdf`)
       }
       className="form-control"
       title="Reporte PDF"

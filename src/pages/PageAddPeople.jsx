@@ -3,9 +3,9 @@ import { PeopleContextProvider } from "../context/PeopleContext";
 import FormPeople from "../components/FormPeople";
 import { Row, Col, Card } from "react-bootstrap";
 
-const AddPeoplePage = () => {
+const PageAddPeople = () => {
   useEffect(() => {
-    document.title = "RSystfip | Daily Scheduling";
+    document.title = "Rsystfip | Daily Scheduling";
   }, []);
 
   return (
@@ -24,4 +24,4 @@ const AddPeoplePage = () => {
   );
 };
 
-export default AddPeoplePage;
+export default PageAddPeople;

@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { API_ROUTE } from "../constants";
 import { Form, Spinner, ModalFooter, Button, Row, Col } from "react-bootstrap";
-import TextareaCancelledAsunt from "./TextareaCancelledAsunt";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { FaTimes, FaCheck } from "react-icons/fa";
@@ -40,7 +39,18 @@ const FormCancellPerson = ({ closeModalCancell }) => {
     <Form onSubmit={cancellPerson}>
       <Row className="g-3 my-2">
         <Col md={12}>
-          <TextareaCancelledAsunt setCancelledAsunt={setCancelledAsunt} />
+          <Form.FloatingLabel label="Asunto cancelamiento:">
+            <Form.Control
+              as="textarea"
+              onChange={({ target: { value } }) => setCancelledAsunt(value)}
+              placeholder="Complete campo"
+              minLength="5"
+              maxLength="100"
+              spellCheck="false"
+              autoComplete="off"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
         <ModalFooter>
           <Button onClick={closeModalCancell} variant="light">

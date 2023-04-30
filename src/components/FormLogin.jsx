@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { API_ROUTE } from "../constants";
-import { Row, Col, Form, FloatingLabel, Spinner } from "react-bootstrap";
+import { Row, Col, Form, Spinner } from "react-bootstrap";
 import Submitter from "./Submitter";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -50,7 +50,7 @@ const FormLogin = () => {
     <Form onSubmit={doLogin}>
       <Row className="g-3">
         <Col md={12}>
-          <FloatingLabel label="Nombre de usuario">
+          <Form.FloatingLabel label="Nombre de usuario">
             <Form.Control
               onChange={({ target: { value } }) => setUsername(value)}
               value={username}
@@ -61,10 +61,10 @@ const FormLogin = () => {
               autoFocus
               required
             />
-          </FloatingLabel>
+          </Form.FloatingLabel>
         </Col>
         <Col md={12}>
-          <FloatingLabel label="Contraseña">
+          <Form.FloatingLabel label="Contraseña">
             <Form.Control
               onChange={({ target: { value } }) => setPassword(value)}
               value={password}
@@ -73,7 +73,7 @@ const FormLogin = () => {
               autoComplete="off"
               required
             />
-          </FloatingLabel>
+          </Form.FloatingLabel>
         </Col>
         <Col md={12}>
           <Form.Check

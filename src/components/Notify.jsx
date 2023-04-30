@@ -1,4 +1,4 @@
-import { ToastContainer, Zoom } from "react-toastify";
+import { ToastContainer, Flip } from "react-toastify";
 
 const Notify = () => (
   <ToastContainer
@@ -6,13 +6,13 @@ const Notify = () => (
     autoClose={2000}
     hideProgressBar={false}
     newestOnTop={false}
-    transition={Zoom}
+    transition={Flip}
     closeOnClick
     rtl={false}
     pauseOnFocusLoss
     draggable
     pauseOnHover
-    theme="dark"
+    theme="colored"
   />
 );
 

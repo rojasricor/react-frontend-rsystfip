@@ -1,7 +1,6 @@
-import InputDate from "./InputDate";
 import FilterSelectPerson from "./FilterSelectPerson";
 import FetcherReports from "./FetcherReports";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, FloatingLabel, FormControl } from "react-bootstrap";
 
 const DaterReports = ({
   setStartDate,
@@ -13,15 +12,23 @@ const DaterReports = ({
 }) => (
   <Row className="g-3 mb-5">
     <Col md={2}>
-      <InputDate
-        labelInfo="Desde:"
-        setDate={setStartDate}
-        inputValue={startDate}
-      />
+      <FloatingLabel label="Desde:">
+        <FormControl
+          onChange={({ target: { value } }) => setStartDate(value)}
+          type="date"
+          value={startDate}
+        />
+      </FloatingLabel>
     </Col>
 
     <Col md={2}>
-      <InputDate labelInfo="Hasta:" setDate={setEndDate} inputValue={endDate} />
+      <FloatingLabel label="Hasta:">
+        <FormControl
+          onChange={({ target: { value } }) => setEndDate(value)}
+          type="date"
+          value={endDate}
+        />
+      </FloatingLabel>
     </Col>
 
     <Col md={2}>

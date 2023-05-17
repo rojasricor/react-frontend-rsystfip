@@ -7,7 +7,6 @@ import SelectBasic from "./SelectBasic";
 import InputText from "./InputText";
 import InputEmail from "./InputEmail";
 import InputNumber from "./InputNumber";
-import InputPassword from "./InputPassword";
 import Submitter from "./Submitter";
 import { FaUserPlus } from "react-icons/fa";
 
@@ -149,21 +148,31 @@ const FormUserAdd = () => {
         </Col>
 
         <Col md={6}>
-          <InputPassword
-            setPassword={setPassword}
-            inputValue={password}
-            placeholder="Password"
-            labelInfo="Contraseña:"
-          />
+          <Form.FloatingLabel label="Contraseña:">
+            <Form.Control
+              onChange={({ target: { value } }) => setPassword(value)}
+              value={password}
+              type="password"
+              placeholder="Password"
+              autoComplete="off"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
 
         <Col md={6}>
-          <InputPassword
-            setPassword={setPasswordConfirmation}
-            inputValue={passwordConfirmation}
-            placeholder="Confirm password"
-            labelInfo="Confirmar contraseña:"
-          />
+          <Form.FloatingLabel label="Confirmar contraseña:">
+            <Form.Control
+              onChange={({ target: { value } }) =>
+                setPasswordConfirmation(value)
+              }
+              value={passwordConfirmation}
+              type="password"
+              placeholder="Confirm password"
+              autoComplete="off"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
 
         <Submitter loading={loading}>

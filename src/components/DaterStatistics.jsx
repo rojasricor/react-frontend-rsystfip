@@ -1,15 +1,26 @@
-import InputDate from "./InputDate";
 import FilterChart from "./FilterChart";
-import { Col } from "react-bootstrap";
+import { Col, FloatingLabel, FormControl } from "react-bootstrap";
 
 const DaterStatistics = ({ setStart, start, setEnd, end, setChartType }) => (
   <>
     <Col md={2}>
-      <InputDate labelInfo="Desde:" setDate={setStart} inputValue={start} />
+      <FloatingLabel label="Desde:">
+        <FormControl
+          onChange={({ target: { value } }) => setStart(value)}
+          type="date"
+          value={start}
+        />
+      </FloatingLabel>
     </Col>
 
     <Col md={2}>
-      <InputDate labelInfo="Hasta:" setDate={setEnd} inputValue={end} />
+      <FloatingLabel label="Hasta:">
+        <FormControl
+          onChange={({ target: { value } }) => setEnd(value)}
+          type="date"
+          value={end}
+        />
+      </FloatingLabel>
     </Col>
 
     <Col md={2}>

@@ -3,7 +3,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../constants";
 import { Form, Row, Col, Spinner } from "react-bootstrap";
-import InputPassword from "./InputPassword";
 import Submitter from "./Submitter";
 import { BiKey } from "react-icons/bi";
 
@@ -44,30 +43,44 @@ const FormChangePsw = ({ userId }) => {
     <Form onSubmit={doChangePassword}>
       <Row className="g-3">
         <Col md={12}>
-          <InputPassword
-            setPassword={setCurrent_password}
-            inputValue={current_password}
-            placeholder="Current password"
-            labelInfo="Contraseña anterior:"
-          />
+          <Form.FloatingLabel label="Contraseña anterior:">
+            <Form.Control
+              onChange={({ target: { value } }) => setCurrent_password(value)}
+              value={current_password}
+              type="password"
+              placeholder="Current password"
+              autoComplete="off"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
 
         <Col md={12}>
-          <InputPassword
-            setPassword={setNew_password}
-            inputValue={new_password}
-            placeholder="New password"
-            labelInfo="Contraseña nueva:"
-          />
+          <Form.FloatingLabel label="Contraseña nueva:">
+            <Form.Control
+              onChange={({ target: { value } }) => setNew_password(value)}
+              value={new_password}
+              type="password"
+              placeholder="New password"
+              autoComplete="off"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
 
         <Col md={12}>
-          <InputPassword
-            setPassword={setNew_password_confirm}
-            inputValue={new_password_confirm}
-            placeholder="Confirm new password"
-            labelInfo="Confirmar contraseña nueva:"
-          />
+          <Form.FloatingLabel label="Confirmar contraseña nueva:">
+            <Form.Control
+              onChange={({ target: { value } }) =>
+                setNew_password_confirm(value)
+              }
+              value={new_password_confirm}
+              type="password"
+              placeholder="Confirm new password"
+              autoComplete="off"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
 
         <Submitter loading={loading}>

@@ -2,18 +2,25 @@ import { useContext } from "react";
 import { PeopleContext } from "../context/PeopleContext";
 import { Form, Spinner, Col, Row, ModalFooter, Button } from "react-bootstrap";
 import SelectPerson from "./SelectPerson";
-import InputDocumentNumber from "./InputDocumentNumber";
 import SelectDocument from "./SelectDocument";
 import InputFullname from "./InputFullname";
 import SelectFaculties from "./SelectFaculties";
 import TextareaAsunt from "./TextareaAsunt";
-import InputColor from "./InputColor";
 import SmallCaption from "./SmallCaption";
 import { IoCalendarNumber } from "react-icons/io5";
 import { GiReturnArrow } from "react-icons/gi";
 
 const FormSchedulePeople = ({ closeModalScheduling }) => {
-  const { schedulePerson, loading } = useContext(PeopleContext);
+  const {
+    schedulePerson,
+    loading,
+    color,
+    setColor,
+    disabledAll,
+    disabledAfterAutocomplete,
+    doc,
+    setDoc,
+  } = useContext(PeopleContext);
 
   const doSchedulePerson = (evt) => {
     evt.preventDefault();
@@ -27,7 +34,17 @@ const FormSchedulePeople = ({ closeModalScheduling }) => {
           <SelectPerson />
         </Col>
         <Col md={6}>
-          <InputDocumentNumber />
+          <Form.FloatingLabel label="Cédula:">
+            <Form.Control
+              onChange={({ target: { value } }) => setDoc(value)}
+              value={doc}
+              type="number"
+              placeholder="Complete campo"
+              title="El número de documento debe ser de 8 a 10 dígitos"
+              disabled={disabledAll || disabledAfterAutocomplete}
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
         <Col md={6}>
           <SelectDocument />
@@ -42,7 +59,14 @@ const FormSchedulePeople = ({ closeModalScheduling }) => {
           <TextareaAsunt />
         </Col>
         <Col md={12}>
-          <InputColor />
+          <Col md={12}>
+            <Form.Control
+              onChange={({ target: { value } }) => setColor(value)}
+              type="color"
+              title="Choose your color"
+              value={color}
+            />
+          </Col>
         </Col>
 
         <SmallCaption />

@@ -4,7 +4,7 @@ const HeaderLogin = () => (
   <Container className="text-center mt-2">
     <Image src="/rsystfip.svg" width="72" height="57" alt="rsystfip" />
     <h1 className="h6 mt-3">RSYSTFIP</h1>
-    <Card className="m-5">
+    <Card className="border-0 m-5">
       <Card.Body>
         <Card.Text>
           Sóftware para agendamiento de visitas Rectoría -{" "}

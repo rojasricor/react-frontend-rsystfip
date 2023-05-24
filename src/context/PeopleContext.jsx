@@ -26,6 +26,8 @@ export const PeopleContextProvider = ({ children }) => {
   // Input components states
   const [doc, setDoc] = useState("");
   const [name, setName] = useState("");
+  const [emailContact, setEmailContact] = useState("");
+  const [telContact, setTelContact] = useState("");
   const [asunt, setAsunt] = useState("");
   const [color, setColor] = useState("#388cdc");
   const [date, setDate] = useState(formatTodaysDate());
@@ -48,6 +50,8 @@ export const PeopleContextProvider = ({ children }) => {
         name,
         doctype,
         doc,
+        emailContact: emailContact === "" ? null : emailContact,
+        telContact:  telContact === "" ? null : telContact,
         facultie,
         asunt,
         color,
@@ -65,8 +69,12 @@ export const PeopleContextProvider = ({ children }) => {
       setName("");
       setFacultie("unset");
       setAsunt("");
+      if (status === "scheduled") {
+        setEmailContact("");
+        setTelContact("");
+        closeModalScheduling();
+      }
       toast.success(ok, { position: "top-left" });
-      closeModalScheduling();
     } catch ({ message }) {
       toast.error(message);
     } finally {
@@ -169,6 +177,10 @@ export const PeopleContextProvider = ({ children }) => {
         setDoc,
         name,
         setName,
+        emailContact,
+        setEmailContact,
+        telContact,
+        setTelContact,
         asunt,
         setAsunt,
         color,

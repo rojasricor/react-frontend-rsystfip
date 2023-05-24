@@ -4,6 +4,8 @@ import { Form, Spinner, Col, Row, ModalFooter, Button } from "react-bootstrap";
 import SelectPerson from "./SelectPerson";
 import SelectDocument from "./SelectDocument";
 import InputFullname from "./InputFullname";
+import InputTelContact from "./InputTelContact";
+import InputEmailContact from "./InputEmailContact";
 import SelectFaculties from "./SelectFaculties";
 import TextareaAsunt from "./TextareaAsunt";
 import SmallCaption from "./SmallCaption";
@@ -51,6 +53,12 @@ const FormSchedulePeople = ({ closeModalScheduling }) => {
         </Col>
         <Col md={6}>
           <InputFullname />
+        </Col>
+        <Col md={6}>
+          <InputTelContact />
+        </Col>
+        <Col md={6}>
+          <InputEmailContact />
         </Col>
         <Col md={12}>
           <SelectFaculties />

@@ -17,6 +17,7 @@ const TextareaAsunt = () => {
         spellCheck="false"
         autoComplete="off"
         disabled={disabledAll}
+        style={{ height: "100px" }}
         required
       />
     </FloatingLabel>

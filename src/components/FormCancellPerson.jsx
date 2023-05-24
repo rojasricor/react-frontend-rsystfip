@@ -48,6 +48,7 @@ const FormCancellPerson = ({ closeModalCancell }) => {
               maxLength="100"
               spellCheck="false"
               autoComplete="off"
+              style={{ height: "100px" }}
               required
             />
           </Form.FloatingLabel>

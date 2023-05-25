@@ -11,6 +11,8 @@ import PageHome from "./pages/PageHome";
 import PageManageUsers from "./pages/PageManageUsers";
 import PageRegisterUsers from "./pages/PageRegisterUsers";
 import PageChangePassword from "./pages/PageChangePassword";
+import PageRecoveryPassword from "./pages/PageRecoveryPassword";
+import PageLinkRecoveryPsw from "./pages/PageLinkRecoveryPsw";
 import PageProgramming from "./pages/PageProgramming";
 import PageCalendar from "./pages/PageCalendar";
 import PageAddPeople from "./pages/PageAddPeople";
@@ -136,6 +138,16 @@ const App = () => {
                 <PageStcsScheduled />
               </ProtectedRoute>
             }
+          />
+
+          <Route
+            path="/forget/my/password"
+            element={<PageRecoveryPassword />}
+          />
+
+          <Route
+            path="/forget/my/password/:email/:resetToken"
+            element={<PageLinkRecoveryPsw />}
           />
 
           <Route path="*" element={<PageNotFound />} />

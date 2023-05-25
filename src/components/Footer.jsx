@@ -45,6 +45,15 @@ const Footer = () => (
               Acerca de
             </Nav.Link>
           </Nav.Item>
+
+          <Nav.Item>
+            <Link
+              to="/forget/my/password"
+              className="nav-link px-2 text-body-secondary"
+            >
+              Olvidó su contraseña?
+            </Link>
+          </Nav.Item>
         </Nav>
       </Col>
     </footer>

@@ -14,7 +14,8 @@ const UserRow = ({ user: { id, email } }) => {
 
     try {
       const { data } = await axios.delete(`${API_ROUTE}/user`, {
-        role,
+        headers: { "Content-Type": "application/json" },
+        data: { role },
       });
 
       if (!data) return toast.error("Error al eliminar");
@@ -32,7 +33,9 @@ const UserRow = ({ user: { id, email } }) => {
 
   return (
     <tr>
-      <td>{email}</td>
+      <td>
+        {email} {id === 3 && "(Admin)"}
+      </td>
       <td>
         <Link
           to={`/users/manage/password/${id}/change`}

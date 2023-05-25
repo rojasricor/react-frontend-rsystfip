@@ -25,7 +25,7 @@ const FetcherDataForChangePsw = () => {
 
   return (
     <Col md={4} className="mx-auto">
-      <Card className="py-2">
+      <Card className="py-4">
         <h1 className="h3 text-center">{user.email}</h1>
         <Card.Body>
           <FormChangePsw userId={user.id} />

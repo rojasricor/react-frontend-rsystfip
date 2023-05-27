@@ -42,7 +42,14 @@ const UserRow = ({ user: { id, email } }) => {
           className="btn btn-light m-1"
           title={`Change password for user ${email}`}
         >
-          <BiKey />
+          <BiKey className="mb-1" />
+        </Link>
+        <Link
+          to={`/users/manage/password/${id}/change`}
+          className="btn btn-light m-1"
+          title={`Change password for user ${email}`}
+        >
+          <FiEdit3 className="mb-1" />
         </Link>
         <Button
           onClick={() => deleteUser(id)}
@@ -50,7 +57,7 @@ const UserRow = ({ user: { id, email } }) => {
           className={"m-1".concat(id !== 3 ? "" : " disabled")}
           title={`Delete user ${email} (Requires confirmation)`}
         >
-          <BiTrash />
+          <BiTrash className="mb-1" />
         </Button>
       </td>
     </tr>

@@ -30,7 +30,6 @@ const RecoveryPassword = () => {
       }
 
       if (!tokenIsValid) {
-        console.log(resetToken);
         await axios.delete(`${API_ROUTE}/auth/delete/resetToken`, {
           headers: { "Content-Type": "application/json" },
           data: { resetToken },

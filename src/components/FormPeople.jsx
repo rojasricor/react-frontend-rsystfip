@@ -23,8 +23,8 @@ const FormPeople = ({ action }) => {
 
   const isEdit = action === "edit";
 
-  const doForPerson = (evt) => {
-    evt.preventDefault();
+  const doForPerson = (e) => {
+    e.preventDefault();
 
     if (isEdit) return editPerson();
 

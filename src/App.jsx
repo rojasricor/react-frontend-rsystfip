@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { AppContext } from "./context/AppContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedElement from "./components/ProtectedElement";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -25,23 +23,25 @@ import PageStcsScheduled from "./pages/PageStcsScheduled";
 import PageFaqs from "./pages/PageFaqs";
 import PageNotFound from "./pages/PageNotFound";
 import "./index.scss";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  const { user } = useContext(AppContext);
-  const avatar = user ? `/img/${user.role}/avatar.png` : "";
-  const permissions = user ? user.permissions : [];
+  const authState = useSelector(({ auth }) => auth);
+
+  const avatar = authState ? `/img/${authState.role}/avatar.png` : "";
+  const permissions = authState ? authState.permissions : [];
 
   return (
     <BrowserRouter>
       <Container fluid>
-        <ProtectedElement isAllowed={!!user}>
+        <ProtectedElement isAllowed={!!authState}>
           <NavBar avatar={avatar} permissions={permissions} />
         </ProtectedElement>
         <Routes>
           <Route index element={<PageAuth />} />
           <Route path="/auth/login" element={<PageAuth />} />
 
-          <Route element={<ProtectedRoute isAllowed={!!user} />}>
+          <Route element={<ProtectedRoute isAllowed={!!authState} />}>
             <Route
               path="/home/welcome"
               element={<PageHome permissions={permissions} />}
@@ -59,7 +59,7 @@ const App = () => {
           <Route
             element={
               <ProtectedRoute
-                isAllowed={!!user && permissions.includes("admin")}
+                isAllowed={!!authState && permissions.includes("admin")}
               />
             }
           >
@@ -75,7 +75,7 @@ const App = () => {
             path="/people/add"
             element={
               <ProtectedRoute
-                isAllowed={!!user && permissions.includes("add")}
+                isAllowed={!!authState && permissions.includes("add")}
                 navigateTo="/home/welcome"
               >
                 <PageAddPeople />
@@ -87,7 +87,7 @@ const App = () => {
             path="/people/schedule"
             element={
               <ProtectedRoute
-                isAllowed={!!user && permissions.includes("schedule")}
+                isAllowed={!!authState && permissions.includes("schedule")}
                 navigateTo="/home/welcome"
               >
                 <PageProgramming />
@@ -98,7 +98,10 @@ const App = () => {
           <Route
             path="/people/preview"
             element={
-              <ProtectedRoute isAllowed={!!user} navigateTo="/home/welcome">
+              <ProtectedRoute
+                isAllowed={!!authState}
+                navigateTo="/home/welcome"
+              >
                 <PageCalendar />
               </ProtectedRoute>
             }
@@ -108,7 +111,7 @@ const App = () => {
             path="/people/reports"
             element={
               <ProtectedRoute
-                isAllowed={!!user && permissions.includes("reports")}
+                isAllowed={!!authState && permissions.includes("reports")}
                 navigateTo="/home/welcome"
               >
                 <PageReportsPeople />
@@ -120,7 +123,7 @@ const App = () => {
             path="/people/statistics/daily"
             element={
               <ProtectedRoute
-                isAllowed={!!user && permissions.includes("statistics")}
+                isAllowed={!!authState && permissions.includes("statistics")}
                 navigateTo="/home/welcome"
               >
                 <PageStcsDaily />
@@ -132,7 +135,7 @@ const App = () => {
             path="/people/statistics/scheduled"
             element={
               <ProtectedRoute
-                isAllowed={!!user && permissions.includes("statistics")}
+                isAllowed={!!authState && permissions.includes("statistics")}
                 navigateTo="/home/welcome"
               >
                 <PageStcsScheduled />

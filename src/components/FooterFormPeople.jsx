@@ -10,8 +10,8 @@ const FooterFormPeople = ({ isAllowed }) => {
   const { loading } = useContext(PeopleContext);
   const navigate = useNavigate();
 
-  const returnToBack = (evt) => {
-    evt.preventDefault();
+  const returnToBack = (e) => {
+    e.preventDefault();
     navigate(-1);
   };
 

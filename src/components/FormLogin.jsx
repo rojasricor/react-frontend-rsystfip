@@ -1,43 +1,49 @@
-import { useContext, useState } from "react";
-import { AppContext } from "../context/AppContext";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_ROUTE } from "../constants";
 import { Row, Col, Form, Spinner } from "react-bootstrap";
 import Submitter from "./Submitter";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setAuthenticatedUser } from "../features/auth/authSlice";
 import { toast } from "react-toastify";
 import { IoMdLogIn } from "react-icons/io";
 
 const FormLogin = () => {
-  const {
-    setUser,
-    username,
-    setUsername,
-    password,
-    setPassword,
-    passwordVisible,
-    setPasswordVisible,
-  } = useContext(AppContext);
+  const dispatch = useDispatch();
 
+  const [formAuth, setFormAuth] = useState({
+    user: "",
+    password: "",
+  });
+
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  const doLogin = async (evt) => {
-    evt.preventDefault();
+  const handleChange = (e) => {
+    setFormAuth({
+      ...formAuth,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const doLogin = async (e) => {
+    e.preventDefault();
     setLoading(true);
 
     try {
       const {
         data: { auth, user, error },
       } = await axios.post(`${API_ROUTE}/auth`, {
-        username,
-        password,
+        username: formAuth.user,
+        password: formAuth.password,
       });
 
       if (error || !auth) return toast.warn(error);
 
-      setUser(user);
+      dispatch(setAuthenticatedUser(user));
       navigate("/home/welcome");
     } catch ({ message }) {
       toast.error(message);
@@ -52,8 +58,9 @@ const FormLogin = () => {
         <Col md={12}>
           <Form.FloatingLabel label="Nombre de usuario">
             <Form.Control
-              onChange={({ target: { value } }) => setUsername(value)}
-              value={username}
+              name="user"
+              onChange={handleChange}
+              value={formAuth.user}
               type="text"
               placeholder="Usuario"
               autoComplete="off"
@@ -66,8 +73,9 @@ const FormLogin = () => {
         <Col md={12}>
           <Form.FloatingLabel label="Contraseña">
             <Form.Control
-              onChange={({ target: { value } }) => setPassword(value)}
-              value={password}
+              name="password"
+              onChange={handleChange}
+              value={formAuth.password}
               type={passwordVisible ? "text" : "password"}
               placeholder="Contraseña"
               autoComplete="off"

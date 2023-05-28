@@ -14,8 +14,8 @@ const FormChangePswForget = () => {
 
   const { resetToken, email } = useParams();
 
-  const doChangePassword = async (evt) => {
-    evt.preventDefault();
+  const doChangePassword = async (e) => {
+    e.preventDefault();
     setLoading(true);
 
     try {

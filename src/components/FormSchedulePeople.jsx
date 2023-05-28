@@ -24,8 +24,8 @@ const FormSchedulePeople = ({ closeModalScheduling }) => {
     setDoc,
   } = useContext(PeopleContext);
 
-  const doSchedulePerson = (evt) => {
-    evt.preventDefault();
+  const doSchedulePerson = (e) => {
+    e.preventDefault();
     schedulePerson(closeModalScheduling);
   };
 

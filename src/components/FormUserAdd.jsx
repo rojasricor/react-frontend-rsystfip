@@ -24,8 +24,8 @@ const FormUserAdd = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const doCreateUser = async (evt) => {
-    evt.preventDefault();
+  const doCreateUser = async (e) => {
+    e.preventDefault();
     setLoading(true);
 
     try {

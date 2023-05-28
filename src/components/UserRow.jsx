@@ -36,6 +36,7 @@ const UserRow = ({ user: { id, email } }) => {
       <td>
         {email} {id === 3 && "(Admin)"}
       </td>
+
       <td>
         <Link
           to={`/users/manage/password/${id}/change`}
@@ -44,13 +45,7 @@ const UserRow = ({ user: { id, email } }) => {
         >
           <BiKey className="mb-1" />
         </Link>
-        <Link
-          to={`/users/manage/password/${id}/change`}
-          className="btn btn-light m-1"
-          title={`Change password for user ${email}`}
-        >
-          <FiEdit3 className="mb-1" />
-        </Link>
+
         <Button
           onClick={() => deleteUser(id)}
           variant="danger"

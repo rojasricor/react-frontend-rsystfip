@@ -1,20 +1,22 @@
-import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
-import { Navigate, NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Dropdown, Image, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { resetUserAuthenticated } from "../features/auth/authSlice";
 import { BiLogOutCircle } from "react-icons/bi";
 
 const NavLogoutDropdown = ({ avatar }) => {
-  const { user, setUser, setUsername, setPassword } = useContext(AppContext);
+  const authState = useSelector(({ auth }) => auth);
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const logout = () => {
-    if (!confirm(`${user.name} estás seguro(a)que deseas cerrar sesión?`))
+    if (!confirm(`${authState.name} estás seguro(a)que deseas cerrar sesión?`))
       return;
 
-    setUser(null);
-    setUsername("");
-    setPassword("");
-    <Navigate to="/auth/login" replace />;
+    dispatch(resetUserAuthenticated());
+    navigate("/auth/login");
   };
 
   return (
@@ -31,7 +33,7 @@ const NavLogoutDropdown = ({ avatar }) => {
           FAQs
         </NavLink>
         <NavLink
-          to={`/users/manage/password/${user.id}/change`}
+          to={`/users/manage/password/${authState.id}/change`}
           className="dropdown-item"
         >
           Cambiar contraseña

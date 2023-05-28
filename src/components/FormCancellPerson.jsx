@@ -11,8 +11,8 @@ const FormCancellPerson = ({ closeModalCancell }) => {
 
   const [cancelledAsunt, setCancelledAsunt] = useState("");
 
-  const cancellPerson = async (evt) => {
-    evt.preventDefault();
+  const cancellPerson = async (e) => {
+    e.preventDefault();
     setLoading(true);
 
     try {

@@ -12,8 +12,8 @@ const FormChangePsw = ({ userId }) => {
   const [new_password_confirm, setNew_password_confirm] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const doChangePassword = async (evt) => {
-    evt.preventDefault();
+  const doChangePassword = async (e) => {
+    e.preventDefault();
     setLoading(true);
 
     try {

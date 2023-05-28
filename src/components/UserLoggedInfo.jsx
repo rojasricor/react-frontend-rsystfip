@@ -1,14 +1,13 @@
-import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
+import { useSelector } from "react-redux";
 
 const UserLoggedInfo = () => {
-  const { user } = useContext(AppContext);
+  const authState = useSelector(({ auth }) => auth);
 
   return (
     <h1 className="h3">
-      {`${user.role === "secretaria" ? "Bienvenida" : "Bienvenido"} ${
-        user.role
-      }: ${user.name}`}
+      {`${authState.role === "secretaria" ? "Bienvenida" : "Bienvenido"} ${
+        authState.role
+      }: ${authState.name}`}
     </h1>
   );
 };

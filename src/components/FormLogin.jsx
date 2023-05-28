@@ -12,7 +12,7 @@ import { IoMdLogIn } from "react-icons/io";
 const FormLogin = () => {
   const dispatch = useDispatch();
 
-  const [formAuth, setFormAuth] = useState({
+  const [formData, setFormData] = useState({
     user: "",
     password: "",
   });
@@ -23,8 +23,8 @@ const FormLogin = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormAuth({
-      ...formAuth,
+    setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
     });
   };
@@ -37,8 +37,8 @@ const FormLogin = () => {
       const {
         data: { auth, user, error },
       } = await axios.post(`${API_ROUTE}/auth`, {
-        username: formAuth.user,
-        password: formAuth.password,
+        username: formData.user,
+        password: formData.password,
       });
 
       if (error || !auth) return toast.warn(error);
@@ -60,7 +60,7 @@ const FormLogin = () => {
             <Form.Control
               name="user"
               onChange={handleChange}
-              value={formAuth.user}
+              value={formData.user}
               type="text"
               placeholder="Usuario"
               autoComplete="off"
@@ -75,7 +75,7 @@ const FormLogin = () => {
             <Form.Control
               name="password"
               onChange={handleChange}
-              value={formAuth.password}
+              value={formData.password}
               type={passwordVisible ? "text" : "password"}
               placeholder="Contraseña"
               autoComplete="off"

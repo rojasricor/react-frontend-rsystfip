@@ -3,7 +3,6 @@ import FormSchedulePeople from "./FormSchedulePeople";
 
 const ModalSchedulePeopleForm = ({
   stateModalScheduling,
-  showModalScheduling,
   closeModalScheduling,
 }) => (
   <Modal
@@ -17,10 +16,7 @@ const ModalSchedulePeopleForm = ({
     </Modal.Header>
 
     <Modal.Body>
-      <FormSchedulePeople
-        showModalScheduling={showModalScheduling}
-        closeModalScheduling={closeModalScheduling}
-      />
+      <FormSchedulePeople closeModalScheduling={closeModalScheduling} />
     </Modal.Body>
   </Modal>
 );

@@ -1,10 +1,12 @@
-import { useState, useEffect, startTransition } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../constants";
 import { Spinner, FormControl, Button, ButtonGroup } from "react-bootstrap";
 import TablePeople from "./TablePeople";
+import { setPeople } from "../features/people/peopleSlice";
+import { useDispatch } from "react-redux";
 import { FaSyncAlt, FaTimes } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
 import { ImUserPlus } from "react-icons/im";
@@ -12,15 +14,14 @@ import { ImUserPlus } from "react-icons/im";
 const Searcher = () => {
   const [loading, setLoading] = useState(0);
   const [peopleFiltered, setPeopleFiltered] = useState([]);
-  const [people, setPeople] = useState([]);
+
+  const dispatch = useDispatch();
 
   const getPeople = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/people`);
-      startTransition(() => {
-        setPeople(data);
-        setPeopleFiltered(data);
-      });
+      dispatch(setPeople(data));
+      setPeopleFiltered(data);
     } catch ({ message }) {
       setLoading(2);
       toast.error(message);
@@ -33,11 +34,12 @@ const Searcher = () => {
     getPeople();
   }, []);
 
-  const filterPeople = ({ target: { value } }) => {
-    const query = value.toLowerCase();
-    startTransition(() =>
-      setPeopleFiltered(
-        people.filter(
+  const filterPeople = (e) => {
+    const query = e.target.value.toLowerCase();
+
+    dispatch(
+      setPeople(
+        peopleFiltered.filter(
           ({ name, document_number }) =>
             name.toLowerCase().startsWith(query) ||
             document_number.startsWith(query)
@@ -56,16 +58,13 @@ const Searcher = () => {
           placeholder="Buscar"
           autoFocus
         />
-        <Button
-          onClick={() => setPeopleFiltered(people)}
-          title="Refrescar datos"
-        >
+        <Button onClick={() => getPeople()} title="Refrescar datos">
           {loading === 0 ? (
             <Spinner size="sm" />
           ) : loading === 1 ? (
-            <FaSyncAlt />
+            <FaSyncAlt className="mb-1" />
           ) : (
-            <FaTimes className="text-danger" />
+            <FaTimes className="text-danger mb-1" />
           )}
         </Button>
         <Link
@@ -73,17 +72,17 @@ const Searcher = () => {
           className="btn btn-primary"
           title="Agendamiento por día"
         >
-          <ImUserPlus />
+          <ImUserPlus className="mb-1" />
         </Link>
         <Link
           to="/people/schedule"
           className="btn btn-primary"
           title="Agendamiento programado"
         >
-          <IoCalendarNumber />
+          <IoCalendarNumber className="mb-1" />
         </Link>
       </ButtonGroup>
-      <TablePeople peopleFiltered={peopleFiltered} />
+      <TablePeople />
     </>
   );
 };

@@ -8,17 +8,28 @@ import { FaUserPlus } from "react-icons/fa";
 
 const FormUserAdd = () => {
   const { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } = Cst;
+  const initialState = {
+    role: UNSET_STATUS,
+    name: "",
+    lastname: "",
+    docType: UNSET_STATUS,
+    doc: "",
+    email: "",
+    tel: "",
+    password: "",
+    passwordConfirmation: "",
+  };
+
   const [documents, setDocuments] = useState([]);
-  const [role, setRole] = useState(UNSET_STATUS);
-  const [name, setName] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [docType, setDocType] = useState(UNSET_STATUS);
-  const [doc, setDoc] = useState("");
-  const [email, setEmail] = useState("");
-  const [tel, setTel] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState(initialState);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const doCreateUser = async (e) => {
     e.preventDefault();
@@ -28,28 +39,20 @@ const FormUserAdd = () => {
       const {
         data: { error, ok },
       } = await axios.post(`${API_ROUTE}/user`, {
-        role,
-        name,
-        lastname,
-        docType,
-        doc,
-        email,
-        tel,
-        password,
-        passwordConfirmation,
+        role: formData.role,
+        name: formData.name,
+        lastname: formData.lastname,
+        docType: formData.docType,
+        doc: formData.doc,
+        email: formData.email,
+        tel: formData.tel,
+        password: formData.password,
+        passwordConfirmation: formData.passwordConfirmation,
       });
 
       if (error || !ok) return toast.warn(error);
 
-      setRole(UNSET_STATUS);
-      setName("");
-      setLastname("");
-      setDocType(UNSET_STATUS);
-      setDoc("");
-      setEmail("");
-      setTel("");
-      setPassword("");
-      setPasswordConfirmation("");
+      setFormData(initialState);
       toast.success(ok, { position: "top-left" });
     } catch ({ message }) {
       toast.error(message);
@@ -77,8 +80,9 @@ const FormUserAdd = () => {
         <Col md={4}>
           <Form.FloatingLabel label="Rol usuario:">
             <Form.Select
-              onChange={({ target: { value } }) => setRole(value)}
-              value={role}
+              name="role"
+              onChange={handleChange}
+              value={formData.role}
               required
             >
               <option value={UNSET_STATUS} disabled>
@@ -93,8 +97,9 @@ const FormUserAdd = () => {
         <Col md={4}>
           <Form.FloatingLabel label="Nombres:">
             <Form.Control
-              onChange={({ target: { value } }) => setName(value)}
-              value={name}
+              name="name"
+              onChange={handleChange}
+              value={formData.name}
               type="text"
               placeholder="Name"
               maxLength="25"
@@ -108,8 +113,9 @@ const FormUserAdd = () => {
         <Col md={4}>
           <Form.FloatingLabel label="Apellidos:">
             <Form.Control
-              onChange={({ target: { value } }) => setLastname(value)}
-              value={lastname}
+              name="lastname"
+              onChange={handleChange}
+              value={formData.lastname}
               type="text"
               placeholder="Lastname"
               maxLength="25"
@@ -123,8 +129,9 @@ const FormUserAdd = () => {
         <Col md={8}>
           <Form.FloatingLabel label="Tipo de Documento:">
             <Form.Select
-              onChange={({ target: { value } }) => setDocType(value)}
-              value={docType}
+              name="docType"
+              onChange={handleChange}
+              value={formData.docType}
               required
             >
               <option value={UNSET_STATUS} disabled>
@@ -142,8 +149,9 @@ const FormUserAdd = () => {
         <Col md={4}>
           <Form.FloatingLabel label="Documento:">
             <Form.Control
-              onChange={({ target: { value } }) => setDoc(value)}
-              value={doc}
+              name="doc"
+              onChange={handleChange}
+              value={formData.doc}
               type="number"
               placeholder="Document"
               required
@@ -154,8 +162,9 @@ const FormUserAdd = () => {
         <Col md={8}>
           <Form.FloatingLabel label="Correo institucional:">
             <Form.Control
-              onChange={({ target: { value } }) => setEmail(value)}
-              value={email}
+              name="email"
+              onChange={handleChange}
+              value={formData.email}
               type="email"
               placeholder="Email"
               spellCheck="false"
@@ -168,8 +177,9 @@ const FormUserAdd = () => {
         <Col md={4}>
           <Form.FloatingLabel label="Celular:">
             <Form.Control
-              onChange={({ target: { value } }) => setTel(value)}
-              value={tel}
+              name="tel"
+              onChange={handleChange}
+              value={formData.tel}
               type="number"
               placeholder="Phone"
               required
@@ -180,8 +190,9 @@ const FormUserAdd = () => {
         <Col md={6}>
           <Form.FloatingLabel label="Contraseña:">
             <Form.Control
-              onChange={({ target: { value } }) => setPassword(value)}
-              value={password}
+              name="password"
+              onChange={handleChange}
+              value={formData.password}
               type="password"
               placeholder="Password"
               autoComplete="off"
@@ -193,10 +204,9 @@ const FormUserAdd = () => {
         <Col md={6}>
           <Form.FloatingLabel label="Confirmar contraseña:">
             <Form.Control
-              onChange={({ target: { value } }) =>
-                setPasswordConfirmation(value)
-              }
-              value={passwordConfirmation}
+              name="passwordConfirmation"
+              onChange={handleChange}
+              value={formData.passwordConfirmation}
               type="password"
               placeholder="Confirm password"
               autoComplete="off"

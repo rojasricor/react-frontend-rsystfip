@@ -1,5 +1,4 @@
-import FilterChart from "./FilterChart";
-import { Col, FloatingLabel, FormControl } from "react-bootstrap";
+import { Col, FloatingLabel, FormControl, FormSelect } from "react-bootstrap";
 
 const DaterStatistics = ({ setStart, start, setEnd, end, setChartType }) => (
   <>
@@ -24,7 +23,15 @@ const DaterStatistics = ({ setStart, start, setEnd, end, setChartType }) => (
     </Col>
 
     <Col md={2}>
-      <FilterChart setChartType={setChartType} />
+      <FloatingLabel label="Gráfica:">
+        <FormSelect onChange={({ target: { value } }) => setChartType(value)}>
+          <option value="bar">Barra Vertical</option>
+          <option value="polarArea">Polar Area</option>
+          <option value="line">Línea</option>
+          <option value="pie">Torta</option>
+          <option value="doughnut">Doughnut</option>
+        </FormSelect>
+      </FloatingLabel>
     </Col>
   </>
 );

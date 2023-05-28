@@ -4,8 +4,6 @@ import { Form, Row, Col } from "react-bootstrap";
 import SelectPerson from "./SelectPerson";
 import SelectDocument from "./SelectDocument";
 import SelectFaculties from "./SelectFaculties";
-import InputFullname from "./InputFullname";
-import TextareaAsunt from "./TextareaAsunt";
 import FooterFormPeople from "./FooterFormPeople";
 import Notify from "./Notify";
 import SmallCaption from "./SmallCaption";
@@ -19,6 +17,10 @@ const FormPeople = ({ action }) => {
     disabledAfterAutocomplete,
     doc,
     setDoc,
+    name,
+    setName,
+    asunt,
+    setAsunt,
   } = useContext(PeopleContext);
 
   const isEdit = action === "edit";
@@ -55,13 +57,40 @@ const FormPeople = ({ action }) => {
           <SelectDocument />
         </Col>
         <Col md={6}>
-          <InputFullname />
+          <Form.FloatingLabel label="Nombres y Apellidos:">
+            <Form.Control
+              onChange={({ target: { value } }) => setName(value)}
+              value={name}
+              type="text"
+              placeholder="Complete campo"
+              title="Ingrese nombres y apellidos"
+              maxLength="35"
+              autoComplete="off"
+              spellCheck="false"
+              disabled={disabledAll || disabledAfterAutocomplete}
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
         <Col md={12}>
           <SelectFaculties />
         </Col>
         <Col md={12}>
-          <TextareaAsunt />
+          <Form.FloatingLabel label="Asunto:">
+            <Form.Control
+              as="textarea"
+              onChange={({ target: { value } }) => setAsunt(value)}
+              value={asunt}
+              placeholder="Complete campo"
+              minLength="5"
+              maxLength="100"
+              spellCheck="false"
+              autoComplete="off"
+              disabled={disabledAll}
+              style={{ height: "100px" }}
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
         <Col md={12}>
           <FooterFormPeople isAllowed={isEdit} />

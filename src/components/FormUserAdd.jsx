@@ -3,9 +3,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import * as Cst from "../constants";
 import { Row, Col, Form, Spinner } from "react-bootstrap";
-import SelectBasic from "./SelectBasic";
-import InputText from "./InputText";
-import InputNumber from "./InputNumber";
 import Submitter from "./Submitter";
 import { FaUserPlus } from "react-icons/fa";
 
@@ -78,55 +75,80 @@ const FormUserAdd = () => {
     <Form onSubmit={doCreateUser}>
       <Row className="g-2">
         <Col md={4}>
-          <SelectBasic
-            setData={setRole}
-            inputValue={role}
-            labelInfo="Rol usuario:"
-          >
-            <option value="2">Rector</option>
-            <option value="3">Secretaria</option>
-          </SelectBasic>
+          <Form.FloatingLabel label="Rol usuario:">
+            <Form.Select
+              onChange={({ target: { value } }) => setRole(value)}
+              value={role}
+              required
+            >
+              <option value={UNSET_STATUS} disabled>
+                No seleccionado
+              </option>
+              <option value="2">Rector</option>
+              <option value="3">Secretaria</option>
+            </Form.Select>
+          </Form.FloatingLabel>
         </Col>
 
         <Col md={4}>
-          <InputText
-            setText={setName}
-            inputValue={name}
-            placeholder="Name"
-            labelInfo="Nombres:"
-          />
+          <Form.FloatingLabel label="Nombres:">
+            <Form.Control
+              onChange={({ target: { value } }) => setName(value)}
+              value={name}
+              type="text"
+              placeholder="Name"
+              maxLength="25"
+              spellCheck="false"
+              autoComplete="off"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
 
         <Col md={4}>
-          <InputText
-            setText={setLastname}
-            inputValue={lastname}
-            placeholder="Lastname"
-            labelInfo="Apellidos:"
-          />
+          <Form.FloatingLabel label="Apellidos:">
+            <Form.Control
+              onChange={({ target: { value } }) => setLastname(value)}
+              value={lastname}
+              type="text"
+              placeholder="Lastname"
+              maxLength="25"
+              spellCheck="false"
+              autoComplete="off"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
 
         <Col md={8}>
-          <SelectBasic
-            setData={setDocType}
-            inputValue={docType}
-            labelInfo="Tipo de Documento:"
-          >
-            {documents.map(({ id, description }, index) => (
-              <option key={index} value={id}>
-                {description}
+          <Form.FloatingLabel label="Tipo de Documento:">
+            <Form.Select
+              onChange={({ target: { value } }) => setDocType(value)}
+              value={docType}
+              required
+            >
+              <option value={UNSET_STATUS} disabled>
+                No seleccionado
               </option>
-            ))}
-          </SelectBasic>
+              {documents.map(({ id, description }, index) => (
+                <option key={index} value={id}>
+                  {description}
+                </option>
+              ))}
+            </Form.Select>
+          </Form.FloatingLabel>
         </Col>
 
         <Col md={4}>
-          <InputNumber
-            setNumber={setDoc}
-            inputValue={doc}
-            placeholder="Document"
-            labelInfo="Documento:"
-          />
+          <Form.FloatingLabel label="Documento:">
+            <Form.Control
+              onChange={({ target: { value } }) => setDoc(value)}
+              value={doc}
+              type="number"
+              placeholder="Document"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
 
         <Col md={8}>
@@ -144,12 +166,15 @@ const FormUserAdd = () => {
         </Col>
 
         <Col md={4}>
-          <InputNumber
-            setNumber={setTel}
-            inputValue={tel}
-            placeholder="Phone"
-            labelInfo="Número de celular:"
-          />
+          <Form.FloatingLabel label="Celular:">
+            <Form.Control
+              onChange={({ target: { value } }) => setTel(value)}
+              value={tel}
+              type="number"
+              placeholder="Phone"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
 
         <Col md={6}>

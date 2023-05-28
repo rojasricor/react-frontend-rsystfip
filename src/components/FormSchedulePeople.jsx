@@ -3,10 +3,7 @@ import { PeopleContext } from "../context/PeopleContext";
 import { Form, Spinner, Col, Row, ModalFooter, Button } from "react-bootstrap";
 import SelectPerson from "./SelectPerson";
 import SelectDocument from "./SelectDocument";
-import InputFullname from "./InputFullname";
-import InputTelContact from "./InputTelContact";
 import SelectFaculties from "./SelectFaculties";
-import TextareaAsunt from "./TextareaAsunt";
 import SmallCaption from "./SmallCaption";
 import { IoCalendarNumber } from "react-icons/io5";
 import { GiReturnArrow } from "react-icons/gi";
@@ -23,6 +20,12 @@ const FormSchedulePeople = ({ closeModalScheduling }) => {
     setDoc,
     emailContact,
     setEmailContact,
+    telContact,
+    setTelContact,
+    name,
+    setName,
+    asunt,
+    setAsunt,
   } = useContext(PeopleContext);
 
   const doSchedulePerson = (e) => {
@@ -53,10 +56,33 @@ const FormSchedulePeople = ({ closeModalScheduling }) => {
           <SelectDocument />
         </Col>
         <Col md={6}>
-          <InputFullname />
+          <Form.FloatingLabel label="Nombres y Apellidos:">
+            <Form.Control
+              onChange={({ target: { value } }) => setName(value)}
+              value={name}
+              type="text"
+              placeholder="Complete campo"
+              title="Ingrese nombres y apellidos"
+              maxLength="35"
+              autoComplete="off"
+              spellCheck="false"
+              disabled={disabledAll || disabledAfterAutocomplete}
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
         <Col md={6}>
-          <InputTelContact />
+          <Form.FloatingLabel label="Teléfono de contacto:">
+            <Form.Control
+              onChange={({ target: { value } }) => setTelContact(value)}
+              value={telContact}
+              type="number"
+              placeholder="Complete campo"
+              title="Ingrese el teléfono de contacto, debe tener 10 dígitos"
+              disabled={disabledAll || disabledAfterAutocomplete}
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
         <Col md={6}>
           <Form.FloatingLabel label="Email de contacto:">
@@ -77,7 +103,21 @@ const FormSchedulePeople = ({ closeModalScheduling }) => {
           <SelectFaculties />
         </Col>
         <Col md={12}>
-          <TextareaAsunt />
+          <Form.FloatingLabel label="Asunto:">
+            <Form.Control
+              as="textarea"
+              onChange={({ target: { value } }) => setAsunt(value)}
+              value={asunt}
+              placeholder="Complete campo"
+              minLength="5"
+              maxLength="100"
+              spellCheck="false"
+              autoComplete="off"
+              disabled={disabledAll}
+              style={{ height: "100px" }}
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
         <Col md={12}>
           <Col md={12}>

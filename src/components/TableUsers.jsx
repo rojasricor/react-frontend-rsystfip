@@ -1,17 +1,21 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { API_ROUTE } from "../constants";
 import { Table } from "react-bootstrap";
 import UserRow from "./UserRow";
 import axios from "axios";
+import { setUsers } from "../features/admin/adminSlice";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
 
 const TableUsers = () => {
-  const [users, setUsers] = useState([]);
+  const dispatch = useDispatch();
+
+  const adminState = useSelector(({ admin }) => admin);
 
   const getUsers = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/users`);
-      setUsers(data);
+      dispatch(setUsers(data));
     } catch ({ message }) {
       toast.error(message);
     }
@@ -31,7 +35,7 @@ const TableUsers = () => {
         </tr>
       </thead>
       <tbody>
-        {users.map((user, index) => (
+        {adminState.map((user, index) => (
           <UserRow key={index} user={user} />
         ))}
       </tbody>

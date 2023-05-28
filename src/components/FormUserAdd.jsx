@@ -5,6 +5,8 @@ import * as Cst from "../constants";
 import { Row, Col, Form, Spinner } from "react-bootstrap";
 import Submitter from "./Submitter";
 import { FaUserPlus } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { setDocuments } from "../features/resources/resourcesSlice";
 
 const FormUserAdd = () => {
   const { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } = Cst;
@@ -20,9 +22,12 @@ const FormUserAdd = () => {
     passwordConfirmation: "",
   };
 
-  const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState(initialState);
+
+  const dispatch = useDispatch();
+
+  const documentsState = useSelector(({ resources }) => resources.documents);
 
   const handleChange = (e) => {
     setFormData({
@@ -64,7 +69,7 @@ const FormUserAdd = () => {
   const getDocuments = async () => {
     try {
       const { data } = await axios(`${RESOURCE_ROUTE}?resource=documents`);
-      setDocuments(data);
+      dispatch(setDocuments(data));
     } catch ({ message }) {
       toast.error(message);
     }
@@ -137,7 +142,7 @@ const FormUserAdd = () => {
               <option value={UNSET_STATUS} disabled>
                 No seleccionado
               </option>
-              {documents.map(({ id, description }, index) => (
+              {documentsState.map(({ id, description }, index) => (
                 <option key={index} value={id}>
                   {description}
                 </option>

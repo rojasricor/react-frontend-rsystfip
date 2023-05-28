@@ -1,19 +1,20 @@
 import Downloader from "./Downloader";
 import pdfMake from "pdfmake/build/pdfmake.min";
 import * as pdfConf from "../config/pdfmake.config";
+import { useSelector } from "react-redux";
 
 const PdfCreator = ({
   image,
-  startDate,
-  endDate,
+  queryData,
   people,
-  reportsFiltered,
   reportsCountOnRange,
   reportsCountAlltime,
 }) => {
+  const reportsState = useSelector(({ reports }) => reports);
+
   const pdf = pdfMake.createPdf({
     pageMargins: [28, 90],
-    header: pdfConf.createHeader(image, startDate, endDate),
+    header: pdfConf.createHeader(image, queryData.startDate, queryData.endDate),
     footer: pdfConf.footer,
     content: [
       {
@@ -54,13 +55,13 @@ const PdfCreator = ({
           }
         : {},
       {
-        text: `Reportes entre el rango de fecha: (${reportsFiltered.length})`,
+        text: `Reportes entre el rango de fecha: (${reportsState.length})`,
         style: "header",
         alignment: "center",
         marginBottom: 30,
         pageBreak: "before",
       },
-      reportsFiltered.length !== 0
+      reportsState.length !== 0
         ? {
             layout: "lightHorizontalLines",
             alignment: "center",
@@ -78,7 +79,7 @@ const PdfCreator = ({
                   { text: "Agendamiento programado", style: "tableHeader" },
                   { text: "Cetegoría persona", style: "tableHeader" },
                 ],
-                ...reportsFiltered.map(
+                ...reportsState.map(
                   ({ name, date, scheduling_count, daily_count, category }) => [
                     name,
                     date,
@@ -96,7 +97,7 @@ const PdfCreator = ({
         style: "header",
         alignment: "center",
         marginBottom: 30,
-        pageBreak: reportsFiltered.length !== 0 ? "before" : false,
+        pageBreak: reportsState.length !== 0 ? "before" : false,
       },
       {
         columns: [

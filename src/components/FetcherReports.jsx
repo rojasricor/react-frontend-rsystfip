@@ -4,7 +4,7 @@ import PdfCreator from "./PdfCreator";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
+const FetcherReports = ({ queryData }) => {
   const [pngbase64, setPngbase64] = useState("");
   const [people, setPeople] = useState([]);
   const [reportsCountOnRange, setReportsCountOnRange] = useState([]);
@@ -22,7 +22,7 @@ const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
   const getReportsCountOnRange = async () => {
     try {
       const { data } = await axios(
-        `${API_ROUTE}/reports/count?start=${startDate}&end=${endDate}`
+        `${API_ROUTE}/reports/count?start=${queryData.startDate}&end=${queryData.endDate}`
       );
       setReportsCountOnRange(data);
     } catch ({ message }) {
@@ -60,15 +60,13 @@ const FetcherReports = ({ startDate, endDate, reportsFiltered }) => {
 
   useEffect(() => {
     getReportsCountOnRange();
-  }, [startDate, endDate]);
+  }, [queryData.startDate, queryData.endDate]);
 
   return (
     <PdfCreator
       image={pngbase64}
-      startDate={startDate}
-      endDate={endDate}
+      queryData={queryData}
       people={people}
-      reportsFiltered={reportsFiltered}
       reportsCountOnRange={reportsCountOnRange}
       reportsCountAlltime={reportsCountAlltime}
     />

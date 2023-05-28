@@ -1,17 +1,23 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import CancelledRow from "./CancelledRow";
 import { API_ROUTE } from "../constants";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { setCancelledPeople } from "../features/cancelledPeople/cancelledPeopleSlice";
 
 const TableCancelled = () => {
-  const [people, setPeople] = useState([]);
+  const dispatch = useDispatch();
+
+  const cancelledPeopleState = useSelector(
+    ({ cancelledPeople }) => cancelledPeople
+  );
 
   const getCancelled = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/cancelled`);
-      setPeople(data);
+      dispatch(setCancelledPeople(data));
     } catch ({ message }) {
       toast.error(message);
     }
@@ -35,7 +41,7 @@ const TableCancelled = () => {
         </tr>
       </thead>
       <tbody>
-        {people.map((person, index) => (
+        {cancelledPeopleState.map((person, index) => (
           <CancelledRow key={index} index={index} person={person} />
         ))}
       </tbody>

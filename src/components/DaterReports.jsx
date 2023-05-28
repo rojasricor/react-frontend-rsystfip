@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
 import FetcherReports from "./FetcherReports";
 import {
@@ -10,21 +10,18 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategories } from "../features/resources/resourcesSlice";
 
-const DaterReports = ({
-  setStartDate,
-  startDate,
-  setEndDate,
-  endDate,
-  setCategory,
-  reportsFiltered,
-}) => {
-  const [categories, setCategories] = useState([]);
+const DaterReports = ({ handleChange, queryData }) => {
+  const dispatch = useDispatch();
+
+  const categoriesState = useSelector(({ resources }) => resources.categories);
 
   const getCategories = async () => {
     try {
       const { data } = await axios(`${RESOURCE_ROUTE}?resource=categories`);
-      setCategories(data);
+      dispatch(setCategories(data));
     } catch ({ message }) {
       toast.error(message);
     }
@@ -39,9 +36,10 @@ const DaterReports = ({
       <Col md={2}>
         <FloatingLabel label="Desde:">
           <FormControl
-            onChange={({ target: { value } }) => setStartDate(value)}
+            name="startDate"
+            onChange={handleChange}
             type="date"
-            value={startDate}
+            value={queryData.startDate}
           />
         </FloatingLabel>
       </Col>
@@ -49,18 +47,23 @@ const DaterReports = ({
       <Col md={2}>
         <FloatingLabel label="Hasta:">
           <FormControl
-            onChange={({ target: { value } }) => setEndDate(value)}
+            name="endDate"
+            onChange={handleChange}
             type="date"
-            value={endDate}
+            value={queryData.endDate}
           />
         </FloatingLabel>
       </Col>
 
       <Col md={2}>
         <FloatingLabel label="Persona:">
-          <FormSelect onChange={({ target: { value } }) => setCategory(value)}>
-            <option value={UNSET_STATUS}>No seleccionado</option>
-            {categories.map(({ id, category }, index) => (
+          <FormSelect
+            name="category"
+            onChange={handleChange}
+            value={queryData.category}
+          >
+            <option value={UNSET_STATUS}>Todos</option>
+            {categoriesState.map(({ id, category }, index) => (
               <option key={index} value={id}>
                 {category}
               </option>
@@ -70,11 +73,7 @@ const DaterReports = ({
       </Col>
 
       <Col md={2}>
-        <FetcherReports
-          startDate={startDate}
-          endDate={endDate}
-          reportsFiltered={reportsFiltered}
-        />
+        <FetcherReports queryData={queryData} />
       </Col>
     </Row>
   );

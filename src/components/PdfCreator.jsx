@@ -5,16 +5,20 @@ import { useSelector } from "react-redux";
 
 const PdfCreator = ({
   image,
-  queryData,
   people,
   reportsCountOnRange,
   reportsCountAlltime,
 }) => {
-  const reportsState = useSelector(({ reports }) => reports);
+  const reportsState = useSelector(({ reports }) => reports.reports);
+  const queryDataState = useSelector(({ reports }) => reports.queryData);
 
   const pdf = pdfMake.createPdf({
     pageMargins: [28, 90],
-    header: pdfConf.createHeader(image, queryData.startDate, queryData.endDate),
+    header: pdfConf.createHeader(
+      image,
+      queryDataState.startDate,
+      queryDataState.endDate
+    ),
     footer: pdfConf.footer,
     content: [
       {

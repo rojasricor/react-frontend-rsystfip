@@ -2,14 +2,15 @@ import { Table } from "react-bootstrap";
 import ReportRow from "./ReportRow";
 import { useSelector } from "react-redux";
 
-const TableReports = ({ queryData }) => {
-  const reportsState = useSelector(({ reports }) => reports);
+const TableReports = () => {
+  const reportsState = useSelector(({ reports }) => reports.reports);
+  const queryDataState = useSelector(({ reports }) => reports.queryData);
 
   return (
     <Table hover striped size="sm" borderless className="text-center">
       <caption>
-        Data about people schedule between {queryData.startDate} and{" "}
-        {queryData.endDate}.
+        Data about people schedule between {queryDataState.startDate} and{" "}
+        {queryDataState.endDate}.
       </caption>
       <thead>
         <tr>

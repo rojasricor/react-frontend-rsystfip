@@ -1,32 +1,36 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../constants";
 import { Spinner, FormControl, Button, ButtonGroup } from "react-bootstrap";
 import TablePeople from "./TablePeople";
-import { setPeople } from "../features/people/peopleSlice";
-import { useDispatch } from "react-redux";
+import {
+  setPeople,
+  setPeopleOrigen,
+  setIsLoading,
+} from "../features/people/peopleSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { FaSyncAlt, FaTimes } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
 import { ImUserPlus } from "react-icons/im";
 
 const Searcher = () => {
-  const [loading, setLoading] = useState(0);
-  const [peopleFiltered, setPeopleFiltered] = useState([]);
-
   const dispatch = useDispatch();
+
+  const peopleOrigenState = useSelector(({ people }) => people.peopleOrigen);
+  const isLoadingState = useSelector(({ people }) => people.isLoading);
 
   const getPeople = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/people`);
       dispatch(setPeople(data));
-      setPeopleFiltered(data);
+      dispatch(setPeopleOrigen(data));
     } catch ({ message }) {
-      setLoading(2);
+      dispatch(setIsLoading(2));
       toast.error(message);
     } finally {
-      setLoading(1);
+      dispatch(setIsLoading(1));
     }
   };
 
@@ -39,7 +43,7 @@ const Searcher = () => {
 
     dispatch(
       setPeople(
-        peopleFiltered.filter(
+        peopleOrigenState.filter(
           ({ name, document_number }) =>
             name.toLowerCase().startsWith(query) ||
             document_number.startsWith(query)
@@ -59,9 +63,9 @@ const Searcher = () => {
           autoFocus
         />
         <Button onClick={() => getPeople()} title="Refrescar datos">
-          {loading === 0 ? (
+          {isLoadingState === 0 ? (
             <Spinner size="sm" />
-          ) : loading === 1 ? (
+          ) : isLoadingState === 1 ? (
             <FaSyncAlt className="mb-1" />
           ) : (
             <FaTimes className="text-danger mb-1" />

@@ -6,7 +6,7 @@ const initialState = {
   faculties: [],
 };
 
-export const resourcesSlice = createSlice({
+const resourcesSlice = createSlice({
   name: "resources",
   initialState,
   reducers: {

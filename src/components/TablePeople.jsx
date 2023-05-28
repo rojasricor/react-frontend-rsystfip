@@ -3,7 +3,7 @@ import PersonRow from "./PersonRow";
 import { useSelector } from "react-redux";
 
 const TablePeople = () => {
-  const peopleState = useSelector(({ people }) => people);
+  const peopleState = useSelector(({ people }) => people.people);
 
   return (
     <Table responsive hover striped size="sm" className="text-center">

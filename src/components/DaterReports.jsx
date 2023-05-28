@@ -13,10 +13,11 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategories } from "../features/resources/resourcesSlice";
 
-const DaterReports = ({ handleChange, queryData }) => {
+const DaterReports = ({ handleChange }) => {
   const dispatch = useDispatch();
 
   const categoriesState = useSelector(({ resources }) => resources.categories);
+  const queryDataState = useSelector(({ reports }) => reports.queryData);
 
   const getCategories = async () => {
     try {
@@ -39,7 +40,7 @@ const DaterReports = ({ handleChange, queryData }) => {
             name="startDate"
             onChange={handleChange}
             type="date"
-            value={queryData.startDate}
+            value={queryDataState.startDate}
           />
         </FloatingLabel>
       </Col>
@@ -50,7 +51,7 @@ const DaterReports = ({ handleChange, queryData }) => {
             name="endDate"
             onChange={handleChange}
             type="date"
-            value={queryData.endDate}
+            value={queryDataState.endDate}
           />
         </FloatingLabel>
       </Col>
@@ -60,7 +61,7 @@ const DaterReports = ({ handleChange, queryData }) => {
           <FormSelect
             name="category"
             onChange={handleChange}
-            value={queryData.category}
+            value={queryDataState.category}
           >
             <option value={UNSET_STATUS}>Todos</option>
             {categoriesState.map(({ id, category }, index) => (
@@ -73,7 +74,7 @@ const DaterReports = ({ handleChange, queryData }) => {
       </Col>
 
       <Col md={2}>
-        <FetcherReports queryData={queryData} />
+        <FetcherReports />
       </Col>
     </Row>
   );

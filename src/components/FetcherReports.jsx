@@ -3,12 +3,15 @@ import { API_ROUTE } from "../constants";
 import PdfCreator from "./PdfCreator";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const FetcherReports = ({ queryData }) => {
+const FetcherReports = () => {
   const [pngbase64, setPngbase64] = useState("");
   const [people, setPeople] = useState([]);
   const [reportsCountOnRange, setReportsCountOnRange] = useState([]);
   const [reportsCountAlltime, setReportsCountAlltime] = useState([]);
+
+  const queryDataState = useSelector(({ reports }) => reports.queryData);
 
   const getPeople = async () => {
     try {
@@ -22,7 +25,7 @@ const FetcherReports = ({ queryData }) => {
   const getReportsCountOnRange = async () => {
     try {
       const { data } = await axios(
-        `${API_ROUTE}/reports/count?start=${queryData.startDate}&end=${queryData.endDate}`
+        `${API_ROUTE}/reports/count?start=${queryDataState.startDate}&end=${queryDataState.endDate}`
       );
       setReportsCountOnRange(data);
     } catch ({ message }) {
@@ -60,12 +63,11 @@ const FetcherReports = ({ queryData }) => {
 
   useEffect(() => {
     getReportsCountOnRange();
-  }, [queryData.startDate, queryData.endDate]);
+  }, [queryDataState.startDate, queryDataState.endDate]);
 
   return (
     <PdfCreator
       image={pngbase64}
-      queryData={queryData}
       people={people}
       reportsCountOnRange={reportsCountOnRange}
       reportsCountAlltime={reportsCountAlltime}

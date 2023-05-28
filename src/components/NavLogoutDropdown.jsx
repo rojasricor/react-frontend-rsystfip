@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Dropdown, Image, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { resetUserAuthenticated } from "../features/auth/authSlice";
+import { resetReports } from "../features/reports/reportsSlice";
 import { BiLogOutCircle } from "react-icons/bi";
 
 const NavLogoutDropdown = ({ avatar }) => {
@@ -15,6 +16,7 @@ const NavLogoutDropdown = ({ avatar }) => {
     if (!confirm(`${authState.name} estás seguro(a)que deseas cerrar sesión?`))
       return;
 
+    dispatch(resetReports());
     dispatch(resetUserAuthenticated());
     navigate("/auth/login");
   };

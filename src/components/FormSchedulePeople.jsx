@@ -5,7 +5,6 @@ import SelectPerson from "./SelectPerson";
 import SelectDocument from "./SelectDocument";
 import InputFullname from "./InputFullname";
 import InputTelContact from "./InputTelContact";
-import InputEmailContact from "./InputEmailContact";
 import SelectFaculties from "./SelectFaculties";
 import TextareaAsunt from "./TextareaAsunt";
 import SmallCaption from "./SmallCaption";
@@ -22,6 +21,8 @@ const FormSchedulePeople = ({ closeModalScheduling }) => {
     disabledAfterAutocomplete,
     doc,
     setDoc,
+    emailContact,
+    setEmailContact,
   } = useContext(PeopleContext);
 
   const doSchedulePerson = (e) => {
@@ -58,7 +59,19 @@ const FormSchedulePeople = ({ closeModalScheduling }) => {
           <InputTelContact />
         </Col>
         <Col md={6}>
-          <InputEmailContact />
+          <Form.FloatingLabel label="Email de contacto:">
+            <Form.Control
+              onChange={({ target: { value } }) => setEmailContact(value)}
+              value={emailContact}
+              type="email"
+              placeholder="Complete campo"
+              title="Ingrese el correo electrónico de contacto"
+              autoComplete="off"
+              spellCheck="false"
+              disabled={disabledAll || disabledAfterAutocomplete}
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
         <Col md={12}>
           <SelectFaculties />

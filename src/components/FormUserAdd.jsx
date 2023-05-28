@@ -5,7 +5,6 @@ import * as Cst from "../constants";
 import { Row, Col, Form, Spinner } from "react-bootstrap";
 import SelectBasic from "./SelectBasic";
 import InputText from "./InputText";
-import InputEmail from "./InputEmail";
 import InputNumber from "./InputNumber";
 import Submitter from "./Submitter";
 import { FaUserPlus } from "react-icons/fa";
@@ -131,11 +130,17 @@ const FormUserAdd = () => {
         </Col>
 
         <Col md={8}>
-          <InputEmail
-            setEmail={setEmail}
-            inputValue={email}
-            labelInfo="Correo institucional:"
-          />
+          <Form.FloatingLabel label="Correo institucional:">
+            <Form.Control
+              onChange={({ target: { value } }) => setEmail(value)}
+              value={email}
+              type="email"
+              placeholder="Email"
+              spellCheck="false"
+              autoComplete="off"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
 
         <Col md={4}>

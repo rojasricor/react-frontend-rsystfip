@@ -3,7 +3,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../constants";
 import { Form, Row, Col, Spinner } from "react-bootstrap";
-import InputEmail from "./InputEmail";
 import Submitter from "./Submitter";
 import { BiMailSend } from "react-icons/bi";
 
@@ -36,11 +35,17 @@ const FormRecoveryPsw = () => {
     <Form onSubmit={recoverPassword}>
       <Row className="g-3">
         <Col md={12}>
-          <InputEmail
-            labelInfo="Email de registro"
-            inputValue={email}
-            setEmail={setEmail}
-          />
+          <Form.FloatingLabel label="Email de registro">
+            <Form.Control
+              onChange={({ target: { value } }) => setEmail(value)}
+              value={email}
+              type="email"
+              placeholder="Email"
+              spellCheck="false"
+              autoComplete="off"
+              required
+            />
+          </Form.FloatingLabel>
         </Col>
 
         <Submitter loading={loading}>

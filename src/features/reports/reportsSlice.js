@@ -2,14 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getStartMonthDate, getEndMonthDate } from "../../libs/todaylib";
 import { UNSET_STATUS } from "../../constants";
 
+const queryDataInitialState = {
+  startDate: getStartMonthDate(),
+  endDate: getEndMonthDate(),
+  category: UNSET_STATUS,
+};
+
 const initialState = {
   reports: [],
   reportsOrigen: [],
-  queryData: {
-    startDate: getStartMonthDate(),
-    endDate: getEndMonthDate(),
-    category: UNSET_STATUS,
-  },
+  queryData: queryDataInitialState,
 };
 
 const reportsSlice = createSlice({
@@ -34,7 +36,12 @@ const reportsSlice = createSlice({
         queryData: payload,
       };
     },
-    resetReports: () => initialState,
+    resetReports: (state) => {
+      return {
+        ...state,
+        queryData: queryDataInitialState,
+      };
+    },
   },
 });
 

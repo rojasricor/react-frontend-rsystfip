@@ -3,31 +3,34 @@ import pdfMake from "pdfmake/build/pdfmake.min";
 import * as pdfConf from "../config/pdfmake.config";
 import { useSelector } from "react-redux";
 
-const PdfCreator = ({
-  image,
-  people,
-  reportsCountOnRange,
-  reportsCountAlltime,
-}) => {
+const PdfCreator = () => {
+  const pngBase64State = useSelector(({ reports }) => reports.pngBase64);
   const reportsState = useSelector(({ reports }) => reports.reports);
   const queryDataState = useSelector(({ reports }) => reports.queryData);
+  const peopleState = useSelector(({ people }) => people.people);
+  const reportsCountOnRangeState = useSelector(
+    ({ reports }) => reports.reportsCountOnRange
+  );
+  const reportsCountAllTimeState = useSelector(
+    ({ reports }) => reports.reportsCountAllTime
+  );
 
   const pdf = pdfMake.createPdf({
     pageMargins: [28, 90],
     header: pdfConf.createHeader(
-      image,
+      pngBase64State,
       queryDataState.startDate,
       queryDataState.endDate
     ),
     footer: pdfConf.footer,
     content: [
       {
-        text: `Total personas agendadas: (${people.length})`,
+        text: `Total personas agendadas: (${peopleState.length})`,
         style: "header",
         alignment: "center",
         marginBottom: 30,
       },
-      people.length !== 0
+      peopleState.length !== 0
         ? {
             layout: "lightHorizontalLines",
             alignment: "center",
@@ -45,7 +48,7 @@ const PdfCreator = ({
                     style: "tableHeader",
                   },
                 ],
-                ...people.map(
+                ...peopleState.map(
                   ({ id, name, category, facultie, come_asunt }) => [
                     id,
                     name,
@@ -107,7 +110,7 @@ const PdfCreator = ({
         columns: [
           {
             text: `Rango de fecha${
-              reportsCountOnRange.length !== 0 ? "" : " (0)"
+              reportsCountOnRangeState.length !== 0 ? "" : " (0)"
             }`,
             style: "subheader",
             alignment: "center",
@@ -115,7 +118,7 @@ const PdfCreator = ({
           },
           {
             text: `Cantidad total${
-              reportsCountAlltime.length !== 0 ? "" : " (0)"
+              reportsCountAllTimeState.length !== 0 ? "" : " (0)"
             }`,
             style: "subheader",
             alignment: "center",
@@ -125,7 +128,7 @@ const PdfCreator = ({
       },
       {
         columns: [
-          reportsCountOnRange.length !== 0
+          reportsCountOnRangeState.length !== 0
             ? {
                 layout: "headerLineOnly",
                 alignment: "center",
@@ -139,7 +142,7 @@ const PdfCreator = ({
                       { text: "Categoría de persona", style: "tableHeader" },
                       { text: "Cantidad personas", style: "tableHeader" },
                     ],
-                    ...reportsCountOnRange.map(({ category, counts }) => [
+                    ...reportsCountOnRangeState.map(({ category, counts }) => [
                       category,
                       counts,
                     ]),
@@ -147,7 +150,7 @@ const PdfCreator = ({
                 },
               }
             : {},
-          reportsCountAlltime.length !== 0
+          reportsCountAllTimeState.length !== 0
             ? {
                 layout: "headerLineOnly",
                 alignment: "center",
@@ -161,7 +164,7 @@ const PdfCreator = ({
                       { text: "Categoría de persona", style: "tableHeader" },
                       { text: "Cantidad personas", style: "tableHeader" },
                     ],
-                    ...reportsCountAlltime.map(({ category, counts }) => [
+                    ...reportsCountAllTimeState.map(({ category, counts }) => [
                       category,
                       counts,
                     ]),

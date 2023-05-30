@@ -9,8 +9,11 @@ const queryDataInitialState = {
 };
 
 const initialState = {
+  pngBase64: "",
   reports: [],
   reportsOrigen: [],
+  reportsCountOnRange: [],
+  reportsCountAllTime: [],
   queryData: queryDataInitialState,
 };
 
@@ -18,6 +21,12 @@ const reportsSlice = createSlice({
   name: "reports",
   initialState,
   reducers: {
+    setPngBase64: (state, { payload }) => {
+      return {
+        ...state,
+        pngBase64: payload,
+      };
+    },
     setReports: (state, { payload }) => {
       return {
         ...state,
@@ -28,6 +37,18 @@ const reportsSlice = createSlice({
       return {
         ...state,
         reportsOrigen: payload,
+      };
+    },
+    setReportsCountOnRange: (state, { payload }) => {
+      return {
+        ...state,
+        reportsCountOnRange: payload,
+      };
+    },
+    setReportsCountAllTime: (state, { payload }) => {
+      return {
+        ...state,
+        reportsCountAllTime: payload,
       };
     },
     setQueryData: (state, { payload }) => {
@@ -45,6 +66,13 @@ const reportsSlice = createSlice({
   },
 });
 
-export const { setReports, setReportsOrigen, setQueryData, resetReports } =
-  reportsSlice.actions;
+export const {
+  setPngBase64,
+  setReports,
+  setReportsOrigen,
+  setReportsCountOnRange,
+  setReportsCountAllTime,
+  setQueryData,
+  resetReports,
+} = reportsSlice.actions;
 export default reportsSlice.reducer;

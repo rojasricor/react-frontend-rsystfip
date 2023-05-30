@@ -1,22 +1,26 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { API_ROUTE } from "../constants";
 import PdfCreator from "./PdfCreator";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setPeople, setPeopleOrigen } from "../features/people/peopleSlice";
+import {
+  setPngBase64,
+  setReportsCountOnRange,
+  setReportsCountAllTime,
+} from "../features/reports/reportsSlice";
 
 const FetcherReports = () => {
-  const [pngbase64, setPngbase64] = useState("");
-  const [people, setPeople] = useState([]);
-  const [reportsCountOnRange, setReportsCountOnRange] = useState([]);
-  const [reportsCountAlltime, setReportsCountAlltime] = useState([]);
-
   const queryDataState = useSelector(({ reports }) => reports.queryData);
+
+  const dispatch = useDispatch();
 
   const getPeople = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/people`);
-      setPeople(data);
+      dispatch(setPeople(data));
+      dispatch(setPeopleOrigen(data));
     } catch ({ message }) {
       toast.error(message);
     }
@@ -27,7 +31,7 @@ const FetcherReports = () => {
       const { data } = await axios(
         `${API_ROUTE}/reports/count?start=${queryDataState.startDate}&end=${queryDataState.endDate}`
       );
-      setReportsCountOnRange(data);
+      dispatch(setReportsCountOnRange(data));
     } catch ({ message }) {
       toast.error(message);
     }
@@ -36,7 +40,7 @@ const FetcherReports = () => {
   const getReportsCountAlltime = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/reports/counts`);
-      setReportsCountAlltime(data);
+      dispatch(setReportsCountAllTime(data));
     } catch ({ message }) {
       toast.error(message);
     }
@@ -49,7 +53,9 @@ const FetcherReports = () => {
       });
       const reader = new FileReader();
       reader.readAsDataURL(data);
-      reader.addEventListener("load", () => setPngbase64(reader.result));
+      reader.addEventListener("load", () =>
+        dispatch(setPngBase64(reader.result))
+      );
     } catch ({ message }) {
       toast.error(message);
     }
@@ -65,14 +71,7 @@ const FetcherReports = () => {
     getReportsCountOnRange();
   }, [queryDataState.startDate, queryDataState.endDate]);
 
-  return (
-    <PdfCreator
-      image={pngbase64}
-      people={people}
-      reportsCountOnRange={reportsCountOnRange}
-      reportsCountAlltime={reportsCountAlltime}
-    />
-  );
+  return <PdfCreator />;
 };
 
 export default FetcherReports;

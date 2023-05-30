@@ -1,8 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  daily: {},
-  scheduled: {},
+  daily: {
+    statistic: [],
+    mostAgendatedOnRange: [],
+    mostAgendatedAllTime: [],
+  },
+  scheduled: {
+    statistic: [],
+    mostAgendatedOnRange: [],
+    mostAgendatedAllTime: [],
+  },
+  queryData: {},
 };
 
 const statisticsSlice = createSlice({

@@ -1,6 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { PeopleContext } from "../context/PeopleContext";
 import { Form, Row, Col } from "react-bootstrap";
+import axios from "axios";
+import { API_ROUTE } from "../constants";
+import { toast } from "react-toastify";
 import SelectPerson from "./SelectPerson";
 import SelectDocument from "./SelectDocument";
 import SelectFaculties from "./SelectFaculties";
@@ -8,9 +12,16 @@ import FooterFormPeople from "./FooterFormPeople";
 import Notify from "./Notify";
 import SmallCaption from "./SmallCaption";
 import { useDispatch, useSelector } from "react-redux";
-import { setFormData } from "../features/programming/programmingSlice";
+import {
+  setFormData,
+  setIsLoading,
+  resetFormDataProgramming,
+} from "../features/programming/programmingSlice";
 
 const FormPeople = ({ action }) => {
+  // Id person param url GET
+  const { id } = useParams();
+
   const { handleChange, schedulePerson } = useContext(PeopleContext);
 
   const dispatch = useDispatch();
@@ -18,6 +29,34 @@ const FormPeople = ({ action }) => {
   const formDataState = useSelector(({ programming }) => programming.formData);
 
   const isEdit = action === "edit";
+
+  const editPerson = async () => {
+    dispatch(setIsLoading(true));
+
+    try {
+      const {
+        data: { ok, error },
+      } = await axios.put(`${API_ROUTE}/person`, {
+        id,
+        person: formDataState.person,
+        name: formDataState.name,
+        doctype: formDataState.doctype,
+        doc: formDataState.doc,
+        facultie: formDataState.facultie,
+        asunt: formDataState.asunt,
+      });
+
+      if (error || !ok) return toast.warn(error);
+
+      dispatch(resetFormDataProgramming());
+
+      toast.success(ok, { position: "top-left" });
+    } catch ({ message }) {
+      toast.error(message);
+    } finally {
+      dispatch(setIsLoading(false));
+    }
+  };
 
   const doForPerson = (e) => {
     e.preventDefault();
@@ -32,6 +71,39 @@ const FormPeople = ({ action }) => {
     );
     schedulePerson();
   };
+
+  const getUserData = async () => {
+    try {
+      const {
+        data: {
+          category_id,
+          document_id,
+          facultie_id,
+          name,
+          document_number,
+          come_asunt,
+        },
+      } = await axios(`${API_ROUTE}/person?id=${id}`);
+
+      dispatch(
+        setFormData({
+          ...formDataState,
+          person: category_id,
+          doctype: document_id,
+          facultie: facultie_id,
+          name,
+          doc: document_number,
+          asunt: come_asunt,
+        })
+      );
+    } catch ({ message }) {
+      toast.error(message);
+    }
+  };
+
+  useEffect(() => {
+    id && getUserData();
+  }, []);
 
   return (
     <Form onSubmit={doForPerson}>

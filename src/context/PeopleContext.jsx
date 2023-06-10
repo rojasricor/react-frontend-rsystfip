@@ -1,5 +1,4 @@
 import { createContext, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { API_ROUTE } from "../constants";
@@ -13,9 +12,6 @@ import {
 export const PeopleContext = createContext();
 
 export const PeopleContextProvider = ({ children }) => {
-  // Id person param url GET
-  const { id } = useParams();
-
   const dispatch = useDispatch();
 
   const formDataState = useSelector(({ programming }) => programming.formData);
@@ -71,67 +67,6 @@ export const PeopleContextProvider = ({ children }) => {
     }
   };
 
-  const editPerson = async () => {
-    dispatch(setIsLoading(true));
-
-    try {
-      const {
-        data: { ok, error },
-      } = await axios.put(`${API_ROUTE}/person`, {
-        id,
-        person: formDataState.person,
-        name: formDataState.name,
-        doctype: formDataState.doctype,
-        doc: formDataState.doc,
-        facultie: formDataState.facultie,
-        asunt: formDataState.asunt,
-      });
-
-      if (error || !ok) return toast.warn(error);
-
-      dispatch(resetFormDataProgramming());
-
-      toast.success(ok, { position: "top-left" });
-    } catch ({ message }) {
-      toast.error(message);
-    } finally {
-      dispatch(setIsLoading(false));
-    }
-  };
-
-  const getUserData = async () => {
-    try {
-      const {
-        data: {
-          category_id,
-          document_id,
-          facultie_id,
-          name,
-          document_number,
-          come_asunt,
-        },
-      } = await axios(`${API_ROUTE}/person?id=${id}`);
-
-      dispatch(
-        setFormData({
-          ...formDataState,
-          person: category_id,
-          doctype: document_id,
-          facultie: facultie_id,
-          name,
-          doc: document_number,
-          asunt: come_asunt,
-        })
-      );
-    } catch ({ message }) {
-      toast.error(message);
-    }
-  };
-
-  useEffect(() => {
-    id && getUserData();
-  }, []);
-
   useEffect(() => {
     if (!deansState || formDataState.person !== "4") return;
 
@@ -159,7 +94,6 @@ export const PeopleContextProvider = ({ children }) => {
       value={{
         facultieSelectRef,
         schedulePerson,
-        editPerson,
         handleChange,
       }}
     >

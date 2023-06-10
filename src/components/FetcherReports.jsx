@@ -19,6 +19,7 @@ const FetcherReports = () => {
   const getPeople = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/people`);
+
       dispatch(setPeople(data));
       dispatch(setPeopleOrigen(data));
     } catch ({ message }) {
@@ -31,6 +32,7 @@ const FetcherReports = () => {
       const { data } = await axios(
         `${API_ROUTE}/reports/count?start=${queryDataState.startDate}&end=${queryDataState.endDate}`
       );
+
       dispatch(setReportsCountOnRange(data));
     } catch ({ message }) {
       toast.error(message);
@@ -40,6 +42,7 @@ const FetcherReports = () => {
   const getReportsCountAlltime = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/reports/counts`);
+
       dispatch(setReportsCountAllTime(data));
     } catch ({ message }) {
       toast.error(message);
@@ -51,6 +54,7 @@ const FetcherReports = () => {
       const { data } = await axios("/img/admin/avatar.png", {
         responseType: "blob",
       });
+
       const reader = new FileReader();
       reader.readAsDataURL(data);
       reader.addEventListener("load", () =>

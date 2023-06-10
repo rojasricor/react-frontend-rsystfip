@@ -24,6 +24,7 @@ const Searcher = () => {
   const getPeople = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/people`);
+
       dispatch(setPeople(data));
       dispatch(setPeopleOrigen(data));
     } catch ({ message }) {

@@ -17,6 +17,7 @@ const TableCancelled = () => {
   const getCancelled = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/cancelled`);
+
       dispatch(setCancelledPeople(data));
     } catch ({ message }) {
       toast.error(message);

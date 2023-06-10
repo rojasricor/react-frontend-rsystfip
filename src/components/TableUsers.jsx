@@ -15,6 +15,7 @@ const TableUsers = () => {
   const getUsers = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/users`);
+
       dispatch(setUsers(data));
     } catch ({ message }) {
       toast.error(message);

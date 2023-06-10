@@ -32,6 +32,7 @@ const DaterReports = () => {
   const getCategories = async () => {
     try {
       const { data } = await axios(`${RESOURCE_ROUTE}?resource=categories`);
+
       dispatch(setCategories(data));
     } catch ({ message }) {
       toast.error(message);

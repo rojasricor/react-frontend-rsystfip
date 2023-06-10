@@ -69,6 +69,7 @@ const FormUserAdd = () => {
   const getDocuments = async () => {
     try {
       const { data } = await axios(`${RESOURCE_ROUTE}?resource=documents`);
+
       dispatch(setDocuments(data));
     } catch ({ message }) {
       toast.error(message);

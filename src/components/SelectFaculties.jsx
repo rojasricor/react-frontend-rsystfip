@@ -23,6 +23,7 @@ const SelectFaculties = () => {
   const getFaculties = async () => {
     try {
       const { data } = await axios(`${RESOURCE_ROUTE}?resource=faculties`);
+
       dispatch(setFaculties(data));
     } catch ({ message }) {
       toast.error(message);

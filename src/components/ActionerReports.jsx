@@ -5,11 +5,7 @@ import { API_ROUTE, UNSET_STATUS } from "../constants";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setReports,
-  setReportsOrigen,
-  setQueryData,
-} from "../features/reports/reportsSlice";
+import { setReports, setReportsOrigen } from "../features/reports/reportsSlice";
 
 const ActionerReports = () => {
   const dispatch = useDispatch();
@@ -18,15 +14,6 @@ const ActionerReports = () => {
     ({ reports }) => reports.reportsOrigen
   );
   const queryDataState = useSelector(({ reports }) => reports.queryData);
-
-  const handleChange = (e) => {
-    dispatch(
-      setQueryData({
-        ...queryDataState,
-        [e.target.name]: e.target.value,
-      })
-    );
-  };
 
   const getReports = async () => {
     try {
@@ -68,7 +55,7 @@ const ActionerReports = () => {
 
   return (
     <>
-      <DaterReports handleChange={handleChange} />
+      <DaterReports />
       <TableReports />
     </>
   );

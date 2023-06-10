@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { getStartMonthDate, getEndMonthDate } from "../libs/todaylib";
 import { API_ROUTE } from "../constants";
 import {
   Chart as ChartJS,
@@ -23,16 +22,24 @@ import ListerStatistics from "./ListerStatistics";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setMostAgendatedOnRange,
+  setMostAgendatedAllTime,
+} from "../features/statistics/statisticsSlice";
 
 const Statistics = ({ scheduling_type }) => {
-  const [chart, setChart] = useState(null);
-  const [start, setStart] = useState(getStartMonthDate());
-  const [end, setEnd] = useState(getEndMonthDate());
-  const [chartType, setChartType] = useState("bar");
-  const [mostAgendatedOnRange, setMostAgendatedOnRange] = useState([]);
-  const [mostAgendatedAlltime, setMostAgendatedAlltime] = useState([]);
+  const [chartJS, setChartJS] = useState(null);
 
   const ctxRef = useRef(null);
+
+  const dispatch = useDispatch();
+
+  const queryDataState = useSelector(({ statistics }) =>
+    scheduling_type === "daily"
+      ? statistics.daily.queryData
+      : statistics.scheduled.queryData
+  );
 
   ChartJS.register(
     ArcElement,
@@ -51,14 +58,14 @@ const Statistics = ({ scheduling_type }) => {
   );
 
   const refreshChart = (labels, data) => {
-    if (chart) chart.destroy();
+    if (chartJS) chartJS.destroy();
 
     const label = `Agendamiento ${
       scheduling_type === "daily" ? "diario" : "programado"
     } - Cantidad persona(s)`;
 
     const newChart = new ChartJS(ctxRef.current, {
-      type: chartType,
+      type: queryDataState.chartType,
       data: {
         labels,
         datasets: [
@@ -117,13 +124,13 @@ const Statistics = ({ scheduling_type }) => {
       },
     });
 
-    setChart(newChart);
+    setChartJS(newChart);
   };
 
   const getStatistics = async () => {
     try {
       const { data } = await axios(
-        `${API_ROUTE}/statistics/${scheduling_type}?start=${start}&end=${end}`
+        `${API_ROUTE}/statistics/${scheduling_type}?start=${queryDataState.start}&end=${queryDataState.end}`
       );
       const labels = data.map(({ category }) => category);
       const dataset = data.map(({ scheduling_count }) => scheduling_count);
@@ -136,20 +143,22 @@ const Statistics = ({ scheduling_type }) => {
   const getMostAgendatedOnRange = async () => {
     try {
       const { data } = await axios(
-        `${API_ROUTE}/statistics/${scheduling_type}/onrange?start=${start}&end=${end}`
+        `${API_ROUTE}/statistics/${scheduling_type}/onrange?start=${queryDataState.start}&end=${queryDataState.end}`
       );
-      setMostAgendatedOnRange(data);
+
+      dispatch(setMostAgendatedOnRange([scheduling_type, data]));
     } catch ({ message }) {
       toast.error(message);
     }
   };
 
-  const getMostAgendatedAlltime = async () => {
+  const getMostAgendatedAllTime = async () => {
     try {
       const { data } = await axios(
         `${API_ROUTE}/statistics/${scheduling_type}/alltime`
       );
-      setMostAgendatedAlltime(data);
+
+      dispatch(setMostAgendatedAllTime([scheduling_type, data]));
     } catch ({ message }) {
       toast.error(message);
     }
@@ -158,8 +167,8 @@ const Statistics = ({ scheduling_type }) => {
   useEffect(() => {
     getStatistics();
     getMostAgendatedOnRange();
-    getMostAgendatedAlltime();
-  }, [start, end, chartType]);
+    getMostAgendatedAllTime();
+  }, [queryDataState.start, queryDataState.end, queryDataState.chartType]);
 
   return (
     <>
@@ -171,13 +180,7 @@ const Statistics = ({ scheduling_type }) => {
         </h1>
       </Col>
 
-      <DaterStatistics
-        setStart={setStart}
-        start={start}
-        setEnd={setEnd}
-        end={end}
-        setChartType={setChartType}
-      />
+      <DaterStatistics schedulingType={scheduling_type} />
 
       <Col md={12} className="my-5">
         <Ctx ctxRef={ctxRef} />
@@ -185,10 +188,6 @@ const Statistics = ({ scheduling_type }) => {
 
       <Col md={12}>
         <ListerStatistics
-          mostAgendatedOnRange={mostAgendatedOnRange}
-          mostAgendatedAlltime={mostAgendatedAlltime}
-          start={start}
-          end={end}
           scheduling_type={
             scheduling_type === "daily" ? "diario" : "programado"
           }

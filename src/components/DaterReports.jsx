@@ -12,12 +12,22 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategories } from "../features/resources/resourcesSlice";
+import { setQueryData } from "../features/reports/reportsSlice";
 
-const DaterReports = ({ handleChange }) => {
+const DaterReports = () => {
   const dispatch = useDispatch();
 
   const categoriesState = useSelector(({ resources }) => resources.categories);
   const queryDataState = useSelector(({ reports }) => reports.queryData);
+
+  const handleChange = (e) => {
+    dispatch(
+      setQueryData({
+        ...queryDataState,
+        [e.target.name]: e.target.value,
+      })
+    );
+  };
 
   const getCategories = async () => {
     try {

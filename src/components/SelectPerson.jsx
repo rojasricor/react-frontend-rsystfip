@@ -6,42 +6,49 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategories } from "../features/resources/resourcesSlice";
+import {
+  setDeans,
+  setFormData,
+} from "../features/programming/programmingSlice";
 
 const SelectPerson = () => {
   const { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } = Cst;
-  const {
-    setDisabledAll,
-    setDisabledAfterAutocomplete,
-    setPerson,
-    person,
-    facultieSelectRef,
-    setDeans,
-  } = useContext(PeopleContext);
+
+  const { facultieSelectRef, handleChange } = useContext(PeopleContext);
 
   const dispatch = useDispatch();
 
   const categoriesState = useSelector(({ resources }) => resources.categories);
+  const formDataState = useSelector(({ programming }) => programming.formData);
 
   const getDeans = async () => {
     try {
       const { data } = await axios(`${API_ROUTE}/deans`);
-      setDeans(data);
+
+      dispatch(setDeans(data));
     } catch ({ message }) {
       toast.error(message);
     }
   };
 
   useEffect(() => {
-    if (person !== UNSET_STATUS) {
-      setDisabledAll(false);
-      setDisabledAfterAutocomplete(false);
+    if (formDataState.person !== UNSET_STATUS) {
+      dispatch(
+        setFormData({
+          ...formDataState,
+          disabledAll: false,
+          disabledAfterAutocomplete: false,
+        })
+      );
+
       facultieSelectRef.current.className = "form-select";
       facultieSelectRef.current.disabled = false;
-      if (person === "5") facultieSelectRef.current.disabled = true;
+      if (formDataState.person === "5")
+        facultieSelectRef.current.disabled = true;
 
-      person === "4" && getDeans();
+      formDataState.person === "4" && getDeans();
     }
-  }, [person]);
+  }, [formDataState.person]);
 
   const getCategories = async () => {
     try {
@@ -60,8 +67,9 @@ const SelectPerson = () => {
   return (
     <FloatingLabel label="Persona a registrar:">
       <FormSelect
-        onChange={({ target: { value } }) => setPerson(value)}
-        value={person}
+        name="person"
+        onChange={handleChange}
+        value={formDataState.person}
         required
       >
         <option value={UNSET_STATUS} disabled>

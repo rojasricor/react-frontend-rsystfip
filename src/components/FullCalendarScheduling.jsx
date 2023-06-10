@@ -1,5 +1,4 @@
-import { useContext, useState, useRef } from "react";
-import { PeopleContext } from "../context/PeopleContext";
+import { useState, useRef } from "react";
 import Responsive from "./Responsive";
 import LoadCalendar from "./LoadCalendar";
 import ModalSchedulePeopleForm from "./ModalSchedulePeopleForm";
@@ -13,10 +12,13 @@ import { globalLocales } from "fullcalendar";
 import { API_ROUTE } from "../constants";
 import { toast } from "react-toastify";
 import { Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { setFormData } from "../features/programming/programmingSlice";
 
 const FullCalendarScheduling = ({ right, initialView }) => {
-  const { setEventId, setDate, setStart, setEnd, setStatus } =
-    useContext(PeopleContext);
+  const formDataState = useSelector(({ programming }) => programming.formData);
+
+  const dispatch = useDispatch();
 
   // Modal states
   const [stateModalCancell, setStateModalCancell] = useState(false);
@@ -90,15 +92,27 @@ const FullCalendarScheduling = ({ right, initialView }) => {
             }
 
             showModalScheduling();
-            setDate(formatTodaysDate(start));
-            setStart(formatTodaysDateTime(start));
-            setEnd(formatTodaysDateTime(end));
-            setStatus("scheduled");
+
+            dispatch(
+              setFormData({
+                ...formDataState,
+                date: formatTodaysDate(start),
+                start: formatTodaysDateTime(start),
+                end: formatTodaysDateTime(end),
+                status: "scheduled",
+              })
+            );
           }}
           eventClick={({ event: { id, start } }) => {
             showModalCancell();
-            setEventId(id);
-            setDate(formatTodaysDateTime(start));
+
+            dispatch(
+              setFormData({
+                ...formDataState,
+                eventId: id,
+                date: formatTodaysDateTime(start),
+              })
+            );
           }}
           editable
           dayMaxEvents

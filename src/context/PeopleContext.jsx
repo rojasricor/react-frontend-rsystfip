@@ -1,9 +1,14 @@
-import { createContext, useState, useEffect, useRef } from "react";
+import { createContext, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { UNSET_STATUS, API_ROUTE } from "../constants";
-import { formatTodaysDate, formatTodaysDateTime } from "../libs/todaylib";
+import { API_ROUTE } from "../constants";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setIsLoading,
+  setFormData,
+  resetFormDataProgramming,
+} from "../features/programming/programmingSlice";
 
 export const PeopleContext = createContext();
 
@@ -11,106 +16,86 @@ export const PeopleContextProvider = ({ children }) => {
   // Id person param url GET
   const { id } = useParams();
 
-  const [disabledAll, setDisabledAll] = useState(true);
-  const [disabledAfterAutocomplete, setDisabledAfterAutocomplete] =
-    useState(false);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
-  // Event id aux
-  const [eventId, setEventId] = useState("");
-
-  // Select components states
-  const [person, setPerson] = useState(UNSET_STATUS);
-  const [doctype, setDoctype] = useState(UNSET_STATUS);
-  const [facultie, setFacultie] = useState(UNSET_STATUS);
-  // Input components states
-  const [doc, setDoc] = useState("");
-  const [name, setName] = useState("");
-  const [emailContact, setEmailContact] = useState("");
-  const [telContact, setTelContact] = useState("");
-  const [asunt, setAsunt] = useState("");
-  const [color, setColor] = useState("#388cdc");
-  const [date, setDate] = useState(formatTodaysDate());
-  const [start, setStart] = useState(formatTodaysDateTime());
-  const [end, setEnd] = useState(formatTodaysDateTime());
-  const [status, setStatus] = useState(2);
-  const [deans, setDeans] = useState(null);
+  const formDataState = useSelector(({ programming }) => programming.formData);
+  const deansState = useSelector(({ programming }) => programming.deans);
 
   // Ref to component select of facultie
   const facultieSelectRef = useRef(null);
 
+  const handleChange = (e) => {
+    dispatch(
+      setFormData({
+        ...formDataState,
+        [e.target.name]: e.target.value,
+      })
+    );
+  };
+
   const schedulePerson = async (closeModalScheduling) => {
-    setLoading(true);
+    dispatch(setIsLoading(true));
 
     try {
       const {
         data: { ok, error },
       } = await axios.post(`${API_ROUTE}/person`, {
-        person,
-        name,
-        doctype,
-        doc,
-        emailContact: emailContact === "" ? null : emailContact,
-        telContact:  telContact === "" ? null : telContact,
-        facultie,
-        asunt,
-        color,
-        date,
-        start,
-        end,
-        status,
+        person: formDataState.person,
+        name: formDataState.name,
+        doctype: formDataState.doctype,
+        doc: formDataState.doc,
+        emailContact:
+          formDataState.emailContact === "" ? null : formDataState.emailContact,
+        telContact:
+          formDataState.telContact === "" ? null : formDataState.telContact,
+        facultie: formDataState.facultie,
+        asunt: formDataState.asunt,
+        color: formDataState.color,
+        date: formDataState.date,
+        start: formDataState.start,
+        end: formDataState.end,
+        status: formDataState.status,
       });
 
       if (error || !ok) return toast.warn(error);
 
-      setPerson("unset");
-      setDoc("");
-      setDoctype("unset");
-      setName("");
-      setFacultie("unset");
-      setAsunt("");
-      if (status === "scheduled") {
-        setEmailContact("");
-        setTelContact("");
-        closeModalScheduling();
-      }
+      dispatch(resetFormDataProgramming());
+
+      if (formDataState.status === "scheduled") closeModalScheduling();
+
       toast.success(ok, { position: "top-left" });
     } catch ({ message }) {
       toast.error(message);
     } finally {
-      setLoading(false);
+      dispatch(setIsLoading(false));
     }
   };
 
   const editPerson = async () => {
-    setLoading(true);
+    dispatch(setIsLoading(true));
 
     try {
       const {
         data: { ok, error },
       } = await axios.put(`${API_ROUTE}/person`, {
         id,
-        person,
-        name,
-        doctype,
-        doc,
-        facultie,
-        asunt,
+        person: formDataState.person,
+        name: formDataState.name,
+        doctype: formDataState.doctype,
+        doc: formDataState.doc,
+        facultie: formDataState.facultie,
+        asunt: formDataState.asunt,
       });
 
       if (error || !ok) return toast.warn(error);
 
-      setPerson("unset");
-      setDoc("");
-      setDoctype("unset");
-      setName("");
-      setFacultie("unset");
-      setAsunt("");
+      dispatch(resetFormDataProgramming());
+
       toast.success(ok, { position: "top-left" });
     } catch ({ message }) {
       toast.error(message);
     } finally {
-      setLoading(false);
+      dispatch(setIsLoading(false));
     }
   };
 
@@ -127,12 +112,17 @@ export const PeopleContextProvider = ({ children }) => {
         },
       } = await axios(`${API_ROUTE}/person?id=${id}`);
 
-      setPerson(category_id);
-      setDoctype(document_id);
-      setFacultie(facultie_id);
-      setName(name);
-      setDoc(document_number);
-      setAsunt(come_asunt);
+      dispatch(
+        setFormData({
+          ...formDataState,
+          person: category_id,
+          doctype: document_id,
+          facultie: facultie_id,
+          name,
+          doc: document_number,
+          asunt: come_asunt,
+        })
+      );
     } catch ({ message }) {
       toast.error(message);
     }
@@ -143,59 +133,34 @@ export const PeopleContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (!deans || person !== "4") return;
+    if (!deansState || formDataState.person !== "4") return;
 
-    for (const { _id, dean, facultie_id } of deans) {
-      if (_id === doc) {
-        setDoctype(1);
-        setName(dean);
-        setFacultie(facultie_id);
-        setDisabledAfterAutocomplete(true);
+    for (const { _id, dean, facultie_id } of deansState) {
+      if (_id === formDataState.doc) {
+        dispatch(
+          setFormData({
+            ...formDataState,
+            doctype: 1,
+            name: dean,
+            facultie: facultie_id,
+            disabledAfterAutocomplete: true,
+          })
+        );
+
         facultieSelectRef.current.className = "form-control";
         toast.info("Se han completado los datos", { position: "top-left" });
         break;
       }
     }
-  }, [doc]);
+  }, [formDataState.doc]);
 
   return (
     <PeopleContext.Provider
       value={{
-        disabledAll,
-        setDisabledAll,
-        disabledAfterAutocomplete,
-        setDisabledAfterAutocomplete,
-        loading,
-        setLoading,
-        person,
-        setPerson,
-        doctype,
-        setDoctype,
-        facultie,
-        setFacultie,
-        doc,
-        setDoc,
-        name,
-        setName,
-        emailContact,
-        setEmailContact,
-        telContact,
-        setTelContact,
-        asunt,
-        setAsunt,
-        color,
-        setColor,
-        date,
-        setDate,
-        setStart,
-        setEnd,
-        setStatus,
         facultieSelectRef,
         schedulePerson,
         editPerson,
-        setDeans,
-        eventId,
-        setEventId,
+        handleChange,
       }}
     >
       {children}

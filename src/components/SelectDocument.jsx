@@ -8,12 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDocuments } from "../features/resources/resourcesSlice";
 
 const SelectDocument = () => {
-  const { setDoctype, doctype, disabledAll, disabledAfterAutocomplete } =
-    useContext(PeopleContext);
+  const { handleChange } = useContext(PeopleContext);
 
   const dispatch = useDispatch();
 
   const documentsState = useSelector(({ resources }) => resources.documents);
+  const formDataState = useSelector(({ programming }) => programming.formData);
 
   const getDocuments = async () => {
     try {
@@ -32,9 +32,12 @@ const SelectDocument = () => {
   return (
     <FloatingLabel label="Tipo de Documento:">
       <FormSelect
-        onChange={({ target: { value } }) => setDoctype(value)}
-        value={doctype}
-        disabled={disabledAll || disabledAfterAutocomplete}
+        name="doctype"
+        onChange={handleChange}
+        value={formDataState.doctype}
+        disabled={
+          formDataState.disabledAll || formDataState.disabledAfterAutocomplete
+        }
         required
       >
         <option value={UNSET_STATUS} disabled>

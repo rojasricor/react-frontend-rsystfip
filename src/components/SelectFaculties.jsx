@@ -8,16 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFaculties } from "../features/resources/resourcesSlice";
 
 const SelectFaculties = () => {
-  const {
-    disabledAll,
-    disabledAfterAutocomplete,
-    facultie,
-    setFacultie,
-    facultieSelectRef,
-  } = useContext(PeopleContext);
+  const { handleChange, facultieSelectRef } = useContext(PeopleContext);
 
   const dispatch = useDispatch();
 
+  const formDataState = useSelector(({ programming }) => programming.formData);
   const facultiesState = useSelector(({ resources }) => resources.faculties);
 
   const getFaculties = async () => {
@@ -37,10 +32,13 @@ const SelectFaculties = () => {
   return (
     <FloatingLabel label="Facultad:">
       <FormSelect
-        onChange={({ target: { value } }) => setFacultie(value)}
-        value={facultie}
+        name="facultie"
+        onChange={handleChange}
+        value={formDataState.facultie}
         ref={facultieSelectRef}
-        disabled={disabledAll || disabledAfterAutocomplete}
+        disabled={
+          formDataState.disabledAll || formDataState.disabledAfterAutocomplete
+        }
         required
       >
         <option value={UNSET_STATUS} disabled>

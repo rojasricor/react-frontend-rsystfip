@@ -6,6 +6,7 @@ import cancelledPeopleSlice from "../features/cancelledPeople/cancelledPeopleSli
 import reportsSlice from "../features/reports/reportsSlice";
 import resourcesSlice from "../features/resources/resourcesSlice";
 import statisticsSlice from "../features/statistics/statisticsSlice";
+import programmingSlice from "../features/programming/programmingSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     reports: reportsSlice,
     statistics: statisticsSlice,
     resources: resourcesSlice,
+    programming: programmingSlice,
   },
 });

@@ -7,62 +7,57 @@ import Submitter from "./Submitter";
 import { FaUserPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { setDocuments } from "../features/resources/resourcesSlice";
+import {
+  resetFormDataAdmin,
+  setFormData,
+  setIsLoading,
+} from "../features/admin/adminSlice";
 
 const FormUserAdd = () => {
   const { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } = Cst;
-  const initialState = {
-    role: UNSET_STATUS,
-    name: "",
-    lastname: "",
-    docType: UNSET_STATUS,
-    doc: "",
-    email: "",
-    tel: "",
-    password: "",
-    passwordConfirmation: "",
-  };
-
-  const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState(initialState);
 
   const dispatch = useDispatch();
 
+  const isLoadingState = useSelector(({ admin }) => admin.isLoading);
+  const formDataState = useSelector(({ admin }) => admin.formData);
   const documentsState = useSelector(({ resources }) => resources.documents);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    dispatch(
+      setFormData({
+        ...formDataState,
+        [e.target.name]: e.target.value,
+      })
+    );
   };
 
   const doCreateUser = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    dispatch(setIsLoading(true));
 
     try {
       const {
         data: { error, ok },
       } = await axios.post(`${API_ROUTE}/user`, {
-        role: formData.role,
-        name: formData.name,
-        lastname: formData.lastname,
-        docType: formData.docType,
-        doc: formData.doc,
-        email: formData.email,
-        tel: formData.tel,
-        password: formData.password,
-        passwordConfirmation: formData.passwordConfirmation,
+        role: formDataState.role,
+        name: formDataState.name,
+        lastname: formDataState.lastname,
+        docType: formDataState.docType,
+        doc: formDataState.doc,
+        email: formDataState.email,
+        tel: formDataState.tel,
+        password: formDataState.password,
+        passwordConfirmation: formDataState.passwordConfirmation,
       });
 
       if (error || !ok) return toast.warn(error);
 
-      setFormData(initialState);
+      dispatch(resetFormDataAdmin());
       toast.success(ok, { position: "top-left" });
     } catch ({ message }) {
       toast.error(message);
     } finally {
-      setLoading(false);
+      dispatch(setIsLoading(false));
     }
   };
 
@@ -88,7 +83,7 @@ const FormUserAdd = () => {
             <Form.Select
               name="role"
               onChange={handleChange}
-              value={formData.role}
+              value={formDataState.role}
               required
             >
               <option value={UNSET_STATUS} disabled>
@@ -105,7 +100,7 @@ const FormUserAdd = () => {
             <Form.Control
               name="name"
               onChange={handleChange}
-              value={formData.name}
+              value={formDataState.name}
               type="text"
               placeholder="Name"
               maxLength="25"
@@ -121,7 +116,7 @@ const FormUserAdd = () => {
             <Form.Control
               name="lastname"
               onChange={handleChange}
-              value={formData.lastname}
+              value={formDataState.lastname}
               type="text"
               placeholder="Lastname"
               maxLength="25"
@@ -137,7 +132,7 @@ const FormUserAdd = () => {
             <Form.Select
               name="docType"
               onChange={handleChange}
-              value={formData.docType}
+              value={formDataState.docType}
               required
             >
               <option value={UNSET_STATUS} disabled>
@@ -157,7 +152,7 @@ const FormUserAdd = () => {
             <Form.Control
               name="doc"
               onChange={handleChange}
-              value={formData.doc}
+              value={formDataState.doc}
               type="number"
               placeholder="Document"
               required
@@ -170,7 +165,7 @@ const FormUserAdd = () => {
             <Form.Control
               name="email"
               onChange={handleChange}
-              value={formData.email}
+              value={formDataState.email}
               type="email"
               placeholder="Email"
               spellCheck="false"
@@ -185,7 +180,7 @@ const FormUserAdd = () => {
             <Form.Control
               name="tel"
               onChange={handleChange}
-              value={formData.tel}
+              value={formDataState.tel}
               type="number"
               placeholder="Phone"
               required
@@ -198,7 +193,7 @@ const FormUserAdd = () => {
             <Form.Control
               name="password"
               onChange={handleChange}
-              value={formData.password}
+              value={formDataState.password}
               type="password"
               placeholder="Password"
               autoComplete="off"
@@ -212,7 +207,7 @@ const FormUserAdd = () => {
             <Form.Control
               name="passwordConfirmation"
               onChange={handleChange}
-              value={formData.passwordConfirmation}
+              value={formDataState.passwordConfirmation}
               type="password"
               placeholder="Confirm password"
               autoComplete="off"
@@ -221,8 +216,8 @@ const FormUserAdd = () => {
           </Form.FloatingLabel>
         </Col>
 
-        <Submitter loading={loading}>
-          {!loading ? (
+        <Submitter loading={isLoadingState}>
+          {!isLoadingState ? (
             <>
               Registrar <FaUserPlus className="mb-1" />
             </>

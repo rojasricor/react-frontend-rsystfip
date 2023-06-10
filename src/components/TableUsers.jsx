@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 const TableUsers = () => {
   const dispatch = useDispatch();
 
-  const adminState = useSelector(({ admin }) => admin);
+  const adminState = useSelector(({ admin }) => admin.users);
 
   const getUsers = async () => {
     try {

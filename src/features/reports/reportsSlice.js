@@ -57,7 +57,7 @@ const reportsSlice = createSlice({
         queryData: payload,
       };
     },
-    resetReports: (state) => {
+    resetQueryDataReports: (state) => {
       return {
         ...state,
         queryData: queryDataInitialState,
@@ -73,6 +73,6 @@ export const {
   setReportsCountOnRange,
   setReportsCountAllTime,
   setQueryData,
-  resetReports,
+  resetQueryDataReports,
 } = reportsSlice.actions;
 export default reportsSlice.reducer;

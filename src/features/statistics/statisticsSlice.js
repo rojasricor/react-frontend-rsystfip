@@ -81,6 +81,19 @@ const statisticsSlice = createSlice({
             },
           };
     },
+    resetQueryDataStatistics: (state) => {
+      return {
+        ...state,
+        daily: {
+          ...state.daily,
+          queryData: queryDataInitialState,
+        },
+        scheduled: {
+          ...state.scheduled,
+          queryData: queryDataInitialState,
+        },
+      };
+    },
   },
 });
 
@@ -88,5 +101,6 @@ export const {
   setMostAgendatedOnRange,
   setMostAgendatedAllTime,
   setQueryData,
+  resetQueryDataStatistics,
 } = statisticsSlice.actions;
 export default statisticsSlice.reducer;

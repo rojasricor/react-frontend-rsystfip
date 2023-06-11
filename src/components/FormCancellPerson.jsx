@@ -1,39 +1,46 @@
-import { useState, useContext } from "react";
-import { PeopleContext } from "../context/PeopleContext";
+import { useState } from "react";
 import { API_ROUTE } from "../constants";
 import { Form, Spinner, ModalFooter, Button, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { FaTimes, FaCheck } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { setIsLoading } from "../features/programming/programmingSlice";
 
 const FormCancellPerson = ({ closeModalCancell }) => {
-  const { eventId, date, loading, setLoading } = useContext(PeopleContext);
+  const [cancelled_asunt, setCancelled_asunt] = useState("");
 
-  const [cancelledAsunt, setCancelledAsunt] = useState("");
+  const isLoadingStatus = useSelector(
+    ({ programming }) => programming.isLoading
+  );
+  const formDataState = useSelector(({ programming }) => programming.formData);
 
   const cancellPerson = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setIsLoading(true);
 
     try {
       const {
         data: { ok, error },
       } = await axios.patch(`${API_ROUTE}/person`, {
-        id: eventId,
-        date,
-        cancelled_asunt: cancelledAsunt,
+        id: formDataState.eventId,
+        date: formDataState.date,
+        cancelled_asunt,
       });
 
       if (error || !ok) return toast.warn(error);
 
       toast.success(ok, { position: "top-left" });
+      setCancelled_asunt("");
       closeModalCancell();
     } catch ({ message }) {
       toast.error(message);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
+
+  const handleChange = (e) => setCancelled_asunt(e.target.value);
 
   return (
     <Form onSubmit={cancellPerson}>
@@ -42,12 +49,13 @@ const FormCancellPerson = ({ closeModalCancell }) => {
           <Form.FloatingLabel label="Asunto cancelamiento:">
             <Form.Control
               as="textarea"
-              onChange={({ target: { value } }) => setCancelledAsunt(value)}
+              onChange={handleChange}
               placeholder="Complete campo"
               minLength="5"
               maxLength="100"
               spellCheck="false"
               autoComplete="off"
+              value={cancelled_asunt}
               style={{ height: "100px" }}
               required
             />
@@ -57,8 +65,8 @@ const FormCancellPerson = ({ closeModalCancell }) => {
           <Button onClick={closeModalCancell} variant="light">
             No <FaTimes className="mb-1" />
           </Button>
-          <Button variant="danger" disabled={loading} type="submit">
-            {!loading ? (
+          <Button variant="danger" disabled={isLoadingStatus} type="submit">
+            {!isLoadingStatus ? (
               <>
                 Sí, cancelar <FaCheck className="mb-1" />
               </>

@@ -19,7 +19,6 @@ import {
 } from "../features/programming/programmingSlice";
 
 const FormPeople = ({ action }) => {
-  // Id person param url GET
   const { id } = useParams();
 
   const { handleChange, schedulePerson } = useContext(PeopleContext);

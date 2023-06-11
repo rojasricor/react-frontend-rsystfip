@@ -6,7 +6,7 @@ import { resetUserAuthenticated } from "../features/auth/authSlice";
 import { resetQueryDataReports } from "../features/reports/reportsSlice";
 import { resetQueryDataStatistics } from "../features/statistics/statisticsSlice";
 import { resetFormDataAdmin } from "../features/admin/adminSlice";
-import { resetFormDataProgramming } from "../features/programming/programmingSlice";
+import { resetAllFormDataProgramming } from "../features/programming/programmingSlice";
 
 const NavLogoutDropdown = ({ avatar }) => {
   const authState = useSelector(({ auth }) => auth);
@@ -23,7 +23,7 @@ const NavLogoutDropdown = ({ avatar }) => {
     dispatch(resetQueryDataReports());
     dispatch(resetUserAuthenticated());
     dispatch(resetQueryDataStatistics());
-    dispatch(resetFormDataProgramming());
+    dispatch(resetAllFormDataProgramming());
 
     navigate("/auth/login");
   };

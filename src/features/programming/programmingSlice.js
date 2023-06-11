@@ -21,7 +21,11 @@ const formDataInitialState = {
 };
 
 const initialState = {
-  formData: formDataInitialState,
+  formData: {
+    add: formDataInitialState,
+    edit: formDataInitialState,
+    schedule: formDataInitialState,
+  },
   isLoading: false,
   deans: null,
 };
@@ -31,10 +35,37 @@ const programmingSlice = createSlice({
   initialState,
   reducers: {
     setFormData: (state, { payload }) => {
-      return {
-        ...state,
-        formData: payload,
-      };
+      const [action, formData] = payload;
+
+      if (action === "add") {
+        return {
+          ...state,
+          formData: {
+            ...state.formData,
+            add: formData ? formData : formDataInitialState,
+          },
+        };
+      }
+
+      if (action === "edit") {
+        return {
+          ...state,
+          formData: {
+            ...state.formData,
+            edit: formData ? formData : formDataInitialState,
+          },
+        };
+      }
+
+      if (action === "schedule") {
+        return {
+          ...state,
+          formData: {
+            ...state.formData,
+            schedule: formData ? formData : formDataInitialState,
+          },
+        };
+      }
     },
     setIsLoading: (state, { payload }) => {
       return {
@@ -57,10 +88,12 @@ const programmingSlice = createSlice({
     setDeans: (state, { payload }) => {
       return { ...state, deans: payload };
     },
-    resetFormDataProgramming: (state) => {
+    resetAllFormDataProgramming: (state) => {
       return {
         ...state,
-        formData: formDataInitialState,
+        formData: {
+          ...initialState.formData,
+        },
       };
     },
   },
@@ -72,6 +105,6 @@ export const {
   setDisabledAll,
   setDisabledAfterAutocomplete,
   setDeans,
-  resetFormDataProgramming,
+  resetAllFormDataProgramming,
 } = programmingSlice.actions;
 export default programmingSlice.reducer;

@@ -13,7 +13,6 @@ import { IoCalendarNumber } from "react-icons/io5";
 import { GiReturnArrow } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  resetFormDataProgramming,
   setFormData,
   setIsLoading,
 } from "../features/programming/programmingSlice";
@@ -25,12 +24,17 @@ const FormSchedulePeople = ({ action, closeModalScheduling }) => {
 
   const isEdit = action === "edit";
   const isSchedule = action === "schedule";
+  const isAdd = action === "add";
 
   const facultieSelectRef = useRef(null);
 
   const dispatch = useDispatch();
 
-  const formDataState = useSelector(({ programming }) => programming.formData);
+  const formDataState = useSelector(({ programming: { formData } }) => {
+    if (isEdit) return formData.edit;
+    if (isAdd) return formData.add;
+    if (isSchedule) return formData.schedule;
+  });
   const isLoadingState = useSelector(
     ({ programming }) => programming.isLoading
   );
@@ -54,7 +58,7 @@ const FormSchedulePeople = ({ action, closeModalScheduling }) => {
 
       if (error || !ok) return toast.warn(error);
 
-      dispatch(resetFormDataProgramming());
+      dispatch(setFormData([action]));
 
       toast.success(ok, { position: "top-left" });
     } catch ({ message }) {
@@ -90,7 +94,7 @@ const FormSchedulePeople = ({ action, closeModalScheduling }) => {
 
       if (error || !ok) return toast.warn(error);
 
-      dispatch(resetFormDataProgramming());
+      dispatch(setFormData([action]));
 
       if (formDataState.status === "scheduled" && closeModalScheduling)
         closeModalScheduling();
@@ -108,14 +112,18 @@ const FormSchedulePeople = ({ action, closeModalScheduling }) => {
 
     if (isEdit) return editPerson();
     if (isSchedule) return schedulePerson(closeModalScheduling);
-
-    dispatch(
-      setFormData({
-        ...formDataState,
-        status: "daily",
-      })
-    );
-    schedulePerson();
+    if (isAdd) {
+      dispatch(
+        setFormData([
+          action,
+          {
+            ...formDataState,
+            status: "daily",
+          },
+        ])
+      );
+      schedulePerson();
+    }
   };
 
   const getUserData = async () => {
@@ -132,15 +140,18 @@ const FormSchedulePeople = ({ action, closeModalScheduling }) => {
       } = await axios(`${API_ROUTE}/person?id=${id}`);
 
       dispatch(
-        setFormData({
-          ...formDataState,
-          person: category_id,
-          doctype: document_id,
-          facultie: facultie_id,
-          name,
-          doc: document_number,
-          asunt: come_asunt,
-        })
+        setFormData([
+          action,
+          {
+            ...formDataState,
+            person: category_id,
+            doctype: document_id,
+            facultie: facultie_id,
+            name,
+            doc: document_number,
+            asunt: come_asunt,
+          },
+        ])
       );
     } catch ({ message }) {
       toast.error(message);
@@ -149,10 +160,13 @@ const FormSchedulePeople = ({ action, closeModalScheduling }) => {
 
   const handleChange = (e) => {
     dispatch(
-      setFormData({
-        ...formDataState,
-        [e.target.name]: e.target.value,
-      })
+      setFormData([
+        action,
+        {
+          ...formDataState,
+          [e.target.name]: e.target.value,
+        },
+      ])
     );
   };
 
@@ -162,13 +176,16 @@ const FormSchedulePeople = ({ action, closeModalScheduling }) => {
     for (const { _id, dean, facultie_id } of deansState) {
       if (_id === formDataState.doc) {
         dispatch(
-          setFormData({
-            ...formDataState,
-            doctype: 1,
-            name: dean,
-            facultie: facultie_id,
-            disabledAfterAutocomplete: true,
-          })
+          setFormData([
+            action,
+            {
+              ...formDataState,
+              doctype: 1,
+              name: dean,
+              facultie: facultie_id,
+              disabledAfterAutocomplete: true,
+            },
+          ])
         );
 
         facultieSelectRef.current.className = "form-control";
@@ -191,6 +208,7 @@ const FormSchedulePeople = ({ action, closeModalScheduling }) => {
       <Row className="g-2">
         <Col md={6}>
           <SelectPerson
+            action={action}
             handleChange={handleChange}
             facultieSelectRef={facultieSelectRef}
           />
@@ -215,7 +233,7 @@ const FormSchedulePeople = ({ action, closeModalScheduling }) => {
         </Col>
 
         <Col md={6}>
-          <SelectDocument handleChange={handleChange} />
+          <SelectDocument action={action} handleChange={handleChange} />
         </Col>
 
         <Col md={6}>
@@ -283,6 +301,7 @@ const FormSchedulePeople = ({ action, closeModalScheduling }) => {
 
         <Col md={12}>
           <SelectFaculties
+            action={action}
             handleChange={handleChange}
             facultieSelectRef={facultieSelectRef}
           />

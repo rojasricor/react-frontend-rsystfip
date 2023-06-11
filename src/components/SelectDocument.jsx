@@ -6,9 +6,17 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { setDocuments } from "../features/resources/resourcesSlice";
 
-const SelectDocument = ({ handleChange }) => {
+const SelectDocument = ({ action, handleChange }) => {
+  const isEdit = action === "edit";
+  const isSchedule = action === "schedule";
+  const isAdd = action === "add";
+
   const documentsState = useSelector(({ resources }) => resources.documents);
-  const formDataState = useSelector(({ programming }) => programming.formData);
+  const formDataState = useSelector(({ programming: { formData } }) => {
+    if (isEdit) return formData.edit;
+    if (isAdd) return formData.add;
+    if (isSchedule) return formData.schedule;
+  });
 
   const dispatch = useDispatch();
 

@@ -6,8 +6,16 @@ import { FloatingLabel, FormSelect } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setFaculties } from "../features/resources/resourcesSlice";
 
-const SelectFaculties = ({ handleChange, facultieSelectRef }) => {
-  const formDataState = useSelector(({ programming }) => programming.formData);
+const SelectFaculties = ({ action, handleChange, facultieSelectRef }) => {
+  const isEdit = action === "edit";
+  const isSchedule = action === "schedule";
+  const isAdd = action === "add";
+
+  const formDataState = useSelector(({ programming: { formData } }) => {
+    if (isEdit) return formData.edit;
+    if (isAdd) return formData.add;
+    if (isSchedule) return formData.schedule;
+  });
   const facultiesState = useSelector(({ resources }) => resources.faculties);
 
   const dispatch = useDispatch();

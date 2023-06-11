@@ -16,7 +16,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFormData } from "../features/programming/programmingSlice";
 
 const FullCalendarScheduling = ({ right, initialView }) => {
-  const formDataState = useSelector(({ programming }) => programming.formData);
+  const action = "schedule";
+
+  const formDataState = useSelector(
+    ({ programming }) => programming.formData.schedule
+  );
 
   const dispatch = useDispatch();
 
@@ -94,24 +98,30 @@ const FullCalendarScheduling = ({ right, initialView }) => {
             showModalScheduling();
 
             dispatch(
-              setFormData({
-                ...formDataState,
-                date: formatTodaysDate(start),
-                start: formatTodaysDateTime(start),
-                end: formatTodaysDateTime(end),
-                status: "scheduled",
-              })
+              setFormData([
+                action,
+                {
+                  ...formDataState,
+                  date: formatTodaysDate(start),
+                  start: formatTodaysDateTime(start),
+                  end: formatTodaysDateTime(end),
+                  status: "scheduled",
+                },
+              ])
             );
           }}
           eventClick={({ event: { id, start } }) => {
             showModalCancell();
 
             dispatch(
-              setFormData({
-                ...formDataState,
-                eventId: id,
-                date: formatTodaysDateTime(start),
-              })
+              setFormData([
+                action,
+                {
+                  ...formDataState,
+                  eventId: id,
+                  date: formatTodaysDateTime(start),
+                },
+              ])
             );
           }}
           editable

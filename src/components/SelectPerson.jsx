@@ -10,11 +10,18 @@ import {
   setFormData,
 } from "../features/programming/programmingSlice";
 
-const SelectPerson = ({ handleChange, facultieSelectRef }) => {
+const SelectPerson = ({ action, handleChange, facultieSelectRef }) => {
   const { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } = Cst;
+  const isEdit = action === "edit";
+  const isSchedule = action === "schedule";
+  const isAdd = action === "add";
 
   const categoriesState = useSelector(({ resources }) => resources.categories);
-  const formDataState = useSelector(({ programming }) => programming.formData);
+  const formDataState = useSelector(({ programming: { formData } }) => {
+    if (isEdit) return formData.edit;
+    if (isAdd) return formData.add;
+    if (isSchedule) return formData.schedule;
+  });
 
   const dispatch = useDispatch();
 
@@ -31,11 +38,14 @@ const SelectPerson = ({ handleChange, facultieSelectRef }) => {
   useEffect(() => {
     if (formDataState.person !== UNSET_STATUS) {
       dispatch(
-        setFormData({
-          ...formDataState,
-          disabledAll: false,
-          disabledAfterAutocomplete: false,
-        })
+        setFormData([
+          action,
+          {
+            ...formDataState,
+            disabledAll: false,
+            disabledAfterAutocomplete: false,
+          },
+        ])
       );
 
       facultieSelectRef.current.className = "form-select";

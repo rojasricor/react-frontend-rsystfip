@@ -16,7 +16,10 @@ const ModalSchedulePeopleForm = ({
     </Modal.Header>
 
     <Modal.Body>
-      <FormSchedulePeople closeModalScheduling={closeModalScheduling} />
+      <FormSchedulePeople
+        action="schedule"
+        closeModalScheduling={closeModalScheduling}
+      />
     </Modal.Body>
   </Modal>
 );

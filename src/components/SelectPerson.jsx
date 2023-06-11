@@ -1,5 +1,4 @@
-import { useContext, useEffect } from "react";
-import { PeopleContext } from "../context/PeopleContext";
+import { useEffect } from "react";
 import * as Cst from "../constants";
 import { FloatingLabel, FormSelect } from "react-bootstrap";
 import axios from "axios";
@@ -11,15 +10,13 @@ import {
   setFormData,
 } from "../features/programming/programmingSlice";
 
-const SelectPerson = () => {
+const SelectPerson = ({ handleChange, facultieSelectRef }) => {
   const { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } = Cst;
-
-  const { facultieSelectRef, handleChange } = useContext(PeopleContext);
-
-  const dispatch = useDispatch();
 
   const categoriesState = useSelector(({ resources }) => resources.categories);
   const formDataState = useSelector(({ programming }) => programming.formData);
+
+  const dispatch = useDispatch();
 
   const getDeans = async () => {
     try {

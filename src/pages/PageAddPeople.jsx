@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import { PeopleContextProvider } from "../context/PeopleContext";
-import FormPeople from "../components/FormPeople";
 import { Row, Col, Card } from "react-bootstrap";
+import FormSchedulePeople from "../components/FormSchedulePeople";
 
 const PageAddPeople = () => {
   useEffect(() => {
@@ -14,9 +13,7 @@ const PageAddPeople = () => {
         <Card className="py-2">
           <h1 className="h3 text-center">Agendamiento diario</h1>
           <Card.Body>
-            <PeopleContextProvider>
-              <FormPeople action="add" />
-            </PeopleContextProvider>
+            <FormSchedulePeople action="add" />
           </Card.Body>
         </Card>
       </Col>

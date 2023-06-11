@@ -1,5 +1,4 @@
-import { useContext, useEffect } from "react";
-import { PeopleContext } from "../context/PeopleContext";
+import { useEffect } from "react";
 import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -7,13 +6,11 @@ import { FloatingLabel, FormSelect } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setFaculties } from "../features/resources/resourcesSlice";
 
-const SelectFaculties = () => {
-  const { facultieSelectRef, handleChange } = useContext(PeopleContext);
-
-  const dispatch = useDispatch();
-
+const SelectFaculties = ({ handleChange, facultieSelectRef }) => {
   const formDataState = useSelector(({ programming }) => programming.formData);
   const facultiesState = useSelector(({ resources }) => resources.faculties);
+
+  const dispatch = useDispatch();
 
   const getFaculties = async () => {
     try {

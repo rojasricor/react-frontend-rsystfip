@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { PeopleContextProvider } from "../context/PeopleContext";
 import FullCalendarScheduling from "../components/FullCalendarScheduling";
 
 const PageCalendar = () => {
@@ -8,13 +7,13 @@ const PageCalendar = () => {
   }, []);
 
   return (
-    <PeopleContextProvider>
+    <>
       <h1 className="h3">Ver agendamientos programados</h1>
       <FullCalendarScheduling
         right="listMonth,dayGridMonth"
         initialView="listMonth"
       />
-    </PeopleContextProvider>
+    </>
   );
 };
 

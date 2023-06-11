@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { FaTimes, FaCheck } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { setIsLoading } from "../features/programming/programmingSlice";
+import Notify from "./Notify";
 
 const FormCancellPerson = ({ closeModalCancell }) => {
   const [cancelled_asunt, setCancelled_asunt] = useState("");
@@ -76,6 +77,7 @@ const FormCancellPerson = ({ closeModalCancell }) => {
           </Button>
         </ModalFooter>
       </Row>
+      <Notify />
     </Form>
   );
 };

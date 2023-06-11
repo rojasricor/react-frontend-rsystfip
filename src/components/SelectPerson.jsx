@@ -69,9 +69,7 @@ const SelectPerson = ({ handleChange, facultieSelectRef }) => {
         value={formDataState.person}
         required
       >
-        <option value={UNSET_STATUS} disabled>
-          No seleccionado
-        </option>
+        <option value="">No seleccionado</option>
         {categoriesState.map(({ id, category }, index) => (
           <option key={index} value={id}>
             {category}

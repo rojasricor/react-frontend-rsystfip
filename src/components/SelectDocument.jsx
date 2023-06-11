@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
+import { RESOURCE_ROUTE } from "../constants";
 import { FloatingLabel, FormSelect } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -37,9 +37,7 @@ const SelectDocument = ({ handleChange }) => {
         }
         required
       >
-        <option value={UNSET_STATUS} disabled>
-          No seleccionado
-        </option>
+        <option value="">No seleccionado</option>
         {documentsState.map(({ id, description }, index) => (
           <option key={index} value={id}>
             {description}

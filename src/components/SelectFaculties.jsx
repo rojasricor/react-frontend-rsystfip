@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { UNSET_STATUS, RESOURCE_ROUTE } from "../constants";
+import { RESOURCE_ROUTE } from "../constants";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { FloatingLabel, FormSelect } from "react-bootstrap";
@@ -38,9 +38,7 @@ const SelectFaculties = ({ handleChange, facultieSelectRef }) => {
         }
         required
       >
-        <option value={UNSET_STATUS} disabled>
-          No seleccionado
-        </option>
+        <option value="">No seleccionado</option>
         {facultiesState.map(({ id, facultie }, index) => (
           <option key={index} value={id}>
             {facultie}

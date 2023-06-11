@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import * as Cst from "../constants";
+import { API_ROUTE, RESOURCE_ROUTE } from "../constants";
 import { Row, Col, Form, Spinner } from "react-bootstrap";
 import Submitter from "./Submitter";
 import { FaUserPlus } from "react-icons/fa";
@@ -14,13 +14,11 @@ import {
 } from "../features/admin/adminSlice";
 
 const FormUserAdd = () => {
-  const { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } = Cst;
-
-  const dispatch = useDispatch();
-
   const isLoadingState = useSelector(({ admin }) => admin.isLoading);
   const formDataState = useSelector(({ admin }) => admin.formData);
   const documentsState = useSelector(({ resources }) => resources.documents);
+
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     dispatch(
@@ -86,9 +84,7 @@ const FormUserAdd = () => {
               value={formDataState.role}
               required
             >
-              <option value={UNSET_STATUS} disabled>
-                No seleccionado
-              </option>
+              <option value="">No seleccionado</option>
               <option value="2">Rector</option>
               <option value="3">Secretaria</option>
             </Form.Select>
@@ -135,9 +131,7 @@ const FormUserAdd = () => {
               value={formDataState.docType}
               required
             >
-              <option value={UNSET_STATUS} disabled>
-                No seleccionado
-              </option>
+              <option value="">No seleccionado</option>
               {documentsState.map(({ id, description }, index) => (
                 <option key={index} value={id}>
                   {description}

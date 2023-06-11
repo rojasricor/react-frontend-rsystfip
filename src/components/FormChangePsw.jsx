@@ -7,9 +7,13 @@ import Submitter from "./Submitter";
 import { BiKey } from "react-icons/bi";
 
 const FormChangePsw = ({ userId }) => {
-  const [current_password, setCurrent_password] = useState("");
-  const [new_password, setNew_password] = useState("");
-  const [new_password_confirm, setNew_password_confirm] = useState("");
+  const formDataInitialState = {
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  };
+
+  const [formData, setFormData] = useState(formDataInitialState);
   const [loading, setLoading] = useState(false);
 
   const doChangePassword = async (e) => {
@@ -21,16 +25,14 @@ const FormChangePsw = ({ userId }) => {
         data: { error, ok },
       } = await axios.put(`${API_ROUTE}/password`, {
         id: userId,
-        current_password,
-        new_password,
-        new_password_confirm,
+        current_password: formData.currentPassword,
+        new_password: formData.newPassword,
+        new_password_confirm: formData.confirmPassword,
       });
 
       if (error || !ok) return toast.warn(error);
 
-      setCurrent_password("");
-      setNew_password("");
-      setNew_password_confirm("");
+      setFormData(formDataInitialState);
       toast.success(ok, { position: "top-left" });
     } catch ({ message }) {
       toast.error(message);
@@ -39,14 +41,22 @@ const FormChangePsw = ({ userId }) => {
     }
   };
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <Form onSubmit={doChangePassword}>
       <Row className="g-3">
         <Col md={12}>
           <Form.FloatingLabel label="Contraseña anterior:">
             <Form.Control
-              onChange={({ target: { value } }) => setCurrent_password(value)}
-              value={current_password}
+              name="currentPassword"
+              onChange={handleChange}
+              value={formData.currentPassword}
               type="password"
               placeholder="Current password"
               autoComplete="off"
@@ -58,8 +68,9 @@ const FormChangePsw = ({ userId }) => {
         <Col md={12}>
           <Form.FloatingLabel label="Contraseña nueva:">
             <Form.Control
-              onChange={({ target: { value } }) => setNew_password(value)}
-              value={new_password}
+              name="newPassword"
+              onChange={handleChange}
+              value={formData.newPassword}
               type="password"
               placeholder="New password"
               autoComplete="off"
@@ -71,10 +82,9 @@ const FormChangePsw = ({ userId }) => {
         <Col md={12}>
           <Form.FloatingLabel label="Confirmar contraseña nueva:">
             <Form.Control
-              onChange={({ target: { value } }) =>
-                setNew_password_confirm(value)
-              }
-              value={new_password_confirm}
+              name="confirmPassword"
+              onChange={handleChange}
+              value={formData.confirmPassword}
               type="password"
               placeholder="Confirm new password"
               autoComplete="off"

@@ -8,8 +8,12 @@ import Submitter from "./Submitter";
 import { BiKey } from "react-icons/bi";
 
 const FormChangePswForget = () => {
-  const [password, setPassword] = useState("");
-  const [password_confirm, setPassword_confirm] = useState("");
+  const formDataInitialState = {
+    password: "",
+    confirmPassword: "",
+  };
+
+  const [formData, setFormData] = useState(formDataInitialState);
   const [loading, setLoading] = useState(false);
 
   const { resetToken, email } = useParams();
@@ -24,8 +28,8 @@ const FormChangePswForget = () => {
       } = await axios.put(`${API_ROUTE}/recover/password`, {
         email,
         resetToken,
-        password,
-        password_confirm,
+        password: formData.password,
+        password_confirm: formData.confirmPassword,
       });
 
       if (error || !ok) return toast.warn(error);
@@ -38,14 +42,22 @@ const FormChangePswForget = () => {
     }
   };
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <Form onSubmit={doChangePassword}>
       <Row className="g-3">
         <Col md={12}>
           <Form.FloatingLabel label="Contraseña nueva:">
             <Form.Control
-              onChange={({ target: { value } }) => setPassword(value)}
-              value={password}
+              name="password"
+              onChange={handleChange}
+              value={formData.password}
               type="password"
               placeholder="New password"
               autoComplete="off"
@@ -57,8 +69,9 @@ const FormChangePswForget = () => {
         <Col md={12}>
           <Form.FloatingLabel label="Confirmar contraseña nueva:">
             <Form.Control
-              onChange={({ target: { value } }) => setPassword_confirm(value)}
-              value={password_confirm}
+              name="confirmPassword"
+              onChange={handleChange}
+              value={formData.confirmPassword}
               type="password"
               placeholder="Confirm new password"
               autoComplete="off"

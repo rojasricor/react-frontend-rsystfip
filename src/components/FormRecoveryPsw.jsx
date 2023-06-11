@@ -31,13 +31,15 @@ const FormRecoveryPsw = () => {
     }
   };
 
+  const handleChange = (e) => setEmail(e.target.value);
+
   return (
     <Form onSubmit={recoverPassword}>
       <Row className="g-3">
         <Col md={12}>
           <Form.FloatingLabel label="Email de registro">
             <Form.Control
-              onChange={({ target: { value } }) => setEmail(value)}
+              onChange={handleChange}
               value={email}
               type="email"
               placeholder="Email"

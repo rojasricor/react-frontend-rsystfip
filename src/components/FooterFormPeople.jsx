@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import ProtectedElement from "./ProtectedElement";
-import { Button, Spinner } from "react-bootstrap";
+import { Button, Spinner, Col } from "react-bootstrap";
 import { FaUserPlus } from "react-icons/fa";
 import { GiReturnArrow } from "react-icons/gi";
 import { useSelector } from "react-redux";
@@ -18,7 +18,7 @@ const FooterFormPeople = ({ isAllowed }) => {
   };
 
   return (
-    <>
+    <Col md={12}>
       <Button className="m-1" disabled={isLoadingState} type="submit">
         {!isLoadingState ? (
           <>
@@ -38,7 +38,7 @@ const FooterFormPeople = ({ isAllowed }) => {
           Volver <GiReturnArrow />
         </Button>
       </ProtectedElement>
-    </>
+    </Col>
   );
 };
 

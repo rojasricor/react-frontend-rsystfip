@@ -21,13 +21,11 @@ import {
 const FormPeople = ({ action }) => {
   const { id } = useParams();
 
-  const { handleChange, schedulePerson } = useContext(PeopleContext);
+  const { schedulePerson, handleChange } = useContext(PeopleContext);
 
   const dispatch = useDispatch();
 
   const formDataState = useSelector(({ programming }) => programming.formData);
-
-  const isEdit = action === "edit";
 
   const editPerson = async () => {
     dispatch(setIsLoading(true));
@@ -60,7 +58,7 @@ const FormPeople = ({ action }) => {
   const doForPerson = (e) => {
     e.preventDefault();
 
-    if (isEdit) return editPerson();
+    if (action === "edit") return editPerson();
 
     dispatch(
       setFormData({
@@ -177,9 +175,7 @@ const FormPeople = ({ action }) => {
           </Form.FloatingLabel>
         </Col>
 
-        <Col md={12}>
-          <FooterFormPeople isAllowed={isEdit} />
-        </Col>
+        <FooterFormPeople isAllowed={action === "edit"} />
 
         <SmallCaption />
       </Row>

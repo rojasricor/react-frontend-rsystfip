@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFaculties } from "../features/resources/resourcesSlice";
 
 const SelectFaculties = () => {
-  const { handleChange, facultieSelectRef } = useContext(PeopleContext);
+  const { facultieSelectRef, handleChange } = useContext(PeopleContext);
 
   const dispatch = useDispatch();
 

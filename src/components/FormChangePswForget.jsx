@@ -34,6 +34,7 @@ const FormChangePswForget = () => {
 
       if (error || !ok) return toast.warn(error);
 
+      setFormData(formDataInitialState);
       toast.success(ok, { position: "top-left" });
     } catch ({ message }) {
       toast.error(message);

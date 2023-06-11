@@ -10,15 +10,16 @@ import { toast } from "react-toastify";
 import { IoMdLogIn } from "react-icons/io";
 
 const FormLogin = () => {
-  const dispatch = useDispatch();
-
-  const [formData, setFormData] = useState({
+  const formDataInitialState = {
     user: "",
     password: "",
-  });
+  };
 
+  const [formData, setFormData] = useState(formDataInitialState);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 

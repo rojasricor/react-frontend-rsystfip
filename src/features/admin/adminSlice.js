@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UNSET_STATUS } from "../../constants";
 
 const formDataInitialState = {
-  role: UNSET_STATUS,
+  role: "",
   name: "",
   lastname: "",
-  docType: UNSET_STATUS,
+  docType: "",
   doc: "",
   email: "",
   tel: "",

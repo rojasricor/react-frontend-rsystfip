@@ -1,16 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UNSET_STATUS } from "../../constants";
 import { formatTodaysDate, formatTodaysDateTime } from "../../libs/todaylib";
 
 const formDataInitialState = {
   eventId: "",
-  person: UNSET_STATUS,
+  person: "",
   doc: "",
-  doctype: UNSET_STATUS,
+  doctype: "",
   name: "",
   telContact: "",
   emailContact: "",
-  facultie: UNSET_STATUS,
+  facultie: "",
   asunt: "",
   color: "#388cdc",
   date: formatTodaysDate(),

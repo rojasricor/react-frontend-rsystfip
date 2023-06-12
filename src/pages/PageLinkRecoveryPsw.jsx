@@ -5,7 +5,7 @@ import Notify from "../components/Notify";
 
 const PageLinkRecoveryPsw = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Recover my password";
+    document.title = "RSystfip | Recover my password";
   }, []);
 
   return (

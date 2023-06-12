@@ -4,7 +4,7 @@ import Error404Actioner from "../components/Error404Actioner";
 
 const PageNotFound = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Not found";
+    document.title = "RSystfip | Not found";
   }, []);
 
   return (

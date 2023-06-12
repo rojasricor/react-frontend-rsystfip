@@ -7,7 +7,7 @@ import { FaUserPlus } from "react-icons/fa";
 
 const PageManageUsers = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Manage users";
+    document.title = "RSystfip | Manage users";
   }, []);
 
   return (

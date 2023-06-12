@@ -5,7 +5,7 @@ import Notify from "../components/Notify";
 
 const PageChangePassword = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Change password users";
+    document.title = "RSystfip | Change password users";
   }, []);
 
   return (

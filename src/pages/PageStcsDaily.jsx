@@ -5,7 +5,7 @@ import Notify from "../components/Notify";
 
 const PageStcsDaily = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Statistics daily people";
+    document.title = "RSystfip | Statistics daily people";
   }, []);
 
   return (

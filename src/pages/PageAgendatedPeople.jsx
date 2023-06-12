@@ -5,7 +5,7 @@ import Notify from "../components/Notify";
 
 const PageAgendatedPeople = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Agendated People";
+    document.title = "RSystfip | Agendated People";
   }, []);
 
   return (

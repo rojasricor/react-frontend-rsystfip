@@ -3,7 +3,7 @@ import FullCalendarScheduling from "../components/FullCalendarScheduling";
 
 const PageProgramming = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Programming scheduling";
+    document.title = "RSystfip | Programming scheduling";
   }, []);
 
   return (

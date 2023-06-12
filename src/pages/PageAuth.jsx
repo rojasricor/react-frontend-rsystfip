@@ -6,7 +6,7 @@ import Notify from "../components/Notify";
 
 const PageAuth = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Authenticate";
+    document.title = "RSystfip | Authenticate";
   }, []);
 
   return (

@@ -5,7 +5,7 @@ import Notify from "../components/Notify";
 
 const PageReportsPeople = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Generate reports";
+    document.title = "RSystfip | Generate reports";
   }, []);
 
   return (

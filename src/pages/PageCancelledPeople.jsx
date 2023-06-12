@@ -5,7 +5,7 @@ import Notify from "../components/Notify";
 
 const PageCancelledPeople = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Cancelled people";
+    document.title = "RSystfip | Cancelled people";
   });
 
   return (

@@ -5,7 +5,7 @@ import Notify from "../components/Notify";
 
 const PageRecoveryPassword = () => {
   useEffect(() => {
-    document.title = "Rsystfip | I forget my password";
+    document.title = "RSystfip | I forget my password";
   }, []);
 
   return (

@@ -8,7 +8,7 @@ import { IoCalendarNumber } from "react-icons/io5";
 
 const PageHome = ({ permissions }) => {
   useEffect(() => {
-    document.title = "Rsystfip | Home";
+    document.title = "RSystfip | Home";
   }, []);
 
   return (

@@ -4,7 +4,7 @@ import FormSchedulePeople from "../components/FormSchedulePeople";
 
 const PageEditPeople = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Edit people";
+    document.title = "RSystfip | Edit people";
   }, []);
 
   return (

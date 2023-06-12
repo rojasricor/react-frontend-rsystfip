@@ -3,7 +3,7 @@ import FullCalendarScheduling from "../components/FullCalendarScheduling";
 
 const PageCalendar = () => {
   useEffect(() => {
-    document.title = "Rsystfip | People in calendar";
+    document.title = "RSystfip | People in calendar";
   }, []);
 
   return (

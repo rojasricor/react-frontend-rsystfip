@@ -3,7 +3,7 @@ import { Row, Col, Accordion } from "react-bootstrap";
 
 const PageFaqs = () => {
   useEffect(() => {
-    document.title = "Rsystfip | Frecuently asked questions";
+    document.title = "RSystfip | Frecuently asked questions";
   }, []);
 
   return (

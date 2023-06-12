@@ -5,9 +5,9 @@ const UserLoggedInfo = () => {
 
   return (
     <h1 className="h3">
-      {`${authState.role === "secretaria" ? "Bienvenida" : "Bienvenido"} ${
-        authState.role
-      }: ${authState.name}`}
+      {`${authState.user.role === "secretaria" ? "Bienvenida" : "Bienvenido"} ${
+        authState.user.role
+      }: ${authState.user.name}`}
     </h1>
   );
 };

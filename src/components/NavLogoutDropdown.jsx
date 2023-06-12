@@ -16,12 +16,17 @@ const NavLogoutDropdown = ({ avatar }) => {
   const navigate = useNavigate();
 
   const logout = () => {
-    if (!confirm(`${authState.name} estás seguro(a)que deseas cerrar sesión?`))
+    if (
+      !confirm(
+        `${authState.user.name} estás seguro(a)que deseas cerrar sesión?`
+      )
+    )
       return;
 
+    window.sessionStorage.removeItem("RSystfip_user_authenticated");
+    dispatch(resetUserAuthenticated());
     dispatch(resetFormDataAdmin());
     dispatch(resetQueryDataReports());
-    dispatch(resetUserAuthenticated());
     dispatch(resetQueryDataStatistics());
     dispatch(resetAllFormDataProgramming());
 
@@ -42,7 +47,7 @@ const NavLogoutDropdown = ({ avatar }) => {
           FAQs
         </NavLink>
         <NavLink
-          to={`/users/manage/password/${authState.id}/change`}
+          to={`/users/manage/password/${authState.user.id}/change`}
           className="dropdown-item"
         >
           Cambiar contraseña

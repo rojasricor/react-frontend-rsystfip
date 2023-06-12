@@ -28,20 +28,20 @@ import { useSelector } from "react-redux";
 const App = () => {
   const authState = useSelector(({ auth }) => auth);
 
-  const avatar = authState ? `/img/${authState.role}/avatar.png` : "";
-  const permissions = authState ? authState.permissions : [];
+  const avatar = authState.auth ? `/img/${authState.user.role}/avatar.png` : "";
+  const permissions = authState.auth ? authState.user.permissions : [];
 
   return (
     <BrowserRouter>
       <Container fluid>
-        <ProtectedElement isAllowed={!!authState}>
+        <ProtectedElement isAllowed={authState.auth}>
           <NavBar avatar={avatar} permissions={permissions} />
         </ProtectedElement>
         <Routes>
           <Route index element={<PageAuth />} />
           <Route path="/auth/login" element={<PageAuth />} />
 
-          <Route element={<ProtectedRoute isAllowed={!!authState} />}>
+          <Route element={<ProtectedRoute isAllowed={authState.auth} />}>
             <Route
               path="/home/welcome"
               element={<PageHome permissions={permissions} />}
@@ -59,7 +59,7 @@ const App = () => {
           <Route
             element={
               <ProtectedRoute
-                isAllowed={!!authState && permissions.includes("admin")}
+                isAllowed={authState.auth && permissions.includes("admin")}
               />
             }
           >
@@ -75,7 +75,7 @@ const App = () => {
             path="/people/add"
             element={
               <ProtectedRoute
-                isAllowed={!!authState && permissions.includes("add")}
+                isAllowed={authState.auth && permissions.includes("add")}
                 navigateTo="/home/welcome"
               >
                 <PageAddPeople />
@@ -87,7 +87,7 @@ const App = () => {
             path="/people/schedule"
             element={
               <ProtectedRoute
-                isAllowed={!!authState && permissions.includes("schedule")}
+                isAllowed={authState.auth && permissions.includes("schedule")}
                 navigateTo="/home/welcome"
               >
                 <PageProgramming />
@@ -99,7 +99,7 @@ const App = () => {
             path="/people/preview"
             element={
               <ProtectedRoute
-                isAllowed={!!authState}
+                isAllowed={authState.auth}
                 navigateTo="/home/welcome"
               >
                 <PageCalendar />
@@ -111,7 +111,7 @@ const App = () => {
             path="/people/reports"
             element={
               <ProtectedRoute
-                isAllowed={!!authState && permissions.includes("reports")}
+                isAllowed={authState.auth && permissions.includes("reports")}
                 navigateTo="/home/welcome"
               >
                 <PageReportsPeople />
@@ -123,7 +123,7 @@ const App = () => {
             path="/people/statistics/daily"
             element={
               <ProtectedRoute
-                isAllowed={!!authState && permissions.includes("statistics")}
+                isAllowed={authState.auth && permissions.includes("statistics")}
                 navigateTo="/home/welcome"
               >
                 <PageStcsDaily />
@@ -135,7 +135,7 @@ const App = () => {
             path="/people/statistics/scheduled"
             element={
               <ProtectedRoute
-                isAllowed={!!authState && permissions.includes("statistics")}
+                isAllowed={authState.auth && permissions.includes("statistics")}
                 navigateTo="/home/welcome"
               >
                 <PageStcsScheduled />

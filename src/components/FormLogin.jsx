@@ -35,16 +35,20 @@ const FormLogin = () => {
     setLoading(true);
 
     try {
-      const {
-        data: { auth, user, error },
-      } = await axios.post(`${API_ROUTE}/auth`, {
+      const { data } = await axios.post(`${API_ROUTE}/auth`, {
         username: formData.user,
         password: formData.password,
       });
 
-      if (error || !auth) return toast.warn(error);
+      if (data.error || !data.auth) return toast.warn(data.error);
 
-      dispatch(setAuthenticatedUser(user));
+      window.sessionStorage.setItem(
+        "RSystfip_user_authenticated",
+        JSON.stringify(data)
+      );
+
+      dispatch(setAuthenticatedUser(data));
+
       navigate("/home/welcome");
     } catch ({ message }) {
       toast.error(message);

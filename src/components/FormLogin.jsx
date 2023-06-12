@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_ROUTE } from "../constants";
+import { API_ROUTE, AUTH_KEY } from "../constants";
 import { Row, Col, Form, Spinner } from "react-bootstrap";
 import Submitter from "./Submitter";
 import axios from "axios";
@@ -42,10 +42,7 @@ const FormLogin = () => {
 
       if (data.error || !data.auth) return toast.warn(data.error);
 
-      window.sessionStorage.setItem(
-        "RSystfip_user_authenticated",
-        JSON.stringify(data)
-      );
+      window.sessionStorage.setItem(AUTH_KEY, JSON.stringify(data));
 
       dispatch(setAuthenticatedUser(data));
 

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import * as Cst from "../constants";
+import { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } from "../constants";
 import { FloatingLabel, FormSelect } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -11,7 +11,6 @@ import {
 } from "../features/programming/programmingSlice";
 
 const SelectPerson = ({ action, handleChange, facultieSelectRef }) => {
-  const { API_ROUTE, RESOURCE_ROUTE, UNSET_STATUS } = Cst;
   const isEdit = action === "edit";
   const isSchedule = action === "schedule";
   const isAdd = action === "add";

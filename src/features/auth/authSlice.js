@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { AUTH_KEY } from "../../constants";
 
-const userSessionSaved = window.sessionStorage.getItem(
-  "RSystfip_user_authenticated"
-);
+const userSessionSaved = window.sessionStorage.getItem(AUTH_KEY);
 
 const initialState = {
   auth: false,

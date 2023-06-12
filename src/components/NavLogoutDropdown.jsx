@@ -7,6 +7,7 @@ import { resetQueryDataReports } from "../features/reports/reportsSlice";
 import { resetQueryDataStatistics } from "../features/statistics/statisticsSlice";
 import { resetFormDataAdmin } from "../features/admin/adminSlice";
 import { resetAllFormDataProgramming } from "../features/programming/programmingSlice";
+import { AUTH_KEY } from "../constants";
 
 const NavLogoutDropdown = ({ avatar }) => {
   const authState = useSelector(({ auth }) => auth);
@@ -23,7 +24,7 @@ const NavLogoutDropdown = ({ avatar }) => {
     )
       return;
 
-    window.sessionStorage.removeItem("RSystfip_user_authenticated");
+    window.sessionStorage.removeItem(AUTH_KEY);
     dispatch(resetUserAuthenticated());
     dispatch(resetFormDataAdmin());
     dispatch(resetQueryDataReports());

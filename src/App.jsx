@@ -22,7 +22,7 @@ import PageStcsDaily from "./pages/PageStcsDaily";
 import PageStcsScheduled from "./pages/PageStcsScheduled";
 import PageFaqs from "./pages/PageFaqs";
 import PageNotFound from "./pages/PageNotFound";
-import "./index.scss";
+import "./App.scss";
 import { useSelector } from "react-redux";
 
 const App = () => {

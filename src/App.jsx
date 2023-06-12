@@ -38,8 +38,28 @@ const App = () => {
           <NavBar avatar={avatar} permissions={permissions} />
         </ProtectedElement>
         <Routes>
-          <Route index element={<PageAuth />} />
-          <Route path="/auth/login" element={<PageAuth />} />
+          <Route
+            index
+            element={
+              <ProtectedRoute
+                isAllowed={!authState.auth}
+                navigateTo="/home/welcome"
+              >
+                <PageAuth />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/auth/login"
+            element={
+              <ProtectedRoute
+                isAllowed={!authState.auth}
+                navigateTo="/home/welcome"
+              >
+                <PageAuth />
+              </ProtectedRoute>
+            }
+          />
 
           <Route element={<ProtectedRoute isAllowed={authState.auth} />}>
             <Route
@@ -60,6 +80,7 @@ const App = () => {
             element={
               <ProtectedRoute
                 isAllowed={authState.auth && permissions.includes("admin")}
+                navigateTo="/home/welcome"
               />
             }
           >
